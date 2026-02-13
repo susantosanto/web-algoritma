@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS Wizard | The Ultimate Engineering Codex</title>
+  <title>CodeNexus | The Ultimate Engineering Codex</title>
   <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,51 +35,68 @@
 
     .dev-line {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 0.75rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      margin-top: 0.5rem;
     }
 
     .dev-line span {
-      width: 6px;
-      height: 6px;
-      background: var(--primary);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--primary);
-      display: inline-block;
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      border-radius: 2px;
+      box-shadow: none;
+      display: block;
     }
 
     .dev-line::after {
-      content: 'Learning Platform';
+      content: 'LEARNING PLATFORM';
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      letter-spacing: 2px;
-      font-weight: 700;
-      opacity: 0.6;
+      font-size: 0.6rem;
+      color: #94a3b8;
+      letter-spacing: 0.25em;
+      font-weight: 600;
+      opacity: 0.8;
+      text-transform: uppercase;
     }
 
     .main-logo {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-      background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: white;
+      background: none;
+      -webkit-text-fill-color: white;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0;
     }
 
     .main-logo span {
-      background: var(--primary);
-      -webkit-text-fill-color: white;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-weight: 900;
+      background: linear-gradient(270deg, #38bdf8, #818cf8, #c084fc, #38bdf8);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 0;
+      font-weight: 800;
+      animation: logoShine 4s ease infinite;
+    }
+
+    @keyframes logoShine {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .sub-logo {
@@ -238,7 +255,7 @@
     <!-- SIDEBAR NAVIGATION -->
     <aside class="sidebar">
       <div class="sidebar-logo">
-        <div class="main-logo"><span>JS</span> WIZARD</div>
+        <div class="main-logo">Code<span>Nexus</span></div>
         <div class="dev-line"><span></span></div>
       </div>
       <nav class="sidebar-nav">
