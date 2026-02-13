@@ -1,136 +1,1386 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>✨ Menjadi Penyihir Data | Panduan Premium JS</title>
+  <title>JS Wizard | The Ultimate Engineering Codex</title>
   <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@900&display=swap"
+    rel="stylesheet">
+  <style>
+    /* SIDEBAR TOGGLE & MODAL STYLES */
+    :root {
+      --sidebar-width: 280px;
+      --glass: rgba(15, 23, 42, 0.7);
+      /* Slightly more transparent for BG visibility */
+      --neon-glow: 0 0 15px rgba(56, 189, 248, 0.4);
+    }
+
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+
+
+    .dev-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 0.75rem;
+    }
+
+    .dev-line span {
+      width: 6px;
+      height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary);
+      display: inline-block;
+    }
+
+    .dev-line::after {
+      content: 'Learning Platform';
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 2px;
+      font-weight: 700;
+      opacity: 0.6;
+    }
+
+    .main-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .main-logo span {
+      background: var(--primary);
+      -webkit-text-fill-color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .sub-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: #64748b;
+      /* Subtle Slate */
+      letter-spacing: 3px;
+      margin-top: 0.4rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .sub-logo span {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    /* SEARCH MODAL 2030 */
+    .search-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(2, 6, 23, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      padding-top: 15vh;
+      animation: modalFade 0.3s ease;
+    }
+
+    @keyframes modalFade {
+      from {
+        opacity: 0;
+        transform: scale(1.05);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .search-content {
+      width: 90%;
+      max-width: 650px;
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      color: white;
+      font-size: 1.4rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: var(--neon-glow);
+    }
+
+    .search-results {
+      margin-top: 1.5rem;
+      max-height: 50vh;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    .search-results::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .search-results::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
+    }
+
+    .result-item {
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #94a3b8;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      border: 1px solid transparent;
+    }
+
+    .result-item.selected {
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.15) 0%, transparent 100%);
+      color: white;
+      border-left: 4px solid var(--primary);
+      border-right: 1px solid rgba(56, 189, 248, 0.3);
+      border-top: 1px solid rgba(56, 189, 248, 0.3);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: var(--neon-glow);
+      transform: translateX(12px) scale(1.02);
+    }
+
+    .result-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .theory-deep-dive {
+      border-left: 3px solid var(--primary);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    /* Ensure content visibility over 3D BG */
+    .app-shell {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 </head>
+
 <body>
-  <div class="bg-glow"></div>
-  <div class="glow-orb" style="top: -100px; left: -100px;"></div>
-  <div class="glow-orb" style="bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);"></div>
+  <div id="backToTop" class="back-to-top" title="Go to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </div>
 
-  <nav>
-    <div class="nav-content">
-      <div class="logo">WIZARD DATA</div>
-      <div class="badge-premium">PREMIUM EDITION v2.0</div>
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-content">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search topics... (Press Esc to close)">
+      <div class="search-results" id="searchResults"></div>
     </div>
-  </nav>
+  </div>
 
-  <main class="container">
-    <header class="hero fade-in">
-      <div class="badge-premium">✨ Master JavaScript & Apps Script</div>
-      <h1>Menjadi <span style="color: var(--primary);">Penyihir Data</span></h1>
-      <p style="color: var(--text-muted); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">
-        Panduan eksklusif dengan <strong>Metode Memori Super</strong>. Bangun pola pikir algoritma dan kuasai sintaks tanpa menghafal.
-      </p>
-    </header>
-
-    <section class="fade-in" style="animation-delay: 0.2s;">
-      <div class="level-grid" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="level-card" style="text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
-          <div class="level-title">MISI</div>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">Masalah nyata untuk diselesaikan.</p>
-        </div>
-        <div class="level-card" style="text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: 1rem;">🧠</div>
-          <div class="level-title">MODEL MENTAL</div>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">Analogi agar konsep menempel.</p>
-        </div>
-        <div class="level-card" style="text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: 1rem;">📜</div>
-          <div class="level-title">MANTRA</div>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">Kode sintaks dan penggunaan.</p>
-        </div>
-        <div class="level-card" style="text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: 1rem;">👁️</div>
-          <div class="level-title">SIHIR</div>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">Eksekusi langkah demi langkah.</p>
-        </div>
+  <div class="app-shell">
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="main-logo"><span>JS</span> WIZARD</div>
+        <div class="dev-line"><span></span></div>
       </div>
-    </section>
-
-    <section class="fade-in" style="animation-delay: 0.4s;">
-      <h2><span style="color: var(--success);">📚 Bab 0:</span> Kitab Dasar Mantra</h2>
-      <div class="mental-model">
-        <p><strong>⚔️ Gudang Senjata Anda:</strong> Sebelum merapal mantra kompleks, kuasai perkakas dasarnya. Menguasai ini akan membuat kode Anda <strong>10x lebih bersih, singkat, dan efisien</strong>.</p>
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#programmer-mindset" class="nav-link"><span>⚛︎</span> Mindset Master</a>
+          </li>
+          <li class="nav-item">
+            <a href="#bab-0" class="nav-link"><span>✧</span> Kitab Dasar</a>
+            <ul class="submenu">
+              <li><a href="#sihir-teks">String Manipulation</a></li>
+              <li><a href="#sihir-angka">Number & Math</a></li>
+              <li><a href="#sihir-wadah">Array Utilities</a></li>
+              <li><a href="#sihir-benda">Object Utilities</a></li>
+              <li><a href="#sihir-json">JSON Exchange</a></li>
+              <li><a href="#sihir-waktu">Date & Time</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#bab-1" class="nav-link"><span>✦</span> Mantra Agung</a>
+            <ul class="submenu">
+              <li><a href="#mantra-map">.map()</a></li>
+              <li><a href="#mantra-filter">.filter()</a></li>
+              <li><a href="#mantra-reduce">.reduce()</a></li>
+              <li><a href="#ritual-agung">Chaining Ritual</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#bab-2" class="nav-link"><span>💠</span> Flow Control</a>
+            <ul class="submenu">
+              <li><a href="#flow-if">Conditionals</a></li>
+              <li><a href="#flow-loop">Loops & Iteration</a></li>
+              <li><a href="#flow-error">Error Resilience</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#bab-3" class="nav-link"><span>⚡</span> Async Mastery</a>
+            <ul class="submenu">
+              <li><a href="#async-promise">Promises</a></li>
+              <li><a href="#async-await">Async / Await</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#bab-5" class="nav-link"><span>⌬</span> Architecture</a>
+            <ul class="submenu">
+              <li><a href="#destructuring">Destructuring</a></li>
+              <li><a href="#modules">ES Modules</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#misi-master" class="nav-link"><span>👑</span> Level Master</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sub-logo"><span>SANTO X</span> / CODE</div>
+        <div style="margin-top: 0.5rem; opacity: 0.5; font-size: 0.7rem;">Premium Ed. 2026</div>
       </div>
+    </aside>
 
-      <h3>📝 1. Sihir Teks (String Manipulation)</h3>
-      
-      <div class="mantra-card">
-        <div class="mantra-header">
-          <div class="mantra-title"><span>🔧</span> <code>toLowerCase()</code> / <code>toUpperCase()</code></div>
-          <div class="badge-premium" style="margin-bottom: 0; padding: 0.1rem 0.5rem; font-size: 0.7rem;">MANTRA PENYERAGAM</div>
+    <main class="main-content">
+      <header class="fade-in">
+        <div class="hero-badge">
+          Developed By <span>SANTO X / CODE</span>
         </div>
-        <div class="mantra-body">
-          <p>Agar perbandingan teks tidak peduli huruf besar/kecil (Case Insensitive).</p>
-          <div class="mantra-usage">
-            <strong>Contoh:</strong> <code>"Admin".toLowerCase() === "admin"</code> <span style="color: var(--success);">(True)</span>
+        <h1>Codex of the <span style="color: var(--primary);">Logic Engine</span></h1>
+        <p class="hero-subtext">
+          Panduan pembelajaran JavaScript dasar. Melampaui sintaks—kita membangun <strong>arsitektur mental</strong>
+          seorang programmer.
+        </p>
+      </header>
+
+      <!-- SECTION: MASTER MINDSET -->
+      <section id="programmer-mindset" class="doc-section"
+        style="background: linear-gradient(145deg, rgba(56, 189, 248, 0.1), transparent); border: 1px solid var(--primary);">
+        <h2 style="color: var(--primary); margin-top: 0;">🧠 Golden Rule: The Programmer's Logic (O.P.I.A)</h2>
+        <p>Banyak pemula gagal bukan karena tidak hafal kode, tapi karena <strong>Panic at the Keyboard</strong>.
+          Gunakan metode <strong>O.P.I.A</strong> untuk menyelesaikan tugas apa pun:</p>
+
+        <div class="level-grid" style="margin-top: 2rem;">
+          <div class="level-card">
+            <div class="level-num">STEP 1</div>
+            <div class="level-title">O - Observasi</div>
+            <p>Identifikasi data: Apa inputnya? Apa hasil akhirnya (Output)? Jangan sentuh keyboard sebelum tahu
+              alurnya.</p>
+          </div>
+          <div class="level-card">
+            <div class="level-num">STEP 2</div>
+            <div class="level-title">P - Pecah (Decompose)</div>
+            <p>Pecah masalah besar jadi langkah kecil. Selesaikan: 1. Bersihkan, 2. Filter, 3. Hitung. Selesaikan
+              satu-satu!</p>
+          </div>
+          <div class="level-card">
+            <div class="level-num">STEP 3</div>
+            <div class="level-title">I - Implementasi</div>
+            <p>Tulis kode terkecil yang jalan. <code>console.log</code> setiap langkah. Pastikan step 1 benar sebelum ke
+              step 2.</p>
+          </div>
+          <div class="level-card">
+            <div class="level-num">STEP 4</div>
+            <div class="level-title">A - Analisis</div>
+            <p>Tinjau kembali: Adakah kode berulang? Apakah performanya oke? Apakah ada potensi error jika data kosong?
+            </p>
           </div>
         </div>
-      </div>
-
-      <div class="mantra-card">
-        <div class="mantra-header">
-          <div class="mantra-title"><span>✂️</span> <code>trim()</code></div>
-          <div class="badge-premium" style="margin-bottom: 0; padding: 0.1rem 0.5rem; font-size: 0.7rem;">MANTRA PEMANGKAS</div>
+        <div class="concept-box" style="border-left: 4px solid var(--accent);">
+          <strong>Analogi Dunia Nyata:</strong> Memasak nasi goreng. Siapkan bahan (O), Potong bumbu (P), Goreng satu
+          persatu (I), Cicipi & Plating (A). Anda tidak mungkin plating nasi yang belum digoreng.
         </div>
-        <div class="mantra-body">
-          <p>Menghapus spasi kosong di <strong>awal dan akhir</strong> teks. Sangat penting untuk membersihkan input dari form.</p>
-          <div class="mantra-usage">
-            <strong>Contoh:</strong> <code>"  user123  ".trim()</code> → <code class="code-snippet">"user123"</code>
+      </section>
+
+      <!-- BAB 0 -->
+      <section id="bab-0">
+        <h2>🛠️ Bab 0: Kitab Dasar Mantra</h2>
+
+        <div class="sub-section" id="sihir-teks">
+          <h3>1. String Manipulation (Teks Presisi)</h3>
+
+          <div class="doc-section fade-in">
+            <div class="method-tag">Normalization</div>
+            <h4>toLowerCase() / toUpperCase()</h4>
+            <p><strong>Filosofi Logika:</strong> Penyeragaman data. Komputer menganggap 'A' dan 'a' berbeda (ASCII
+              berbeda). Kita harus memaksa mereka jadi sama sebelum dibandingkan.</p>
+
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> Saat Anda memanggil <code>toLowerCase()</code>, JavaScript tidak
+              merubah string asli (String di JS bersifat *Immutable*). Sebaliknya, JS membuat **salinan baru** di
+              memori, memindai setiap karakter, dan merubah kode UTF-16-nya jika itu adalah huruf kapital. Ini sebabnya
+              Anda harus menyimpan hasilnya ke variabel baru.
+            </div>
+
+            <div class="concept-box" style="background: rgba(255,100,0,0.05); border-color: orange;">
+              <strong>🪵 Deep Logic Path:</strong>
+              <ol>
+                <li>Input user: "Admin".</li>
+                <li>Normalisasi: ".toLowerCase()" -> "admin".</li>
+                <li>Bandingkan dengan data DB -> "admin" === "admin" (True).</li>
+              </ol>
+            </div>
+
+            <div class="code-block">
+              <code style="color: #60a5fa;">const</code> input = "SantoX";<br>
+              <code style="color: #60a5fa;">const</code> valid = input.toLowerCase() === "santox";
+            </div>
+
+            <div class="syntax-box">
+              <strong>🔍 Detailed Breakdown:</strong><br>
+              • <code>input.toLowerCase()</code>: Mengeksekusi algoritma pemetaan karakter Unicode.<br>
+              • <code>===</code>: Operator perbandingan identitas. Mengecek apakah nilai di kiri dan kanan merujuk pada
+              urutan bit yang sama di memori.
+            </div>
+
+            <div class="mastery-task">
+              <strong>⚔️ Latihan Bertahap: Normalisasi</strong>
+              <div class="task-card">
+                <strong>Level 1 (Warmup):</strong> Ubah input "ADMIN_SANTOS" menjadi "admin_santos".<br>
+                <em>Logic: Cukup panggil method toLowerCase() pada variabel.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 2 (Logic):</strong> Bandingkan email <code>"User@Gmail.Com"</code> dengan
+                <code>"user@gmail.com"</code> agar hasilnya <code>true</code>.<br>
+                <em>Logic: 1. Kecilkan email pertama, 2. Kecilkan email kedua, 3. Bandingkan dengan operator ===.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 3 (Pro-Algo):</strong> Buat fungsi pencarian case-insensitive. Jika user cari "JS", harus
+                ketemu di teks "Belajar js".<br>
+                <strong>Algoritma:</strong><br>
+                1. Ambil teks target.<br>
+                2. Ambil keyword pencarian.<br>
+                3. Kecilkan keduanya secara sementara.<br>
+                4. Cek apakah teks yang sudah kecil mengandung (includes) keyword yang sudah kecil.
+              </div>
+            </div>
+          </div>
+
+          <div class="doc-section fade-in">
+            <div class="method-tag">Cleanup</div>
+            <h4>trim() & replace()</h4>
+            <p><strong>Filosofi Logika:</strong> Membersihkan "kotoran" data. Spasi di ujung teks adalah musuh utama
+              database. <code>replace</code> memungkinkan kita mengubah data tanpa merusak template-nya.</p>
+
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> <code>trim()</code> bekerja dengan memindai karakter spasi (termasuk
+              tab, newline) di awal dan akhir string. <code>replace()</code> (tanpa regex) hanya mengganti kemunculan
+              pertama, sedangkan <code>replaceAll()</code> (ES2021) mengganti semua. Keduanya juga mengembalikan string
+              baru, menjaga *immutability* string asli.
+            </div>
+
+            <div class="concept-box" style="background: rgba(0,255,0,0.05); border-color: green;">
+              <strong>🪵 Deep Logic Path:</strong>
+              <ol>
+                <li>String Berantakan: " &nbsp; Rp. 1.000 &nbsp; ".</li>
+                <li><code>trim()</code> -> Potong spasi di titik awal dan akhir.</li>
+                <li><code>replace("Rp. ", "")</code> -> Hapus identitas mata uang.</li>
+                <li><code>replaceAll(".", "")</code> -> Hapus titik ribuan untuk persiapan dikonversi ke angka.</li>
+              </ol>
+            </div>
+
+            <div class="mastery-task">
+              <strong>⚔️ Latihan Bertahap: Sanitasi</strong>
+              <div class="task-card">
+                <strong>Level 1:</strong> Bersihkan spasi dari " &nbsp; hello &nbsp; ".<br>
+                <em>Logic: Gunakan <code>.trim()</code>.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 2:</strong> Ubah "2024/02/12" menjadi "2024-02-12".<br>
+                <em>Logic: Gunakan <code>.replaceAll("/", "-")</code>.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 3 (Logic Engine):</strong> Ubah harga kotor " USD 150.00 " menjadi angka murni 15000.<br>
+                <strong>Algoritma:</strong><br>
+                1. Hapus spasi luar (trim).<br>
+                2. Hapus teks "USD " (replace).<br>
+                3. Hapus titik desimal "." (replace).<br>
+                4. Ubah tipe data string hasil ke integer (parseInt).
+              </div>
+            </div>
+          </div>
+
+          <div class="doc-section fade-in">
+            <div class="method-tag">Detection</div>
+            <h4>includes() & split()</h4>
+            <p>Mencari potongan teks atau memecah teks menjadi array (CSV/Tags).</p>
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> <code>includes()</code> melakukan pencarian substring secara efisien,
+              mengembalikan boolean. <code>split()</code> memecah string menjadi array berdasarkan *delimiter* yang
+              diberikan. Jika delimiter adalah string kosong <code>''</code>, ia akan memecah setiap karakter. Ini
+              sangat berguna untuk parsing data terstruktur seperti CSV.
+            </div>
+            <div class="code-block">
+              <code style="color: #60a5fa;">const</code> tags = "web,pro,js".split(","); <code
+                style="color: #94a3b8;">// ["web", "pro", "js"]</code>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Add more cards like this for other methods -->
+        <div class="sub-section" id="sihir-angka">
+          <h3>2. Number & Math (Akurasi Tinggi)</h3>
+          <div class="doc-section fade-in">
+            <div class="method-tag">Formatting</div>
+            <h4>toFixed() & Math.round()</h4>
+            <p><strong>Filosofi Logika:</strong> "Estetika dan Presisi". Jangan biarkan user pusing melihat 12 digit
+              desimal di belakang koma (Floating point errors).</p>
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> JavaScript menggunakan standar IEEE 754 untuk angka floating-point,
+              yang bisa menyebabkan presisi terbatas (misal <code>0.1 + 0.2 !== 0.3</code>). <code>toFixed()</code>
+              mengonversi angka menjadi string dengan jumlah desimal yang ditentukan, melakukan pembulatan yang tepat.
+              <code>Math.round()</code> membulatkan ke bilangan bulat terdekat.
+            </div>
+            <div class="concept-box">
+              <strong>🪵 Deep Logic Path:</strong>
+              <ol>
+                <li>Terima angka kalkulasi (contoh: 33.3333333).</li>
+                <li>Panggil <code>.toFixed(2)</code> untuk memotong angka tersebut.</li>
+                <li>Ingat: Outputnya adalah <strong>String</strong> perhiasan, bukan angka murni.</li>
+              </ol>
+            </div>
+            <div class="code-block">
+              <code style="color: #60a5fa;">const</code> tax = (15000 * 0.11).toFixed(0); <code
+                style="color: #94a3b8;">// "1650"</code>
+            </div>
 
-      <h3>🧠 Latihan Logika: Pembersih Data Formulir</h3>
-      <div class="mental-model" style="border-style: solid; background: rgba(245, 158, 11, 0.05);">
-        <p><strong>Skenario:</strong> Anda menerima input nama lengkap dari user yang berantakan dan perlu mengambil nama depannya saja.</p>
-        <ol style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-muted);">
-          <li>Bersihkan spasi dengan <code class="code-snippet">trim()</code></li>
-          <li>Ubah semua ke kecil dengan <code class="code-snippet">toLowerCase()</code></li>
-          <li>Pecah kata dengan <code class="code-snippet">split(" ")</code></li>
-          <li>Ambil index 0</li>
-        </ol>
-      </div>
+            <div class="mastery-task">
+              <strong>⚔️ Latihan Bertahap: Presisi Angka</strong>
+              <div class="task-card">
+                <strong>Level 1:</strong> Bulatkan 10 / 3 menjadi 2 angka desimal.<br>
+                <em>Logic: <code>(10/3).toFixed(2)</code>.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 2:</strong> Buat angka acak antara 1 sampai 10.<br>
+                <em>Logic: 1. <code>Math.random()</code>, 2. Kali 10, 3. <code>Math.floor</code> di sekelilingnya, 4.
+                  Tambah 1.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 3 (Financial Logic):</strong> Hitung total belanja setelah diskon 15% dan tampilkan dalam
+                format tanpa desimal.<br>
+                <strong>Algoritma:</strong><br>
+                1. Ambil harga asli.<br>
+                2. Hitung jumlah diskon (Harga * 0.15).<br>
+                3. Kurangi Harga Asli dengan Diskon.<br>
+                4. Gunakan <code>Math.round</code> atau <code>toFixed(0)</code> untuk hasil akhir.
+              </div>
+            </div>
+          </div>
 
-      <h3>⚔️ Latihan Bertahap</h3>
-      <div class="level-grid">
-        <div class="level-card">
-          <div class="level-num">LEVEL 1</div>
-          <div class="level-title">Sensor Kata</div>
-          <p style="font-size: 0.9rem; color: var(--text-muted);">Ganti kata "kasar" dengan "***".</p>
+          <div class="doc-section fade-in">
+            <div class="method-tag">Rounding</div>
+            <h4>Math.floor() / Math.ceil()</h4>
+            <p><strong>Filosofi Logika:</strong> Pemaksaan ke bawah (lantai) atau ke atas (atap). Sangat berguna untuk
+              sistem halaman (Pagination) atau stok barang.</p>
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> <code>Math.floor()</code> mengembalikan bilangan bulat terbesar yang
+              kurang dari atau sama dengan angka yang diberikan (membulatkan ke bawah). <code>Math.ceil()</code>
+              mengembalikan bilangan bulat terkecil yang lebih besar dari atau sama dengan angka yang diberikan
+              (membulatkan ke atas). Keduanya selalu mengembalikan tipe data Number.
+            </div>
+            <div class="code-block">
+              <code style="color: #60a5fa;">const</code> pages = Math.ceil(10 / 3); <code
+                style="color: #94a3b8;">// 4 Halaman</code>
+            </div>
+          </div>
         </div>
-        <div class="level-card" style="border-color: var(--primary);">
-          <div class="level-num">LEVEL 2</div>
-          <div class="level-title">Inisial Nama</div>
-          <p style="font-size: 0.9rem; color: var(--text-muted);">"Budi Santoso" → "B. S."</p>
-        </div>
-        <div class="level-card">
-          <div class="level-num">LEVEL 3</div>
-          <div class="level-title">Slug URL</div>
-          <p style="font-size: 0.9rem; color: var(--text-muted);">"Belajar JS Itu Seru" → "belajar-js-itu-seru"</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- Navigation Footer -->
-    <div style="margin-top: 8rem; text-align: center; color: var(--text-muted); padding-bottom: 4rem;">
-      <p>Situs ini adalah pratinjau format premium. Gulung layar ke bawah untuk melihat lebih banyak.</p>
-      <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem;">
-        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--primary);"></div>
-        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--secondary);"></div>
-        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent);"></div>
-      </div>
-    </div>
-  </main>
+        <div class="sub-section" id="sihir-wadah">
+          <h3>3. Array Utilities (Koper Data)</h3>
+          <div class="doc-section fade-in">
+            <div class="method-tag">Basic Ops</div>
+            <h4>push() & pop()</h4>
+            <p><strong>Filosofi Logika:</strong> Menumpuk piring. <code>push</code> menambah piring ke atas tumpukan,
+              <code>pop</code> mengambil piring teratas.
+            </p>
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> <code>push()</code> menambahkan satu atau lebih elemen ke akhir array
+              dan mengembalikan panjang array yang baru. <code>pop()</code> menghapus elemen terakhir dari array dan
+              mengembalikan elemen tersebut. Keduanya memodifikasi array asli (*mutable*). Ini adalah operasi yang
+              sangat efisien karena hanya berinteraksi dengan akhir array.
+            </div>
+            <div class="code-block">
+              <code style="color: #60a5fa;">const</code> cart = ["Apel"];<br>
+              cart.push("Jeruk"); <code style="color: #94a3b8;">// ["Apel", "Jeruk"]</code>
+            </div>
+
+            <div class="mastery-task">
+              <strong>⚔️ Latihan Bertahap: Tumpukan Data</strong>
+              <div class="task-card">
+                <strong>Level 1:</strong> Tambahkan nama "Budi" ke akhir list tamu.<br>
+                <em>Logic: Panggil <code>.push()</code>.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 2:</strong> Hapus data terakhir dari array antrean dan simpan ke variabel
+                <code>panggilan</code>.<br>
+                <em>Logic: Gunakan <code>panggilan = arr.pop()</code>.</em>
+              </div>
+            </div>
+          </div>
+
+          <div class="doc-section fade-in">
+            <div class="method-tag">Iteration</div>
+            <h4>forEach() - Sang Pesuruh</h4>
+            <p><strong>Filosofi Logika:</strong> "Satu per satu". JS akan mendatangi setiap rumah (elemen) dan
+              mengeksekusi instruksi Anda tanpa merubah jumlah rumahnya.</p>
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> <code>forEach()</code> adalah metode iterasi yang tidak mengembalikan
+              nilai (mengembalikan <code>undefined</code>). Ia dirancang untuk melakukan *side effects* (misalnya,
+              mencetak ke konsol, memodifikasi elemen DOM) untuk setiap elemen. Penting untuk diingat bahwa Anda tidak
+              bisa menghentikan loop <code>forEach</code> dengan <code>break</code> atau <code>return</code> (kecuali
+              untuk menghentikan eksekusi callback saat ini).
+            </div>
+            <div class="code-block">
+              items.forEach(item => console.log("Mengolah", item));
+            </div>
+
+            <div class="mastery-task">
+              <strong>⚔️ Latihan Bertahap: Iterasi</strong>
+              <div class="task-card">
+                <strong>Level 1:</strong> Tampilkan semua nama di array ke console.<br>
+                <em>Logic: Panggil <code>.forEach(name => console.log(name))</code>.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 2 (Logic):</strong> Tambahkan <code>" (Lunas)"</code> ke setiap string di array nama
+                secara visual (saat ditampilkan).<br>
+                <em>Logic: Dalam template literal <code>`${name} (Lunas)`</code>.</em>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section" id="sihir-benda">
+          <h3>4. Object Utilities (Struktur Data)</h3>
+          <div class="doc-section fade-in">
+            <div class="method-tag">Extraction</div>
+            <h4>Object.keys() & values()</h4>
+            <p><strong>Filosofi Logika:</strong> Membongkar koper. Terkadang kita butuh "Label Harganya" saja (Keys)
+              atau "Barangnya" saja (Values).</p>
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> <code>Object.keys()</code> dan <code>Object.values()</code> adalah
+              metode statis pada objek global <code>Object</code>. Keduanya mengembalikan array baru yang berisi
+              properti yang dapat dihitung (enumerable) dari objek yang diberikan. <code>Object.keys()</code>
+              mengembalikan nama properti (string), sedangkan <code>Object.values()</code> mengembalikan nilai properti.
+            </div>
+            <div class="code-block">
+              <code style="color: #60a5fa;">const</code> stok = { kayu: 10, paku: 50 };<br>
+              Object.values(stok); <code style="color: #94a3b8;">// [10, 50]</code>
+            </div>
+          </div>
+
+          <div class="doc-section fade-in">
+            <div class="method-tag">Cloning</div>
+            <h4>The Spread (...) Operator</h4>
+            <p><strong>Filosofi Logika:</strong> Fotokopi Kilat. Membuat duplikat objek lama dan menambahkan properti
+              baru tanpa merusak objek aslinya (Immutability).</p>
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> Spread operator (<code>...</code>) untuk objek melakukan *shallow
+              copy*. Artinya, properti level pertama akan diduplikasi, tetapi jika ada objek bersarang, referensinya
+              akan tetap sama. Ini adalah cara yang ringkas untuk menggabungkan objek atau membuat salinan dengan
+              modifikasi.
+            </div>
+            <div class="code-block">
+              <code style="color: #60a5fa;">const</code> update = { ...stok, kayu: 15 };
+            </div>
+
+            <div class="mastery-task">
+              <strong>⚔️ Latihan Bertahap: Arsitektur Benda</strong>
+              <div class="task-card">
+                <strong>Level 1:</strong> Tambahkan properti <code>isOld: true</code> ke objek <code>car</code>.<br>
+                <em>Logic: <code>car.isOld = true</code>.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 2 (Logic):</strong> Gabungkan dua objek <code>user</code> dan <code>address</code> menjadi
+                satu objek baru.<br>
+                <em>Logic: Gunakan spread operator <code>{ ...user, ...address }</code>.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 3 (Pro-Algo):</strong> Hitung berapa banyak kunci (propery) yang ada di dalam sebuah
+                objek.<br>
+                <strong>Algoritma:</strong><br>
+                1. Ambil semua kunci menggunakan <code>Object.keys(obj)</code>.<br>
+                2. Hitung panjang array tersebut menggunakan <code>.length</code>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section" id="sihir-json">
+          <h3>5. JSON Exchange (Bahasa API)</h3>
+          <div class="doc-section fade-in">
+            <div class="method-tag">Communication</div>
+            <h4>Stringify & Parse</h4>
+            <p><strong>Filosofi Logika:</strong> "Teleportasi". Objek (Benda Nyata) tidak bisa terbang lewat kabel
+              internet. Harus diubah jadi Teks (Stringify) dulu, lalu dirakit kembali jadi Benda (Parse) di tujuan.</p>
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> JSON (JavaScript Object Notation) adalah format pertukaran data
+              berbasis teks. <code>JSON.stringify()</code> mengonversi objek atau nilai JavaScript menjadi string JSON.
+              Ini penting karena HTTP hanya bisa mengirimkan teks. <code>JSON.parse()</code> melakukan kebalikannya,
+              mengonversi string JSON menjadi objek JavaScript. Perhatikan bahwa tidak semua tipe data JS dapat
+              di-stringify (misalnya fungsi, Symbol, undefined akan diabaikan atau diubah).
+            </div>
+            <div class="code-block">
+              <code style="color: #60a5fa;">const</code> dataStr = JSON.stringify(obj);<br>
+              <code style="color: #60a5fa;">const</code> rawObj = JSON.parse(dataStr);
+            </div>
+
+            <div class="mastery-task">
+              <strong>⚔️ Latihan Bertahap: Teleportasi Data</strong>
+              <div class="task-card">
+                <strong>Level 1:</strong> Ubah objek <code>{id: 1}</code> menjadi string.<br>
+                <em>Logic: <code>JSON.stringify(obj)</code>.</em>
+              </div>
+              <div class="task-card">
+                <strong>Level 2:</strong> Baca teks <code>'{"status": "ok"}'</code> kembali menjadi objek.<br>
+                <em>Logic: <code>JSON.parse(text)</code>.</em>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section" id="sihir-waktu">
+          <h3>6. Modern Date & Time</h3>
+          <div class="doc-section fade-in">
+            <h4>new Date() & Intl.DateTimeFormat</h4>
+            <p>Menangani waktu dengan presisi zona waktu.</p>
+            <div class="theory-deep-dive">
+              <strong>🔬 Under the Hood:</strong> Objek <code>Date</code> di JavaScript merepresentasikan titik waktu
+              tunggal. Secara internal, ia menyimpan waktu sebagai jumlah milidetik sejak Epoch (1 Januari 1970 UTC).
+              <code>Intl.DateTimeFormat</code> adalah bagian dari Internationalization API, yang memungkinkan Anda
+              memformat tanggal dan waktu sesuai dengan konvensi bahasa dan wilayah tertentu, termasuk penanganan zona
+              waktu yang kompleks.
+            </div>
+            <div class="code-block">
+              <code style="color: #60a5fa;">const</code> now = <code style="color: #60a5fa;">new</code> Date();<br>
+              <code style="color: #60a5fa;">const</code> format = <code style="color: #60a5fa;">new</code>
+              Intl.DateTimeFormat('id-ID').format(now);
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BAB 1 -->
+      <section id="bab-1">
+        <h2>✨ Bab 1: Tiga Mantra Agung (Pro Processing)</h2>
+
+        <div class="doc-section fade-in" id="mantra-map">
+          <h4>.map() - Pabrik Transformasi</h4>
+          <p><strong>Filosofi Logika:</strong> Seperti mesin fotokopi dengan filter. Data masuk 10, data keluar 10, tapi
+            bentuknya berubah. <strong>Jumlah data haram berubah.</strong></p>
+
+          <div class="theory-deep-dive">
+            <strong>🔬 Under the Hood:</strong> <code>.map()</code> menciptakan array baru tanpa mengubah array asli
+            (*Non-Mutating*). Secara internal, JS mengalokasikan memori untuk array baru berukuran sama, lalu
+            menjalankan callback function Anda pada setiap index. Jika callback tidak mereturn nilai, array baru akan
+            berisi <code>undefined</code> di posisi tersebut.
+          </div>
+
+          <div class="concept-box" style="background: rgba(56, 189, 248, 0.05); border-color: var(--primary);">
+            <strong>🪵 Deep Logic Path:</strong>
+            <ol>
+              <li>Siapkan Array baru kosong.</li>
+              <li>Loop setiap item di Array lama.</li>
+              <li>Jalankan fungsi pengolah (callback).</li>
+              <li>Simpan hasil olahan ke Array baru.</li>
+            </ol>
+          </div>
+
+          <div class="code-block">
+            <code style="color: #60a5fa;">const</code> raw = [1, 2, 3];<br>
+            <code style="color: #60a5fa;">const</code> double = raw.map(v => v * 2);
+          </div>
+
+          <div class="syntax-box">
+            <strong>🔍 Breakdown:</strong><br>
+            • <code>v</code>: Nama panggilan untuk "item saat ini".<br>
+            • <code>v * 2</code>: Hasil akhir yang akan dimasukkan ke array baru.
+          </div>
+
+          <div class="mastery-task">
+            <strong>⚔️ Latihan Bertahap: Pabrik Data</strong>
+            <div class="task-card">
+              <strong>Level 1:</strong> Kalikan semua angka dalam array dengan 10.<br>
+              <em>Logic: <code>arr.map(v => v * 10)</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 2 (Logic):</strong> Anda punya array objek <code>[{name: 'A'}, {name: 'B'}]</code>. Ubah
+              jadi <code>['A', 'B']</code>.<br>
+              <em>Logic: <code>arr.map(obj => obj.name)</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 3 (Pro-Algo):</strong> Ubah array harga <code>[100, 200]</code> menjadi array objek
+              <code>[{price: 100, tax: 10}, {price: 200, tax: 20}]</code>.<br>
+              <strong>Algoritma:</strong><br>
+              1. Jalankan .map pada array harga.<br>
+              2. Di dalam fungsi, buat objek baru <code>{}</code>.<br>
+              3. Isi properti <code>price</code> dengan nilai asli, dan <code>tax</code> dengan 10% dari nilai asli.<br>
+              4. Return objek tersebut.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-section fade-in" id="mantra-filter">
+          <h4>.filter() - Gerbang Seleksi Ketat</h4>
+          <p><strong>Filosofi Logika:</strong> Saringan. <code>true</code> berarti "Lolos Ke Tahap Berikutnya",
+            <code>false</code> berarti "Dibuang Selamanya".
+          </p>
+
+          <div class="theory-deep-dive">
+            <strong>🔬 Under the Hood:</strong> <code>.filter()</code> juga *Non-Mutating*. JavaScript membangun array
+            baru dari awal. Callback function harus mengembalikan nilai *Truthy* atau *Falsy*. Jika *Truthy*, item
+            tersebut di-*push* ke array baru. Operasi ini membutuhkan waktu O(n) karena setiap elemen harus diperiksa
+            satu per satu.
+          </div>
+
+          <div class="concept-box" style="background: rgba(168, 85, 247, 0.05); border-color: #a855f7;">
+            <strong>🪵 Deep Logic Path:</strong>
+            <ol>
+              <li>Siapkan saringan kosong.</li>
+              <li>Satu per satu item ditanya: "Apakah kamu benar (true)?"</li>
+              <li>Jika iya, item tersebut dicatat di hasil.</li>
+            </ol>
+          </div>
+
+          <div class="code-block">
+            <code style="color: #60a5fa;">const</code> stock = [5, 0, 10];<br>
+            <code style="color: #60a5fa;">const</code> ready = stock.filter(item => item > 0);
+          </div>
+
+          <div class="mastery-task">
+            <strong>⚔️ Latihan Bertahap: Saringan Data</strong>
+            <div class="task-card">
+              <strong>Level 1:</strong> Ambil angka yang genap saja.<br>
+              <em>Logic: <code>arr.filter(v => v % 2 === 0)</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 2 (Logic):</strong> Dari array user <code>[{age: 12}, {age: 20}]</code>, ambil yang umurnya
+              di atas 18.<br>
+              <em>Logic: <code>users.filter(u => u.age > 18)</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 3 (Pro-Algo):</strong> Buat fitur "Pencarian Multi-Kategori". Filter produk yang kategorinya
+              "Elektronik" DAN harganya di bawah 1 Juta.<br>
+              <strong>Algoritma:</strong><br>
+              1. Jalankan .filter pada array produk.<br>
+              2. Gunakan operator logika <code>&&</code> di dalam syaratnya.<br>
+              3. Pastikan kedua syarat mengembalikan <code>true</code>.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-section fade-in" id="mantra-reduce">
+          <h4>.reduce() - Kuali Akumulasi</h4>
+          <p><strong>Filosofi Logika:</strong> Menggabungkan banyak item menjadi SATU nilai akhir (Total, Objek tunggal,
+            dsb).</p>
+
+          <div class="theory-deep-dive">
+            <strong>🔬 Under the Hood:</strong> Ini adalah metode paling *powerful* di array. <code>reduce</code>
+            membawa satu nilai "Accumulator" (acc) melewati setiap elemen. Hasil return dari callback di index saat ini
+            akan menjadi nilai <code>acc</code> di index berikutnya. Jika Anda tidak memberikan nilai awal, JS akan
+            menggunakan elemen pertama array sebagai nilai awal dan mulai iterasi dari elemen kedua.
+          </div>
+
+          <div class="code-block">
+            <code style="color: #60a5fa;">const</code> total = [1, 2, 3].reduce((acc, curr) => acc + curr, 0);
+          </div>
+          <div class="syntax-box">
+            • <code>acc</code> (Accumulator): Wadah penampung hasil sementara.<br>
+            • <code>0</code>: Nilai awal wadah penampung.
+          </div>
+
+          <div class="mastery-task">
+            <strong>⚔️ Latihan Bertahap: Kuali Akumulasi</strong>
+            <div class="task-card">
+              <strong>Level 1:</strong> Hitung total dari array angka [5, 5, 5].<br>
+              <em>Logic: <code>arr.reduce((a, b) => a + b, 0)</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 2 (Logic):</strong> Gabungkan array kata <code>['Hello', 'World']</code> menjadi satu string
+              <code>"Hello World"</code>.<br>
+              <em>Logic: <code>arr.reduce((str, word) => str + " " + word)</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 3 (Pro-Algo):</strong> Hitung total stok barang dari array objek
+              <code>[{stok: 10}, {stok: 5}]</code>.<br>
+              <strong>Algoritma:</strong><br>
+              1. Jalankan reduce dengan nilai awal 0.<br>
+              2. Di setiap putaran, tambahkan <code>acc</code> dengan <code>curr.stok</code>.<br>
+              3. Pastikan return hasil pertambahannya untuk putaran berikutnya.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-section fade-in" id="ritual-agung">
+          <h4>Ritual Agung: Chaining Mastery</h4>
+          <p><strong>Filosofi Logika:</strong> Jalur perakitan pabrik. Data mengalir dari satu mantra ke mantra
+            berikutnya tanpa berhenti.</p>
+          <div class="code-block">
+            <code style="color: #60a5fa;">const</code> summary = data<br>
+            &nbsp;&nbsp;.filter(v => v.active)<br>
+            &nbsp;&nbsp;.map(v => v.price * 0.9)<br>
+            &nbsp;&nbsp;.reduce((sum, v) => sum + v, 0);
+          </div>
+          <p style="margin-top: 1rem; opacity: 0.7; font-style: italic;">Urutan berpengaruh! Filter dulu agar map tidak
+            mengolah data sampah.</p>
+        </div>
+      </section>
+
+      <!-- BAB 2 -->
+      <section id="bab-2">
+        <h2>⏳ Bab 2: Flow Control (Otak Logika)</h2>
+        <div class="doc-section fade-in" id="flow-if">
+          <h4>Guard Clauses vs Nested If</h4>
+          <p><strong>Filosofi Logika:</strong> "Sedia payung sebelum hujan". Tolak kondisi gagal di awal fungsi agar
+            logika utama tetap rapi di bawah.</p>
+
+          <div class="theory-deep-dive">
+            <strong>🔬 Under the Hood:</strong> Teknik ini memanfaatkan konsep *Sequential Execution*. Dengan melakukan
+            <code>return</code> atau <code>throw</code> di awal (Guarding), kita mengurangi beban kognitif pembaca kode
+            karena kita menghapus "cabang-cabang" pohon keputusan yang kompleks. Ini membuat kode menjadi linier dan
+            lebih mudah di-*debug*.
+          </div>
+
+          <div class="code-block">
+            <code style="color: #60a5fa;">if</code> (!isLogin) <code style="color: #60a5fa;">return</code> "Gagal";<br>
+            <code style="color: #60a5fa;">if</code> (saldo < 100) <code style="color: #60a5fa;">return</code>
+              "Kurang";<br>
+              <code style="color: #94a3b8;">// Logika Sukses di sini</code>
+          </div>
+          <div class="syntax-box">
+            <strong>🔍 Breakdown:</strong><br>
+            • <code>if (!user.isLogin)</code>: Tanda <code>!</code> artinya "TIDAK". Jika user TIDAK login, masuk ke
+            blok ini.<br>
+            • <code>return "Maaf..."</code>: Kode ini seperti tombol EJECT. Apapun di bawahnya tidak akan pernah
+            dijalankan.<br>
+            • <code>// Area Aman</code>: Karena semua yang gagal sudah di-Eject di atas, baris ini dijamin hanya
+            berjalan jika user sudah login DAN saldo cukup.
+          </div>
+
+          <div class="mastery-task">
+            <strong>⚔️ Latihan Bertahap: Gerbang Logika</strong>
+            <div class="task-card">
+              <strong>Level 1:</strong> Buat fungsi yang menolak akses jika umur di bawah 17.<br>
+              <em>Logic: <code>if (age < 17) return "Ditolak"</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 2 (Logic):</strong> Buat fungsi "Beli Barang" yang mengecek: 1. Stok ada, 2. Uang cukup.<br>
+              <em>Logic: Pakai dua guard clauses di awal, baru return "Sukses" di akhir.</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-section fade-in" id="flow-loop">
+          <h4>Smart Looping (for...of vs for...in)</h4>
+          <p><strong>Filosofi Logika:</strong> Membuka Kotak. <code>for...of</code> adalah cara termodern untuk
+            mengambil **Isi** kotak (Nilai), sedangkan <code>for...in</code> digunakan untuk mengambil **Kunci**
+            (Properti) objek.</p>
+          <div class="code-block">
+            <code style="color: #60a5fa;">for</code> (<code style="color: #60a5fa;">const</code> item <code
+              style="color: #60a5fa;">of</code> cart) {<br>
+            &nbsp;&nbsp;console.log("Mengepak:", item);<br>
+            }
+          </div>
+          <div class="concept-box">
+            <strong>💡 Pro-Tip:</strong> Gunakan <code>for...of</code> jika Anda ingin bisa menghentikan loop
+            (<code>break</code>) di tengah jalan jika menemukan barang yang dicari.
+          </div>
+
+          <div class="mastery-task">
+            <strong>⚔️ Latihan Bertahap: Iterasi Cerdas</strong>
+            <div class="task-card">
+              <strong>Level 1:</strong> Tampilkan semua isi keranjang belanja ke console.<br>
+              <em>Logic: Loop array dengan <code>for...of</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 2 (Logic):</strong> Cari angka 5 di sebuah array. Jika ketemu, tampilkan pesan dan hentikan
+              loop.<br>
+              <em>Logic: Dalam loop, gunakan <code>if (v === 5) { console.log("Ada"); break; }</code>.</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-section fade-in" id="flow-error">
+          <h4>Error Resilience (Try/Catch/Finally)</h4>
+          <p><strong>Filosofi Logika:</strong> Sabuk Pengaman. Kode di dalam <code>try</code> adalah "Area Berbahaya"
+            (Misal: Request internet). Jika meledak, <code>catch</code> akan menangkap ledakannya agar aplikasi tidak
+            mati total.</p>
+          <div class="code-block">
+            <code style="color: #60a5fa;">try</code> {<br>
+            &nbsp;&nbsp;hubungiServer();<br>
+            } <code style="color: #60a5fa;">catch</code> (error) {<br>
+            &nbsp;&nbsp;console.log("Internet sedang gangguan");<br>
+            }
+          </div>
+
+          <div class="mastery-task">
+            <strong>⚔️ Latihan Bertahap: Mitigasi Ledakan</strong>
+            <div class="task-card">
+              <strong>Level 1:</strong> Tangkap error saat mencoba memanggil fungsi yang tidak ada.<br>
+              <em>Logic: Bungkus pemanggilan fungsi fiktif dengan <code>try/catch</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 2 (Logic):</strong> Coba ubah teks kotor menjadi JSON. Jika gagal, return objek kosong
+              <code>{}</code>.<br>
+              <em>Logic: <code>try { return JSON.parse(str) } catch { return {} }</code>.</em>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BAB 3 -->
+      <section id="bab-3">
+        <h2>⚡ Bab 3: Asynchronous Mastery</h2>
+        <div class="doc-section fade-in" id="async-promise">
+          <h4>Promises & The Event Loop</h4>
+          <p><strong>Filosofi Logika:</strong> "Nomor Antrean Kopi". Anda sudah punya nomornya (Promise), tapi kopinya
+            belum ada. Nomor itu akan berubah jadi Kopi (Resolved) atau Pesan Maaf (Rejected) di masa depan.</p>
+
+          <div class="theory-deep-dive">
+            <strong>🔬 Under the Hood:</strong> Promise adalah objek yang membungkus nilai yang belum tersedia. Secara
+            internal, Promise memiliki status (*Pending*, *Fulfilled*, *Rejected*). Ia bekerja sama dengan **Microtask
+            Queue** di dalam Event Loop. Microtask memiliki prioritas lebih tinggi daripada Macrotask (seperti
+            <code>setTimeout</code>), sehingga Promise akan dieksekusi segera setelah stack utama kosong.
+          </div>
+
+          <div class="code-block">
+            <code style="color: #60a5fa;">const</code> janji = <code style="color: #60a5fa;">new</code>
+            Promise((resolve, reject) => {<br>
+            &nbsp;&nbsp;<code style="color: #60a5fa;">if</code> (kopiTersedia) resolve("Ini Kopi!");<br>
+            &nbsp;&nbsp;<code style="color: #60a5fa;">else</code> reject("Habis");<br>
+            });
+          </div>
+        </div>
+        <div class="doc-section fade-in" id="async-await">
+          <h4>Async / Await Mentality</h4>
+          <p><strong>Filosofi Logika:</strong> Memesan kopi (Async). Anda bisa duduk (Non-blocking), saat kopi jadi
+            (Await), Anda baru minum.</p>
+
+          <div class="theory-deep-dive">
+            <strong>🔬 Under the Hood:</strong> <code>async/await</code> sebenarnya adalah *Syntactic Sugar* di atas
+            Generator dan Promise. Saat JS bertemu kata kunci <code>await</code>, ia menangguhkan (*suspend*) eksekusi
+            fungsi tersebut secara lokal, mengembalikan kontrol ke Event Loop, dan membungkus sisa kode di bawahnya ke
+            dalam metode <code>.then()</code> secara otomatis.
+          </div>
+
+          <div class="concept-box" style="background: rgba(255, 255, 0, 0.05); border-color: yellow;">
+            <strong>🪵 Deep Logic Path:</strong>
+            <ol>
+              <li>Panggil fungsi dengan label <code>async</code>.</li>
+              <li>Pasang <code>await</code> di depan perintah lambat (Fetch).</li>
+              <li>Logika di bawahnya akan "pause" sampai data datang.</li>
+            </ol>
+          </div>
+
+          <div class="mastery-task">
+            <strong>⚔️ Latihan Bertahap: Menunggu Waktu</strong>
+            <div class="task-card">
+              <strong>Level 1:</strong> Ambil data dari link API "xyz.com".<br>
+              <em>Logic: Gunakan <code>await fetch('xyz.com')</code> dalam async function.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 2 (Logic Engine):</strong> Buat fungsi yang mengambil data, lalu menampilkan nama
+              user-nya.<br>
+              <strong>Algoritma:</strong><br>
+              1. Jalankan fetch.<br>
+              2. Tunggu konversi <code>.json()</code>.<br>
+              3. Tampilkan property <code>.name</code> dari data tersebut.
+            </div>
+            <div class="task-card">
+              <strong>Level 3 (Pro-Algo):</strong> Ambil data cuaca. Jika gagal (misal koneksi mati), tampilkan pesan
+              "Gagal muat cuaca" tanpa mematikan aplikasi.<br>
+              <strong>Algoritma:</strong><br>
+              1. Gunakan <code>try/catch</code> secara menyeluruh.<br>
+              2. Di dalam <code>try</code>, jalankan fetch dan await json.<br>
+              3. Di dalam <code>catch</code>, tampilkan pesan error yang ramah (User Friendly Error).
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BAB 5 -->
+      <section id="bab-5">
+        <h2>🏗️ Bab 5: Architecture & Modern Syntax</h2>
+        <div class="doc-section fade-in" id="destructuring">
+          <h4>Destructuring & Spread</h4>
+          <p>Membongkar objek dengan cara yang indah dan singkat.</p>
+
+          <div class="theory-deep-dive">
+            <strong>🔬 Under the Hood:</strong> Destructuring bukan sekadar mempersingkat penulisan. Secara internal, JS
+            mesin melakukan pola pencocokan (*Pattern Matching*) pada referensi objek. Jika properti tidak ditemukan, ia
+            akan menghasilkan <code>undefined</code> kecuali Anda memberikan nilai default. Untuk array, destructuring
+            menggunakan *Iterator Protocol* untuk mengambil nilai berdasarkan urutan.
+          </div>
+
+          <div class="code-block">
+            <code style="color: #60a5fa;">const</code> { nama, umur } = userProfile;<br>
+            <code style="color: #60a5fa;">const</code> copy = { ...userProfile, status: "Active" };
+          </div>
+
+          <div class="mastery-task">
+            <strong>⚔️ Latihan Bertahap: Bedah Struktur</strong>
+            <div class="task-card">
+              <strong>Level 1:</strong> Ambil properti <code>email</code> dari objek <code>user</code> ke variabel
+              sendiri menggunakan destructuring.<br>
+              <em>Logic: <code>const { email } = user</code>.</em>
+            </div>
+            <div class="task-card">
+              <strong>Level 2 (Logic):</strong> Ambil dua item pertama dari array <code>[10, 20, 30, 40]</code> menjadi
+              variabel <code>a</code> dan <code>b</code> menggunakan destructuring.<br>
+              <em>Logic: <code>const [a, b] = array</code>.</em>
+            </div>
+
+            <div class="doc-section fade-in" id="modules">
+              <h4>Modular Architecture (ES Modules)</h4>
+              <p><strong>Filosofi Logika:</strong> "LEGO". Jangan buat satu patung LEGO raksasa yang tidak bisa
+                dibongkar.
+                Buatlah balok-balok kecil (File terpisah), lalu rakit bersama-sama menggunakan <code>export</code> dan
+                <code>import</code>.
+              </p>
+
+              <div class="theory-deep-dive">
+                <strong>🔬 Under the Hood:</strong> ES Modules bersifat *Static*. Tidak seperti <code>require()</code>
+                (CommonJS) yang bersifat dinamis/runtime, <code>import</code> dianalisis pada waktu *Compile-time*. Ini
+                memungkinkan fitur seperti **Tree Shaking** (menghapus kode yang tidak terpakai dari bundle akhir)
+                secara efisien oleh alat seperti Vite atau Webpack.
+              </div>
+
+              <div class="code-block">
+                <code style="color: #94a3b8;">// utils.js</code><br>
+                <code style="color: #60a5fa;">export const</code> hitung = (a, b) => a + b;<br><br>
+                <code style="color: #94a3b8;">// main.js</code><br>
+                <code style="color: #60a5fa;">import</code> { hitung } <code style="color: #60a5fa;">from</code>
+                './utils.js';
+              </div>
+
+              <div class="mastery-task">
+                <strong>⚔️ Latihan Bertahap: Arsitektur Moduler</strong>
+                <div class="task-card">
+                  <strong>Level 1:</strong> Buat file <code>math.js</code> yang mengekspor fungsi <code>kali</code>.<br>
+                  <em>Logic: <code>export const kali = (a, b) => a * b</code>.</em>
+                </div>
+                <div class="task-card">
+                  <strong>Level 2:</strong> Impor fungsi <code>kali</code> tersebut ke file <code>app.js</code>.<br>
+                  <em>Logic: <code>import { kali } from './math.js'</code>.</em>
+                </div>
+              </div>
+            </div>
+      </section>
+
+      <!-- MASTER MISSIONS -->
+      <section id="misi-master">
+        <h2>🏆 Level Master: Final Ritual</h2>
+        <div class="level-grid">
+          <div class="level-card">
+            <div class="level-num">MISSION 1</div>
+            <div class="level-title">The Unique Array</div>
+            <p>Hapus duplikat dari 10.000 data menggunakan <code>new Set()</code>.</p>
+            <div class="concept-box" style="font-size: 0.8rem; margin-top: 1rem;">
+              <strong>Logic Path:</strong><br>
+              1. Buat Set baru dari array (Set otomatis membuang duplikat).<br>
+              2. Ubah kembali Set tersebut menjadi Array menggunakan Spread operator <code>[...set]</code>.
+            </div>
+          </div>
+          <div class="level-card">
+            <div class="level-num">MISSION 2</div>
+            <div class="level-title">Grouping Algorithm</div>
+            <p>Kelompokkan transaksi berdasarkan kategori menggunakan <code>.reduce()</code>.</p>
+            <div class="concept-box" style="font-size: 0.8rem; margin-top: 1rem;">
+              <strong>Logic Path:</strong><br>
+              1. Gunakan <code>{}</code> sebagai nilai awal reduce.<br>
+              2. Jika kategori belum ada di objek penampung, buat array kosong.<br>
+              3. Masukkan item ke dalam array kategori tersebut.
+            </div>
+          </div>
+          <div class="level-card">
+            <div class="level-num">MISSION 3</div>
+            <div class="level-title">Async Orchestrator</div>
+            <p>Jalankan 3 API Call secara paralel dengan <code>Promise.all()</code>.</p>
+            <div class="concept-box" style="font-size: 0.8rem; margin-top: 1rem;">
+              <strong>Logic Path:</strong><br>
+              1. Masukkan semua promise fetch ke dalam satu array.<br>
+              2. Gunakan <code>await Promise.all(arrayOfPromises)</code> untuk menunggu semuanya selesai sekaligus.
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3>🎓 Final Exam: E-Commerce Logic Engine</h3>
+          <div class="doc-section fade-in">
+            <p>Bangun mesin logika belanja yang mencakup: </p>
+            <ul>
+              <li>Manajemen Keranjang (Add/Remove)</li>
+              <li>Perhitungan Diskon Berantai</li>
+              <li>Format Mata Rupiah yang Cantik</li>
+              <li>Simpan progres ke LocalStorage (JSON)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        style="margin-top: 10rem; opacity: 0.5; font-size: 0.8rem; border-top: 1px solid var(--border-subtle); padding-top: 4rem;">
+        © 2026 Santo X Algorithms | JavaScript Engineering Codex | Premium Version 2.0.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+
+    // 3D BACKGROUND ANIMATION (Three.js)
+    const canvas = document.getElementById('bg-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Create Particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 3000; // Increased count
+    const posArray = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 12; // Wider spread
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+    // Material - Enhanced for visibility and glow
+    const material = new THREE.PointsMaterial({
+      size: 0.025, // Significantly larger particles
+      color: '#38bdf8',
+      transparent: true,
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending,
+      sizeAttenuation: true // Makes closer particles look bigger
+    });
+
+    const particlesMesh = new THREE.Points(particlesGeometry, material);
+    scene.add(particlesMesh);
+
+    camera.position.z = 3;
+
+    // Mouse Movement Effect
+    let mouseX = 0;
+    let mouseY = 0;
+    window.addEventListener('mousemove', (event) => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+    });
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+
+      particlesMesh.rotation.y += 0.002; // Slightly faster rotation
+      particlesMesh.rotation.x += 0.001;
+
+      if (mouseX > 0) {
+        // More reactive interaction
+        particlesMesh.rotation.x += (mouseY - window.innerHeight / 2) * 0.00002;
+        particlesMesh.rotation.y += (mouseX - window.innerWidth / 2) * 0.00002;
+      }
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    // Resize Handler
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // QUICK SEARCH LOGIC (Ctrl + P) - 2030 VERSION
+    const searchModal = document.getElementById('searchModal');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    let selectedIndex = -1;
+    let filteredResults = [];
+
+    const topics = Array.from(document.querySelectorAll('h3, h4')).map(t => ({
+      title: t.innerText,
+      id: t.closest('.doc-section, .sub-section, section')?.id || '',
+      el: t
+    }));
+
+    function updateSelection() {
+      const items = searchResults.querySelectorAll('.result-item');
+      items.forEach((item, index) => {
+        item.classList.toggle('selected', index === selectedIndex);
+        if (index === selectedIndex) {
+          item.scrollIntoView({ block: 'nearest' });
+        }
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'p') {
+        e.preventDefault();
+        searchModal.style.display = 'flex';
+        searchInput.value = '';
+        renderResults('');
+        searchInput.focus();
+      }
+
+      if (searchModal.style.display === 'flex') {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectedIndex = Math.min(selectedIndex + 1, filteredResults.length - 1);
+          updateSelection();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          selectedIndex = Math.max(selectedIndex - 1, 0);
+          updateSelection();
+        } else if (e.key === 'Enter') {
+          if (selectedIndex >= 0) {
+            const targetId = filteredResults[selectedIndex].id;
+            window.location.hash = targetId;
+            searchModal.style.display = 'none';
+          }
+        } else if (e.key === 'Escape') {
+          searchModal.style.display = 'none';
+        }
+      }
+    });
+
+    function renderResults(val) {
+      searchResults.innerHTML = '';
+      filteredResults = topics.filter(t => t.title.toLowerCase().includes(val.toLowerCase()));
+      selectedIndex = filteredResults.length > 0 ? 0 : -1;
+
+      filteredResults.forEach((t, index) => {
+        const item = document.createElement('a');
+        item.className = 'result-item';
+        item.innerHTML = `<span>${t.title}</span><span class="kb-shortcut">Enter</span>`;
+        item.href = `#${t.id}`;
+        item.onclick = (e) => {
+          e.preventDefault();
+          window.location.hash = t.id;
+          searchModal.style.display = 'none';
+        };
+        searchResults.appendChild(item);
+      });
+      updateSelection();
+    }
+
+    searchInput.addEventListener('input', (e) => renderResults(e.target.value));
+
+    searchModal.addEventListener('click', (e) => {
+      if (e.target === searchModal) searchModal.style.display = 'none';
+    });
+
+    // AUTO-EXPAND SIDEBAR LOGIC (Intersection Observer)
+    const sections = document.querySelectorAll('section[id], .sub-section[id]');
+    const navItems = document.querySelectorAll('.nav-item');
+    const navLinks = document.querySelectorAll('.nav-link, .submenu a');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px', // Detect when section is in top-middle area
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+
+          // Clear all active states first
+          navItems.forEach(item => item.classList.remove('active'));
+
+          // Find the corresponding nav-link
+          const activeLink = document.querySelector(`.sidebar-nav a[href="#${id}"]`);
+          if (activeLink) {
+            // If it's a submenu link, find the parent nav-item
+            const parentNavItem = activeLink.closest('.nav-item');
+            if (parentNavItem) {
+              parentNavItem.classList.add('active');
+            }
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // BACK TO TOP LOGIC
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
+
 </html>
