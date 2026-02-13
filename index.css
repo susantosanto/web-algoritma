@@ -47,34 +47,33 @@ body {
 
 .sidebar {
   width: var(--sidebar-width);
-  height: 100vh;
+  height: auto;
   position: fixed;
-  left: 0;
-  top: 0;
-  background-color: rgba(15, 23, 42, 0.75); /* Glassmorphism Base */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-right: 1px solid rgba(56, 189, 248, 0.2); /* Glowing Border */
-  padding: 0 1rem 1.5rem 1rem; /* Removed top padding */
+  left: 1.5rem;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  background: linear-gradient(
+    165deg, 
+    rgba(15, 23, 42, 0.3) 0%, 
+    rgba(15, 23, 42, 0.1) 100%
+  );
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  padding: 0;
   display: flex;
   flex-direction: column;
   z-index: 100;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-subtle) transparent;
+  overflow: hidden;
 }
 
-/* Custom scrollbar for sidebar */
-.sidebar::-webkit-scrollbar {
-  width: 4px;
-}
-.sidebar::-webkit-scrollbar-thumb {
-  background: var(--border-subtle);
-  border-radius: 10px;
-}
 
 .main-content {
-  margin-left: var(--sidebar-width);
+  margin-left: calc(var(--sidebar-width) + 3rem);
   flex: 1;
   padding: 2rem 3rem; /* Reduced padding to fix spacing and scroll issues */
   display: flex;
@@ -132,12 +131,12 @@ h2::before {
 }
 
 .sidebar-footer {
-  margin-top: 1rem; /* Significantly reduced to bring closer to last menu item */
+  margin-top: auto;
   font-size: 0.75rem;
   color: var(--text-dim);
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 1.5rem;
-  opacity: 0.8;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 h3 {
@@ -338,19 +337,11 @@ html {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  position: sticky;
-  top: 0;
-  background: rgba(
-    15,
-    23,
-    42,
-    0.95
-  ); /* Slightly more opaque for sticky header */
-  backdrop-filter: blur(10px);
-  z-index: 100;
-  padding: 3rem 1.5rem 1.5rem 1.5rem; /* Spacious 'Safe Area' top padding */
-  margin: 0 -1rem 3rem -1rem; /* Starts exactly at the top of the container */
-  border-bottom: 2px solid var(--primary);
+  position: relative;
+  background: transparent;
+  padding: 2rem 1.5rem 1rem 1.5rem;
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .sidebar-logo i {
@@ -401,6 +392,22 @@ html {
 
 .back-to-top:hover svg {
   transform: translateY(-2px);
+}
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-subtle) transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 10px;
 }
 
 .nav-list {
