@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨ Menjadi Penyihir Data | Panduan Premium JS</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="glow-orb" style="top: -100px; left: -100px;"></div>
+  <div class="glow-orb" style="bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);"></div>
+
+  <nav>
+    <div class="nav-content">
+      <div class="logo">WIZARD DATA</div>
+      <div class="badge-premium">PREMIUM EDITION v2.0</div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="hero fade-in">
+      <div class="badge-premium">✨ Master JavaScript & Apps Script</div>
+      <h1>Menjadi <span style="color: var(--primary);">Penyihir Data</span></h1>
+      <p style="color: var(--text-muted); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">
+        Panduan eksklusif dengan <strong>Metode Memori Super</strong>. Bangun pola pikir algoritma dan kuasai sintaks tanpa menghafal.
+      </p>
+    </header>
+
+    <section class="fade-in" style="animation-delay: 0.2s;">
+      <div class="level-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="level-card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
+          <div class="level-title">MISI</div>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Masalah nyata untuk diselesaikan.</p>
+        </div>
+        <div class="level-card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🧠</div>
+          <div class="level-title">MODEL MENTAL</div>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Analogi agar konsep menempel.</p>
+        </div>
+        <div class="level-card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">📜</div>
+          <div class="level-title">MANTRA</div>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Kode sintaks dan penggunaan.</p>
+        </div>
+        <div class="level-card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">👁️</div>
+          <div class="level-title">SIHIR</div>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Eksekusi langkah demi langkah.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in" style="animation-delay: 0.4s;">
+      <h2><span style="color: var(--success);">📚 Bab 0:</span> Kitab Dasar Mantra</h2>
+      <div class="mental-model">
+        <p><strong>⚔️ Gudang Senjata Anda:</strong> Sebelum merapal mantra kompleks, kuasai perkakas dasarnya. Menguasai ini akan membuat kode Anda <strong>10x lebih bersih, singkat, dan efisien</strong>.</p>
+      </div>
+
+      <h3>📝 1. Sihir Teks (String Manipulation)</h3>
+      
+      <div class="mantra-card">
+        <div class="mantra-header">
+          <div class="mantra-title"><span>🔧</span> <code>toLowerCase()</code> / <code>toUpperCase()</code></div>
+          <div class="badge-premium" style="margin-bottom: 0; padding: 0.1rem 0.5rem; font-size: 0.7rem;">MANTRA PENYERAGAM</div>
+        </div>
+        <div class="mantra-body">
+          <p>Agar perbandingan teks tidak peduli huruf besar/kecil (Case Insensitive).</p>
+          <div class="mantra-usage">
+            <strong>Contoh:</strong> <code>"Admin".toLowerCase() === "admin"</code> <span style="color: var(--success);">(True)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mantra-card">
+        <div class="mantra-header">
+          <div class="mantra-title"><span>✂️</span> <code>trim()</code></div>
+          <div class="badge-premium" style="margin-bottom: 0; padding: 0.1rem 0.5rem; font-size: 0.7rem;">MANTRA PEMANGKAS</div>
+        </div>
+        <div class="mantra-body">
+          <p>Menghapus spasi kosong di <strong>awal dan akhir</strong> teks. Sangat penting untuk membersihkan input dari form.</p>
+          <div class="mantra-usage">
+            <strong>Contoh:</strong> <code>"  user123  ".trim()</code> → <code class="code-snippet">"user123"</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more cards like this for other methods -->
+
+      <h3>🧠 Latihan Logika: Pembersih Data Formulir</h3>
+      <div class="mental-model" style="border-style: solid; background: rgba(245, 158, 11, 0.05);">
+        <p><strong>Skenario:</strong> Anda menerima input nama lengkap dari user yang berantakan dan perlu mengambil nama depannya saja.</p>
+        <ol style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-muted);">
+          <li>Bersihkan spasi dengan <code class="code-snippet">trim()</code></li>
+          <li>Ubah semua ke kecil dengan <code class="code-snippet">toLowerCase()</code></li>
+          <li>Pecah kata dengan <code class="code-snippet">split(" ")</code></li>
+          <li>Ambil index 0</li>
+        </ol>
+      </div>
+
+      <h3>⚔️ Latihan Bertahap</h3>
+      <div class="level-grid">
+        <div class="level-card">
+          <div class="level-num">LEVEL 1</div>
+          <div class="level-title">Sensor Kata</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Ganti kata "kasar" dengan "***".</p>
+        </div>
+        <div class="level-card" style="border-color: var(--primary);">
+          <div class="level-num">LEVEL 2</div>
+          <div class="level-title">Inisial Nama</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">"Budi Santoso" → "B. S."</p>
+        </div>
+        <div class="level-card">
+          <div class="level-num">LEVEL 3</div>
+          <div class="level-title">Slug URL</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">"Belajar JS Itu Seru" → "belajar-js-itu-seru"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div style="margin-top: 8rem; text-align: center; color: var(--text-muted); padding-bottom: 4rem;">
+      <p>Situs ini adalah pratinjau format premium. Gulung layar ke bawah untuk melihat lebih banyak.</p>
+      <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem;">
+        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--primary);"></div>
+        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--secondary);"></div>
+        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent);"></div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
