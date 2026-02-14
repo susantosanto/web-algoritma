@@ -116,105 +116,152 @@
       font-weight: 800;
     }
 
-    /* SEARCH MODAL 2030 */
+    /* SEARCH MODAL - ULTRA MODERN & PROPORTIONAL */
     .search-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(2, 6, 23, 0.95);
-      backdrop-filter: blur(20px);
-      z-index: 2000;
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 9999;
       display: none;
+      align-items: flex-start;
       justify-content: center;
-      padding-top: 15vh;
-      animation: modalFade 0.3s ease;
+      padding-top: 12vh;
+      /* Proportional top spacing */
+      animation: modalEntrance 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    @keyframes modalFade {
+    @keyframes modalEntrance {
       from {
         opacity: 0;
-        transform: scale(1.05);
+        transform: translateY(-15px) scale(0.98);
       }
 
       to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0) scale(1);
       }
     }
 
     .search-content {
-      width: 90%;
-      max-width: 650px;
-      background: rgba(30, 41, 59, 0.5);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 20px;
-      padding: 1.5rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 680px;
+      background: linear-gradient(165deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      box-shadow:
+        0 40px 80px -20px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Subtle top glow */
+    .search-content::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent);
     }
 
     .search-input {
       width: 100%;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 1.5rem;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.75rem 2rem;
       color: white;
-      font-size: 1.4rem;
-      font-family: 'Inter', sans-serif;
+      font-size: 1.35rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
       outline: none;
-      transition: 0.3s;
+      border-radius: 0;
     }
 
-    .search-input:focus {
-      border-color: var(--primary);
-      box-shadow: var(--neon-glow);
+    .search-input::placeholder {
+      color: rgba(148, 163, 184, 0.4);
+      font-weight: 400;
     }
 
     .search-results {
-      margin-top: 1.5rem;
-      max-height: 50vh;
+      max-height: 55vh;
       overflow-y: auto;
-      padding-right: 10px;
+      padding: 1rem;
     }
 
     .search-results::-webkit-scrollbar {
-      width: 4px;
+      width: 6px;
+    }
+
+    .search-results::-webkit-scrollbar-track {
+      background: transparent;
     }
 
     .search-results::-webkit-scrollbar-thumb {
-      background: var(--primary);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
     }
 
+    .search-results::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
     .result-item {
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      border-radius: 14px;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.2s ease;
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: #94a3b8;
       text-decoration: none;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
       border: 1px solid transparent;
+      position: relative;
     }
 
-    .result-item.selected {
-      background: linear-gradient(90deg, rgba(56, 189, 248, 0.15) 0%, transparent 100%);
-      color: white;
-      border-left: 4px solid var(--primary);
-      border-right: 1px solid rgba(56, 189, 248, 0.3);
-      border-top: 1px solid rgba(56, 189, 248, 0.3);
-      border-bottom: 1px solid rgba(56, 189, 248, 0.3);
-      box-shadow: var(--neon-glow);
-      transform: translateX(12px) scale(1.02);
+    .result-item span:first-child {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #e2e8f0;
     }
 
+    .kb-shortcut {
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #64748b;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.2s;
+    }
+
+    .result-item.selected,
     .result-item:hover {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.15);
+    }
+
+    .result-item.selected span:first-child,
+    .result-item:hover span:first-child {
+      color: var(--primary);
+    }
+
+    .result-item.selected .kb-shortcut,
+    .result-item:hover .kb-shortcut {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      border-color: rgba(56, 189, 248, 0.2);
     }
 
     .theory-deep-dive {
@@ -264,7 +311,7 @@
             <a href="#programmer-mindset" class="nav-link"><span>⚛︎</span> Mindset Master</a>
           </li>
           <li class="nav-item">
-            <a href="#bab-0" class="nav-link"><span>✧</span> Kitab Dasar</a>
+            <a href="#bab-0" class="nav-link"><span>✧</span> The Starter Pack</a>
             <ul class="submenu">
               <li><a href="#sihir-teks">String Manipulation</a></li>
               <li><a href="#sihir-angka">Number & Math</a></li>
@@ -275,7 +322,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#bab-1" class="nav-link"><span>✦</span> Mantra Agung</a>
+            <a href="#bab-1" class="nav-link"><span>✦</span> God Mode Spells</a>
             <ul class="submenu">
               <li><a href="#mantra-map">.map()</a></li>
               <li><a href="#mantra-filter">.filter()</a></li>
@@ -311,7 +358,13 @@
         </ul>
       </nav>
       <div class="sidebar-footer">
-        <!-- <div class="sub-logo"><span>SANTO X</span> / CODE</div> -->
+        <div class="footer-card">
+          <div class="footer-info">
+            <div class="footer-title" style="justify-content: flex-start; gap: 6px;">SANTO <span
+                style="color: var(--primary);">X/CODE</span></div>
+            <div class="footer-subtitle">Crafting Logic with Passion</div>
+          </div>
+        </div>
       </div>
     </aside>
 
@@ -328,7 +381,8 @@
         <div class="mindset-card fade-in">
           <div class="mindset-content">
             <p class="hero-subtext">
-              Panduan pembelajaran JavaScript dasar. Melampaui sintaks—kita membangun <strong>arsitektur mental</strong>
+              Panduan pembelajaran membangun logika menggunakan bahasa pemograman JavaScript. Dengan Melampaui
+              sintaks—kita membangun <strong>arsitektur mental</strong>
               seorang programmer.
             </p>
             <h2 style="color: var(--primary); margin-top: 0;">🧠 Golden Rule: The Programmer's Logic (O.P.I.A)</h2>
@@ -365,20 +419,22 @@
               </div>
             </div>
             <div class="concept-box">
-              <strong>Analogi Dunia Nyata:</strong> Memasak nasi goreng. Siapkan bahan (O), Potong bumbu (P), Goreng
-              satu
-              persatu (I), Cicipi & Plating (A). Anda tidak mungkin plating nasi yang belum digoreng.
+              <strong>Analogi Dunia Nyata:</strong> Arsitek Membangun Rumah. <strong>Observasi</strong> lahan & desain,
+              <strong>Pecah</strong> menjadi fondasi, dinding, & atap. <strong>Implementasi</strong> dengan meletakkan
+              bata demi bata. <strong>Analisis</strong> kekokohan bangunan sebelum dihuni. Anda tidak bisa memasang atap
+              jika dinding belum berdiri.
             </div>
           </div>
         </div>
         <footer class="mindset-footer-modern fade-in">
-          © 2026 Santo X Algorithms <span class="sep">|</span> JavaScript Engineering Codex <span class="sep">|</span> Premium Version 2.0
+          © 2026 Santo X Algorithms <span class="sep">|</span> JavaScript Engineering Codex <span class="sep">|</span>
+          Premium Version 2.0
         </footer>
       </section>
 
       <!-- BAB 0 -->
       <section id="bab-0" class="content-section">
-        <h2>🛠️ Bab 0: Kitab Dasar Mantra</h2>
+        <h2>🛠️ Level 0: The Starter Pack</h2>
 
         <div class="sub-section" id="sihir-teks">
           <h3>1. String Manipulation (Teks Presisi)</h3>
@@ -744,7 +800,7 @@
 
       <!-- BAB 1 -->
       <section id="bab-1" class="content-section">
-        <h2>✨ Bab 1: Tiga Mantra Agung (Pro Processing)</h2>
+        <h2>✨ Level 1: God Mode Spells (Pro Processing)</h2>
 
         <div class="doc-section fade-in" id="mantra-map">
           <h4>.map() - Pabrik Transformasi</h4>
@@ -910,7 +966,7 @@
 
       <!-- BAB 2 -->
       <section id="bab-2" class="content-section">
-        <h2>⏳ Bab 2: Flow Control (Otak Logika)</h2>
+        <h2>⏳ Level 2: Flow Control (Otak Logika)</h2>
         <div class="doc-section fade-in" id="flow-if">
           <h4>Guard Clauses vs Nested If</h4>
           <p><strong>Filosofi Logika:</strong> "Sedia payung sebelum hujan". Tolak kondisi gagal di awal fungsi agar
@@ -1012,7 +1068,7 @@
 
       <!-- BAB 3 -->
       <section id="bab-3" class="content-section">
-        <h2>⚡ Bab 3: Asynchronous Mastery</h2>
+        <h2>⚡ Level 3: Asynchronous Mastery</h2>
         <div class="doc-section fade-in" id="async-promise">
           <h4>Promises & The Event Loop</h4>
           <p><strong>Filosofi Logika:</strong> "Nomor Antrean Kopi". Anda sudah punya nomornya (Promise), tapi kopinya
@@ -1082,7 +1138,7 @@
 
       <!-- BAB 5 -->
       <section id="bab-5" class="content-section">
-        <h2>🏗️ Bab 5: Architecture & Modern Syntax</h2>
+        <h2>🏗️ Level 5: Architecture & Modern Syntax</h2>
         <div class="doc-section fade-in" id="destructuring">
           <h4>Destructuring & Spread</h4>
           <p>Membongkar objek dengan cara yang indah dan singkat.</p>
@@ -1359,7 +1415,7 @@
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -70% 0px', // Detect when section is in top-middle area
-      threshold: 0
+      threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -1446,5 +1502,7 @@
     window.addEventListener('DOMContentLoaded', handleRouteChange);
   </script>
 </body>
+
+</html>
 
 </html>
