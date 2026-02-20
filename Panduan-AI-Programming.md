@@ -132,6 +132,812 @@ Sebelum menulis kode, jelaskan pendekatan yang akan digunakan:
 Baru kemudian tuliskan kode JavaScript untuk menghitung jumlah huruf vokal dalam string.
 ```
 
+---
+
+## 🐛 Chain of Thought untuk Debugging JavaScript (Panduan Lengkap)
+
+### Apa Itu Chain of Thought dalam Debugging?
+
+**Chain of Thought (CoT)** dalam debugging adalah teknik meminta AI untuk menelusuri eksekusi kode **langkah demi langkah** seperti seorang detektif yang mengikuti jejak, sebelum menyimpulkan di mana bug berada.
+
+**Mengapa ini penting?**
+- AI tidak hanya menebak-nebak lokasi bug
+- Anda bisa **melihat proses berpikir** AI dan belajar darinya
+- Mengurangi false positive (salah identifikasi bug)
+- Membantu memahami **mengapa** bug terjadi, bukan hanya **di mana**
+
+### Formula Chain of Thought untuk Debugging
+
+Gunakan struktur prompt berikut:
+
+```
+Saya memiliki kode JavaScript yang error. 
+
+[KODE]
+[tempel kode di sini]
+[END KODE]
+
+[MASALAH]
+[deskripsikan gejala error yang muncul]
+[END MASALAH]
+
+Sebelum memberikan solusi, lakukan Chain of Thought debugging:
+
+1. **ANALISIS KODE**: Baca kode secara menyeluruh dan identifikasi setiap variabel, fungsi, dan alur eksekusi
+2. **TRACE EKSEKUSI**: Simulasikan eksekusi kode baris per baris dengan data contoh
+3. **IDENTIFIKASI ANOMALI**: Catat setiap nilai yang tidak sesuai ekspektasi atau perilaku aneh
+4. **HIPOTESIS BUG**: Formulasikan kemungkinan penyebab error berdasarkan trace
+5. **VERIFIKASI HIPOTESIS**: Uji hipotesis dengan skenario berbeda
+6. **SOLUSI**: Berikan perbaikan dengan penjelasan mengapa perbaikan ini bekerja
+
+Gunakan format <thinking> untuk proses debugging, lalu berikan jawaban final.
+```
+
+---
+
+### Studi Kasus 1: Debugging Error "Cannot read property of undefined"
+
+#### Kode Bermasalah:
+
+```javascript
+// File: data-processor.js
+const data = [
+  { id: 1, name: "Alice", scores: [80, 90, 85] },
+  { id: 2, name: "Bob", scores: [75, 88] },
+  { id: 3, name: "Charlie", scores: [92, 95, 89, 91] }
+];
+
+function calculateAverage(studentId) {
+  const student = data.find(s => s.id === studentId);
+  const total = student.scores.reduce((sum, score) => sum + score, 0);
+  return total / student.scores.length;
+}
+
+function displayResults() {
+  for (let i = 1; i <= 4; i++) {
+    const avg = calculateAverage(i);
+    console.log(`Student ${i}: ${avg}`);
+  }
+}
+
+displayResults();
+```
+
+#### Error yang Muncul:
+```
+TypeError: Cannot read property 'scores' of undefined
+    at calculateAverage (data-processor.js:11:24)
+```
+
+#### Prompt Chain of Thought yang Benar:
+
+```
+Saya mendapatkan error "Cannot read property 'scores' of undefined" pada kode berikut:
+
+[KODE]
+const data = [
+  { id: 1, name: "Alice", scores: [80, 90, 85] },
+  { id: 2, name: "Bob", scores: [75, 88] },
+  { id: 3, name: "Charlie", scores: [92, 95, 89, 91] }
+];
+
+function calculateAverage(studentId) {
+  const student = data.find(s => s.id === studentId);
+  const total = student.scores.reduce((sum, score) => sum + score, 0);
+  return total / student.scores.length;
+}
+
+function displayResults() {
+  for (let i = 1; i <= 4; i++) {
+    const avg = calculateAverage(i);
+    console.log(`Student ${i}: ${avg}`);
+  }
+}
+
+displayResults();
+[END KODE]
+
+[MASALAH]
+Error muncul di baris 11: "Cannot read property 'scores' of undefined"
+Program berhenti sebelum menampilkan semua hasil.
+[END MASALAH]
+
+Lakukan Chain of Thought debugging dengan langkah:
+1. Analisis kode dan identifikasi variabel
+2. Trace eksekusi baris per baris dengan i = 1, 2, 3, 4
+3. Identifikasi di mana nilai undefined muncul
+4. Formulasikan hipotesis penyebab bug
+5. Berikan solusi dengan penjelasan
+
+Gunakan tag <thinking> untuk proses debugging.
+```
+
+#### Contoh Output Chain of Thought yang Diharapkan:
+
+```xml
+<thinking>
+**1. ANALISIS KODE:**
+
+Variabel dan struktur:
+- `data`: Array dengan 3 object student (id: 1, 2, 3)
+- `calculateAverage(studentId)`: Fungsi yang mencari student dan menghitung rata-rata scores
+- `displayResults()`: Loop dari i=1 sampai i=4 (4 iterasi)
+- `student`: Variabel lokal hasil find(), bisa undefined jika tidak ditemukan
+
+Alur eksekusi:
+- displayResults() dipanggil
+- Loop for berjalan 4 kali (i = 1, 2, 3, 4)
+- Setiap iterasi memanggil calculateAverage(i)
+
+**2. TRACE EKSEKUSI:**
+
+Iterasi 1 (i = 1):
+- calculateAverage(1) dipanggil
+- student = data.find(s => s.id === 1) → ditemukan: {id:1, name:"Alice", scores:[80,90,85]}
+- student.scores = [80, 90, 85] → valid
+- total = 80 + 90 + 85 = 255
+- return 255 / 3 = 85
+- ✅ SUKSES: console.log("Student 1: 85")
+
+Iterasi 2 (i = 2):
+- calculateAverage(2) dipanggil
+- student = data.find(s => s.id === 2) → ditemukan: {id:2, name:"Bob", scores:[75,88]}
+- student.scores = [75, 88] → valid
+- total = 75 + 88 = 163
+- return 163 / 2 = 81.5
+- ✅ SUKSES: console.log("Student 2: 81.5")
+
+Iterasi 3 (i = 3):
+- calculateAverage(3) dipanggil
+- student = data.find(s => s.id === 3) → ditemukan: {id:3, name:"Charlie", scores:[92,95,89,91]}
+- student.scores = [92, 95, 89, 91] → valid
+- total = 92 + 95 + 89 + 91 = 367
+- return 367 / 4 = 91.75
+- ✅ SUKSES: console.log("Student 3: 91.75")
+
+Iterasi 4 (i = 4):
+- calculateAverage(4) dipanggil
+- student = data.find(s => s.id === 4) → ❌ TIDAK DITEMUKAN → student = undefined
+- student.scores → ❌ ERROR: Cannot read property 'scores' of undefined
+- 💥 PROGRAM CRASH
+
+**3. IDENTIFIKASI ANOMALI:**
+
+| Iterasi | studentId | student | student.scores | Status |
+|---------|-----------|---------|----------------|--------|
+| 1       | 1         | Object  | [80,90,85]     | ✅     |
+| 2       | 2         | Object  | [75,88]        | ✅     |
+| 3       | 3         | Object  | [92,95,89,91]  | ✅     |
+| 4       | 4         | undefined | N/A          | ❌ ERROR |
+
+Anomali terdeteksi:
+- Loop berjalan 4 kali (i <= 4)
+- Data hanya memiliki 3 student (id: 1, 2, 3)
+- Ketika i = 4, data.find() mengembalikan undefined
+- Akses student.scores pada undefined menyebabkan TypeError
+
+**4. HIPOTESIS BUG:**
+
+Bug terjadi karena **mismatch antara loop boundary dan data availability**:
+
+Akar masalah:
+1. Loop `for (let i = 1; i <= 4; i++)` hardcoded untuk 4 iterasi
+2. Array `data` hanya memiliki 3 elemen
+3. Tidak ada validasi apakah student ditemukan sebelum mengakses properties
+4. Fungsi calculateAverage tidak menangani kasus student tidak ditemukan
+
+Mengapa error "Cannot read property":
+- Ketika student = undefined, JavaScript tidak bisa mengakses property .scores
+- Ini adalah runtime error yang menghentikan eksekusi program
+
+**5. VERIFIKASI HIPOTESIS:**
+
+Test skenario berbeda:
+- Jika loop i <= 3: Program berjalan normal ✅
+- Jika loop i <= 4: Error pada i = 4 ❌
+- Jika data punya 4 student: Program berjalan normal ✅
+
+Hipotesis terbukti: Bug disebabkan oleh loop yang melebihi jumlah data.
+</thinking>
+
+**SOLUSI:**
+
+Ada 2 pendekatan untuk memperbaiki bug ini:
+
+**Opsi 1: Perbaiki Loop Boundary (Rekomendasi)**
+```javascript
+function displayResults() {
+  // Gunakan length data, bukan hardcoded
+  for (let i = 1; i <= data.length; i++) {
+    const avg = calculateAverage(i);
+    console.log(`Student ${i}: ${avg}`);
+  }
+}
+```
+
+**Opsi 2: Tambahkan Validasi di calculateAverage (Defensive Programming)**
+```javascript
+function calculateAverage(studentId) {
+  const student = data.find(s => s.id === studentId);
+  
+  // Validasi: cek apakah student ditemukan
+  if (!student) {
+    console.warn(`Student dengan id ${studentId} tidak ditemukan`);
+    return null; // atau throw error yang lebih deskriptif
+  }
+  
+  // Validasi: cek apakah scores ada dan bukan array kosong
+  if (!student.scores || student.scores.length === 0) {
+    console.warn(`Student ${student.name} tidak memiliki scores`);
+    return null;
+  }
+  
+  const total = student.scores.reduce((sum, score) => sum + score, 0);
+  return total / student.scores.length;
+}
+
+function displayResults() {
+  for (let i = 1; i <= 4; i++) {
+    const avg = calculateAverage(i);
+    if (avg !== null) {
+      console.log(`Student ${i}: ${avg}`);
+    }
+  }
+}
+```
+
+**Mengapa solusi ini bekerja:**
+- Opsi 1: Mencegah iterasi melebihi jumlah data yang ada
+- Opsi 2: Menambahkan defensive programming untuk menangani edge case
+- Kombinasi keduanya memberikan protection berlapis
+```
+
+---
+
+### Studi Kasus 2: Debugging Logic Error (Tidak Ada Error Message)
+
+#### Kode Bermasalah:
+
+```javascript
+// File: shopping-cart.js
+function calculateTotal(items, discountPercent) {
+  let total = 0;
+  
+  for (let i = 0; i < items.length; i++) {
+    total += items[i].price * items[i].quantity;
+  }
+  
+  const discount = total * discountPercent / 100;
+  total = total - discount;
+  
+  return total;
+}
+
+function applyTax(amount) {
+  const taxRate = 0.1; // 10%
+  return amount + amount * taxRate;
+}
+
+// Data belanja
+const cart = [
+  { name: "Laptop", price: 5000000, quantity: 1 },
+  { name: "Mouse", price: 150000, quantity: 2 },
+  { name: "Keyboard", price: 300000, quantity: 1 }
+];
+
+const subtotal = calculateTotal(cart, 15); // Diskon 15%
+const totalWithTax = applyTax(subtotal);
+
+console.log(`Subtotal: Rp ${subtotal}`);
+console.log(`Total dengan pajak: Rp ${totalWithTax}`);
+```
+
+#### Masalah yang Dilaporkan:
+```
+"Hasil perhitungan tidak sesuai dengan ekspektasi. 
+Saya harap total akhir sekitar 5.1 juta dengan diskon 15% dan pajak 10%,
+tapi hasilnya berbeda. Tidak ada error message, tapi angka salah."
+```
+
+#### Prompt Chain of Thought:
+
+```
+[KODE]
+[tempel kode di atas]
+[END KODE]
+
+[MASALAH]
+Hasil perhitungan tidak sesuai ekspektasi. Tidak ada error, tapi nilai akhir salah.
+Ekspektasi: ~5.1 juta dengan diskon 15% dan pajak 10%.
+Lakukan Chain of Thought untuk menemukan logic error.
+[END MASALAH]
+
+Trace eksekusi dengan:
+1. Hitung manual subtotal yang diharapkan
+2. Trace setiap operasi matematika
+3. Identifikasi di mana logika perhitungan menyimpang
+4. Berikan solusi perbaikan
+```
+
+#### Output Chain of Thought yang Diharapkan:
+
+```xml
+<thinking>
+**1. ANALISIS KODE:**
+
+Fungsi dan variabel:
+- `calculateTotal(items, discountPercent)`: Hitung total dengan diskon
+- `applyTax(amount)`: Tambah pajak 10%
+- `cart`: Array dengan 3 item
+
+**2. TRACE EKSEKUSI DENGAN KALKULASI MANUAL:**
+
+Kalkulasi manual yang benar:
+- Laptop: 5.000.000 × 1 = 5.000.000
+- Mouse: 150.000 × 2 = 300.000
+- Keyboard: 300.000 × 1 = 300.000
+- Subtotal (sebelum diskon): 5.600.000
+- Diskon 15%: 5.600.000 × 0.15 = 840.000
+- Setelah diskon: 5.600.000 - 840.000 = 4.760.000
+- Pajak 10%: 4.760.000 × 0.10 = 476.000
+- Total akhir: 4.760.000 + 476.000 = 5.236.000
+
+Trace kode calculateTotal(cart, 15):
+- total = 0
+- Iterasi 1 (i=0): total += 5.000.000 × 1 → total = 5.000.000
+- Iterasi 2 (i=1): total += 150.000 × 2 → total = 5.300.000 ❌ SALAH!
+  - Seharusnya: 5.000.000 + 300.000 = 5.300.000 ✅ (tunggu, ini benar)
+  
+Mari hitung ulang:
+- Laptop: 5.000.000 × 1 = 5.000.000
+- Mouse: 150.000 × 2 = 300.000
+- Keyboard: 300.000 × 1 = 300.000
+- Total: 5.600.000 ✅
+
+Trace kode:
+- Iterasi 1: total = 0 + 5.000.000 = 5.000.000
+- Iterasi 2: total = 5.000.000 + 300.000 = 5.300.000
+- Iterasi 3: total = 5.300.000 + 300.000 = 5.600.000 ✅
+
+discount = 5.600.000 × 15 / 100 = 840.000 ✅
+total = 5.600.000 - 840.000 = 4.760.000 ✅
+
+applyTax(4.760.000):
+- taxRate = 0.1
+- return 4.760.000 + 4.760.000 × 0.1
+- return 4.760.000 + 476.000
+- return 5.236.000 ✅
+
+**3. IDENTIFIKASI ANOMALI:**
+
+Tunggu... kalkulasi kode sebenarnya BENAR (5.236.000).
+
+Mari periksa kembali ekspektasi user: "~5.1 juta"
+
+Kemungkinan masalah:
+1. User salah hitung manual
+2. Ada asumsi yang berbeda tentang urutan operasi (diskon vs pajak)
+3. User mengharapkan pajak dihitung SEBELUM diskon?
+
+Mari test skenario alternatif:
+
+**Skenario A (Kode sekarang - Pajak setelah diskon):**
+- Subtotal: 5.600.000
+- Diskon 15%: 840.000
+- Setelah diskon: 4.760.000
+- Pajak 10%: 476.000
+- Total: 5.236.000
+
+**Skenario B (Pajak sebelum diskon - MUNGKIN INI EKSPEKTASI USER):**
+- Subtotal: 5.600.000
+- Pajak 10%: 560.000
+- Setelah pajak: 6.160.000
+- Diskon 15%: 924.000
+- Total: 5.236.000
+
+Ternyata hasilnya SAMA! (secara matematis ekuivalen)
+
+**Skenario C (Diskon hanya untuk subtotal, pajak terpisah):**
+- Subtotal: 5.600.000
+- Diskon 15%: 840.000
+- Setelah diskon: 4.760.000
+- Pajak 10% dari subtotal asli: 560.000
+- Total: 4.760.000 + 560.000 = 5.320.000
+
+**Skenario D (User mungkin salah hitung):**
+Mungkin user menghitung: 5.600.000 - 15% = 4.760.000, lalu lupa tambah pajak?
+Atau user mengira 5.600.000 × 0.85 × 1.1 ≠ 5.236.000?
+
+**KESIMPULAN:**
+Kode sebenarnya BENAR secara logika bisnis standar (diskon dulu, baru pajak).
+Jika hasil tidak sesuai ekspektasi, kemungkinan:
+1. User salah hitung manual
+2. Ada requirement bisnis yang berbeda (misal: pajak tidak kena diskon)
+3. Ada bug di tempat lain yang tidak ditampilkan
+</thinking>
+
+**ANALISIS LANJUTAN:**
+
+Setelah Chain of Thought, ternyata kode **tidak memiliki bug**. Namun, ini adalah contoh bagus bagaimana CoT membantu:
+
+1. ✅ Memverifikasi logika kode benar
+2. ✅ Mengidentifikasi kemungkinan miskomunikasi requirement
+3. ✅ Memberikan transparansi perhitungan
+
+**Rekomendasi:**
+
+Jika requirement adalah **pajak dihitung dari subtotal sebelum diskon** (kebijakan bisnis tertentu):
+
+```javascript
+function calculateTotalWithSeparateTax(items, discountPercent) {
+  let subtotal = 0;
+  
+  for (let i = 0; i < items.length; i++) {
+    subtotal += items[i].price * items[i].quantity;
+  }
+  
+  const discount = subtotal * discountPercent / 100;
+  const afterDiscount = subtotal - discount;
+  
+  // Pajak dihitung dari subtotal asli (bukan setelah diskon)
+  const tax = subtotal * 0.1;
+  
+  const total = afterDiscount + tax;
+  
+  return {
+    subtotal,
+    discount,
+    afterDiscount,
+    tax,
+    total
+  };
+}
+
+const result = calculateTotalWithSeparateTax(cart, 15);
+console.log(`Subtotal: Rp ${result.subtotal.toLocaleString()}`);
+console.log(`Diskon (15%): Rp ${result.discount.toLocaleString()}`);
+console.log(`Setelah diskon: Rp ${result.afterDiscount.toLocaleString()}`);
+console.log(`Pajak (10%): Rp ${result.tax.toLocaleString()}`);
+console.log(`Total: Rp ${result.total.toLocaleString()}`);
+```
+
+---
+
+### Studi Kasus 3: Debugging Infinite Loop
+
+#### Kode Bermasalah:
+
+```javascript
+// File: array-processor.js
+function removeDuplicates(arr) {
+  const result = [];
+  let i = 0;
+  
+  while (i < arr.length) {
+    const current = arr[i];
+    let isDuplicate = false;
+    
+    for (let j = 0; j < result.length; j++) {
+      if (result[j] === current) {
+        isDuplicate = true;
+        // Bug: break hilang!
+      }
+    }
+    
+    if (!isDuplicate) {
+      result.push(current);
+    }
+    
+    i++;
+  }
+  
+  return result;
+}
+
+const numbers = [1, 2, 2, 3, 4, 4, 5];
+const unique = removeDuplicates(numbers);
+console.log(unique);
+```
+
+#### Masalah:
+```
+"Browser freeze/hang saat menjalankan kode ini. 
+Tidak ada error message, tapi tab browser jadi tidak responsif."
+```
+
+#### Prompt Chain of Thought:
+
+```
+[KODE]
+[tempel kode di atas]
+[END KODE]
+
+[MASALAH]
+Browser freeze saat menjalankan kode. Diduga infinite loop.
+Lakukan Chain of Thought untuk menemukan penyebab infinite loop.
+[END MASALAH]
+
+Trace dengan:
+1. Identifikasi semua loop dalam kode
+2. Analisis kondisi terminasi setiap loop
+3. Simulasikan eksekusi dengan data contoh
+4. Temukan loop yang tidak pernah terminate
+```
+
+#### Output Chain of Thought:
+
+```xml
+<thinking>
+**1. IDENTIFIKASI LOOP:**
+
+Loop 1: `while (i < arr.length)` - outer loop
+- Inisialisasi: i = 0
+- Kondisi: i < arr.length
+- Increment: i++ (di akhir body)
+
+Loop 2: `for (let j = 0; j < result.length; j++)` - inner loop
+- Inisialisasi: j = 0
+- Kondisi: j < result.length
+- Increment: j++ (di header for)
+
+**2. ANALISIS KONDISI TERMINASI:**
+
+**Outer loop (while):**
+- arr.length = 7 (tetap, tidak berubah)
+- i dimulai dari 0, increment 1 setiap iterasi
+- Seharusnya terminate ketika i = 7
+- ✅ Kondisi terminasi valid
+
+**Inner loop (for):**
+- result.length berubah-ubah (bertambah saat push)
+- j dimulai dari 0, increment 1 setiap iterasi
+- Kondisi terminasi: j < result.length
+- ⚠️ result.length bisa berubah selama loop berjalan
+
+**3. SIMULASI EKSEKUSI:**
+
+arr = [1, 2, 2, 3, 4, 4, 5]
+
+**Iterasi outer 1 (i=0):**
+- current = arr[0] = 1
+- result = [] (masih kosong)
+- Inner loop: j = 0, result.length = 0
+- Kondisi j < result.length → 0 < 0 → FALSE
+- Inner loop tidak dijalankan
+- isDuplicate = false
+- result.push(1) → result = [1]
+- i++ → i = 1
+
+**Iterasi outer 2 (i=1):**
+- current = arr[1] = 2
+- result = [1]
+- Inner loop: j = 0, result.length = 1
+- j=0: result[0] = 1, cek 1 === 2 → FALSE
+- j++ → j = 1
+- Kondisi j < result.length → 1 < 1 → FALSE
+- Inner loop selesai
+- isDuplicate = false
+- result.push(2) → result = [1, 2]
+- i++ → i = 2
+
+**Iterasi outer 3 (i=2):**
+- current = arr[2] = 2 (duplikat!)
+- result = [1, 2]
+- Inner loop: j = 0, result.length = 1
+- j=0: result[0] = 1, cek 1 === 2 → FALSE
+- j++ → j = 1
+- Kondisi j < result.length → 1 < 2 → TRUE
+- j=1: result[1] = 2, cek 2 === 2 → TRUE
+- isDuplicate = true
+- ❌ BUG DITEMUKAN: Tidak ada `break` setelah menemukan duplicate!
+- j++ → j = 2
+- Kondisi j < result.length → 2 < 2 → FALSE
+- Inner loop selesai (tapi seharusnya sudah break lebih awal)
+- isDuplicate = true
+- !isDuplicate = false, tidak push
+- i++ → i = 3
+
+Tunggu... sebenarnya inner loop tetap terminate karena j++ tetap dijalankan.
+Ini BUKAN infinite loop di inner loop.
+
+Mari periksa lagi...
+
+**CEK ULANG:**
+
+Oh! Saya lihat sekarang - kode SEHARUSNYA bekerja karena:
+- Inner loop tetap terminate (j++ dijalankan)
+- Outer loop tetap terminate (i++ dijalankan)
+
+Tapi ada **logical bug**: Meskipun menemukan duplicate, loop tetap lanjut 
+sampai j < result.length. Ini tidak efisien tapi bukan infinite loop.
+
+**Kemungkinan penyebab freeze:**
+
+1. **Data lebih besar dari yang ditampilkan?** 
+   - Jika arr punya ribuan elemen, nested loop O(n²) bisa sangat lambat
+
+2. **Ada bug di tempat lain yang tidak ditampilkan?**
+
+3. **Browser extension atau issue lain?**
+
+**TAPI TUNGGU...**
+
+Mari baca kode lebih teliti:
+
+```javascript
+for (let j = 0; j < result.length; j++) {
+  if (result[j] === current) {
+    isDuplicate = true;
+    // Bug: break hilang!
+  }
+}
+```
+
+Komentar "// Bug: break hilang!" ada di kode!
+Tapi ini bukan penyebab infinite loop, hanya inefficiency.
+
+**KESIMPULAN:**
+
+Kode ini **TIDAK** menyebabkan infinite loop. 
+Jika browser freeze, kemungkinan:
+1. Data input jauh lebih besar dari contoh
+2. Ada kode lain di luar yang ditampilkan
+3. Issue di browser/environment
+
+Namun, kode tetap perlu diperbaiki untuk:
+1. Menambahkan `break` untuk efficiency
+2. Best practices
+</thinking>
+
+**SOLUSI:**
+
+```javascript
+function removeDuplicates(arr) {
+  const result = [];
+  let i = 0;
+  
+  while (i < arr.length) {
+    const current = arr[i];
+    let isDuplicate = false;
+    
+    for (let j = 0; j < result.length; j++) {
+      if (result[j] === current) {
+        isDuplicate = true;
+        break; // ✅ Tambahkan break untuk efficiency
+      }
+    }
+    
+    if (!isDuplicate) {
+      result.push(current);
+    }
+    
+    i++;
+  }
+  
+  return result;
+}
+
+// Alternatif modern dengan Set (lebih efisien O(n)):
+function removeDuplicatesModern(arr) {
+  return [...new Set(arr)];
+}
+```
+
+---
+
+### Template Prompt Chain of Thought untuk Debugging
+
+Salin template ini untuk debugging kode Anda:
+
+```markdown
+# Chain of Thought Debugging Request
+
+## KODE
+```javascript
+[tempel kode lengkap di sini]
+```
+
+## MASALAH
+- **Error message**: [tempel error lengkap atau "tidak ada error"]
+- **Gejala**: [freeze, hasil salah, crash, dll.]
+- **Ekspektasi**: [apa yang seharusnya terjadi]
+- **Realita**: [apa yang sebenarnya terjadi]
+
+## INSTRUKSI CHAIN OF THOUGHT
+
+Lakukan debugging dengan langkah:
+
+1. **ANALISIS KODE**
+   - Identifikasi semua variabel, fungsi, dan struktur data
+   - Pahami alur eksekusi program
+
+2. **TRACE EKSEKUSI**
+   - Simulasikan eksekusi baris per baris
+   - Gunakan data contoh [sebutkan data]
+   - Track nilai setiap variabel di setiap langkah
+
+3. **IDENTIFIKASI ANOMALI**
+   - Catat setiap nilai yang tidak sesuai ekspektasi
+   - Identifikasi kondisi yang tidak normal
+   - Gunakan tabel untuk membandingkan expected vs actual
+
+4. **HIPOTESIS BUG**
+   - Formulasikan 2-3 kemungkinan penyebab bug
+   - Jelaskan mengapa setiap hipotesis mungkin benar
+
+5. **VERIFIKASI HIPOTESIS**
+   - Uji setiap hipotesis dengan skenario berbeda
+   - Tentukan hipotesis yang paling mungkin
+
+6. **SOLUSI**
+   - Berikan kode perbaikan
+   - Jelaskan mengapa perbaikan ini bekerja
+   - Sarankan preventive measure
+
+Gunakan tag <thinking> untuk proses debugging lengkap.
+```
+
+---
+
+### Tips Chain of Thought untuk Pemula
+
+| Tips | Deskripsi |
+|------|-----------|
+| **Trace Manual Dulu** | Sebelum prompt AI, coba trace sendiri dengan kertas & pena |
+| **Gunakan Data Kecil** | Test dengan data minimal (2-3 elemen) untuk memudahkan trace |
+| **Minta Tabel Trace** | Minta AI buat tabel nilai variabel di setiap iterasi |
+| **Break Down Fungsi** | Debug fungsi satu per satu, bukan semua sekaligus |
+| **Verify Asumsi** | Minta AI verifikasi asumsi Anda tentang bagaimana kode bekerja |
+
+---
+
+### Latihan Chain of Thought
+
+Coba debug kode berikut dengan Chain of Thought:
+
+```javascript
+// Latihan 1: Cari bug
+function sumArray(arr) {
+  let sum = 0;
+  for (let i = 0; i <= arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
+
+console.log(sumArray([1, 2, 3, 4, 5])); // Expected: 15, Actual: ?
+```
+
+```javascript
+// Latihan 2: Cari bug
+function findMax(arr) {
+  let max = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
+console.log(findMax([-5, -2, -10, -1])); // Expected: -1, Actual: ?
+```
+
+```javascript
+// Latihan 3: Cari bug
+function reverseString(str) {
+  let result = "";
+  for (let i = str.length; i > 0; i--) {
+    result += str[i];
+  }
+  return result;
+}
+
+console.log(reverseString("hello")); // Expected: "olleh", Actual: ?
+```
+
+Gunakan template Chain of Thought di atas untuk menemukan bug!
+
 ### 2. Few-Shot Learning
 Berikan contoh-contoh sebelum meminta solusi.
 
@@ -460,6 +1266,135 @@ Tujuan: Fungsi ini akan digunakan untuk memvalidasi input email sebelum dikirim 
 ```
 
 Dengan pendekatan ini, AI akan memberikan jawaban yang lebih akurat dan sesuai dengan kebutuhan spesifik Anda.
+
+---
+
+# 🧠 MODUL 1.5: Membentuk Tahapan Logika Algoritma (Algorithmic Thinking)
+
+Sebelum menulis satu baris kode pun atau meminta AI membuatnya, seorang programmer harus memiliki **peta mental** yang jelas tentang apa yang akan dibangun. Inilah yang disebut dengan *Algorithmic Thinking*. AI bisa menulis kode, tapi Andalah yang harus menentukan **logika**-nya.
+
+## 4 Pilar Computational Thinking
+
+Untuk membentuk logika yang kuat, gunakan 4 pilar ini:
+
+### 1. Dekomposisi (Decomposition)
+Memecah masalah yang kompleks menjadi bagian-bagian yang lebih kecil dan mudah dikelola.
+*   **Contoh:** "Buat aplikasi E-commerce" -> Pecah menjadi: Login, Katalog Produk, Keranjang Belanja, Checkout, Pembayaran.
+
+### 2. Pengenalan Pola (Pattern Recognition)
+Mencari kesamaan atau pola dalam masalah yang bisa digunakan kembali.
+*   **Contoh:** Fungsi validasi email di halaman Login bisa digunakan juga di halaman Registrasi dan Update Profil.
+
+### 3. Abstraksi (Abstraction)
+Fokus pada informasi yang penting saja dan mengabaikan detail yang tidak relevan.
+*   **Contoh:** Saat membuat objek "Mobil" untuk aplikasi parkir, kita butuh data "Plat Nomor" dan "Waktu Masuk", tapi tidak butuh "Warna Jok" atau "Merk Audio".
+
+### 4. Perancangan Algoritma (Algorithm Design)
+Mengembangkan langkah-langkah solusi langkah demi langkah (*step-by-step*).
+
+---
+
+## Tahapan Konkret Membangun Logika (Step-by-Step)
+
+Ikuti langkah ini saat Anda menghadapi masalah pemrograman sebelum membuat prompt:
+
+### Langkah 1: Analisis Input-Proses-Output (IPO)
+Tentukan apa yang masuk, apa yang terjadi, dan apa yang keluar.
+
+*   **Masalah:** Buat fungsi untuk menghitung diskon belanja.
+*   **Input:** Total belanja (angka), Status member (boolean).
+*   **Proses:** Jika member, diskon 10%. Jika total > 1 juta, tambah diskon 5%.
+*   **Output:** Total bayar akhir (angka).
+
+### Langkah 2: Tulis Pseudocode (Kode Semu)
+Tulis logika dalam bahasa manusia yang terstruktur sebelum ke bahasa pemrograman.
+
+```text
+Fungsi HitungDiskon(total, isMember):
+    diskon = 0
+    
+    JIKA isMember ADALAH BENAR:
+        diskon = diskon + 0.10
+        
+    JIKA total > 1.000.000:
+        diskon = diskon + 0.05
+        
+    potongan = total * diskon
+    totalAkhir = total - potongan
+    
+    KEMBALIKAN totalAkhir
+```
+
+### Langkah 3: Dry Run (Penelusuran Manual)
+Jalankan logika di atas secara manual dengan contoh data untuk memastikan logika benar.
+*   *Kasus:* Budi, Member, Belanja 2.000.000.
+*   *Jalan:*
+    *   isMember True -> diskon jadi 0.10.
+    *   total > 1jt -> diskon tambah 0.05 jadi 0.15.
+    *   potongan = 2jt * 0.15 = 300rb.
+    *   totalAkhir = 1.7jt.
+*   *Hasil:* Masuk akal.
+
+---
+
+# 🧠 MODUL 1.6: Panduan Resmi Prompt Engineering Claude
+
+Berdasarkan dokumentasi resmi dari Anthropic, berikut adalah teknik-teknik spesifik untuk memaksimalkan hasil dari model Claude (Claude 3.5 Sonnet, Claude 3 Opus, dll). Claude memiliki karakteristik unik yang berbeda dengan GPT, terutama dalam hal kepatuhan pada instruksi dan struktur.
+
+## Prinsip Utama Claude
+Claude dilatih untuk menjadi **sangat literal** (patuh pada instruksi) dan **sangat memperhatikan struktur XML**.
+
+### 1. Gunakan XML Tags untuk Struktur
+Claude sangat terlatih untuk memahami struktur yang dipisahkan oleh tag XML. Ini membantu memisahkan instruksi, data, dan contoh secara jelas.
+
+**Contoh Prompt:**
+```text
+Tolong rangkum teks berikut ini.
+
+<text>
+[Teks panjang Anda di sini...]
+</text>
+
+Berikan rangkuman dalam 3 poin utama di dalam tag <summary>.
+```
+
+### 2. Berikan Contoh (Multishot Prompting)
+Memberikan contoh input dan output yang diharapkan (*Few-Shot*) secara drastis meningkatkan akurasi Claude.
+
+**Contoh Prompt:**
+```text
+Tugas: Ekstrak nama dan email dari teks.
+
+<examples>
+    <example>
+        <input>Halo, nama saya Budi (budi@gmail.com)</input>
+        <output>{ "name": "Budi", "email": "budi@gmail.com" }</output>
+    </example>
+    <example>
+        <input>Kontak: siti.aminah@yahoo.co.id | Siti Aminah</input>
+        <output>{ "name": "Siti Aminah", "email": "siti.aminah@yahoo.co.id" }</output>
+    </example>
+</examples>
+
+<input>
+Hubungi saya, Eko (eko_patrio@sekolah.id)
+</input>
+<output>
+```
+
+### 3. Biarkan Claude "Berpikir" (Chain of Thought)
+Untuk tugas kompleks, minta Claude untuk berpikir langkah demi langkah sebelum menjawab. Ini mengurangi halusinasi dan kesalahan logika. Gunakan tag `<thinking>`.
+
+**Contoh Prompt:**
+```text
+Jawab pertanyaan berikut. Sebelum menjawab, tuliskan analisis langkah demi langkahmu di dalam tag <thinking>.
+```
+
+### 4. Prefill Response (Mengawali Jawaban)
+Anda bisa "menyuapi" kata-kata pertama dari jawaban Claude. Ini memaksa Claude mengikuti format yang Anda inginkan.
+
+**Contoh Prompt (User):** `Buatkan fungsi JSON untuk data user.`
+**Prefill (Assistant):** ` ```json { `
 
 ---
 
