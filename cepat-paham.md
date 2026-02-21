@@ -5,7 +5,7 @@
 ---
 
 > **🎉 Selamat datang, Calon Penyihir Data!**
-> 
+>
 > Panduan ini dirancang untuk membangun **pola pikir algoritma** dan **penguasaan sintaks** melalui analogi visual yang kuat. Kita tidak hanya belajar mengetik, kita belajar *merapal mantra*.
 
 ### 🎯 Misi | 🧠 Model Mental | 📜 Mantra | 👁️ Sihir
@@ -19,9 +19,57 @@
 
 ---
 
-## 📚 Bab 0: Kitab Dasar Mantra
+### 🔍 Navigasi Per Topik
+
+#### 📝 Fundamental
+- [String Manipulation](#-1-sihir-teks-string-manipulation)
+- [Number & Math](#-2-sihir-angka-number--math)
+- [Array Utilities](#-3-sihir-wadah-array-utilities)
+- [Object Utilities](#-5-sihir-benda-object-utilities)
+- [JSON](#-5-sihir-pertukaran-json)
+
+#### ⚡ Advanced
+- [Closures & Scope](#-2-closures--scope-deep-dive)
+- [this Keyword](#-3-this-keyword--context-binding)
+- [ES6+ Features](#-4-es6-modern-features)
+- [Prototypes & Classes](#-1-prototype-chain---warisan-object)
+- [Error Handling](#-5-error-handling-best-practices)
+- [Modules](#-6-modules--importexport)
+
+#### 🌐 Web Development
+- [DOM Manipulation](#-1-dom-manipulation--event-system)
+- [Event Handling](#-2-asyncawait---syntactic-sugar)
+- [Browser Storage](#-10-local-storage--session-storage)
+- [API & HTTP](#-8-api--http-fundamentals)
+
+#### 🛠️ Production Ready
+- [Performance](#-12-performance-optimization)
+- [Security](#-13-security-basics)
+- [Testing](#-14-testing-fundamentals)
+- [Git](#-15-git--version-control)
+
+---
+
+### ⌨️ Keyboard Shortcuts untuk Navigasi
+
+| Shortcut | Fungsi |
+|----------|--------|
+| `Ctrl + F` | Cari teks dalam file |
+| `Ctrl + Home` | Kembali ke awal file (Daftar Isi) |
+| `Ctrl + End` | Ke akhir file |
+| `Alt + ←` | Back (setelah klik link) |
+| `Alt + →` | Forward |
+
+---
+
+
+---
+
+## 📚 Bab 0: Kitab Dasar Mantra {#-bab-0-kitab-dasar-mantra}
 
 > **⚔️ Persenjataan Dasar:** Sebelum merapal mantra kompleks, seorang penyihir handal harus menguasai perkakas dasarnya. Bab ini adalah **gudang senjata** Anda, berisi mantra-mantra utilitas yang akan Anda gunakan **setiap hari**.
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
 
 ### 📝 1. Sihir Teks (String Manipulation)
 
@@ -3391,7 +3439,13 @@ Berikut adalah kumpulan lengkap mantra-mantra yang sangat berguna dalam pengemba
 
 ---
 
-## Bab 1: Tiga Mantra Agung Penguasa Array (`map`, `filter`, `reduce`)
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+---
+
+## Bab 1: Tiga Mantra Agung Penguasa Array (`map`, `filter`, `reduce`) {#-bab-1-tiga-mantra-agung-penguasa-array-map-filter-reduce}
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
 
 > Bayangkan sebuah **Array** adalah **Kereta Barang** yang membawa ratusan gerbong berisi data. Memprosesnya satu per satu dengan tangan adalah pekerjaan kaum non-magis. Kita punya tiga mantra agung untuk menaklukkannya dalam sekejap.
 
@@ -6040,8 +6094,10302 @@ Proses 10 tugas secara async, batasi hanya 3 tugas yang berjalan bersamaan pada 
 
 ---
 
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+---
+
+## 📚 Bab 6: Materi Lanjutan untuk Full-Stack Ready {#-bab-6-materi-lanjutan-untuk-full-stack-ready}
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+> **🎯 Tujuan Bab:** Melengkapi pemahaman JavaScript modern untuk siap kerja di industri. Bab ini mencakup konsep-konsep advanced yang WAJIB dikuasai.
+
+---
+
+### 🔴 1. DOM Manipulation & Event Handling
+
+#### 📖 Konsep Dasar: Apa itu DOM?
+
+**DOM (Document Object Model)** adalah representasi tree structure dari HTML document. Jika HTML adalah **blueprint bangunan**, maka DOM adalah **bangunan fisik** yang bisa kamu ubah, hias, dan manipulasi.
+
+```javascript
+// HTML: <div id="app"><h1>Hello</h1></div>
+
+// DOM Tree:
+// document
+// └── html
+//     ├── head
+//     └── body
+//         └── div#app
+//             └── h1
+//                 └── "Hello"
+```
+
+**Mengapa DOM Penting?**
+1. **Interactive UI:** Membuat website responsif terhadap user
+2. **Dynamic Content:** Update konten tanpa reload page
+3. **Form Handling:** Validasi dan proses input user
+4. **Single Page Apps:** Foundation untuk React, Vue, Angular
+
+---
+
+#### 🔬 Tahapan Logika: DOM Manipulation
+
+**1. SELECT ELEMENT - Memilih Elemen**
+
+```javascript
+// Algoritma Selection:
+// 1. Tentukan selector (id, class, tag, attribute)
+// 2. Pilih method yang sesuai
+// 3. Simpan reference ke variable
+
+// CARA 1: getElementById (paling cepat)
+// Algoritma:
+// 1. Cari element dengan id exact match
+// 2. Return element atau null jika tidak ada
+const app = document.getElementById('app');
+
+// CARA 2: querySelector (paling flexible)
+// Algoritma:
+// 1. Parse CSS selector string
+// 2. Return first match atau null
+const button = document.querySelector('.btn-primary');
+const firstItem = document.querySelector('li.item');
+
+// CARA 3: querySelectorAll (multiple elements)
+// Algoritma:
+// 1. Parse CSS selector string
+// 2. Return NodeList semua matches
+const allButtons = document.querySelectorAll('button');
+
+// CARA 4: getElementsByClassName/TagName (live collection)
+// Algoritma:
+// 1. Return HTMLCollection (live update)
+// 2. Auto update saat DOM berubah
+const allItems = document.getElementsByClassName('item');
+```
+
+**2. MANIPULATE CONTENT - Mengubah Konten**
+
+```javascript
+// Algoritma Content Manipulation:
+// 1. Select element
+// 2. Pilih property yang sesuai
+// 3. Assign new value
+
+const element = document.querySelector('#title');
+
+// innerHTML - Parse HTML tags
+// Algoritma:
+// 1. Parse string sebagai HTML
+// 2. Replace semua child nodes
+// 3. Render ulang
+element.innerHTML = '<strong>Bold Text</strong>';
+
+// textContent - Plain text only (lebih aman)
+// Algoritma:
+// 1. Escape semua HTML characters
+// 2. Set text content
+// 3. No HTML parsing
+element.textContent = '<strong>Plain Text</strong>';
+// Output: <strong>Plain Text</strong> (literal)
+
+// value - Untuk form elements
+// Algoritma:
+// 1. Get/set current value
+// 2. Trigger input events
+const input = document.querySelector('#email');
+input.value = 'user@email.com';
+```
+
+**3. MANIPULATE STYLE - Mengubah Style**
+
+```javascript
+// Algoritma Style Manipulation:
+// 1. Select element
+// 2. Akses style property
+// 3. Set value dengan unit
+
+const box = document.querySelector('.box');
+
+// CARA 1: inline style (specific)
+// Algoritma:
+// 1. Akses style object
+// 2. Set property dengan camelCase
+// 3. Value dengan unit string
+box.style.backgroundColor = 'blue';
+box.style.fontSize = '16px';
+box.style.marginTop = '20px';
+
+// CARA 2: classList (recommended)
+// Algoritma:
+// 1. Manipulate class names
+// 2. CSS handle styling
+box.classList.add('active');      // Add class
+box.classList.remove('hidden');   // Remove class
+box.classList.toggle('dark');     // Toggle class
+box.classList.contains('active'); // Check class (boolean)
+
+// CARA 3: setAttribute (full control)
+// Algoritma:
+// 1. Set attribute string
+// 2. Parse dan apply styles
+box.setAttribute('style', 'color: red; padding: 10px;');
+```
+
+**4. CREATE & DELETE ELEMENTS - Buat/Hapus Elemen**
+
+```javascript
+// Algoritma Create Element:
+// 1. Create element node
+// 2. Set properties/attributes
+// 3. Append to parent
+
+// CREATE
+// Algoritma:
+// 1. document.createElement(tagName)
+// 2. Set content, style, attributes
+// 3. Append ke parent
+const newDiv = document.createElement('div');
+newDiv.className = 'card';
+newDiv.textContent = 'New Card';
+newDiv.id = 'card-1';
+
+// Append ke parent
+// Algoritma:
+// 1. parent.appendChild(child) - add ke akhir
+// 2. parent.insertBefore(new, ref) - add sebelum ref
+// 3. parent.replaceChild(new, old) - replace
+const container = document.querySelector('.container');
+container.appendChild(newDiv);
+
+// DELETE
+// Algoritma:
+// 1. element.remove() - hapus diri sendiri
+// 2. parent.removeChild(child) - hapus dari parent
+newDiv.remove();
+
+// DELETE ALL CHILDREN
+// Algoritma:
+// 1. Loop sambil ada firstChild
+// 2. Remove firstChild terus
+while (container.firstChild) {
+    container.removeChild(container.firstChild);
+}
+
+// ATAU set innerHTML kosong
+container.innerHTML = '';
+```
+
+---
+
+#### 🔬 Tahapan Logika: Event Handling
+
+**1. EVENT LISTENERS - Mendengarkan Event**
+
+```javascript
+// Algoritma Event Listening:
+// 1. Select target element
+// 2. Define event type (click, submit, etc)
+// 3. Provide callback function
+// 4. Browser call callback saat event terjadi
+
+const button = document.querySelector('#submit');
+
+// CARA 1: addEventListener (recommended)
+// Algoritma:
+// 1. Register listener ke element
+// 2. Store dalam internal list
+// 3. Trigger saat event occur
+button.addEventListener('click', function(event) {
+    console.log('Button clicked!');
+    console.log('Event object:', event);
+});
+
+// CARA 2: Arrow function dengan event object
+// Algoritma:
+// 1. Event object auto passed
+// 2. Akses properties: target, type, preventDefault, dll
+button.addEventListener('click', (e) => {
+    console.log('Clicked element:', e.target);
+    e.preventDefault(); // Stop default behavior
+});
+
+// CARA 3: Named function (reusable)
+// Algoritma:
+// 1. Define function terpisah
+// 2. Pass reference (tanpa ())
+function handleClick(event) {
+    console.log('Handled by named function');
+}
+button.addEventListener('click', handleClick);
+
+// REMOVE LISTENER
+// Algoritma:
+// 1. Harus reference function yang sama
+// 2. removeEventListener(type, function)
+button.removeEventListener('click', handleClick);
+```
+
+**2. COMMON EVENTS - Event yang Sering Dipakai**
+
+```javascript
+// MOUSE EVENTS
+// Algoritma: Deteksi interaksi mouse
+element.addEventListener('click', handler);      // Click
+element.addEventListener('dblclick', handler);   // Double click
+element.addEventListener('mousedown', handler);  // Button down
+element.addEventListener('mouseup', handler);    // Button up
+element.addEventListener('mousemove', handler);  // Mouse move
+element.addEventListener('mouseenter', handler); // Enter element
+element.addEventListener('mouseleave', handler); // Leave element
+
+// KEYBOARD EVENTS
+// Algoritma: Deteksi keyboard input
+document.addEventListener('keydown', (e) => {
+    console.log('Key pressed:', e.key);      // Key name
+    console.log('Key code:', e.keyCode);     // Key code
+    console.log('Ctrl:', e.ctrlKey);         // Ctrl pressed?
+    console.log('Shift:', e.shiftKey);       // Shift pressed?
+});
+
+document.addEventListener('keyup', handler);   // Key released
+document.addEventListener('keypress', handler); // Character key
+
+// FORM EVENTS
+// Algoritma: Handle form interaction
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent page reload
+    // Process form data
+});
+
+input.addEventListener('input', (e) => {
+    console.log('Input value:', e.target.value); // Real-time value
+});
+
+input.addEventListener('change', (e) => {
+    console.log('Value changed:', e.target.value); // On blur
+});
+
+input.addEventListener('focus', handler); // Focused
+input.addEventListener('blur', handler);  // Lost focus
+
+// DOCUMENT/WINDOW EVENTS
+// Algoritma: Handle page/window events
+window.addEventListener('load', handler);      // Page fully loaded
+window.addEventListener('DOMContentLoaded', handler); // DOM ready
+window.addEventListener('resize', handler);    // Window resized
+window.addEventListener('scroll', handler);    // Window scrolled
+```
+
+**3. EVENT BUBBLING & CAPTURING - Event Propagation**
+
+```javascript
+// Algoritma Event Propagation:
+// 1. Event terjadi di target element
+// 2. Propagate ke ancestors (bubble) atau dari ancestors (capture)
+// 3. Handler dipanggil sesuai phase
+
+// EVENT BUBBLING (default)
+// Algoritma:
+// 1. Event mulai dari target (paling dalam)
+// 2. Bubble ke parent
+// 3. Bubble ke grandparent
+// 4. Sampai ke document
+
+// HTML: <div id="outer"><div id="inner">Click</div></div>
+const outer = document.getElementById('outer');
+const inner = document.getElementById('inner');
+
+// Bubble: inner → outer → document
+inner.addEventListener('click', () => {
+    console.log('Inner clicked (bubble)');
+});
+
+outer.addEventListener('click', () => {
+    console.log('Outer clicked (bubble)');
+});
+
+// Click inner akan log:
+// "Inner clicked (bubble)"
+// "Outer clicked (bubble)"
+
+// EVENT CAPTURING
+// Algoritma:
+// 1. Event mulai dari document (paling luar)
+// 2. Capture ke target
+// 3. Capture ke innermost
+
+// Capture: document → outer → inner
+outer.addEventListener('click', () => {
+    console.log('Outer clicked (capture)');
+}, true); // true = capture phase
+
+inner.addEventListener('click', () => {
+    console.log('Inner clicked (capture)');
+}, true);
+
+// Click inner akan log:
+// "Outer clicked (capture)"
+// "Inner clicked (capture)"
+
+// STOP PROPAGATION
+// Algoritma:
+// 1. event.stopPropagation()
+// 2. Stop event dari propagate
+// 3. Handler lain tidak dipanggil
+inner.addEventListener('click', (e) => {
+    e.stopPropagation();
+    console.log('Inner clicked, propagation stopped');
+});
+```
+
+**4. EVENT DELEGATION - Pattern Efisien**
+
+```javascript
+// Algoritma Event Delegation:
+// 1. Add listener ke parent (bukan setiap child)
+// 2. Gunakan event.target untuk identify source
+// 3. Handle berdasarkan target
+
+// ❌ TIDAK EFISIEN: Listener untuk setiap item
+// Algoritma:
+// 1. Loop semua items
+// 2. Add listener ke setiap item
+// 3. Memory intensive untuk banyak items
+const items = document.querySelectorAll('.item');
+items.forEach(item => {
+    item.addEventListener('click', (e) => {
+        console.log('Item clicked:', e.target);
+    });
+});
+
+// ✅ EFISIEN: Event delegation
+// Algoritma:
+// 1. Add 1 listener ke parent
+// 2. Check event.target
+// 3. Handle jika target match selector
+const list = document.querySelector('#list');
+
+list.addEventListener('click', (e) => {
+    // Find closest matching parent
+    const item = e.target.closest('.item');
+    
+    // Check jika click di dalam item
+    if (item && list.contains(item)) {
+        console.log('Item clicked:', item.textContent);
+    }
+});
+
+// APLIKASI: Dynamic content
+// Algoritma:
+// 1. Listener di parent
+// 2. New child auto handled
+// 3. No need to add listener ke new elements
+list.addEventListener('click', (e) => {
+    if (e.target.matches('.delete-btn')) {
+        const item = e.target.closest('.item');
+        item.remove();
+    }
+});
+
+// Tambah new item (auto handled!)
+const newItem = document.createElement('li');
+newItem.className = 'item';
+list.appendChild(newItem);
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **innerHTML dengan user input** | XSS vulnerability | Gunakan textContent atau sanitize input |
+| **Event listener tidak di-remove** | Memory leaks | Remove listener di cleanup/unmount |
+| **this context hilang** | this tidak sesuai expected | Gunakan arrow function atau bind |
+| **Event bubbling tidak diinginkan** | Parent handler ikut trigger | Gunakan stopPropagation |
+| **Query selector di loop** | Performance issue | Cache selector di luar loop |
+| **Direct style manipulation** | Hard to maintain | Gunakan classList toggle |
+
+**Best Practices:**
+
+```javascript
+// 1. Cache DOM references
+// ❌ Bad: Query setiap kali
+function bad() {
+    document.querySelector('#btn').click();
+    document.querySelector('#btn').disabled = true;
+}
+
+// ✅ Good: Cache sekali
+const btn = document.querySelector('#btn');
+function good() {
+    btn.click();
+    btn.disabled = true;
+}
+
+// 2. Use event delegation
+// ✅ Good: 1 listener untuk banyak elements
+document.querySelector('#list').addEventListener('click', (e) => {
+    const item = e.target.closest('.item');
+    if (item) { /* handle */ }
+});
+
+// 3. Debounce expensive events
+// ✅ Good: Limit execution rate
+function debounce(fn, delay) {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), delay);
+    };
+}
+
+window.addEventListener('resize', debounce(() => {
+    console.log('Resize handled');
+}, 300));
+
+// 4. Use documentFragment untuk batch insert
+// ✅ Good: Single reflow
+const fragment = document.createDocumentFragment();
+for (let i = 0; i < 100; i++) {
+    const li = document.createElement('li');
+    li.textContent = `Item ${i}`;
+    fragment.appendChild(li);
+}
+list.appendChild(fragment); // Single DOM update
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. Form Validation:**
+
+```javascript
+// Algoritma Form Validation:
+// 1. Listen submit event
+// 2. Prevent default
+// 3. Validate each field
+// 4. Show errors
+// 5. Submit jika valid
+
+const form = document.querySelector('#registerForm');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const email = form.querySelector('#email').value;
+    const password = form.querySelector('#password').value;
+    const errors = [];
+    
+    // Validate email
+    if (!email || !email.includes('@')) {
+        errors.push('Email tidak valid');
+    }
+    
+    // Validate password
+    if (!password || password.length < 8) {
+        errors.push('Password minimal 8 karakter');
+    }
+    
+    if (errors.length > 0) {
+        // Show errors
+        const errorDiv = document.querySelector('#errors');
+        errorDiv.innerHTML = errors.map(err => `<p>${err}</p>`).join('');
+        errorDiv.style.display = 'block';
+        return;
+    }
+    
+    // Submit form
+    console.log('Form valid, submitting...');
+    form.submit();
+});
+```
+
+**2. Modal/Popup:**
+
+```javascript
+// Algoritma Modal:
+// 1. Show modal on trigger
+// 2. Close on X button
+// 3. Close on outside click
+// 4. Close on Escape key
+
+const modal = document.querySelector('#modal');
+const openBtn = document.querySelector('#openModal');
+const closeBtn = document.querySelector('#closeModal');
+
+// Open modal
+openBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scroll
+});
+
+// Close on X button
+closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+// Close on outside click
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+```
+
+**3. Tab Navigation:**
+
+```javascript
+// Algoritma Tab System:
+// 1. Click tab button
+// 2. Remove active from all tabs
+// 3. Add active to clicked tab
+// 4. Hide all contents
+// 5. Show corresponding content
+
+const tabs = document.querySelectorAll('.tab-btn');
+const contents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active from all
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        
+        // Add active to clicked
+        tab.classList.add('active');
+        
+        // Show corresponding content
+        const target = tab.dataset.target;
+        document.querySelector(target).classList.add('active');
+    });
+});
+```
+
+---
+
+#### 📊 Kompleksitas Waktu DOM Operations
+
+| Operasi | Time Complexity | Keterangan |
+|---------|----------------|------------|
+| getElementById | O(1) | Hash lookup |
+| querySelector | O(n) | CSS selector parsing |
+| querySelectorAll | O(n) | Return NodeList |
+| innerHTML get | O(n) | Serialize all children |
+| innerHTML set | O(n) | Parse and render |
+| textContent get | O(n) | Concatenate all text |
+| textContent set | O(1) | Set text node |
+| appendChild | O(1) | Single node |
+| removeChild | O(1) | Single node |
+| classList.add/remove | O(1) | Class manipulation |
+| addEventListener | O(1) | Register listener |
+
+---
+
+### ⚔️ Latihan Bertahap: DOM Manipulation (LEVEL 1-5)
+
+> **🎯 Misi:** Kuasai manipulasi DOM dari dasar hingga advanced dengan 5 level tantangan!
+
+---
+
+#### 🟢 LEVEL 1: Pilih & Ubah Elemen
+
+**📖 Konsep:** Menggunakan selector untuk memilih dan memodifikasi elemen.
+
+**🔬 Tahapan Logika:**
+1. Pilih elemen dengan `getElementById` atau `querySelector`
+2. Ubah properti `textContent` atau `innerHTML`
+3. Ubah style dengan `.style.property`
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Ubah teks judul
+function ubahJudul(judulBaru) {
+    // TODO: Pilih elemen dengan id "judul"
+    // TODO: Ubah textContent dengan judulBaru
+}
+
+// SOAL 2: Ubah warna background
+function ubahWarnaBackground(idElemen, warna) {
+    // TODO: Pilih elemen
+    // TODO: Ubah style.backgroundColor
+}
+
+// SOAL 3: Tambahkan class active
+function aktifkanElemen(idElemen) {
+    // TODO: Pilih elemen
+    // TODO: classList.add('active')
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+function ubahJudul(judulBaru) {
+    const judul = document.getElementById("judul");
+    if (judul) {
+        judul.textContent = judulBaru;
+    }
+}
+
+// SOLUSI 2
+function ubahWarnaBackground(idElemen, warna) {
+    const elemen = document.getElementById(idElemen);
+    if (elemen) {
+        elemen.style.backgroundColor = warna;
+    }
+}
+
+// SOLUSI 3
+function aktifkanElemen(idElemen) {
+    const elemen = document.getElementById(idElemen);
+    if (elemen) {
+        elemen.classList.add("active");
+    }
+}
+```
+
+---
+
+#### 🟡 LEVEL 2: Buat & Hapus Elemen
+
+**📖 Konsep:** Membuat elemen baru secara dinamis dan menghapus elemen.
+
+**🔬 Tahapan Logika:**
+1. Buat elemen dengan `document.createElement`
+2. Set atribut dan konten
+3. Append dengan `appendChild` atau `insertBefore`
+4. Hapus dengan `remove()` atau `removeChild`
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Buat elemen list baru
+function tambahListItem(idList, teksItem) {
+    // TODO: Buat li baru
+    // TODO: Set textContent
+    // TODO: Append ke ul/ol
+}
+
+// SOAL 2: Hapus elemen pertama dari list
+function hapusItemPertama(idList) {
+    // TODO: Pilih list
+    // TODO: Dapatkan firstChild atau firstElementChild
+    // TODO: Remove
+}
+
+// SOAL 3: Buat card produk
+function buatCardProduk(produk) {
+    // TODO: Buat div.card
+    // TODO: Buat h3 untuk nama
+    // TODO: Buat p untuk harga
+    // TODO: Append semua
+    // TODO: Return elemen card
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+function tambahListItem(idList, teksItem) {
+    const list = document.getElementById(idList);
+    if (!list) return;
+
+    const li = document.createElement("li");
+    li.textContent = teksItem;
+    list.appendChild(li);
+}
+
+// SOLUSI 2
+function hapusItemPertama(idList) {
+    const list = document.getElementById(idList);
+    if (!list || !list.firstElementChild) return;
+
+    list.firstElementChild.remove();
+}
+
+// SOLUSI 3
+function buatCardProduk(produk) {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const nama = document.createElement("h3");
+    nama.textContent = produk.nama;
+
+    const harga = document.createElement("p");
+    harga.className = "harga";
+    harga.textContent = `Rp ${produk.harga.toLocaleString()}`;
+
+    card.appendChild(nama);
+    card.appendChild(harga);
+
+    return card;
+}
+```
+
+---
+
+#### 🟠 LEVEL 3: Event Handling Basic
+
+**📖 Konsep:** Menambahkan interaktivitas dengan event listeners.
+
+**🔬 Tahapan Logika:**
+1. Pilih elemen target
+2. Gunakan `addEventListener(eventType, handler)`
+3. Akses event object di handler
+4. Manipulasi DOM berdasarkan event
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Click counter
+function buatClickCounter() {
+    // TODO: Buat button dengan teks "Klik saya!"
+    // TODO: Buat variable counter = 0
+    // TODO: AddEventListener click
+    // TODO: Increment counter dan update textContent
+}
+
+// SOAL 2: Toggle dark mode
+function buatDarkModeToggle() {
+    // TODO: Pilih button toggle
+    // TODO: AddEventListener click
+    // TODO: Toggle class 'dark-mode' di document.body
+}
+
+// SOAL 3: Double click untuk hapus
+function hapusDenganDoubleClick(selector) {
+    // TODO: Pilih semua elemen dengan selector
+    // TODO: Untuk setiap elemen, addEventListener 'dblclick'
+    // TODO: Hapus elemen saat double click
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+function buatClickCounter() {
+    const button = document.createElement("button");
+    button.textContent = "Klik saya!";
+
+    let counter = 0;
+
+    button.addEventListener("click", () => {
+        counter++;
+        button.textContent = `Diklik ${counter} kali`;
+    });
+
+    return button;
+}
+
+// SOLUSI 2
+function buatDarkModeToggle() {
+    const toggle = document.getElementById("darkModeToggle");
+    if (!toggle) return;
+
+    toggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+    });
+}
+
+// SOLUSI 3
+function hapusDenganDoubleClick(selector) {
+    const elemenList = document.querySelectorAll(selector);
+
+    elemenList.forEach((elemen) => {
+        elemen.addEventListener("dblclick", function() {
+            this.remove();
+        });
+    });
+}
+```
+
+---
+
+#### 🔴 LEVEL 4: Form Handling & Validation
+
+**📖 Konsep:** Menangani submit form dan validasi input user.
+
+**🔬 Tahapan Logika:**
+1. Pilih form element
+2. AddEventListener 'submit'
+3. `event.preventDefault()` untuk stop default
+4. Ambil nilai dari input fields
+5. Validasi setiap field
+6. Tampilkan error atau proses data
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Validasi email format
+function validasiEmail(email) {
+    // TODO: Buat regex untuk email
+    // TODO: Test dengan email input
+    // TODO: Return true/false
+}
+
+// SOAL 2: Real-time validation
+function buatRealTimeValidation(idInput) {
+    // TODO: Pilih input
+    // TODO: AddEventListener 'input' atau 'blur'
+    // TODO: Validasi saat user mengetik
+    // TODO: Tampilkan pesan error/success
+}
+
+// SOAL 3: Full form validation
+function validasiFormRegistrasi(form) {
+    // TODO: Prevent default submit
+    // TODO: Validasi nama (min 3 karakter)
+    // TODO: Validasi email (format valid)
+    // TODO: Validasi password (min 8 karakter)
+    // TODO: Validasi konfirmasi password (sama)
+    // TODO: Return object {valid, errors}
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+function validasiEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// SOLUSI 2
+function buatRealTimeValidation(idInput) {
+    const input = document.getElementById(idInput);
+    if (!input) return;
+
+    const feedback = document.createElement("span");
+    feedback.className = "validation-feedback";
+    input.parentNode.appendChild(feedback);
+
+    input.addEventListener("input", () => {
+        const value = input.value.trim();
+
+        if (value.length === 0) {
+            feedback.textContent = "Wajib diisi";
+            feedback.className = "feedback error";
+        } else if (value.length < 3) {
+            feedback.textContent = "Minimal 3 karakter";
+            feedback.className = "feedback warning";
+        } else {
+            feedback.textContent = "✓ Valid";
+            feedback.className = "feedback success";
+        }
+    });
+}
+
+// SOLUSI 3
+function validasiFormRegistrasi(form) {
+    const errors = [];
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const nama = form.querySelector("#nama")?.value?.trim();
+        const email = form.querySelector("#email")?.value?.trim();
+        const password = form.querySelector("#password")?.value;
+        const konfirmasi = form.querySelector("#konfirmasi")?.value;
+
+        // Validasi nama
+        if (!nama || nama.length < 3) {
+            errors.push("Nama minimal 3 karakter");
+        }
+
+        // Validasi email
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errors.push("Email tidak valid");
+        }
+
+        // Validasi password
+        if (!password || password.length < 8) {
+            errors.push("Password minimal 8 karakter");
+        }
+
+        // Validasi konfirmasi
+        if (password !== konfirmasi) {
+            errors.push("Konfirmasi password tidak sama");
+        }
+
+        if (errors.length > 0) {
+            alert("Error:\n" + errors.join("\n"));
+            return { valid: false, errors };
+        }
+
+        // Form valid, bisa submit
+        console.log("Form valid!", { nama, email });
+        return { valid: true, data: { nama, email } };
+    });
+}
+```
+
+---
+
+#### 🟣 LEVEL 5: Advanced DOM Projects
+
+**📖 Konsep:** Membangun komponen interaktif kompleks.
+
+**⚔️ Tantangan:**
+
+```javascript
+// PROYEK 1: Modal Dialog System
+function buatModalSystem() {
+    // TODO: Buat fungsi openModal(id)
+    // TODO: Buat fungsi closeModal(id)
+    // TODO: Close modal saat klik di luar konten
+    // TODO: Close modal dengan tombol Escape
+    // TODO: Prevent scroll body saat modal terbuka
+}
+
+// PROYEK 2: Tab Navigation
+function buatTabNavigation() {
+    // TODO: Click tab button
+    // TODO: Remove active dari semua tabs
+    // TODO: Add active ke tab yang diklik
+    // TODO: Show corresponding content
+    // TODO: Hide other contents
+}
+
+// PROYEK 3: Todo List App
+function buatTodoList() {
+    // TODO: Input field untuk todo baru
+    // TODO: Button untuk add todo
+    // TODO: List untuk menampilkan todos
+    // TODO: Checkbox untuk mark complete
+    // TODO: Button delete untuk setiap todo
+    // TODO: Filter buttons (all/active/completed)
+    // TODO: Save to localStorage
+}
+
+// PROYEK 4: Image Gallery dengan Lightbox
+function buatImageGallery() {
+    // TODO: Grid layout untuk thumbnails
+    // TODO: Click thumbnail untuk open lightbox
+    // TODO: Lightbox menampilkan gambar besar
+    // TODO: Navigation (prev/next)
+    // TODO: Close dengan X button atau Escape
+    // TODO: Keyboard navigation (arrow keys)
+}
+```
+
+**✅ Solusi Lengkap ada di `latihan-1.js`!**
+
+---
+
+### 🧠 Latihan Logika: Refleksi DOM
+
+> **🎯 Pertanyaan Pemahaman:**
+>
+> 1. Apa perbedaan `innerHTML` dan `textContent`? Kapan menggunakan masing-masing?
+> 2. Mengapa `addEventListener` lebih baik dari `onclick`?
+> 3. Apa itu event delegation? Mengapa penting untuk performance?
+> 4. Bagaimana cara mencegah event bubbling? Kapan perlu melakukannya?
+> 5. Apa perbedaan `querySelector` dan `getElementById`?
+
+---
+
+### 🔴 2. Closures & Scope Deep Dive
+
+#### 📖 Konsep Dasar: Scope & Closures
+
+**Scope** adalah **visibility** atau **jangkauan** variable di dalam kode. Jika variable adalah **rahasia**, maka scope adalah **siapa yang boleh tahu rahasia tersebut**.
+
+**Closure** adalah kombinasi dari **function + lexical environment** di mana function tersebut dibuat. Closure memungkinkan function untuk **mengakses variable dari outer scope** meskipun outer function sudah selesai dieksekusi.
+
+```javascript
+// SCOPE CHAIN:
+// Global Scope
+// └── Function Scope
+//     └── Block Scope (let/const)
+
+// CLOSURE:
+// Outer function return inner function
+// Inner function "remember" outer variables
+// Even after outer function selesai!
+```
+
+**Mengapa Closures Penting?**
+1. **Data Privacy:** Private variables
+2. **Function Factories:** Generate functions dynamically
+3. **Currying:** Partial application
+4. **Memoization:** Cache results
+5. **Event Handlers:** Maintain state
+6. **Modules:** Encapsulation pattern
+
+---
+
+#### 🔬 Tahapan Logika: Understanding Closures
+
+**1. LEXICAL SCOPE - Scope Berdasarkan Posisi**
+
+```javascript
+// Algoritma Lexical Scoping:
+// 1. Inner function akses outer variable
+// 2. Scope chain: inner → outer → global
+// 3. Resolved saat compile time (bukan runtime)
+
+// CONTOH 1: Basic lexical scope
+// Algoritma:
+// 1. Define outer function dengan variable
+// 2. Define inner function
+// 3. Inner akses outer variable
+function outer() {
+    const nama = 'Budi';  // Outer variable
+    
+    function inner() {    // Inner function
+        console.log(nama); // Akses outer variable
+    }
+    
+    inner(); // 'Budi'
+}
+
+outer();
+
+// CONTOH 2: Nested scopes
+// Algoritma:
+// 1. Multiple levels of nesting
+// 2. Each level akses semua outer levels
+// 3. Shadowing jika nama sama
+let a = 1; // Global scope
+
+function level1() {
+    let a = 2; // Level 1 scope
+    
+    function level2() {
+        let a = 3; // Level 2 scope
+        
+        function level3() {
+            console.log(a); // 3 (closest scope)
+        }
+        
+        level3();
+    }
+    
+    level2();
+}
+
+level1();
+
+// CONTOH 3: Shadowing
+// Algoritma:
+// 1. Inner declare variable dengan nama sama
+// 2. Inner menggunakan inner variable
+// 3. Outer tetap menggunakan outer variable
+const nama = 'Global';
+
+function outer2() {
+    const nama = 'Outer';
+    
+    function inner2() {
+        const nama = 'Inner';
+        console.log(nama); // 'Inner' (closest)
+    }
+    
+    inner2();
+    console.log(nama); // 'Outer'
+}
+
+outer2();
+console.log(nama); // 'Global'
+```
+
+**2. CLOSURE BASIC - Function "Remember" Environment**
+
+```javascript
+// Algoritma Closure:
+// 1. Outer function return inner function
+// 2. Inner function referensi outer variable
+// 3. Outer function selesai
+// 4. Inner function masih bisa akses outer variable
+
+// CONTOH 1: Basic closure
+// Algoritma:
+// 1. Create outer function dengan counter
+// 2. Return inner function yang increment
+// 3. Assign return value ke variable
+// 4. Call variable sebagai function
+function createCounter() {
+    let count = 0; // Private variable
+    
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
+
+// count variable TIDAK bisa diakses langsung
+// console.log(count); // ReferenceError!
+
+// CONTOH 2: Multiple closures
+// Algoritma:
+// 1. Call outer function multiple times
+// 2. Setiap call buat closure baru
+// 3. Setiap closure punya scope sendiri
+const counter1 = createCounter();
+const counter2 = createCounter();
+
+console.log(counter1()); // 1 (counter1 punya count sendiri)
+console.log(counter2()); // 1 (counter2 punya count sendiri)
+console.log(counter1()); // 2
+console.log(counter2()); // 2
+
+// CONTOH 3: Closure dengan parameter
+// Algoritma:
+// 1. Outer function terima parameter
+// 2. Inner function gunakan parameter
+// 3. Parameter "tersimpan" di closure
+function multiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = multiplier(2);
+const triple = multiplier(3);
+
+console.log(double(5)); // 10
+console.log(triple(5)); // 15
+```
+
+**3. CLOSURE IN LOOP - Common Pitfall**
+
+```javascript
+// ❌ MASALAH: Closure dalam loop
+// Algoritma yang SALAH:
+// 1. Loop dengan var (function scope)
+// 2. Inner function referensi loop variable
+// 3. Semua function share variable yang sama
+// 4. Saat dipanggil, variable sudah final value
+
+// Problem dengan var
+for (var i = 0; i < 3; i++) {
+    setTimeout(function() {
+        console.log(i); // 3, 3, 3 (bukan 0, 1, 2!)
+    }, 100);
+}
+// Kenapa? Semua closure share variable i yang sama
+// Saat timeout dipanggil, loop sudah selesai, i = 3
+
+// ✅ SOLUSI 1: Gunakan let (block scope)
+// Algoritma:
+// 1. Gunakan let bukan var
+// 2. Setiap iteration punya i baru
+// 3. Setiap closure dapat i yang berbeda
+for (let i = 0; i < 3; i++) {
+    setTimeout(function() {
+        console.log(i); // 0, 1, 2 ✓
+    }, 100);
+}
+
+// ✅ SOLUSI 2: IIFE (Immediately Invoked Function Expression)
+// Algoritma:
+// 1. Wrap dalam IIFE
+// 2. Pass i sebagai parameter
+// 3. IIFE buat scope baru untuk setiap iteration
+for (var i = 0; i < 3; i++) {
+    (function(currentI) {
+        setTimeout(function() {
+            console.log(currentI); // 0, 1, 2 ✓
+        }, 100);
+    })(i);
+}
+
+// ✅ SOLUSI 3: forEach
+// Algoritma:
+// 1. Gunakan array method
+// 2. Callback dapat scope sendiri
+[0, 1, 2].forEach(function(i) {
+    setTimeout(function() {
+        console.log(i); // 0, 1, 2 ✓
+    }, 100);
+});
+```
+
+**4. MODULE PATTERN - Closure untuk Encapsulation**
+
+```javascript
+// Algoritma Module Pattern:
+// 1. IIFE create private scope
+// 2. Private variables di dalam IIFE
+// 3. Return object dengan public methods
+// 4. Public methods punya akses ke private via closure
+
+// CONTOH 1: Basic module
+// Algoritma:
+// 1. Wrap dalam IIFE
+// 2. Define private variables
+// 3. Return object dengan public API
+const CounterModule = (function() {
+    // Private variables
+    let count = 0;
+    const secret = '12345';
+    
+    // Private function
+    function log(message) {
+        console.log(`[Counter]: ${message}`);
+    }
+    
+    // Public API
+    return {
+        increment: function() {
+            count++;
+            log(`Count incremented to ${count}`);
+            return count;
+        },
+        
+        decrement: function() {
+            count--;
+            log(`Count decremented to ${count}`);
+            return count;
+        },
+        
+        getCount: function() {
+            return count;
+        }
+    };
+})();
+
+CounterModule.increment(); // 1
+CounterModule.increment(); // 2
+console.log(CounterModule.getCount()); // 2
+console.log(CounterModule.count); // undefined (private!)
+console.log(CounterModule.secret); // undefined (private!)
+
+// CONTOH 2: Module dengan parameters
+// Algoritma:
+// 1. IIFE terima configuration
+// 2. Create module dengan config
+// 3. Return customized module
+function createModule(config) {
+    let state = config.initialValue || 0;
+    
+    return {
+        get: function() {
+            return state;
+        },
+        set: function(value) {
+            state = value;
+        },
+        reset: function() {
+            state = config.initialValue || 0;
+        }
+    };
+}
+
+const module1 = createModule({ initialValue: 100 });
+const module2 = createModule({ initialValue: 200 });
+
+console.log(module1.get()); // 100
+console.log(module2.get()); // 200
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. Data Privacy (Private Variables):**
+
+```javascript
+// Algoritma Private Data:
+// 1. Wrap dalam closure
+// 2. Variable di luar jangkauan global
+// 3. Hanya accessible via public methods
+
+function createBankAccount(initialBalance) {
+    let balance = initialBalance; // Private!
+    
+    return {
+        deposit: function(amount) {
+            if (amount > 0) {
+                balance += amount;
+                return balance;
+            }
+            throw new Error('Invalid amount');
+        },
+        
+        withdraw: function(amount) {
+            if (amount > 0 && amount <= balance) {
+                balance -= amount;
+                return balance;
+            }
+            throw new Error('Insufficient funds');
+        },
+        
+        getBalance: function() {
+            return balance;
+        }
+    };
+}
+
+const account = createBankAccount(1000);
+account.deposit(500); // 1500
+account.withdraw(200); // 1300
+console.log(account.getBalance()); // 1300
+console.log(account.balance); // undefined (private!)
+```
+
+**2. Memoization (Cache Results):**
+
+```javascript
+// Algoritma Memoization:
+// 1. Create cache object
+// 2. Check cache sebelum compute
+// 3. Return cached jika ada
+// 4. Compute dan cache jika belum
+
+function memoize(fn) {
+    const cache = {};
+    
+    return function(...args) {
+        const key = JSON.stringify(args);
+        
+        // Check cache
+        if (cache[key]) {
+            console.log('Returning from cache');
+            return cache[key];
+        }
+        
+        // Compute and cache
+        console.log('Computing...');
+        const result = fn(...args);
+        cache[key] = result;
+        return result;
+    };
+}
+
+// Usage: Expensive function
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+const memoFib = memoize(fibonacci);
+console.log(memoFib(10)); // Computing... then result
+console.log(memoFib(10)); // Returning from cache!
+```
+
+**3. Function Currying:**
+
+```javascript
+// Algoritma Currying:
+// 1. Function return function
+// 2. Accumulate arguments
+// 3. Execute saat semua arguments ada
+
+function curry(fn) {
+    return function curried(...args) {
+        if (args.length >= fn.length) {
+            return fn.apply(this, args);
+        } else {
+            return function(...moreArgs) {
+                return curried.apply(this, args.concat(moreArgs));
+            };
+        }
+    };
+}
+
+// Usage
+function add(a, b, c) {
+    return a + b + c;
+}
+
+const curriedAdd = curry(add);
+console.log(curriedAdd(1)(2)(3)); // 6
+console.log(curriedAdd(1, 2)(3)); // 6
+console.log(curriedAdd(1)(2, 3)); // 6
+```
+
+**4. Event Handler dengan State:**
+
+```javascript
+// Algoritma Stateful Handler:
+// 1. Create handler dalam closure
+// 2. Handler akses outer state
+// 3. State persist across calls
+
+function createClickTracker() {
+    let clicks = 0;
+    let lastClickTime = null;
+    
+    return function(event) {
+        clicks++;
+        lastClickTime = new Date();
+        
+        console.log(`Click #${clicks}`);
+        console.log(`Last click: ${lastClickTime}`);
+    };
+}
+
+const trackClicks = createClickTracker();
+document.querySelector('#btn').addEventListener('click', trackClicks);
+// clicks dan lastClickTime tetap accessible!
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **Closure dalam loop dengan var** | Semua closure share variable sama | Gunakan let atau IIFE |
+| **Memory leaks** | Closure prevent garbage collection | Remove references saat tidak dipakai |
+| **this context hilang** | this tidak bind di closure | Gunakan arrow function atau bind |
+| **Overusing closures** | Memory overhead | Gunakan hanya saat perlu |
+| **Circular references** | Closure reference DOM element | Nullify references on cleanup |
+
+**Best Practices:**
+
+```javascript
+// 1. Use let/const untuk block scope
+// ✅ Good
+for (let i = 0; i < 5; i++) {
+    setTimeout(() => console.log(i), 100);
+}
+
+// 2. Clean up closures
+// ✅ Good
+function setup() {
+    const handler = () => { /* ... */ };
+    element.addEventListener('click', handler);
+    
+    // Cleanup function
+    return () => {
+        element.removeEventListener('click', handler);
+    };
+}
+
+// 3. Avoid closures in tight loops
+// ❌ Bad: Create closure setiap iteration
+items.forEach(item => {
+    item.handler = () => process(item);
+});
+
+// ✅ Good: Share handler
+function createHandler(item) {
+    return () => process(item);
+}
+// Or use data attributes
+```
+
+---
+
+#### 📊 Memory Considerations
+
+| Pattern | Memory Impact | Recommendation |
+|---------|--------------|----------------|
+| Simple closure | Low | Safe to use |
+| Closure in loop | Medium | Use let/const |
+| Closure with DOM | High | Clean up on remove |
+| Nested closures | Medium-High | Use judiciously |
+| Circular reference | Very High | Avoid or cleanup |
+
+---
+
+*(Catatan: Karena file sudah sangat panjang, saya akan menambahkan materi remaining 13 topik secara bertahap. Apakah Anda ingin saya lanjutkan dengan topik berikutnya?)*
+
+---
+
+### 🔴 3. this Keyword & Context Binding
+
+#### 📖 Konsep Dasar: Apa itu `this`?
+
+**`this`** adalah keyword special yang mereferensikan **context** di mana function dipanggil. Jika function adalah **pekerja**, maka `this` adalah **lingkungan/tempat** di mana pekerja tersebut bekerja.
+
+**4 Aturan Binding `this`:**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  1. DEFAULT BINDING                                     │
+│     - Function dipanggil biasa (tidak ada context)      │
+│     - this = global object (window/browser)             │
+│     - Strict mode: this = undefined                     │
+└─────────────────────────────────────────────────────────┘
+                          ↓
+┌─────────────────────────────────────────────────────────┐
+│  2. IMPLICIT BINDING                                    │
+│     - Function dipanggil sebagai method object          │
+│     - this = object yang memanggil function             │
+└─────────────────────────────────────────────────────────┘
+                          ↓
+┌─────────────────────────────────────────────────────────┐
+│  3. EXPLICIT BINDING                                    │
+│     - Function dipanggil dengan call/apply/bind         │
+│     - this = object yang di-pass sebagai argument       │
+└─────────────────────────────────────────────────────────┘
+                          ↓
+┌─────────────────────────────────────────────────────────┐
+│  4. NEW BINDING                                         │
+│     - Function dipanggil dengan keyword new             │
+│     - this = object baru yang dibuat                    │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Mengapa `this` Penting?**
+1. **Method Context:** Akses properties dalam object method
+2. **Event Handlers:** Reference element yang trigger event
+3. **Constructor Functions:** Initialize new objects
+4. **Class Methods:** Access instance properties
+5. **Function Borrowing:** Use method dari object lain
+
+---
+
+#### 🔬 Tahapan Logika: Memahami `this`
+
+**1. DEFAULT BINDING - Function Biasa**
+
+```javascript
+// Algoritma Default Binding:
+// 1. Function dipanggil tanpa context
+// 2. Tidak ada object yang memanggil
+// 3. this = global object (window)
+// 4. Strict mode: this = undefined
+
+// NON-STRICT MODE
+// Algoritma:
+// 1. Define function di global scope
+// 2. Call function tanpa object
+// 3. this reference ke window
+function showThis() {
+    console.log(this); // window object
+}
+
+showThis();
+
+// STRICT MODE
+// Algoritma:
+// 1. 'use strict' di awal
+// 2. Function dipanggil biasa
+// 3. this = undefined (bukan window)
+function showThisStrict() {
+    'use strict';
+    console.log(this); // undefined
+}
+
+showThisStrict();
+
+// ARROW FUNCTION (special case)
+// Algoritma:
+// 1. Arrow function tidak punya this sendiri
+// 2. this lexical dari outer scope
+// 3. this tidak bisa di-rebind
+const arrowThis = () => {
+    console.log(this); // this dari outer scope
+};
+
+arrowThis();
+```
+
+**2. IMPLICIT BINDING - Method Object**
+
+```javascript
+// Algoritma Implicit Binding:
+// 1. Function sebagai property object
+// 2. Dipanggil dengan object.method()
+// 3. this = object yang memanggil
+
+// CONTOH 1: Basic method
+// Algoritma:
+// 1. Define object dengan method
+// 2. Call method dengan dot notation
+// 3. this = object
+const person = {
+    name: 'Budi',
+    greet: function() {
+        console.log(`Hello, I'm ${this.name}`);
+    }
+};
+
+person.greet(); // 'Hello, I'm Budi'
+// this = person
+
+// CONTOH 2: Nested object
+// Algoritma:
+// 1. Method di nested object
+// 2. this = closest calling object
+const company = {
+    name: 'TechCorp',
+    employee: {
+        name: 'Budi',
+        getName: function() {
+            console.log(this.name);
+        }
+    }
+};
+
+company.employee.getName(); // 'Budi'
+// this = employee (bukan company)
+
+// CONTOH 3: Lost context
+// Algoritma:
+// 1. Extract method ke variable
+// 2. Call variable sebagai function
+// 3. this hilang (default binding)
+const greet = person.greet;
+greet(); // 'Hello, I'm undefined'
+// this = window (bukan person)!
+
+// CONTOH 4: Method chaining
+// Algoritma:
+// 1. Method return this
+// 2. Chain multiple methods
+// 3. this tetap reference object yang sama
+const calculator = {
+    result: 0,
+    
+    add: function(n) {
+        this.result += n;
+        return this; // Return this untuk chain
+    },
+    
+    multiply: function(n) {
+        this.result *= n;
+        return this;
+    }
+};
+
+calculator.add(5).multiply(2).add(10);
+console.log(calculator.result); // 20
+```
+
+**3. EXPLICIT BINDING - call, apply, bind**
+
+```javascript
+// Algoritma Explicit Binding:
+// 1. Panggil function dengan call/apply/bind
+// 2. Pass object sebagai argument pertama
+// 3. this = object yang di-pass
+
+// CALL - Invoke immediately dengan arguments
+// Algoritma:
+// 1. function.call(thisArg, arg1, arg2, ...)
+// 2. this = thisArg
+// 3. Arguments passed individually
+// 4. Execute immediately
+function greet(greeting, punctuation) {
+    console.log(`${greeting}, I'm ${this.name}${punctuation}`);
+}
+
+const person1 = { name: 'Budi' };
+const person2 = { name: 'Siti' };
+
+greet.call(person1, 'Hello', '!');     // 'Hello, I'm Budi!'
+greet.call(person2, 'Hi', '.');        // 'Hi, I'm Siti.'
+
+// APPLY - Invoke immediately dengan array arguments
+// Algoritma:
+// 1. function.apply(thisArg, [argsArray])
+// 2. this = thisArg
+// 3. Arguments passed sebagai array
+// 4. Execute immediately
+greet.apply(person1, ['Hello', '!']);  // 'Hello, I'm Budi!'
+greet.apply(person2, ['Hi', '.']);     // 'Hi, I'm Siti.'
+
+// APLIKASI: Math.max dengan array
+const numbers = [5, 2, 8, 1, 9];
+const max = Math.max.apply(null, numbers); // 9
+// Equivalent: Math.max(...numbers)
+
+// BIND - Create new function dengan bound this
+// Algoritma:
+// 1. function.bind(thisArg)
+// 2. Return NEW function
+// 3. this permanently bound
+// 4. Execute later
+
+const greetPerson1 = greet.bind(person1);
+greetPerson1('Hello', '!'); // 'Hello, I'm Budi!'
+
+// Bind dengan partial application
+// Algoritma:
+// 1. Bind some arguments
+// 2. Return function yang tunggu sisa arguments
+// 3. Currying pattern
+
+function multiply(a, b, c) {
+    return a * b * c;
+}
+
+const double = multiply.bind(null, 2); // Partial application
+console.log(double(3, 4)); // 24 (2 * 3 * 4)
+
+const triple = multiply.bind(null, 3);
+console.log(triple(4, 5)); // 60 (3 * 4 * 5)
+```
+
+**4. NEW BINDING - Constructor**
+
+```javascript
+// Algoritma New Binding:
+// 1. Call function dengan keyword new
+// 2. Create new empty object
+// 3. this = new object
+// 4. Return this (implicitly)
+
+// CONSTRUCTOR FUNCTION
+// Algoritma:
+// 1. Define function dengan capital letter
+// 2. Set properties dengan this
+// 3. Call dengan new keyword
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.greet = function() {
+        console.log(`Hello, I'm ${this.name}`);
+    };
+}
+
+const budi = new Person('Budi', 25);
+const siti = new Person('Siti', 30);
+
+budi.greet(); // 'Hello, I'm Budi'
+siti.greet(); // 'Hello, I'm Siti'
+
+// WHAT HAPPENS WITH new:
+// Algoritma internal:
+// 1. const obj = {};
+// 2. obj.__proto__ = Constructor.prototype;
+// 3. Constructor.call(obj, ...args);
+// 4. return obj;
+
+// MANUAL IMPLEMENTATION
+function myNew(Constructor, ...args) {
+    // 1. Create empty object
+    const obj = {};
+    
+    // 2. Set prototype
+    Object.setPrototypeOf(obj, Constructor.prototype);
+    
+    // 3. Call constructor dengan this = obj
+    const result = Constructor.apply(obj, args);
+    
+    // 4. Return result or obj
+    return result || obj;
+}
+
+const budi2 = myNew(Person, 'Budi', 25);
+console.log(budi2.name); // 'Budi'
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **this dalam callback** | this context hilang | Gunakan arrow function atau bind |
+| **this dalam arrow function** | Arrow tidak punya this | Arrow inherit this dari outer |
+| **Method extraction** | this hilang saat extract | Bind this atau gunakan arrow |
+| **Event handler this** | this = element, bukan object | Bind atau arrow function |
+| **Constructor tanpa new** | this = global object | Selalu gunakan new |
+
+**Best Practices:**
+
+```javascript
+// 1. Use arrow functions untuk callbacks
+// ✅ Good
+const obj = {
+    name: 'Budi',
+    items: [1, 2, 3],
+    
+    // Arrow function inherit this dari outer
+    process: function() {
+        this.items.forEach(item => {
+            console.log(this.name, item); // this = obj
+        });
+    }
+};
+
+// ❌ Bad
+const obj2 = {
+    name: 'Budi',
+    items: [1, 2, 3],
+    
+    process: function() {
+        this.items.forEach(function(item) {
+            console.log(this.name, item); // this = undefined!
+        });
+    }
+};
+
+// 2. Bind this di constructor
+// ✅ Good
+function Counter() {
+    this.count = 0;
+    
+    // Bind di constructor
+    this.increment = this.increment.bind(this);
+}
+
+Counter.prototype.increment = function() {
+    this.count++;
+};
+
+// 3. Use class syntax (modern)
+// ✅ Good
+class Counter {
+    constructor() {
+        this.count = 0;
+    }
+    
+    // Arrow function sebagai class property
+    increment = () => {
+        this.count++;
+    };
+}
+
+// 4. Explicit bind untuk event handlers
+// ✅ Good
+class Button {
+    constructor(element) {
+        this.element = element;
+        this.clicks = 0;
+        
+        // Bind this
+        this.handleClick = this.handleClick.bind(this);
+        this.element.addEventListener('click', this.handleClick);
+    }
+    
+    handleClick() {
+        this.clicks++;
+        console.log(this.clicks);
+    }
+}
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. Event Handler dengan Context:**
+
+```javascript
+// Algoritma:
+// 1. Class dengan method handler
+// 2. Bind this di constructor
+// 3. Handler akses instance properties
+
+class Modal {
+    constructor(element) {
+        this.element = element;
+        this.isOpen = false;
+        
+        // Bind this untuk event handlers
+        this.toggle = this.toggle.bind(this);
+        this.closeOnEscape = this.closeOnEscape.bind(this);
+        
+        // Add event listeners
+        this.element.querySelector('.toggle').addEventListener('click', this.toggle);
+        document.addEventListener('keydown', this.closeOnEscape);
+    }
+    
+    toggle() {
+        this.isOpen = !this.isOpen;
+        this.element.classList.toggle('open', this.isOpen);
+    }
+    
+    closeOnEscape(event) {
+        if (event.key === 'Escape' && this.isOpen) {
+            this.toggle();
+        }
+    }
+    
+    destroy() {
+        // Cleanup
+        document.removeEventListener('keydown', this.closeOnEscape);
+    }
+}
+```
+
+**2. Function Borrowing:**
+
+```javascript
+// Algoritma:
+// 1. Method dari object A
+// 2. Dipakai di object B dengan call/apply
+// 3. Reuse code tanpa duplication
+
+const arrayLike = {
+    0: 'a',
+    1: 'b',
+    2: 'c',
+    length: 3
+};
+
+// Borrow Array.prototype.slice
+// Algoritma:
+// 1. Access Array.prototype.slice
+// 2. Call dengan arrayLike sebagai this
+// 3. Return array baru
+const realArray = Array.prototype.slice.call(arrayLike);
+console.log(realArray); // ['a', 'b', 'c']
+
+// Modern equivalent
+const realArray2 = Array.from(arrayLike);
+```
+
+**3. Partial Application:**
+
+```javascript
+// Algoritma:
+// 1. Bind some arguments
+// 2. Return function untuk sisa arguments
+// 3. Reuse dengan preset arguments
+
+// Logging utility dengan preset level
+function log(level, message, timestamp) {
+    const time = timestamp ? new Date().toISOString() : '';
+    console.log(`[${level}] ${message} ${time}`);
+}
+
+// Create specialized loggers
+const info = log.bind(null, 'INFO');
+const error = log.bind(null, 'ERROR');
+const warn = log.bind(null, 'WARN');
+
+info('Application started', true);
+// [INFO] Application started 2024-01-01T00:00:00.000Z
+
+error('Something went wrong', true);
+// [ERROR] Something went wrong 2024-01-01T00:00:00.000Z
+```
+
+---
+
+#### 📊 this Binding Priority
+
+| Binding Type | Priority | Example |
+|--------------|----------|---------|
+| new binding | 1 (highest) | `new Func()` |
+| explicit binding | 2 | `call/apply/bind` |
+| implicit binding | 3 | `obj.method()` |
+| default binding | 4 (lowest) | `func()` |
+
+**Arrow Function Exception:**
+- Arrow functions **TIDAK** punya this sendiri
+- this lexical dari outer scope
+- Cannot be rebound
+
+---
+
+### ⚔️ Latihan Bertahap: Closures & Scope (LEVEL 1-5)
+
+> **🎯 Misi:** Kuasai closures dan scope dengan 5 level tantangan!
+
+---
+
+#### 🟢 LEVEL 1: Counter Sederhana
+
+**📖 Konsep:** Closure memungkinkan variable tetap accessible meskipun outer function selesai.
+
+**🔬 Tahapan Logika:**
+1. Buat outer function dengan variable private
+2. Return inner function yang mengakses variable tersebut
+3. Setiap call ke inner function mengakses variable yang sama
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Buat counter yang increment
+function buatCounter() {
+    // TODO: Buat variable count = 0
+    // TODO: Return function yang increment count
+    // TODO: Return nilai count setelah increment
+}
+
+// SOAL 2: Buat counter dengan reset
+function buatCounterDenganReset() {
+    // TODO: Buat variable count = 0
+    // TODO: Return object dengan method:
+    //   - increment(): tambah 1
+    //   - decrement(): kurang 1
+    //   - reset(): set ke 0
+    //   - getCount(): return count saat ini
+}
+
+// SOAL 3: Counter dengan step custom
+function buatCounterDenganStep(step = 1) {
+    // TODO: Buat variable count = 0
+    // TODO: Return function yang increment dengan step
+    // TODO: Step tidak bisa diubah dari luar
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+function buatCounter() {
+    let count = 0;
+
+    return () => {
+        count++;
+        return count;
+    };
+}
+
+// Penggunaan:
+const counter = buatCounter();
+counter(); // 1
+counter(); // 2
+counter(); // 3
+
+// SOLUSI 2
+function buatCounterDenganReset() {
+    let count = 0;
+
+    return {
+        increment: () => ++count,
+        decrement: () => --count,
+        reset: () => { count = 0; },
+        getCount: () => count,
+    };
+}
+
+// SOLUSI 3
+function buatCounterDenganStep(step = 1) {
+    let count = 0;
+
+    return () => {
+        count += step;
+        return count;
+    };
+}
+```
+
+---
+
+#### 🟡 LEVEL 2: Private Variable & Method
+
+**📖 Konsep:** Closure memungkinkan encapsulation data seperti private members di OOP.
+
+**🔬 Tahapan Logika:**
+1. Buat variable di outer scope (private)
+2. Buat function public yang bisa akses variable private
+3. Return object dengan method public
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Buat akun bank dengan saldo private
+function buatAkunBank(saldoAwal) {
+    // TODO: Buat variable private saldo
+    // TODO: Return object dengan method:
+    //   - cekSaldo(): return saldo
+    //   - menabung(jumlah): tambah saldo
+    //   - tarik(jumlah): kurang saldo (jika cukup)
+}
+
+// SOAL 2: Buat user dengan data private
+function buatUser(nama, email) {
+    // TODO: Simpan nama dan email sebagai private
+    // TODO: Return object dengan method:
+    //   - getNama(): return nama
+    //   - getEmail(): return email
+    //   - updateEmail(emailBaru): update email
+}
+
+// SOAL 3: Buat shopping cart
+function buatShoppingCart() {
+    // TODO: Buat array items sebagai private
+    // TODO: Return object dengan method:
+    //   - addItem(nama, harga, qty)
+    //   - removeItem(nama)
+    //   - getTotal(): hitung total harga
+    //   - getItemCount(): hitung total item
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+function buatAkunBank(saldoAwal) {
+    let saldo = saldoAwal;
+
+    return {
+        cekSaldo: () => saldo,
+
+        menabung: (jumlah) => {
+            if (jumlah > 0) {
+                saldo += jumlah;
+                return saldo;
+            }
+            return "Jumlah harus positif";
+        },
+
+        tarik: (jumlah) => {
+            if (jumlah > 0 && saldo >= jumlah) {
+                saldo -= jumlah;
+                return saldo;
+            }
+            return "Saldo tidak mencukupi";
+        },
+    };
+}
+
+// SOLUSI 2
+function buatUser(nama, email) {
+    let userData = { nama, email };
+
+    return {
+        getNama: () => userData.nama,
+        getEmail: () => userData.email,
+        updateEmail: (emailBaru) => {
+            userData.email = emailBaru;
+        },
+    };
+}
+
+// SOLUSI 3
+function buatShoppingCart() {
+    let items = [];
+
+    return {
+        addItem: (nama, harga, qty) => {
+            items.push({ nama, harga, qty });
+        },
+
+        removeItem: (nama) => {
+            items = items.filter(item => item.nama !== nama);
+        },
+
+        getTotal: () => {
+            return items.reduce((total, item) => total + (item.harga * item.qty), 0);
+        },
+
+        getItemCount: () => {
+            return items.reduce((total, item) => total + item.qty, 0);
+        },
+    };
+}
+```
+
+---
+
+#### 🟠 LEVEL 3: Loop dengan Closure (Perbaiki Bug!)
+
+**📖 Konsep:** Understanding hoisting dan block scope dengan let vs var.
+
+**⚠️ BUG KLASIK:**
+
+```javascript
+// CODE YANG SALAH!
+for (var i = 0; i < 5; i++) {
+    setTimeout(() => {
+        console.log(`Angka ${i}`);
+    }, i * 1000);
+}
+// Output: "Angka 5" sebanyak 5 kali! (SALAH)
+
+// MENGAPA?
+// Karena var adalah function scope
+// Saat setTimeout dijalankan, loop sudah selesai
+// i sudah bernilai 5 di semua callback
+```
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Perbaiki dengan let
+function loopDenganLet() {
+    // TODO: Gunakan let instead of var
+    // TODO: Log angka 0-4 dengan delay 1 detik
+}
+
+// SOAL 2: Perbaiki dengan IIFE
+function loopDenganIIFE() {
+    // TODO: Gunakan var tapi wrap dengan IIFE
+    // TODO: Pass i sebagai parameter ke IIFE
+}
+
+// SOAL 3: Buat sequential execution
+function jalankanSequential() {
+    // TODO: Jalankan 5 fungsi dengan delay 1 detik
+    // TODO: Setiap fungsi log "Task 1", "Task 2", dst
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1: Dengan let (block scope)
+function loopDenganLet() {
+    for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+            console.log(`Angka ${i}`);
+        }, i * 1000);
+    }
+}
+// Output: Angka 0, Angka 1, Angka 2, Angka 3, Angka 4
+
+// SOLUSI 2: Dengan IIFE
+function loopDenganIIFE() {
+    for (var i = 0; i < 5; i++) {
+        ((angka) => {
+            setTimeout(() => {
+                console.log(`Angka ${angka}`);
+            }, angka * 1000);
+        })(i);
+    }
+}
+
+// SOLUSI 3: Sequential execution
+function jalankanSequential() {
+    for (let i = 1; i <= 5; i++) {
+        setTimeout(() => {
+            console.log(`Task ${i}`);
+        }, i * 1000);
+    }
+}
+```
+
+---
+
+#### 🔴 LEVEL 4: Memoization & Function Factories
+
+**📖 Konsep:** Menggunakan closure untuk cache dan generate functions.
+
+**🔬 Tahapan Logika:**
+1. Buat cache object di outer scope
+2. Return function yang cek cache sebelum eksekusi
+3. Simpan hasil di cache untuk akses berikutnya
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Buat memoize untuk fungsi berat
+function memoize(fn) {
+    // TODO: Buat cache object
+    // TODO: Return function yang:
+    //   - Generate key dari arguments
+    //   - Cek cache, return jika ada
+    //   - Jika tidak, call fn dan simpan di cache
+}
+
+// SOAL 2: Buat fungsi fibonacci dengan memoization
+function fibonacciMemo() {
+    // TODO: Buat cache untuk hasil fibonacci
+    // TODO: Return function yang hitung fibonacci(n)
+    // TODO: Gunakan cache untuk optimasi
+}
+
+// SOAL 3: Buat function factory untuk calculator
+function buatOperator(operator) {
+    // TODO: Return function yang melakukan operasi
+    //   - 'add': return (a, b) => a + b
+    //   - 'subtract': return (a, b) => a - b
+    //   - 'multiply': return (a, b) => a * b
+    //   - 'divide': return (a, b) => a / b
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+function memoize(fn) {
+    const cache = {};
+
+    return (...args) => {
+        const key = JSON.stringify(args);
+
+        if (cache[key]) {
+            console.log(`Mengambil dari cache: ${key}`);
+            return cache[key];
+        }
+
+        const result = fn(...args);
+        cache[key] = result;
+        console.log(`Menghitung dan menyimpan di cache: ${key}`);
+        return result;
+    };
+}
+
+// SOLUSI 2
+function fibonacciMemo() {
+    const cache = {};
+
+    const fib = (n) => {
+        if (n <= 1) return n;
+
+        if (cache[n]) {
+            return cache[n];
+        }
+
+        cache[n] = fib(n - 1) + fib(n - 2);
+        return cache[n];
+    };
+
+    return fib;
+}
+
+// SOLUSI 3
+function buatOperator(operator) {
+    switch (operator) {
+        case 'add':
+            return (a, b) => a + b;
+        case 'subtract':
+            return (a, b) => a - b;
+        case 'multiply':
+            return (a, b) => a * b;
+        case 'divide':
+            return (a, b) => a / b;
+        default:
+            return (a, b) => 0;
+    }
+}
+
+// Penggunaan:
+const add = buatOperator('add');
+add(5, 3); // 8
+```
+
+---
+
+#### 🟣 LEVEL 5: Module Pattern
+
+**📖 Konsep:** Membangun module dengan public/private API menggunakan IIFE.
+
+**⚔️ Tantangan:**
+
+```javascript
+// PROYEK 1: Module Kalkulator
+const ModuleKalkulator = (() => {
+    // TODO: Buat private variable: history, lastResult
+    // TODO: Buat private function: addToHistory
+    // TODO: Return object dengan public methods:
+    //   - add, subtract, multiply, divide
+    //   - getLastResult, getHistory, clearHistory
+})();
+
+// PROYEK 2: Module API Client
+const ModuleAPIClient = (() => {
+    // TODO: Buat private variable: baseURL, token
+    // TODO: Return object dengan methods:
+    //   - setBaseURL(url)
+    //   - setToken(token)
+    //   - get(endpoint)
+    //   - post(endpoint, data)
+})();
+
+// PROYEK 3: Module Event Bus
+const ModuleEventBus = (() => {
+    // TODO: Buat private variable: events (object)
+    // TODO: Return object dengan methods:
+    //   - on(event, callback): subscribe
+    //   - off(event, callback): unsubscribe
+    //   - emit(event, data): publish
+})();
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1: Module Kalkulator
+const ModuleKalkulator = (() => {
+    let history = [];
+    let lastResult = 0;
+
+    const addToHistory = (operation, result) => {
+        history.push({ operation, result, timestamp: new Date() });
+    };
+
+    return {
+        add: (a, b) => {
+            const result = a + b;
+            lastResult = result;
+            addToHistory(`${a} + ${b}`, result);
+            return result;
+        },
+
+        subtract: (a, b) => {
+            const result = a - b;
+            lastResult = result;
+            addToHistory(`${a} - ${b}`, result);
+            return result;
+        },
+
+        multiply: (a, b) => {
+            const result = a * b;
+            lastResult = result;
+            addToHistory(`${a} × ${b}`, result);
+            return result;
+        },
+
+        divide: (a, b) => {
+            if (b === 0) return "Error: Division by zero";
+            const result = a / b;
+            lastResult = result;
+            addToHistory(`${a} ÷ ${b}`, result);
+            return result;
+        },
+
+        getLastResult: () => lastResult,
+        getHistory: () => [...history],
+        clearHistory: () => {
+            history = [];
+            lastResult = 0;
+        },
+    };
+})();
+
+// SOLUSI 3: Module Event Bus
+const ModuleEventBus = (() => {
+    const events = {};
+
+    return {
+        on: (event, callback) => {
+            if (!events[event]) {
+                events[event] = [];
+            }
+            events[event].push(callback);
+        },
+
+        off: (event, callback) => {
+            if (events[event]) {
+                events[event] = events[event].filter(cb => cb !== callback);
+            }
+        },
+
+        emit: (event, data) => {
+            if (events[event]) {
+                events[event].forEach(callback => callback(data));
+            }
+        },
+    };
+})();
+```
+
+---
+
+### 🧠 Latihan Logika: Refleksi Closures
+
+> **🎯 Pertanyaan Pemahaman:**
+>
+> 1. Apa itu lexical scoping? Bagaimana berbeda dengan dynamic scoping?
+> 2. Mengapa closure bisa mengakses variable outer function setelah function selesai?
+> 3. Apa perbedaan var, let, dan const dalam konteks closure?
+> 4. Kapan menggunakan module pattern vs class?
+> 5. Apa keuntungan dan kerugian memoization?
+
+---
+
+### 🔴 4. ES6+ Modern Features
+
+#### 📖 Konsep Dasar: Modern JavaScript
+
+**ES6 (ECMAScript 2015)** adalah update terbesar JavaScript sejak 1997. Jika JavaScript klasik adalah **telepon tombol**, ES6+ adalah **smartphone** dengan semua fitur modern.
+
+**Mengapa ES6+ Penting?**
+1. **Cleaner Code:** Less boilerplate, more readable
+2. **Better Patterns:** Destructuring, spread, modules
+3. **Modern Standard:** Semua framework pakai ES6+
+4. **Productivity:** Write less, do more
+
+---
+
+#### 🔬 Tahapan Logika: ES6+ Features
+
+**1. DESTRUCTURING - Bongkar Data**
+
+```javascript
+// Algoritma Destructuring:
+// 1. Pattern matching di kiri
+// 2. Extract values dari object/array
+// 3. Assign ke variables
+
+// ARRAY DESTRUCTURING
+// Algoritma:
+// 1. [var1, var2] = array
+// 2. Extract by position
+// 3. Skip dengan comma
+
+const colors = ['red', 'green', 'blue'];
+
+// Old way
+const first = colors[0];
+const second = colors[1];
+
+// ES6 destructuring
+const [red, green] = colors;
+console.log(red, green); // 'red', 'green'
+
+// Skip elements
+const [, , blue] = colors;
+console.log(blue); // 'blue'
+
+// Rest pattern
+const [primary, ...rest] = colors;
+console.log(rest); // ['green', 'blue']
+
+// Swap variables
+let a = 1, b = 2;
+[a, b] = [b, a];
+console.log(a, b); // 2, 1
+
+// OBJECT DESTRUCTURING
+// Algoritma:
+// 1. {key1, key2} = object
+// 2. Extract by key name
+// 3. Rename dengan :
+
+const user = {
+    id: 1,
+    name: 'Budi',
+    email: 'budi@email.com',
+    address: {
+        city: 'Jakarta',
+        country: 'Indonesia'
+    }
+};
+
+// Basic destructuring
+const { name, email } = user;
+console.log(name, email); // 'Budi', 'budi@email.com'
+
+// Rename variables
+const { name: userName, id: userId } = user;
+console.log(userName, userId); // 'Budi', 1
+
+// Default values
+const { age = 25 } = user;
+console.log(age); // 25 (default)
+
+// Nested destructuring
+const { address: { city } } = user;
+console.log(city); // 'Jakarta'
+
+// FUNCTION PARAMETERS DESTRUCTURING
+// Algoritma:
+// 1. Destructure di parameter
+// 2. Direct access to properties
+// 3. Cleaner function signature
+
+// Old way
+function printUser(user) {
+    console.log(user.name);
+    console.log(user.email);
+}
+
+// ES6 destructuring
+function printUser({ name, email }) {
+    console.log(name, email);
+}
+
+// With default values
+function greet({ name = 'Guest', role = 'user' }) {
+    console.log(`Hello ${name}, ${role}`);
+}
+
+greet({ name: 'Budi' }); // 'Hello Budi, user'
+```
+
+**2. SPREAD/REST OPERATOR - ...syntax**
+
+```javascript
+// Algoritma Spread/Rest:
+// 1. ... перед array/object
+// 2. Spread: Expand elements
+// 3. Rest: Collect elements
+
+// SPREAD FOR ARRAYS
+// Algoritma:
+// 1. ...array expand elements
+// 2. Use in array literal
+// 3. Use in function call
+
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+// Combine arrays
+const combined = [...arr1, ...arr2];
+console.log(combined); // [1, 2, 3, 4, 5, 6]
+
+// Copy array
+const copy = [...arr1];
+console.log(copy); // [1, 2, 3]
+
+// Function arguments
+function sum(a, b, c) {
+    return a + b + c;
+}
+
+const numbers = [1, 2, 3];
+console.log(sum(...numbers)); // 6 (equivalent to sum(1,2,3))
+
+// SPREAD FOR OBJECTS
+// Algoritma:
+// 1. ...object expand properties
+// 2. Later properties override earlier
+// 3. Shallow copy only
+
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+
+// Merge objects
+const merged = { ...obj1, ...obj2 };
+console.log(merged); // { a: 1, b: 2, c: 3, d: 4 }
+
+// Override properties
+const updated = { ...obj1, b: 99 };
+console.log(updated); // { a: 1, b: 99 }
+
+// REST OPERATOR
+// Algoritma:
+// 1. ...var di akhir pattern
+// 2. Collect remaining elements
+// 3. Result is array
+
+// Array rest
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(rest); // [3, 4, 5]
+
+// Object rest
+const { a, b, ...rest } = { a: 1, b: 2, c: 3, d: 4 };
+console.log(rest); // { c: 3, d: 4 }
+
+// Function rest parameters
+// Algoritma:
+// 1. ...args di parameter terakhir
+// 2. Collect all remaining args
+// 3. args adalah array
+
+function multiply(multiplier, ...numbers) {
+    return numbers.map(n => n * multiplier);
+}
+
+console.log(multiply(2, 1, 2, 3)); // [2, 4, 6]
+```
+
+**3. OPTIONAL CHAINING - ?. operator**
+
+```javascript
+// Algoritma Optional Chaining:
+// 1. obj?.prop access
+// 2. Short-circuit jika null/undefined
+// 3. Return undefined bukan error
+
+// OLD WAY: Multiple checks
+// Algoritma:
+// 1. Check each level
+// 2. Nested if statements
+// 3. Verbose code
+
+let street = user && user.address && user.address.street;
+
+// ES6: Optional chaining
+// Algoritma:
+// 1. ?. check null/undefined
+// 2. Short-circuit jika null
+// 3. Return undefined
+
+let street = user?.address?.street;
+
+// OPTIONAL CHAINING VARIANTS
+// Algoritma:
+// 1. obj?.prop - property access
+// 2. obj?.[expr] - dynamic property
+// 3. obj?.method() - method call
+// 4. arr?.[0] - array index
+
+// Property access
+console.log(user?.name); // undefined jika user null
+
+// Dynamic property
+const key = 'email';
+console.log(user?.[key]); // undefined jika user null
+
+// Method call
+console.log(user?.getName?.()); // undefined jika method tidak ada
+
+// Array access
+console.log(items?.[0]); // undefined jika items null
+
+// NULLISH COALESCING - ?? operator
+// Algoritma:
+// 1. left ?? right
+// 2. Return left jika tidak null/undefined
+// 3. Return right jika left null/undefined
+
+const userName = user.name ?? 'Guest';
+// Return user.name jika ada, 'Guest' jika null/undefined
+
+// VS || operator
+// Algoritma:
+// 1. || check falsy (0, '', false, null, undefined)
+// 2. ?? check only null/undefined
+
+const count = 0;
+console.log(count || 10); // 10 (0 is falsy)
+console.log(count ?? 10); // 0 (0 is not null/undefined)
+```
+
+**4. ARROW FUNCTIONS - () => {}**
+
+```javascript
+// Algoritma Arrow Function:
+// 1. (params) => expression
+// 2. No function keyword
+// 3. Implicit return untuk expression
+// 4. this lexical dari outer
+
+// BASIC SYNTAX
+// Algoritma:
+// 1. Single parameter: no parentheses
+// 2. Multiple parameters: with parentheses
+// 3. No parameters: empty parentheses
+
+// Regular function
+function add(a, b) {
+    return a + b;
+}
+
+// Arrow function
+const add = (a, b) => a + b;
+
+// Single parameter (no parentheses)
+const double = n => n * 2;
+
+// No parameters
+const sayHi = () => console.log('Hi');
+
+// Return object (wrap in parentheses)
+const getUser = () => ({ name: 'Budi', age: 25 });
+
+// THIS BEHAVIOR
+// Algoritma:
+// 1. Arrow tidak punya this sendiri
+// 2. this dari outer lexical scope
+// 3. Cannot use as method
+
+// ❌ Bad: Arrow as method
+const obj = {
+    name: 'Budi',
+    greet: () => {
+        console.log(`Hello ${this.name}`); // this = window!
+    }
+};
+
+obj.greet(); // 'Hello undefined'
+
+// ✅ Good: Regular function as method
+const obj2 = {
+    name: 'Budi',
+    greet: function() {
+        console.log(`Hello ${this.name}`);
+    }
+};
+
+obj2.greet(); // 'Hello Budi'
+
+// ✅ Good: Arrow in callback
+const obj3 = {
+    name: 'Budi',
+    items: [1, 2, 3],
+    
+    process() {
+        // Arrow inherit this dari process
+        this.items.forEach(item => {
+            console.log(this.name, item);
+        });
+    }
+};
+
+obj3.process(); // 'Budi' 1, 'Budi' 2, 'Budi' 3
+```
+
+**5. TEMPLATE LITERALS - `${}`**
+
+```javascript
+// Algoritma Template Literals:
+// 1. Backticks `` bukan quotes
+// 2. ${expression} untuk interpolation
+// 3. Multi-line support
+
+// STRING INTERPOLATION
+// Algoritma:
+// 1. `${variable}` insert value
+// 2. Expression evaluated
+// 3. Convert to string
+
+const name = 'Budi';
+const age = 25;
+
+// Old way
+const greeting = 'Hello, my name is ' + name + ' and I am ' + age + ' years old';
+
+// Template literal
+const greeting = `Hello, my name is ${name} and I am ${age} years old`;
+
+// EXPRESSIONS
+// Algoritma:
+// 1. ${any expression}
+// 2. Evaluated at runtime
+// 3. Result converted to string
+
+const price = 100;
+const tax = 0.1;
+
+console.log(`Total: Rp ${price * (1 + tax)}`);
+console.log(`Price is ${price > 50 ? 'expensive' : 'cheap'}`);
+
+// MULTI-LINE STRINGS
+// Algoritma:
+// 1. Backticks preserve newlines
+// 2. No need for \n
+// 3. Indentation preserved
+
+const html = `
+<div class="card">
+    <h2>${name}</h2>
+    <p>Age: ${age}</p>
+</div>
+`;
+
+// TAGGED TEMPLATES
+// Algoritma:
+// 1. tag`template`
+// 2. Function process template
+// 3. Custom string processing
+
+function uppercase(strings, ...values) {
+    return strings.reduce((acc, str, i) => acc + str + (values[i] || '').toUpperCase(), '');
+}
+
+const result = uppercase`Hello ${name}, you are ${age}!`;
+console.log(result); // 'Hello BUDI, you are 25!'
+```
+
+**6. DEFAULT PARAMETERS**
+
+```javascript
+// Algoritma Default Parameters:
+// 1. param = defaultValue
+// 2. Used jika undefined
+// 3. Evaluated at call time
+
+// BASIC DEFAULT
+// Algoritma:
+// 1. Set default di parameter
+// 2. Override jika argument ada
+// 3. null tidak override default
+
+function greet(name = 'Guest') {
+    console.log(`Hello ${name}`);
+}
+
+greet();        // 'Hello Guest'
+greet('Budi');  // 'Hello Budi'
+greet(null);    // 'Hello null' (null tidak pakai default)
+
+// DYNAMIC DEFAULT
+// Algoritma:
+// 1. Default bisa expression
+// 2. Evaluated setiap call
+// 3. Access previous parameters
+
+function createGreeting(name, greeting = `Hello ${name}`) {
+    console.log(greeting);
+}
+
+createGreeting('Budi'); // 'Hello Budi'
+
+// DESTRUCTURED DEFAULT
+// Algoritma:
+// 1. Default dalam destructuring
+// 2. Nested defaults
+// 3. Object defaults
+
+function createUser({ name = 'Guest', role = 'user' } = {}) {
+    console.log(`${name} (${role})`);
+}
+
+createUser();                    // 'Guest (user)'
+createUser({ name: 'Budi' });    // 'Budi (user)'
+```
+
+**7. ENHANCED OBJECT LITERALS**
+
+```javascript
+// Algoritma Enhanced Objects:
+// 1. Shorthand properties
+// 2. Method shorthand
+// 3. Dynamic property names
+
+// PROPERTY SHORTHAND
+// Algoritma:
+// 1. Variable name = property name
+// 2. No need key: value
+// 3. Just write variable
+
+const name = 'Budi';
+const age = 25;
+
+// Old way
+const user = {
+    name: name,
+    age: age
+};
+
+// ES6 shorthand
+const user = {
+    name,
+    age
+};
+
+// METHOD SHORTHAND
+// Algoritma:
+// 1. No function keyword
+// 2. Just name() {}
+// 3. Same as name: function() {}
+
+const obj = {
+    // Old way
+    greet: function() {
+        console.log('Hello');
+    },
+    
+    // ES6 shorthand
+    greet() {
+        console.log('Hello');
+    }
+};
+
+// DYNAMIC PROPERTY NAMES
+// Algoritma:
+// 1. [expression] untuk key
+// 2. Evaluated at runtime
+// 3. Convert to string
+
+const key = 'email';
+const value = 'budi@email.com';
+
+const user = {
+    name: 'Budi',
+    [key]: value,        // 'email': 'budi@email.com'
+    [`is_${key}_valid`]: true  // 'is_email_valid': true
+};
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **Arrow function sebagai method** | this tidak bind benar | Gunakan regular function |
+| **Spread shallow copy** | Nested objects masih reference | Gunakan deep clone |
+| **Destructuring null** | Error jika destructuring null | Check null dulu atau default |
+| **Default parameters dengan ||** | 0, '' dianggap falsy | Gunakan ?? atau default params |
+| **Template literal XSS** | User input tidak escaped | Sanitize sebelum interpolate |
+
+---
+
+#### 📊 Browser Support
+
+| Feature | Chrome | Firefox | Safari | Edge |
+|---------|--------|---------|--------|------|
+| Destructuring | 49+ | 2+ | 8+ | 14+ |
+| Spread/Rest | 46+ | 16+ | 8+ | 12+ |
+| Optional Chaining | 80+ | 74+ | 13.1+ | 80+ |
+| Arrow Functions | 45+ | 22+ | 10+ | 12+ |
+| Template Literals | 41+ | 34+ | 9+ | 12+ |
+| Default Parameters | 49+ | 15+ | 9+ | 14+ |
+
+---
+
+*(Catatan: Saya telah menambahkan 4 topik besar dengan detail lengkap. Masih ada 11 topik lagi dari saran-cepat-paham.md yang bisa ditambahkan. Apakah Anda ingin saya lanjutkan menambahkan topik-topik remaining?)*
+
+---
+
+### ⚔️ Latihan Bertahap: ES6+ Features (LEVEL 1-5)
+
+> **🎯 Misi:** Kuasai fitur modern JavaScript dengan 5 level tantangan!
+
+---
+
+#### 🟢 LEVEL 1: Destructuring
+
+**📖 Konsep:** Extract values dari array/object dengan syntax yang clean.
+
+**🔬 Tahapan Logika:**
+1. Pattern matching di kiri (=)
+2. Extract by position (array) atau by key (object)
+3. Rename dengan `:` jika perlu
+4. Default values dengan `=`
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Array destructuring
+const data = ['Merah', 'Kuning', 'Hijau', 'Biru'];
+
+// TODO: Extract 'Merah' dan 'Kuning' ke variabel pertama dan kedua
+// TODO: Skip 'Kuning', extract 'Merah' dan 'Hijau'
+// TODO: Extract semua sisa ke variable 'sisanya'
+
+// SOAL 2: Object destructuring
+const user = {
+    id: 1,
+    nama: 'Budi',
+    email: 'budi@email.com',
+    umur: 25
+};
+
+// TODO: Extract nama dan email
+// TODO: Extract nama dengan rename menjadi 'namaLengkap'
+// TODO: Extract dengan default value untuk 'hobi' (tidak ada di object)
+
+// SOAL 3: Nested destructuring
+const produk = {
+    nama: 'Laptop',
+    harga: 10000000,
+    spesifikasi: {
+        ram: '16GB',
+        storage: '512GB SSD'
+    }
+};
+
+// TODO: Extract ram dan storage dari nested object
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+const [pertama, kedua] = data;
+const [skip, , ketiga] = data;
+const [primary, ...sisanya] = data;
+
+// SOLUSI 2
+const { nama, email } = user;
+const { nama: namaLengkap } = user;
+const { hobi = 'Coding' } = user;
+
+// SOLUSI 3
+const { spesifikasi: { ram, storage } } = produk;
+```
+
+---
+
+#### 🟡 LEVEL 2: Spread & Rest Operator
+
+**📖 Konsep:** Spread untuk expand, rest untuk collect multiple elements.
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Gabung array dengan spread
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+// TODO: Gabungkan arr1 dan arr2 ke array baru
+// TODO: Tambahkan angka 0 di awal dan 7 di akhir
+
+// SOAL 2: Copy array tanpa mutate
+const original = [1, 2, 3];
+
+// TODO: Buat copy dari original
+// TODO: Tambahkan 4 ke copy tanpa mengubah original
+
+// SOAL 3: Gabung object
+const obj1 = { nama: 'Budi', umur: 20 };
+const obj2 = { kota: 'Jakarta', hobi: 'Coding' };
+
+// TODO: Gabungkan obj1 dan obj2
+// TODO: Override umur menjadi 21
+
+// SOAL 4: Function dengan rest parameters
+function jumlahkan(...angka) {
+    // TODO: Return sum dari semua arguments
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+const gabungan = [...arr1, ...arr2];
+const denganTambahan = [0, ...arr1, ...arr2, 7];
+
+// SOLUSI 2
+const copy = [...original];
+copy.push(4);
+
+// SOLUSI 3
+const gabungan = { ...obj1, ...obj2 };
+const override = { ...obj1, umur: 21 };
+
+// SOLUSI 4
+function jumlahkan(...angka) {
+    return angka.reduce((total, n) => total + n, 0);
+}
+```
+
+---
+
+#### 🟠 LEVEL 3: Template Literals & String Methods
+
+**📖 Konsep:** String interpolation dan methods modern.
+
+**⚔️ Tantangan:**
+
+```javascript
+// SOAL 1: Template literal basic
+const nama = 'Budi';
+const umur = 25;
+
+// TODO: Buat string: "Halo, nama saya Budi dan saya 25 tahun"
+
+// SOAL 2: Multiline string
+// TODO: Buat HTML string dengan template literal multiline
+
+// SOAL 3: Expression dalam template
+const harga = 100000;
+const diskon = 0.1;
+
+// TODO: Buat string dengan perhitungan: harga setelah diskon
+
+// SOAL 4: String methods chain
+const teks = '  Hello World  ';
+
+// TODO: Chain methods untuk: trim → toLowerCase → split by space
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+const greeting = `Halo, nama saya ${nama} dan saya ${umur} tahun`;
+
+// SOLUSI 2
+const html = `
+    <div class="card">
+        <h2>${nama}</h2>
+        <p>Umur: ${umur}</p>
+    </div>
+`;
+
+// SOLUSI 3
+const hargaAkhir = `Harga: Rp ${harga * (1 - diskon)}`;
+
+// SOLUSI 4
+const result = teks.trim().toLowerCase().split(' ');
+```
+
+---
+
+#### 🔴 LEVEL 4: Optional Chaining & Nullish Coalescing
+
+**📖 Konsep:** Akses nested properties dengan aman dan handle null/undefined.
+
+**⚔️ Tantangan:**
+
+```javascript
+const data = {
+    user: {
+        profile: {
+            nama: 'Budi',
+            alamat: null
+        }
+    }
+};
+
+// SOAL 1: Optional chaining
+// TODO: Akses data.user.profile.nama dengan aman
+// TODO: Akses data.user.profile.alamat?.kota (alamat null)
+// TODO: Akses data.user.profile.hobi (tidak ada)
+
+// SOAL 2: Nullish coalescing
+const nilai = 0;
+const jumlah = null;
+
+// TODO: Gunakan ?? untuk provide default value
+// TODO: Bedakan dengan || operator
+
+// SOAL 3: Combined usage
+const config = {
+    api: {
+        timeout: undefined
+    }
+};
+
+// TODO: Akses config.api.timeout dengan default 5000
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+const nama = data?.user?.profile?.nama; // 'Budi'
+const kota = data?.user?.profile?.alamat?.kota; // undefined (tidak error!)
+const hobi = data?.user?.profile?.hobi; // undefined
+
+// SOLUSI 2
+const nilaiDefault = nilai ?? 10; // 0 (karena 0 bukan null/undefined)
+const jumlahDefault = jumlah ?? 0; // 0 (karena null)
+
+const denganOr = nilai || 10; // 10 (karena 0 falsy)
+const denganNullish = nilai ?? 10; // 0 (karena bukan null/undefined)
+
+// SOLUSI 3
+const timeout = config?.api?.timeout ?? 5000; // 5000
+```
+
+---
+
+#### 🟣 LEVEL 5: Advanced ES6+ Patterns
+
+**📖 Konsep:** Kombinasikan multiple ES6+ features untuk clean code.
+
+**⚔️ Tantangan:**
+
+```javascript
+// PROYEK 1: Function dengan default parameters + destructuring
+function createUser({
+    nama = 'Guest',
+    email,
+    role = 'user',
+    preferences = {}
+} = {}) {
+    // TODO: Return user object dengan default values
+}
+
+// PROYEK 2: Array transformation dengan spread
+function mergeAndTransform(arr1, arr2, transformFn) {
+    // TODO: Gabungkan arrays
+    // TODO: Apply transformFn ke setiap element
+    // TODO: Return array baru
+}
+
+// PROYEK 3: Dynamic object keys
+function createObject(dynamicKeys, values) {
+    // TODO: Buat object dengan keys dari dynamicKeys
+    // TODO: Map values ke corresponding keys
+}
+
+// PROYEK 4: Tagged template literals
+function upper(strings, ...values) {
+    // TODO: Return string dengan values uppercase
+}
+```
+
+**✅ Solusi:**
+
+```javascript
+// SOLUSI 1
+function createUser({
+    nama = 'Guest',
+    email,
+    role = 'user',
+    preferences = {}
+} = {}) {
+    return {
+        id: Date.now(),
+        nama,
+        email,
+        role,
+        preferences,
+        createdAt: new Date().toISOString()
+    };
+}
+
+// SOLUSI 2
+function mergeAndTransform(arr1, arr2, transformFn) {
+    return [...arr1, ...arr2].map(transformFn);
+}
+
+// SOLUSI 3
+function createObject(dynamicKeys, values) {
+    return dynamicKeys.reduce((obj, key, index) => {
+        obj[key] = values[index];
+        return obj;
+    }, {});
+}
+
+// SOLUSI 4
+function upper(strings, ...values) {
+    return strings.reduce((acc, str, i) => {
+        return acc + str + (values[i]?.toUpperCase() || '');
+    }, '');
+}
+
+// Penggunaan:
+const nama = 'budi';
+const kota = 'jakarta';
+upper`Halo, nama saya ${nama} dari ${kota}`;
+// "Halo, nama saya BUDI dari JAKARTA"
+```
+
+---
+
+### 🧠 Latihan Logika: Refleksi ES6+
+
+> **🎯 Pertanyaan Pemahaman:**
+>
+> 1. Apa perbedaan spread dan rest operator? Kapan menggunakan masing-masing?
+> 2. Mengapa destructuring lebih baik dari akses manual?
+> 3. Apa perbedaan `||` dan `??`? Kapan menggunakan masing-masing?
+> 4. Bagaimana optional chaining mencegah error?
+> 5. Apa keuntungan template literals dibanding concatenation?
+
+---
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+---
+
+## 📚 Bab 7: Materi Lanjutan Full-Stack Ready (Part 2) {#-bab-7-materi-lanjutan-full-stack-ready-part-2}
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+> **🎯 Tujuan Bab:** Melengkapi pemahaman untuk production-ready development. Bab ini mencakup error handling, modules, regex, dan API integration.
+
+---
+
+### 🔴 5. Error Handling Best Practices
+
+#### 📖 Konsep Dasar: Error Handling
+
+**Error Handling** adalah cara kita **mengantisipasi dan menangani** kesalahan dalam program. Jika coding adalah **perjalanan**, error handling adalah **ban serep dan P3K** yang siap digunakan saat ada masalah.
+
+**Mengapa Error Handling Penting?**
+1. **Graceful Degradation:** Aplikasi tidak crash total
+2. **User Experience:** User tahu apa yang terjadi
+3. **Debugging:** Lebih mudah track bugs
+4. **Data Integrity:** Prevent corrupt data
+5. **Security:** Hide sensitive info dari error messages
+
+---
+
+#### 🔬 Tahapan Logika: Error Handling
+
+**1. TRY-CATCH-FINALLY - Basic Pattern**
+
+```javascript
+// Algoritma Try-Catch:
+// 1. Wrap code yang mungkin error di try block
+// 2. Jika error terjadi, catch di catch block
+// 3. Finally block selalu dijalankan (cleanup)
+
+// BASIC TRY-CATCH
+// Algoritma:
+// 1. try { code yang mungkin error }
+// 2. catch (error) { handle error }
+// 3. Execution continue setelah catch
+
+try {
+    // Code yang mungkin error
+    const result = riskyOperation();
+    console.log('Result:', result);
+} catch (error) {
+    // Handle error
+    console.error('Error occurred:', error.message);
+    // Fallback value
+    const result = defaultValue;
+}
+
+// TRY-CATCH-FINALLY
+// Algoritma:
+// 1. try { main code }
+// 2. catch { error handler }
+// 3. finally { cleanup - always runs }
+// 4. finally runs even if return in try/catch
+
+function processData(data) {
+    let connection;
+    
+    try {
+        connection = openConnection();
+        const result = connection.process(data);
+        return result;
+    } catch (error) {
+        console.error('Processing failed:', error);
+        throw error; // Re-throw untuk caller handle
+    } finally {
+        // Always cleanup
+        if (connection) {
+            connection.close();
+        }
+    }
+}
+
+// NESTED TRY-CATCH
+// Algoritma:
+// 1. Outer try-catch handle high-level errors
+// 2. Inner try-catch handle specific errors
+// 3. Granular error handling
+
+try {
+    try {
+        const data = JSON.parse(input);
+        processData(data);
+    } catch (parseError) {
+        // Handle JSON parse errors
+        console.error('Invalid JSON:', parseError.message);
+    }
+} catch (outerError) {
+    // Handle other errors
+    console.error('Unexpected error:', outerError);
+}
+```
+
+**2. THROW CUSTOM ERRORS**
+
+```javascript
+// Algoritma Throw Error:
+// 1. Create error object
+// 2. throw error
+// 3. Catch di caller
+
+// BUILTIN ERROR TYPES
+// Algoritma:
+// 1. new Error(message)
+// 2. new TypeError(message)
+// 3. new RangeError(message)
+// 4. new ReferenceError(message)
+
+// Basic Error
+throw new Error('Something went wrong!');
+
+// Type Error
+function divide(a, b) {
+    if (typeof b !== 'number') {
+        throw new TypeError('Divisor must be a number');
+    }
+    return a / b;
+}
+
+// Range Error
+function setAge(age) {
+    if (age < 0 || age > 150) {
+        throw new RangeError('Age must be between 0 and 150');
+    }
+}
+
+// CUSTOM ERROR CLASS
+// Algoritma:
+// 1. Extend Error class
+// 2. Set name property
+// 3. Capture stack trace
+// 4. Add custom properties
+
+class ValidationError extends Error {
+    constructor(message, field) {
+        super(message);
+        this.name = 'ValidationError';
+        this.field = field;
+        this.timestamp = new Date();
+        
+        // Capture stack trace
+        Error.captureStackTrace(this, ValidationError);
+    }
+}
+
+// Usage
+function validateEmail(email) {
+    if (!email || !email.includes('@')) {
+        throw new ValidationError('Invalid email format', 'email');
+    }
+    return true;
+}
+
+try {
+    validateEmail('invalid');
+} catch (error) {
+    if (error instanceof ValidationError) {
+        console.error(`Validation failed for ${error.field}: ${error.message}`);
+        console.error(`At: ${error.timestamp}`);
+    } else {
+        console.error('Unexpected error:', error);
+    }
+}
+
+// ERROR WRAPPING
+// Algoritma:
+// 1. Catch low-level error
+// 2. Create high-level error
+// 3. Include original error as cause
+// 4. Throw wrapped error
+
+class DatabaseError extends Error {
+    constructor(message, cause) {
+        super(message);
+        this.name = 'DatabaseError';
+        this.cause = cause;
+    }
+}
+
+async function fetchUser(id) {
+    try {
+        const response = await db.query('SELECT * FROM users WHERE id = ?', [id]);
+        return response;
+    } catch (dbError) {
+        // Wrap database error with context
+        throw new DatabaseError(`Failed to fetch user ${id}`, dbError);
+    }
+}
+```
+
+**3. ERROR HANDLING PATTERNS**
+
+```javascript
+// PATTERN 1: Error-First Callback (Node.js style)
+// Algoritma:
+// 1. Callback parameter pertama adalah error
+// 2. Jika error, parameter pertama tidak null
+// 3. Check error dulu sebelum process result
+
+function fetchData(callback) {
+    try {
+        const data = { id: 1, name: 'Budi' };
+        callback(null, data); // Success: error = null
+    } catch (error) {
+        callback(error, null); // Error: pass error
+    }
+}
+
+fetchData((error, data) => {
+    if (error) {
+        console.error('Fetch failed:', error);
+        return;
+    }
+    console.log('Data:', data);
+});
+
+// PATTERN 2: Result Object Pattern
+// Algoritma:
+// 1. Return object dengan success flag
+// 2. Jika success: { success: true, data: ... }
+// 3. Jika error: { success: false, error: ... }
+
+function safeParseJSON(str) {
+    try {
+        return {
+            success: true,
+            data: JSON.parse(str)
+        };
+    } catch (error) {
+        return {
+            success: false,
+            error: error.message
+        };
+    }
+}
+
+const result = safeParseJSON('{"name": "Budi"}');
+if (result.success) {
+    console.log('Parsed:', result.data);
+} else {
+    console.error('Parse failed:', result.error);
+}
+
+// PATTERN 3: Retry with Backoff
+// Algoritma:
+// 1. Try operation
+// 2. If error, wait and retry
+// 3. Exponential backoff
+// 4. Max retries limit
+
+async function fetchWithRetry(url, maxRetries = 3) {
+    let lastError;
+    
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            
+            return await response.json();
+        } catch (error) {
+            lastError = error;
+            
+            if (attempt === maxRetries) {
+                break; // Don't retry on last attempt
+            }
+            
+            // Exponential backoff: 1s, 2s, 4s, ...
+            const delay = Math.pow(2, attempt) * 1000;
+            console.log(`Retry ${attempt}/${maxRetries} after ${delay}ms`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+    }
+    
+    throw lastError;
+}
+
+// PATTERN 4: Error Boundaries (React-like)
+// Algoritma:
+// 1. Wrap component/code in boundary
+// 2. Catch errors in boundary
+// 3. Show fallback UI
+// 4. Log error for debugging
+
+class ErrorBoundary {
+    constructor() {
+        this.error = null;
+        this.hasError = false;
+    }
+    
+    async execute(fn) {
+        try {
+            this.hasError = false;
+            this.error = null;
+            return await fn();
+        } catch (error) {
+            this.hasError = true;
+            this.error = error;
+            this.handleError(error);
+            return this.getFallback();
+        }
+    }
+    
+    handleError(error) {
+        console.error('Error caught by boundary:', error);
+        // Log to server, analytics, etc.
+    }
+    
+    getFallback() {
+        return { message: 'Something went wrong' };
+    }
+}
+
+// Usage
+const boundary = new ErrorBoundary();
+const result = await boundary.execute(() => riskyOperation());
+```
+
+**4. ASYNC ERROR HANDLING**
+
+```javascript
+// WITH .CATCH()
+// Algoritma:
+// 1. Promise chain dengan .catch()
+// 2. Handle rejection
+// 3. Return fallback atau re-throw
+
+fetch('/api/data')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data:', data);
+    })
+    .catch(error => {
+        console.error('Fetch failed:', error);
+        // Return fallback data
+        return { data: [], error: true };
+    });
+
+// WITH ASYNC/AWAIT
+// Algoritma:
+// 1. Wrap dalam try-catch
+// 2. Await setiap async operation
+// 3. Handle error di catch block
+
+async function fetchData() {
+    try {
+        const response = await fetch('/api/data');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Fetch failed:', error);
+        throw error; // Re-throw untuk caller handle
+    }
+}
+
+// MULTIPLE ASYNC OPERATIONS
+// Algoritma:
+// 1. Try block dengan multiple awaits
+// 2. Catch handle any error
+// 3. Finally untuk cleanup
+
+async function processUserData(userId) {
+    let connection;
+    
+    try {
+        connection = await db.connect();
+        const user = await connection.findUser(userId);
+        const posts = await connection.findPosts(userId);
+        
+        return { user, posts };
+    } catch (error) {
+        console.error('Processing failed:', error);
+        throw error;
+    } finally {
+        if (connection) {
+            await connection.close();
+        }
+    }
+}
+
+// PARALLEL ERROR HANDLING
+// Algoritma:
+// 1. Promise.allSettled untuk handle semua
+// 2. Check status setiap promise
+// 3. Process successes, log failures
+
+async function fetchAllData() {
+    const results = await Promise.allSettled([
+        fetch('/api/users').then(r => r.json()),
+        fetch('/api/posts').then(r => r.json()),
+        fetch('/api/comments').then(r => r.json())
+    ]);
+    
+    const successes = [];
+    const failures = [];
+    
+    results.forEach((result, index) => {
+        if (result.status === 'fulfilled') {
+            successes.push({ index, data: result.value });
+        } else {
+            failures.push({ index, error: result.reason });
+        }
+    });
+    
+    console.log(`Success: ${successes.length}, Failures: ${failures.length}`);
+    return { successes, failures };
+}
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **Silent failures** | Error tidak di-log atau di-handle | Always log atau re-throw error |
+| **Swallowing errors** | catch {} kosong tanpa action | Minimal log error |
+| **Not preserving stack** | Throw new error tanpa preserve stack | Gunakan error.cause |
+| **Generic error messages** | Error message tidak jelas | Specific, actionable messages |
+| **Exposing sensitive info** | Error message show internal details | Sanitize error messages for users |
+| **Not handling Promise rejections** | Unhandled promise rejection | Always add .catch() atau try-catch |
+
+**Best Practices:**
+
+```javascript
+// 1. Always log errors
+// ✅ Good
+try {
+    riskyOperation();
+} catch (error) {
+    console.error('Operation failed:', error);
+    throw error;
+}
+
+// ❌ Bad
+try {
+    riskyOperation();
+} catch (error) {
+    // Silent failure!
+}
+
+// 2. Use specific error types
+// ✅ Good
+if (!email) {
+    throw new ValidationError('Email is required', 'email');
+}
+
+// ❌ Bad
+if (!email) {
+    throw new Error('Error'); // Too generic!
+}
+
+// 3. Preserve stack trace
+// ✅ Good
+try {
+    dbOperation();
+} catch (dbError) {
+    throw new DatabaseError('Failed to save', dbError);
+}
+
+// ❌ Bad
+try {
+    dbOperation();
+} catch (dbError) {
+    throw new Error('Failed to save'); // Original stack lost!
+}
+
+// 4. User-friendly messages
+// ✅ Good
+catch (error) {
+    logger.error(error); // Technical log
+    showUserMessage('Terjadi kesalahan. Silakan coba lagi.'); // User message
+}
+
+// ❌ Bad
+catch (error) {
+    alert(error.stack); // Expose internal details!
+}
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. API Error Handler:**
+
+```javascript
+// Algoritma:
+// 1. Centralized error handling
+// 2. Classify errors by type
+// 3. Handle each type appropriately
+
+class ApiError extends Error {
+    constructor(message, status, code) {
+        super(message);
+        this.name = 'ApiError';
+        this.status = status;
+        this.code = code;
+    }
+}
+
+async function apiRequest(endpoint, options = {}) {
+    try {
+        const response = await fetch(`/api${endpoint}`, {
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+        
+        // Check HTTP status
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new ApiError(
+                errorData.message || `HTTP ${response.status}`,
+                response.status,
+                errorData.code
+            );
+        }
+        
+        return await response.json();
+    } catch (error) {
+        if (error instanceof ApiError) {
+            // Handle API errors
+            switch (error.status) {
+                case 401:
+                    // Redirect to login
+                    redirectToLogin();
+                    break;
+                case 403:
+                    // Show permission denied
+                    showPermissionDenied();
+                    break;
+                case 404:
+                    // Show not found
+                    showNotFound();
+                    break;
+                case 500:
+                    // Show server error
+                    showServerError();
+                    break;
+                default:
+                    showErrorMessage(error.message);
+            }
+        } else if (error instanceof TypeError) {
+            // Network error
+            showNetworkError();
+        } else {
+            // Unknown error
+            console.error('Unexpected error:', error);
+            showGenericError();
+        }
+        
+        throw error; // Re-throw for caller
+    }
+}
+```
+
+**2. Form Validation with Error Collection:**
+
+```javascript
+// Algoritma:
+// 1. Collect all validation errors
+// 2. Return all errors at once
+// 3. Show user all issues to fix
+
+class FormValidator {
+    constructor(data) {
+        this.data = data;
+        this.errors = [];
+    }
+    
+    validate() {
+        this.errors = [];
+        
+        // Validate each field
+        this.validateRequired('email', 'Email wajib diisi');
+        this.validateEmail('email', 'Format email tidak valid');
+        this.validateMinLength('password', 8, 'Password minimal 8 karakter');
+        this.validateMatch('password', 'confirmPassword', 'Password tidak cocok');
+        
+        return {
+            isValid: this.errors.length === 0,
+            errors: this.errors
+        };
+    }
+    
+    validateRequired(field, message) {
+        if (!this.data[field] || this.data[field].trim() === '') {
+            this.errors.push({ field, message });
+        }
+    }
+    
+    validateEmail(field, message) {
+        const email = this.data[field];
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            this.errors.push({ field, message });
+        }
+    }
+    
+    validateMinLength(field, min, message) {
+        if (this.data[field] && this.data[field].length < min) {
+            this.errors.push({ field, message });
+        }
+    }
+    
+    validateMatch(field1, field2, message) {
+        if (this.data[field1] !== this.data[field2]) {
+            this.errors.push({ field: field2, message });
+        }
+    }
+}
+
+// Usage
+const validator = new FormValidator({
+    email: 'invalid',
+    password: '123',
+    confirmPassword: '456'
+});
+
+const result = validator.validate();
+if (!result.isValid) {
+    console.log('Validation errors:', result.errors);
+    // Show all errors to user
+    result.errors.forEach(err => {
+        showError(err.field, err.message);
+    });
+}
+```
+
+---
+
+#### 📊 Error Handling Complexity
+
+| Pattern | Complexity | Use Case |
+|---------|-----------|----------|
+| Try-Catch | O(1) | Synchronous operations |
+| Promise .catch() | O(1) | Single async operation |
+| Async/Await | O(1) | Multiple async operations |
+| Retry with Backoff | O(2^n) | Unreliable operations |
+| Error Boundary | O(1) | Component-level handling |
+
+---
+
+### 🔴 6. Modules & Import/Export
+
+#### 📖 Konsep Dasar: ES6 Modules
+
+**Modules** adalah cara **mengorganisir code** menjadi file-file terpisah yang bisa saling import/export. Jika code adalah **buku**, maka modules adalah **bab-bab** yang terpisah tapi saling terkait.
+
+**Mengapa Modules Penting?**
+1. **Code Organization:** Pisahkan code berdasarkan fungsi
+2. **Reusability:** Pakai ulang code di multiple places
+3. **Maintainability:** Lebih mudah debug dan update
+4. **Namespace:** Hindari global scope pollution
+5. **Tree Shaking:** Bundler bisa remove unused code
+
+---
+
+#### 🔬 Tahapan Logika: Module System
+
+**1. EXPORT - Mengexport Code**
+
+```javascript
+// Algoritma Export:
+// 1. Tentukan apa yang mau di-export
+// 2. Gunakan export keyword
+// 3. Other files bisa import
+
+// NAMED EXPORTS
+// Algoritma:
+// 1. export sebelum declaration
+// 2. Multiple exports per file
+// 3. Importer harus pakai nama yang sama
+
+// file: utils.js
+
+// Export function
+export function add(a, b) {
+    return a + b;
+}
+
+// Export variable
+export const PI = 3.14159;
+
+// Export class
+export class Calculator {
+    add(a, b) { return a + b; }
+}
+
+// Export multiple at once
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+
+export { subtract, multiply };
+
+// DEFAULT EXPORT
+// Algoritma:
+// 1. export default (satu per file)
+// 2. Importer bisa pakai nama apapun
+// 3. No curly braces saat import
+
+// file: logger.js
+
+// Default export function
+export default function log(message) {
+    console.log(`[LOG]: ${message}`);
+}
+
+// Default export class
+export default class Logger {
+    log(message) {
+        console.log(`[LOG]: ${message}`);
+    }
+}
+
+// Default export value
+const config = {
+    apiUrl: 'https://api.example.com',
+    timeout: 5000
+};
+
+export default config;
+
+// COMBINED EXPORTS
+// Algoritma:
+// 1. Mix named and default exports
+// 2. Default untuk main export
+// 3. Named untuk utilities
+
+// file: math.js
+
+// Main class (default)
+export default class MathUtils {
+    static add(a, b) { return a + b; }
+}
+
+// Helper functions (named)
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+export const multiply = (a, b) => a * b;
+```
+
+**2. IMPORT - Mengimport Code**
+
+```javascript
+// Algoritma Import:
+// 1. Tentukan apa yang mau di-import
+// 2. Specify source file
+// 3. Use imported code
+
+// IMPORT NAMED EXPORTS
+// Algoritma:
+// 1. Import dengan curly braces {}
+// 2. Nama harus sama dengan export
+// 3. Bisa import multiple
+
+// file: app.js
+import { add, PI, Calculator } from './utils.js';
+
+console.log(add(2, 3)); // 5
+console.log(PI); // 3.14159
+
+// IMPORT DEFAULT EXPORT
+// Algoritma:
+// 1. No curly braces
+// 2. Bisa pakai nama apapun
+// 3. Satu default per file
+
+// file: app.js
+import log from './logger.js';
+import Logger from './logger.js';
+import myLogger from './logger.js'; // Nama beda boleh
+
+log('Hello');
+
+// IMPORT COMBINED
+// Algoritma:
+// 1. Default tanpa braces
+// 2. Named dengan braces
+// 3. Pisahkan dengan koma
+
+// file: app.js
+import MathUtils, { add, subtract } from './math.js';
+
+console.log(MathUtils.add(2, 3)); // 5
+console.log(add(2, 3)); // 5
+
+// IMPORT ALL (Namespace Import)
+// Algoritma:
+// 1. import * as name
+// 2. Semua exports dalam namespace
+// 3. Akses dengan name.export
+
+// file: app.js
+import * as Utils from './utils.js';
+
+console.log(Utils.add(2, 3));
+console.log(Utils.PI);
+
+const calc = new Utils.Calculator();
+
+// IMPORT DENGAN RENAME
+// Algoritma:
+// 1. import { original as newName }
+// 2. Rename untuk avoid conflict
+// 3. Use newName di code
+
+// file: app.js
+import { add as addNumbers, subtract as subtractNumbers } from './math.js';
+
+console.log(addNumbers(5, 3)); // 8
+```
+
+**3. MODULE PATTERNS**
+
+```javascript
+// PATTERN 1: Barrel Export (index.js)
+// Algoritma:
+// 1. Create index.js di folder
+// 2. Re-export dari multiple files
+// 3. Cleaner imports
+
+// file: utils/index.js
+export { add, subtract } from './math.js';
+export { formatDate, parseDate } from './date.js';
+export { validateEmail, validatePhone } from './validation.js';
+
+// Usage
+import { add, formatDate, validateEmail } from './utils/index.js';
+// Atau
+import { add, formatDate, validateEmail } from './utils';
+
+// PATTERN 2: Circular Dependency Handling
+// Algoritma:
+// 1. Avoid circular imports
+// 2. Extract shared code ke third file
+// 3. Both import dari shared file
+
+// ❌ Bad: Circular dependency
+// file: a.js
+import { funcB } from './b.js';
+export function funcA() { funcB(); }
+
+// file: b.js
+import { funcA } from './a.js';
+export function funcB() { funcA(); }
+
+// ✅ Good: Extract shared
+// file: shared.js
+export function sharedLogic() { /* ... */ }
+
+// file: a.js
+import { sharedLogic } from './shared.js';
+export function funcA() { sharedLogic(); }
+
+// file: b.js
+import { sharedLogic } from './shared.js';
+export function funcB() { sharedLogic(); }
+
+// PATTERN 3: Lazy Loading (Dynamic Import)
+// Algoritma:
+// 1. import() function
+// 2. Return Promise
+// 3. Load on demand
+
+// Static import (load immediately)
+import { heavyModule } from './heavy.js';
+
+// Dynamic import (load on demand)
+async function loadModule() {
+    const { heavyModule } = await import('./heavy.js');
+    heavyModule.doSomething();
+}
+
+// Load on user action
+button.addEventListener('click', async () => {
+    const { heavyModule } = await import('./heavy.js');
+    heavyModule.doSomething();
+});
+
+// PATTERN 4: Module with State
+// Algoritma:
+// 1. Private state dalam module
+// 2. Export functions yang akses state
+// 3. State shared across imports
+
+// file: counter.js
+let count = 0; // Private state
+
+export function increment() {
+    count++;
+    return count;
+}
+
+export function decrement() {
+    count--;
+    return count;
+}
+
+export function getCount() {
+    return count;
+}
+
+// file: app.js
+import { increment, getCount } from './counter.js';
+
+increment(); // 1
+increment(); // 2
+console.log(getCount()); // 2
+
+// PATTERN 5: Configuration Module
+// Algoritma:
+// 1. Export config object
+// 2. Import di multiple files
+// 3. Centralized configuration
+
+// file: config.js
+export const config = {
+    apiUrl: 'https://api.example.com',
+    timeout: 5000,
+    debug: true,
+    
+    get fullApiUrl() {
+        return `${this.apiUrl}/v1`;
+    }
+};
+
+// file: api.js
+import { config } from './config.js';
+
+async function fetchData(endpoint) {
+    const response = await fetch(`${config.fullApiUrl}${endpoint}`, {
+        timeout: config.timeout
+    });
+    return response.json();
+}
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **Circular dependencies** | Module A import B, B import A | Extract shared code |
+| **Default vs named confusion** | Lupa curly braces | Consistent naming convention |
+| **Module side effects** | Code runs on import | Avoid side effects |
+| **Large bundle size** | Import everything | Use tree-shaking, lazy load |
+| **Relative path hell** | ../../../../utils | Use absolute paths/alias |
+
+**Best Practices:**
+
+```javascript
+// 1. One module, one responsibility
+// ✅ Good
+// file: validators.js - hanya validation logic
+export function validateEmail(email) { /* ... */ }
+export function validatePhone(phone) { /* ... */ }
+
+// ❌ Bad
+// file: utils.js - everything mixed
+export function validateEmail(email) { /* ... */ }
+export function formatDate(date) { /* ... */ }
+export function apiCall(url) { /* ... */ }
+
+// 2. Named exports untuk tree-shaking
+// ✅ Good (better tree-shaking)
+export function add() { /* ... */ }
+export function subtract() { /* ... */ }
+
+// ❌ Bad (all or nothing)
+export default {
+    add() { /* ... */ },
+    subtract() { /* ... */ }
+};
+
+// 3. Avoid side effects
+// ✅ Good
+export const config = { debug: true };
+
+// ❌ Bad
+console.log('Module loaded!'); // Side effect!
+document.body.classList.add('loaded'); // Side effect!
+
+// 4. Use index.js for clean exports
+// ✅ Good
+// utils/index.js
+export * from './validators.js';
+export * from './formatters.js';
+export * from './helpers.js';
+
+// Usage
+import { validateEmail, formatDate } from './utils';
+
+// 5. Lazy load heavy modules
+// ✅ Good
+async function loadChart() {
+    const Chart = await import('chart.js');
+    return Chart;
+}
+
+// Load only when needed
+button.addEventListener('click', async () => {
+    const Chart = await loadChart();
+    new Chart(ctx, config);
+});
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. Project Structure:**
+
+```javascript
+// Project structure dengan modules
+// src/
+// ├── index.js              // Entry point
+// ├── config/
+// │   ├── index.js          // Barrel export
+// │   ├── database.js       // DB config
+// │   └── api.js            // API config
+// ├── utils/
+// │   ├── index.js
+// │   ├── validators.js     // Validation functions
+// │   ├── formatters.js     // Format functions
+// │   └── helpers.js        // Helper functions
+// ├── services/
+// │   ├── index.js
+// │   ├── userService.js    // User-related API calls
+// │   └── authService.js    // Auth-related API calls
+// ├── models/
+// │   ├── index.js
+// │   ├── User.js           // User model/class
+// │   └── Product.js        // Product model/class
+// └── components/
+//     ├── index.js
+//     ├── Button.js         // Button component
+//     └── Modal.js          // Modal component
+
+// Usage in index.js
+import { config } from './config';
+import { validateEmail } from './utils';
+import { userService } from './services';
+import { User } from './models';
+import { Button, Modal } from './components';
+
+// Clean imports dengan barrel exports!
+```
+
+**2. Plugin System:**
+
+```javascript
+// Algoritma Plugin System:
+// 1. Define plugin interface
+// 2. Load plugins dynamically
+// 3. Register and execute
+
+// file: pluginManager.js
+class PluginManager {
+    constructor() {
+        this.plugins = new Map();
+    }
+    
+    async loadPlugin(name, path) {
+        try {
+            const plugin = await import(path);
+            
+            if (plugin.default && plugin.default.name) {
+                this.plugins.set(name, plugin.default);
+                console.log(`Plugin "${name}" loaded`);
+            } else {
+                throw new Error('Invalid plugin structure');
+            }
+        } catch (error) {
+            console.error(`Failed to load plugin "${name}":`, error);
+        }
+    }
+    
+    executePlugin(name, ...args) {
+        const plugin = this.plugins.get(name);
+        
+        if (plugin && plugin.execute) {
+            return plugin.execute(...args);
+        }
+        
+        throw new Error(`Plugin "${name}" not found or invalid`);
+    }
+    
+    getPlugin(name) {
+        return this.plugins.get(name);
+    }
+}
+
+// Usage
+const pluginManager = new PluginManager();
+
+// Load plugins on demand
+await pluginManager.loadPlugin('analytics', './plugins/analytics.js');
+await pluginManager.loadPlugin('logging', './plugins/logging.js');
+
+// Execute plugins
+pluginManager.executePlugin('analytics', 'page_view', { page: '/home' });
+pluginManager.executePlugin('logging', 'info', 'Application started');
+```
+
+---
+
+#### 📊 Module Complexity
+
+| Pattern | Bundle Impact | Load Time | Use Case |
+|---------|--------------|-----------|----------|
+| Static Import | Included at build | Immediate | Core dependencies |
+| Dynamic Import | Separate chunk | On demand | Heavy modules |
+| Barrel Export | Same as direct | Immediate | Clean API |
+| Circular | Build error | N/A | Avoid! |
+
+---
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+---
+
+## 📚 Bab 8: Materi Lanjutan Full-Stack Ready (Part 3) {#-bab-8-materi-lanjutan-full-stack-ready-part-3}
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+> **🎯 Tujuan Bab:** Melengkapi skill untuk handling text processing dan API integration. Bab ini mencakup Regular Expressions dan HTTP/API fundamentals.
+
+---
+
+### 🟡 7. Regular Expressions (Regex)
+
+#### 📖 Konsep Dasar: Pattern Matching
+
+**Regular Expressions (Regex)** adalah **bahasa pattern** untuk matching, searching, dan manipulating text. Jika text adalah **lautan**, regex adalah **jaring** yang bisa menangkap ikan spesifik yang kamu mau.
+
+**Mengapa Regex Penting?**
+1. **Validation:** Email, phone, password validation
+2. **Search & Replace:** Find complex patterns
+3. **Data Extraction:** Extract data from text
+4. **Text Processing:** Parse and transform text
+5. **Input Sanitization:** Clean user input
+
+---
+
+#### 🔬 Tahapan Logika: Regex Pattern
+
+**1. BASIC SYNTAX - Character Classes**
+
+```javascript
+// Algoritma Regex:
+// 1. Define pattern dengan /pattern/
+// 2. Test string dengan pattern
+// 3. Return match atau tidak
+
+// CHARACTER CLASSES
+// Algoritma:
+// 1. [...] match any character in brackets
+// 2. [^...] match any character NOT in brackets
+// 3. Predefined classes untuk common chars
+
+const text = 'Hello World 123';
+
+// Basic character class
+const regex1 = /[aeiou]/;      // Match any vowel
+console.log(text.match(regex1)); // ['e']
+
+// Negated character class
+const regex2 = /[^aeiou]/;     // Match any non-vowel
+console.log(text.match(regex2)); // ['H']
+
+// Range
+const regex3 = /[a-z]/;        // Match lowercase letter
+const regex4 = /[0-9]/;        // Match digit
+const regex5 = /[A-Za-z0-9]/;  // Match alphanumeric
+
+// PREDEFINED CLASSES
+// Algoritma:
+// 1. \d = digit [0-9]
+// 2. \w = word [A-Za-z0-9_]
+// 3. \s = whitespace (space, tab, newline)
+// 4. . = any character (except newline)
+
+const regex6 = /\d/;      // Match any digit
+const regex7 = /\w/;      // Match any word character
+const regex8 = /\s/;      // Match any whitespace
+const regex9 = /./;       // Match any character
+
+console.log('123'.match(/\d/));    // ['1']
+console.log('abc'.match(/\w/));    // ['a']
+console.log('a b'.match(/\s/));    // [' ']
+```
+
+**2. QUANTIFIERS - Berapa Kali Match**
+
+```javascript
+// Algoritma Quantifiers:
+// 1. Tentukan berapa kali pattern occur
+// 2. Greedy (maximal) vs Lazy (minimal)
+// 3. Exact count atau range
+
+// BASIC QUANTIFIERS
+// Algoritma:
+// 1. * = 0 or more
+// 2. + = 1 or more
+// 3. ? = 0 or 1 (optional)
+// 4. {n} = exactly n times
+// 5. {n,} = n or more
+// 6. {n,m} = between n and m
+
+const text = 'aaabbbccc';
+
+console.log(text.match(/a*/));   // ['aaa'] (0 or more)
+console.log(text.match(/a+/));   // ['aaa'] (1 or more)
+console.log(text.match(/a?/));   // ['a'] (0 or 1)
+console.log(text.match(/a{3}/)); // ['aaa'] (exactly 3)
+console.log(text.match(/a{2,4}/)); // ['aaa'] (between 2-4)
+console.log(text.match(/a{2,}/));  // ['aaa'] (2 or more)
+
+// GREEDY VS LAZY
+// Algoritma:
+// 1. Greedy: match as much as possible
+// 2. Lazy: match as little as possible
+// 3. Add ? setelah quantifier untuk lazy
+
+const html = '<div>content</div>';
+
+// Greedy (default)
+console.log(html.match(/<.*>/));  
+// ['<div>content</div>'] (match semua)
+
+// Lazy (add ?)
+console.log(html.match(/<.*?>/)); 
+// ['<div>'] (match minimal)
+
+// APLIKASI: Email validation sederhana
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+console.log(emailRegex.test('user@email.com')); // true
+console.log(emailRegex.test('invalid')); // false
+```
+
+**3. ANCHORS & BOUNDARIES - Posisi Pattern**
+
+```javascript
+// Algoritma Anchors:
+// 1. ^ = start of string
+// 2. $ = end of string
+// 3. \b = word boundary
+// 4. \B = NOT word boundary
+
+const text = 'Hello World';
+
+// Start of string
+console.log(text.match(/^Hello/)); // ['Hello']
+console.log(text.match(/^World/)); // null
+
+// End of string
+console.log(text.match(/World$/)); // ['World']
+console.log(text.match(/Hello$/)); // null
+
+// Exact match (start AND end)
+const exactRegex = /^Hello World$/;
+console.log(exactRegex.test('Hello World')); // true
+console.log(exactRegex.test('Hello World!')); // false
+
+// Word boundary
+const text2 = 'cat catches category';
+
+console.log(text2.match(/\bcat\b/));  // ['cat'] (exact word)
+console.log(text2.match(/\bcat/));    // ['cat'] (start of word)
+console.log(text2.match(/cat\b/));    // ['cat'] (end of word)
+console.log(text2.match(/\Bcat/));    // ['cat'] in 'catches' (not boundary)
+
+// APLIKASI: Validate exact format
+// Phone: 0812-3456-7890
+const phoneRegex = /^\d{4}-\d{4}-\d{4}$/;
+console.log(phoneRegex.test('0812-3456-7890')); // true
+console.log(phoneRegex.test('081234567890'));   // false
+
+// Password: 8-16 chars, letters and numbers only
+const passwordRegex = /^[a-zA-Z0-9]{8,16}$/;
+console.log(passwordRegex.test('Abc12345')); // true
+console.log(passwordRegex.test('abc'));      // false (too short)
+```
+
+**4. GROUPS & CAPTURE - Mengelompokkan Pattern**
+
+```javascript
+// Algoritma Groups:
+// 1. (...) capture group
+// 2. (?:...) non-capture group
+// 3. \1, \2 backreference
+// 4. Named groups (?<name>...)
+
+const text = '2024-02-20';
+
+// Capture groups
+const dateRegex = /(\d{4})-(\d{2})-(\d{2})/;
+const match = text.match(dateRegex);
+
+console.log(match[0]); // '2024-02-20' (full match)
+console.log(match[1]); // '2024' (first group - year)
+console.log(match[2]); // '02' (second group - month)
+console.log(match[3]); // '20' (third group - day)
+
+// Named capture groups
+const namedRegex = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+const namedMatch = text.match(namedRegex);
+
+console.log(namedMatch.groups.year);   // '2024'
+console.log(namedMatch.groups.month);  // '02'
+console.log(namedMatch.groups.day);    // '20'
+
+// Backreference
+// Algoritma:
+// 1. \1 reference group 1
+// 2. \2 reference group 2
+// 3. Match same text as group
+
+const duplicateRegex = /(\w+)\s+\1/;
+console.log('hello hello'.match(duplicateRegex)); 
+// ['hello hello', 'hello']
+
+// Non-capture group
+// Algoritma:
+// 1. (?:...) group tapi tidak capture
+// 2. Untuk grouping tanpa overhead
+// 3. Cannot backreference
+
+const nonCaptureRegex = /(?:https?:\/\/)?www\./;
+console.log('https://www.example.com'.match(nonCaptureRegex));
+// ['https://www.'] (hanya match, tidak capture)
+
+// APLIKASI: Parse name format
+const nameRegex = /(?<last>\w+),\s*(?<first>\w+)/;
+const nameMatch = 'Doe, John'.match(nameRegex);
+
+console.log(`${nameMatch.groups.first} ${nameMatch.groups.last}`);
+// 'John Doe'
+```
+
+**5. FLAGS - Modifiers untuk Pattern**
+
+```javascript
+// Algoritma Flags:
+// 1. i = case insensitive
+// 2. g = global (all matches)
+// 3. m = multiline
+// 4. s = dotall (dot match newline)
+// 5. u = unicode
+// 6. y = sticky
+
+const text = 'Hello hello HELLO';
+
+// Case insensitive
+console.log(text.match(/hello/i));    // ['Hello']
+console.log(text.match(/hello/gi));   // ['Hello', 'hello', 'HELLO']
+
+// Global match
+const text2 = 'a1 b2 c3';
+console.log(text2.match(/\d/));      // ['1'] (first only)
+console.log(text2.match(/\d/g));     // ['1', '2', '3'] (all)
+
+// Multiline
+const multiline = `Line 1
+Line 2
+Line 3`;
+
+console.log(multiline.match(/^Line \d/g));   
+// ['Line 1'] (only first line)
+
+console.log(multiline.match(/^Line \d/gm));  
+// ['Line 1', 'Line 2', 'Line 3'] (all lines)
+
+// COMBINED FLAGS
+const email = 'USER@EMAIL.COM';
+const emailRegex = /^[a-z]+@[a-z]+\.[a-z]+$/i;  // Case insensitive
+console.log(emailRegex.test(email)); // true
+
+// APLIKASI: Replace all occurrences
+const text3 = 'foo bar foo baz foo';
+const replaced = text3.replace(/foo/g, 'XXX');
+console.log(replaced); // 'XXX bar XXX baz XXX'
+```
+
+---
+
+#### 🔬 Tahapan Logika: Regex Methods
+
+**1. test() - Check Pattern Match**
+
+```javascript
+// Algoritma test():
+// 1. regex.test(string)
+// 2. Return true jika match
+// 3. Return false jika tidak match
+
+const regex = /hello/i;
+
+console.log(regex.test('Hello World')); // true
+console.log(regex.test('Goodbye'));     // false
+
+// APLIKASI: Form validation
+function validateInput(input, pattern) {
+    return pattern.test(input);
+}
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+console.log(validateInput('user@email.com', emailPattern)); // true
+```
+
+**2. match() - Get Matches**
+
+```javascript
+// Algoritma match():
+// 1. string.match(regex)
+// 2. Return array of matches
+// 3. Return null jika tidak match
+
+const text = 'The rain in Spain';
+
+// Without global flag
+console.log(text.match(/in/));  
+// ['in', index: 5, input: 'The rain in Spain', groups: undefined]
+
+// With global flag
+console.log(text.match(/in/g));  
+// ['in', 'in']
+
+// With capture groups
+const date = '2024-02-20';
+console.log(date.match(/(\d{4})-(\d{2})-(\d{2})/));
+// ['2024-02-20', '2024', '02', '20', index: 0, ...]
+```
+
+**3. matchAll() - Get All Matches with Details**
+
+```javascript
+// Algoritma matchAll():
+// 1. string.matchAll(regex)
+// 2. Return iterator
+// 3. Loop untuk get all matches
+// 4. Include groups dan index
+
+const text = 'test1 test2 test3';
+const regex = /test(\d)/g;
+
+for (const match of text.matchAll(regex)) {
+    console.log(match[0]); // Full match: 'test1', 'test2', 'test3'
+    console.log(match[1]); // Group 1: '1', '2', '3'
+    console.log(match.index); // Index: 0, 6, 12
+}
+
+// Convert to array
+const allMatches = [...text.matchAll(regex)];
+console.log(allMatches);
+```
+
+**4. replace() - Replace Matches**
+
+```javascript
+// Algoritma replace():
+// 1. string.replace(search, replacement)
+// 2. search bisa string atau regex
+// 3. replacement bisa string atau function
+
+const text = 'Hello World';
+
+// Replace first occurrence
+console.log(text.replace('l', 'L'));  
+// 'HeLlo World'
+
+// Replace all (with regex)
+console.log(text.replace(/l/g, 'L')); 
+// 'HeLLo WorLd'
+
+// Replace with capture groups
+const date = '2024-02-20';
+const replaced = date.replace(/(\d{4})-(\d{2})-(\d{2})/, '$2/$3/$1');
+console.log(replaced); // '02/20/2024'
+
+// Replace with function
+const text2 = '100 200 300';
+const doubled = text2.replace(/\d+/g, (match) => {
+    return (parseInt(match) * 2).toString();
+});
+console.log(doubled); // '200 400 600'
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **Catastrophic backtracking** | Nested quantifiers cause infinite loop | Avoid `(.+)+`, use specific patterns |
+| **Greedy vs Lazy** | Default greedy match too much | Use `?` untuk lazy matching |
+| **Global flag forgotten** | Only first match replaced | Add `g` flag untuk replace all |
+| **Special chars not escaped** | `.`, `*`, `+` treated as regex | Escape dengan `\` |
+| **Unicode issues** | Emoji, special chars break pattern | Use `u` flag, `\p{}` properties |
+
+**Best Practices:**
+
+```javascript
+// 1. Test regex online first
+// ✅ Use regex101.com atau regexr.com
+// ✅ Visualize pattern
+// ✅ Test dengan sample data
+
+// 2. Use specific patterns
+// ❌ Bad: Too general
+const badRegex = /.+/;
+
+// ✅ Good: Specific
+const goodRegex = /[a-zA-Z0-9]+/;
+
+// 3. Avoid catastrophic backtracking
+// ❌ Bad: Nested quantifiers
+const badRegex2 = /(.+)+/;  // Can hang browser!
+
+// ✅ Good: Specific quantifiers
+const goodRegex2 = /[a-z]{1,10}/;
+
+// 4. Comment complex regex
+// Use verbose mode or break down
+const emailRegex = /^          # Start
+                    [^\s@]+     # Username
+                    @           # @ symbol
+                    [^\s@]+     # Domain
+                    \.          # Dot
+                    [^\s@]+     # TLD
+                    $/ix;       // Case insensitive, verbose
+
+// 5. Extract to constants
+// ❌ Bad
+function validate(str) {
+    return /^[a-z]+$/.test(str);
+}
+
+// ✅ Good
+const LOWERCASE_LETTERS = /^[a-z]+$/;
+function validate(str) {
+    return LOWERCASE_LETTERS.test(str);
+}
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. Input Validation:**
+
+```javascript
+// Algoritma Validation:
+// 1. Define pattern untuk setiap field
+// 2. Test input terhadap pattern
+// 3. Return valid/invalid dengan message
+
+const validators = {
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    phone: /^(\+62|0)[0-9]{9,12}$/,
+    username: /^[a-zA-Z0-9_]{3,16}$/,
+    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+    url: /^https?:\/\/[^\s]+$/,
+    date: /^\d{4}-\d{2}-\d{2}$/,
+    time: /^\d{2}:\d{2}$/,
+    creditCard: /^\d{4}-?\d{4}-?\d{4}-?\d{4}$/
+};
+
+function validateField(value, type) {
+    const pattern = validators[type];
+    
+    if (!pattern) {
+        throw new Error(`Unknown validation type: ${type}`);
+    }
+    
+    const isValid = pattern.test(value);
+    
+    return {
+        isValid,
+        message: isValid ? 'Valid' : `Invalid ${type} format`
+    };
+}
+
+// Usage
+console.log(validateField('user@email.com', 'email'));
+// { isValid: true, message: 'Valid' }
+
+console.log(validateField('invalid', 'email'));
+// { isValid: false, message: 'Invalid email format' }
+```
+
+**2. Data Extraction:**
+
+```javascript
+// Algoritma Extraction:
+// 1. Define pattern dengan capture groups
+// 2. matchAll untuk get all matches
+// 3. Extract captured data
+
+function extractHashtags(text) {
+    const hashtagRegex = /#(\w+)/g;
+    const matches = [...text.matchAll(hashtagRegex)];
+    return matches.map(m => m[1]);
+}
+
+const tweet = 'Learning #JavaScript and #Regex! #coding';
+console.log(extractHashtags(tweet));
+// ['JavaScript', 'Regex', 'coding']
+
+function extractPrices(text) {
+    const priceRegex = /Rp\s*(\d+[.,]?\d*)/gi;
+    const matches = [...text.matchAll(priceRegex)];
+    return matches.map(m => m[1]);
+}
+
+const description = 'Harga: Rp 50.000, diskon jadi Rp 40.000';
+console.log(extractPrices(description));
+// ['50.000', '40.000']
+
+function extractLinks(text) {
+    const urlRegex = /https?:\/\/[^\s]+/g;
+    return text.match(urlRegex) || [];
+}
+
+const content = 'Visit https://example.com or http://test.com';
+console.log(extractLinks(content));
+// ['https://example.com', 'http://test.com']
+```
+
+**3. Text Transformation:**
+
+```javascript
+// Algoritma Transformation:
+// 1. Define pattern
+// 2. replace dengan transformation
+// 3. Return transformed text
+
+// Format phone number
+function formatPhone(phone) {
+    // Remove non-digits
+    const cleaned = phone.replace(/\D/g, '');
+    
+    // Format: 0812-3456-7890
+    return cleaned.replace(/(\d{4})(\d{4})(\d{4})/, '$1-$2-$3');
+}
+
+console.log(formatPhone('081234567890')); // '0812-3456-7890'
+
+// Slugify text
+function slugify(text) {
+    return text
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')      // Remove special chars
+        .replace(/\s+/g, '-')          // Replace spaces with dash
+        .replace(/-+/g, '-')           // Remove multiple dashes
+        .replace(/^-|-$/g, '');        // Trim dashes from ends
+}
+
+console.log(slugify('Hello World! This is a Test.'));
+// 'hello-world-this-is-a-test'
+
+// Mask sensitive data
+function maskEmail(email) {
+    return email.replace(/^(.{2}).+(@.+)$/, '$1***$2');
+}
+
+console.log(maskEmail('budi.santoso@email.com'));
+// 'bu***@email.com'
+
+function maskCreditCard(card) {
+    return card.replace(/\d{4}-?\d{4}-?\d{4}-(\d{4})$/, '****-****-****-$1');
+}
+
+console.log(maskCreditCard('1234-5678-9012-3456'));
+// '****-****-****-3456'
+```
+
+---
+
+#### 📊 Regex Performance
+
+| Pattern | Complexity | Note |
+|---------|-----------|------|
+| Simple literal | O(n) | Fast |
+| Character class | O(n) | Fast |
+| Quantifiers | O(n*m) | Depends on input |
+| Nested quantifiers | O(2^n) | Avoid! |
+| Backreferences | O(n*m) | Can be slow |
+| Lookahead/behind | O(n*m) | Use sparingly |
+
+---
+
+### 🟡 8. API & HTTP Fundamentals
+
+#### 📖 Konsep Dasar: HTTP & REST API
+
+**HTTP (HyperText Transfer Protocol)** adalah **bahasa komunikasi** antara client (browser) dan server. Jika client adalah **pelanggan** dan server adalah **restoran**, maka HTTP adalah **menu dan cara order**.
+
+**REST API** adalah **aturan** untuk request/response data. API adalah **pelayan** yang bawa pesanan dari client ke dapur (server) dan balik bawa makanan (data).
+
+**Mengapa API & HTTP Penting?**
+1. **Client-Server Communication:** Frontend ↔ Backend
+2. **Third-party Integration:** Connect to external services
+3. **Data Fetching:** Get dynamic data
+4. **Microservices:** Service-to-service communication
+5. **Modern Architecture:** Essential for web/mobile apps
+
+---
+
+#### 🔬 Tahapan Logika: HTTP Request/Response
+
+**1. HTTP METHODS - Action Types**
+
+```javascript
+// Algoritma HTTP Methods:
+// 1. GET: Retrieve data
+// 2. POST: Create new data
+// 3. PUT: Update existing data
+// 4. DELETE: Remove data
+// 5. PATCH: Partial update
+
+// GET - Retrieve data
+// Algoritma:
+// 1. Request data dari server
+// 2. Server return data
+// 3. No side effects
+// 4. Idempotent (same result multiple times)
+
+const getUsers = async () => {
+    const response = await fetch('/api/users');
+    const users = await response.json();
+    return users;
+};
+
+// POST - Create new data
+// Algoritma:
+// 1. Send data ke server
+// 2. Server create new resource
+// 3. Return created resource
+// 4. Not idempotent
+
+const createUser = async (userData) => {
+    const response = await fetch('/api/users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    });
+    
+    const newUser = await response.json();
+    return newUser;
+};
+
+// PUT - Update existing data (full replace)
+// Algoritma:
+// 1. Send complete updated data
+// 2. Server replace existing resource
+// 3. Return updated resource
+// 4. Idempotent
+
+const updateUser = async (id, userData) => {
+    const response = await fetch(`/api/users/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    });
+    
+    return await response.json();
+};
+
+// PATCH - Partial update
+// Algoritma:
+// 1. Send only changed fields
+// 2. Server update specific fields
+// 3. Return updated resource
+
+const updateUserPartial = async (id, updates) => {
+    const response = await fetch(`/api/users/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updates)
+    });
+    
+    return await response.json();
+};
+
+// DELETE - Remove data
+// Algoritma:
+// 1. Request delete resource
+// 2. Server remove resource
+// 3. Return success/failure
+// 4. Idempotent
+
+const deleteUser = async (id) => {
+    const response = await fetch(`/api/users/${id}`, {
+        method: 'DELETE'
+    });
+    
+    return await response.json();
+};
+```
+
+**2. HTTP STATUS CODES - Response Codes**
+
+```javascript
+// Algoritma Status Codes:
+// 1. 1xx: Informational
+// 2. 2xx: Success
+// 3. 3xx: Redirection
+// 4. 4xx: Client Error
+// 5. 5xx: Server Error
+
+// 2XX SUCCESS
+// 200 OK - Request successful
+// 201 Created - Resource created
+// 204 No Content - Success but no content
+
+// 3XX REDIRECTION
+// 301 Moved Permanently
+// 302 Found (Temporary redirect)
+// 304 Not Modified (Use cache)
+
+// 4XX CLIENT ERRORS
+// 400 Bad Request - Invalid request
+// 401 Unauthorized - Need authentication
+// 403 Forbidden - No permission
+// 404 Not Found - Resource not found
+// 409 Conflict - Resource conflict
+// 422 Unprocessable Entity - Validation error
+// 429 Too Many Requests - Rate limited
+
+// 5XX SERVER ERRORS
+// 500 Internal Server Error
+// 502 Bad Gateway
+// 503 Service Unavailable
+// 504 Gateway Timeout
+
+// HANDLE STATUS CODES
+// Algoritma:
+// 1. Check response.ok (2xx)
+// 2. Check response.status
+// 3. Handle different status codes
+// 4. Throw error for non-2xx
+
+async function apiRequest(url, options = {}) {
+    const response = await fetch(url, options);
+    
+    // Check if successful (2xx)
+    if (!response.ok) {
+        // Handle specific status codes
+        switch (response.status) {
+            case 400:
+                throw new BadRequestError('Invalid request');
+            case 401:
+                // Redirect to login
+                redirectToLogin();
+                throw new UnauthorizedError('Please login');
+            case 403:
+                throw new ForbiddenError('Access denied');
+            case 404:
+                throw new NotFoundError('Resource not found');
+            case 429:
+                // Rate limited, wait and retry
+                const retryAfter = response.headers.get('Retry-After');
+                await delay(retryAfter * 1000);
+                return apiRequest(url, options);
+            case 500:
+                throw new ServerError('Server error');
+            default:
+                throw new Error(`HTTP ${response.status}`);
+        }
+    }
+    
+    return response;
+}
+```
+
+**3. HTTP HEADERS - Metadata**
+
+```javascript
+// Algoritma Headers:
+// 1. Request headers: Client → Server
+// 2. Response headers: Server → Client
+// 3. Metadata tentang request/response
+
+// COMMON REQUEST HEADERS
+// Algoritma:
+// 1. Content-Type: Format of request body
+// 2. Authorization: Authentication token
+// 3. Accept: Expected response format
+// 4. User-Agent: Client information
+
+const headers = {
+    'Content-Type': 'application/json',  // Sending JSON
+    'Accept': 'application/json',        // Expect JSON response
+    'Authorization': 'Bearer token123',  // Auth token
+    'User-Agent': 'MyApp/1.0'            // Client info
+};
+
+// COMMON RESPONSE HEADERS
+// Algoritma:
+// 1. Content-Type: Format of response
+// 2. Cache-Control: Caching instructions
+// 3. Set-Cookie: Set cookies
+// 4. X-RateLimit-Limit: Rate limit info
+
+// ACCESS HEADERS
+// Algoritma:
+// 1. response.headers.get(name)
+// 2. response.headers.has(name)
+// 3. Iterate headers
+
+async function fetchWithHeaders() {
+    const response = await fetch('/api/data');
+    
+    // Get specific header
+    const contentType = response.headers.get('Content-Type');
+    const rateLimit = response.headers.get('X-RateLimit-Limit');
+    
+    // Check if header exists
+    if (response.headers.has('Set-Cookie')) {
+        console.log('Cookies set');
+    }
+    
+    // Iterate all headers
+    for (const [key, value] of response.headers.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+    
+    return response;
+}
+```
+
+**4. REQUEST/RESPONSE BODY - Data Payload**
+
+```javascript
+// Algoritma Request Body:
+// 1. JSON.stringify data
+// 2. Set Content-Type header
+// 3. Send in body option
+
+// SENDING JSON
+// Algoritma:
+// 1. Convert object to JSON string
+// 2. Set Content-Type: application/json
+// 3. Pass in body option
+
+const userData = {
+    name: 'Budi',
+    email: 'budi@email.com',
+    age: 25
+};
+
+const response = await fetch('/api/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+});
+
+// SENDING FORM DATA
+// Algoritma:
+// 1. Create FormData object
+// 2. Append fields
+// 3. Send (no Content-Type header needed)
+
+const formData = new FormData();
+formData.append('name', 'Budi');
+formData.append('email', 'budi@email.com');
+formData.append('avatar', fileInput.files[0]);
+
+const response = await fetch('/api/users', {
+    method: 'POST',
+    body: formData
+    // Don't set Content-Type for FormData!
+});
+
+// Algoritma Response Body:
+// 1. response.json() - Parse JSON
+// 2. response.text() - Get text
+// 3. response.blob() - Get binary data
+// 4. response.formData() - Get FormData
+
+// PARSE JSON RESPONSE
+const data = await response.json();
+
+// PARSE TEXT RESPONSE
+const text = await response.text();
+
+// DOWNLOAD FILE (BLOB)
+const blob = await response.blob();
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = 'file.pdf';
+a.click();
+
+// HANDLE FORMDATA RESPONSE
+const formData = await response.formData();
+const value = formData.get('fieldName');
+```
+
+---
+
+#### 🔬 Tahapan Logika: API Integration Patterns
+
+**1. API CLIENT CLASS**
+
+```javascript
+// Algoritma API Client:
+// 1. Base class untuk semua API calls
+// 2. Centralized configuration
+// 3. Error handling
+// 4. Authentication
+
+class ApiClient {
+    constructor(baseURL, options = {}) {
+        this.baseURL = baseURL;
+        this.timeout = options.timeout || 5000;
+        this.headers = options.headers || {};
+        this.token = options.token || null;
+    }
+    
+    // Set authentication token
+    setToken(token) {
+        this.token = token;
+    }
+    
+    // Build full URL
+    buildURL(endpoint) {
+        return `${this.baseURL}${endpoint}`;
+    }
+    
+    // Build headers
+    buildHeaders(customHeaders = {}) {
+        const headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            ...this.headers,
+            ...customHeaders
+        };
+        
+        // Add auth token if exists
+        if (this.token) {
+            headers['Authorization'] = `Bearer ${this.token}`;
+        }
+        
+        return headers;
+    }
+    
+    // Generic request method
+    async request(endpoint, options = {}) {
+        const url = this.buildURL(endpoint);
+        const headers = this.buildHeaders(options.headers);
+        
+        const config = {
+            ...options,
+            headers
+        };
+        
+        // Add timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+        config.signal = controller.signal;
+        
+        try {
+            const response = await fetch(url, config);
+            clearTimeout(timeoutId);
+            
+            // Handle non-2xx responses
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new ApiError(
+                    errorData.message || `HTTP ${response.status}`,
+                    response.status,
+                    errorData
+                );
+            }
+            
+            // Parse response
+            const contentType = response.headers.get('Content-Type');
+            if (contentType && contentType.includes('application/json')) {
+                return await response.json();
+            }
+            
+            return await response.text();
+        } catch (error) {
+            if (error.name === 'AbortError') {
+                throw new Error('Request timeout');
+            }
+            throw error;
+        }
+    }
+    
+    // HTTP method shortcuts
+    get(endpoint, options = {}) {
+        return this.request(endpoint, { ...options, method: 'GET' });
+    }
+    
+    post(endpoint, data, options = {}) {
+        return this.request(endpoint, { 
+            ...options, 
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+    }
+    
+    put(endpoint, data, options = {}) {
+        return this.request(endpoint, { 
+            ...options, 
+            method: 'PUT',
+            body: JSON.stringify(data)
+        });
+    }
+    
+    patch(endpoint, data, options = {}) {
+        return this.request(endpoint, { 
+            ...options, 
+            method: 'PATCH',
+            body: JSON.stringify(data)
+        });
+    }
+    
+    delete(endpoint, options = {}) {
+        return this.request(endpoint, { ...options, method: 'DELETE' });
+    }
+}
+
+// Custom API Error class
+class ApiError extends Error {
+    constructor(message, status, data) {
+        super(message);
+        this.name = 'ApiError';
+        this.status = status;
+        this.data = data;
+    }
+}
+
+// Usage
+const api = new ApiClient('https://api.example.com', {
+    timeout: 10000,
+    headers: {
+        'X-API-Key': 'your-api-key'
+    }
+});
+
+// Set token after login
+api.setToken('jwt-token-here');
+
+// Make requests
+const users = await api.get('/users');
+const newUser = await api.post('/users', { name: 'Budi' });
+const updatedUser = await api.put('/users/1', { name: 'Siti' });
+await api.delete('/users/1');
+```
+
+**2. INTERCEPTORS & MIDDLEWARE**
+
+```javascript
+// Algoritma Interceptors:
+// 1. Intercept request sebelum send
+// 2. Modify request/response
+// 3. Add logging, auth, etc
+
+class ApiClientWithInterceptors extends ApiClient {
+    constructor(baseURL, options = {}) {
+        super(baseURL, options);
+        this.requestInterceptors = [];
+        this.responseInterceptors = [];
+    }
+    
+    // Add request interceptor
+    addRequestInterceptor(interceptor) {
+        this.requestInterceptors.push(interceptor);
+    }
+    
+    // Add response interceptor
+    addResponseInterceptor(interceptor) {
+        this.responseInterceptors.push(interceptor);
+    }
+    
+    // Override request method
+    async request(endpoint, options = {}) {
+        // Apply request interceptors
+        let config = { endpoint, options };
+        for (const interceptor of this.requestInterceptors) {
+            config = await interceptor(config);
+        }
+        
+        // Make request
+        const response = await super.request(config.endpoint, config.options);
+        
+        // Apply response interceptors
+        let result = response;
+        for (const interceptor of this.responseInterceptors) {
+            result = await interceptor(result);
+        }
+        
+        return result;
+    }
+}
+
+// Usage
+const api = new ApiClientWithInterceptors('https://api.example.com');
+
+// Add logging interceptor
+api.addRequestInterceptor(async ({ endpoint, options }) => {
+    console.log(`Request: ${options.method || 'GET'} ${endpoint}`);
+    return { endpoint, options };
+});
+
+// Add auth interceptor
+api.addRequestInterceptor(async ({ endpoint, options }) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        options.headers = {
+            ...options.headers,
+            'Authorization': `Bearer ${token}`
+        };
+    }
+    return { endpoint, options };
+});
+
+// Add error handling interceptor
+api.addResponseInterceptor(async (response) => {
+    // Log all responses
+    console.log('Response:', response);
+    return response;
+});
+```
+
+**3. CACHING STRATEGY**
+
+```javascript
+// Algoritma Caching:
+// 1. Check cache before request
+// 2. Return cached data if valid
+// 3. Request from API if cache miss
+// 4. Update cache with response
+
+class CachedApiClient extends ApiClient {
+    constructor(baseURL, options = {}) {
+        super(baseURL, options);
+        this.cache = new Map();
+        this.cacheExpiry = options.cacheExpiry || 5 * 60 * 1000; // 5 minutes
+    }
+    
+    // Generate cache key
+    getCacheKey(endpoint, options = {}) {
+        return `${options.method || 'GET'}:${endpoint}:${JSON.stringify(options.body || {})}`;
+    }
+    
+    // Check if cache is valid
+    isCacheValid(cachedItem) {
+        return cachedItem && (Date.now() - cachedItem.timestamp) < this.cacheExpiry;
+    }
+    
+    // Override request method
+    async request(endpoint, options = {}) {
+        const cacheKey = this.getCacheKey(endpoint, options);
+        
+        // Check cache for GET requests
+        if ((options.method || 'GET') === 'GET') {
+            const cached = this.cache.get(cacheKey);
+            
+            if (this.isCacheValid(cached)) {
+                console.log('Cache hit:', cacheKey);
+                return cached.data;
+            }
+        }
+        
+        // Make API request
+        console.log('Cache miss, fetching from API:', cacheKey);
+        const response = await super.request(endpoint, options);
+        
+        // Cache GET responses
+        if ((options.method || 'GET') === 'GET') {
+            this.cache.set(cacheKey, {
+                data: response,
+                timestamp: Date.now()
+            });
+        } else {
+            // Invalidate related cache on write operations
+            this.invalidateCache(endpoint);
+        }
+        
+        return response;
+    }
+    
+    // Invalidate cache
+    invalidateCache(pattern) {
+        for (const key of this.cache.keys()) {
+            if (key.includes(pattern)) {
+                this.cache.delete(key);
+            }
+        }
+    }
+    
+    // Clear all cache
+    clearCache() {
+        this.cache.clear();
+    }
+}
+
+// Usage
+const api = new CachedApiClient('https://api.example.com', {
+    cacheExpiry: 10 * 60 * 1000 // 10 minutes
+});
+
+// First call - API request
+const users1 = await api.get('/users');
+
+// Second call - from cache (faster!)
+const users2 = await api.get('/users');
+
+// After POST - cache invalidated
+await api.post('/users', { name: 'New User' });
+
+// Next GET - fresh from API
+const users3 = await api.get('/users');
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **Not handling errors** | Promise rejection tidak di-handle | Selalu pakai .catch() atau try-catch |
+| **No timeout** | Request bisa hang forever | Set timeout dengan AbortController |
+| **Hardcoded URLs** | URL tersebar di code | Gunakan base URL configuration |
+| **No authentication** | Sensitive endpoints tanpa auth | Add auth token to requests |
+| **Not handling 401** | Token expired tidak di-handle | Redirect to login on 401 |
+| **Memory leaks** | Fetch tidak di-cleanup | Use AbortController untuk cleanup |
+
+**Best Practices:**
+
+```javascript
+// 1. Centralized API configuration
+// ✅ Good
+const API_CONFIG = {
+    baseURL: process.env.API_URL || 'https://api.example.com',
+    timeout: 10000,
+    retries: 3
+};
+
+// ❌ Bad
+fetch('https://api.example.com/users');
+fetch('https://api.example.com/posts');
+
+// 2. Proper error handling
+// ✅ Good
+try {
+    const response = await fetch('/api/users');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+} catch (error) {
+    console.error('API Error:', error);
+    showUserMessage('Gagal mengambil data');
+}
+
+// ❌ Bad
+fetch('/api/users').then(r => r.json());
+
+// 3. Use environment variables
+// ✅ Good
+const baseURL = process.env.API_URL;
+
+// ❌ Bad
+const baseURL = 'https://api.example.com';
+
+// 4. Abstract API calls
+// ✅ Good
+const userService = {
+    getAll: () => api.get('/users'),
+    getById: (id) => api.get(`/users/${id}`),
+    create: (data) => api.post('/users', data)
+};
+
+// ❌ Bad
+fetch('/api/users');
+fetch('/api/users/1');
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. Authentication Flow:**
+
+```javascript
+// Algoritma Authentication:
+// 1. Login dengan credentials
+// 2. Store token
+// 3. Include token in subsequent requests
+// 4. Refresh token when expired
+// 5. Logout (clear token)
+
+class AuthService {
+    constructor(apiClient) {
+        this.api = apiClient;
+        this.tokenKey = 'auth_token';
+        this.refreshTokenKey = 'refresh_token';
+    }
+    
+    // Login
+    async login(email, password) {
+        const response = await this.api.post('/auth/login', {
+            email,
+            password
+        });
+        
+        // Store tokens
+        localStorage.setItem(this.tokenKey, response.token);
+        localStorage.setItem(this.refreshTokenKey, response.refreshToken);
+        
+        return response.user;
+    }
+    
+    // Logout
+    async logout() {
+        try {
+            await this.api.post('/auth/logout');
+        } finally {
+            // Clear tokens even if API call fails
+            localStorage.removeItem(this.tokenKey);
+            localStorage.removeItem(this.refreshTokenKey);
+        }
+    }
+    
+    // Get current token
+    getToken() {
+        return localStorage.getItem(this.tokenKey);
+    }
+    
+    // Refresh token
+    async refreshToken() {
+        const refreshToken = localStorage.getItem(this.refreshTokenKey);
+        
+        if (!refreshToken) {
+            throw new Error('No refresh token');
+        }
+        
+        const response = await this.api.post('/auth/refresh', {
+            refreshToken
+        });
+        
+        // Store new tokens
+        localStorage.setItem(this.tokenKey, response.token);
+        localStorage.setItem(this.refreshTokenKey, response.refreshToken);
+        
+        return response.token;
+    }
+    
+    // Check if authenticated
+    isAuthenticated() {
+        return !!this.getToken();
+    }
+}
+
+// Usage
+const api = new ApiClient('https://api.example.com');
+const authService = new AuthService(api);
+
+// Login
+const user = await authService.login('user@email.com', 'password123');
+
+// API calls with auth token
+api.setToken(authService.getToken());
+const profile = await api.get('/users/me');
+
+// Logout
+await authService.logout();
+```
+
+**2. File Upload:**
+
+```javascript
+// Algoritma File Upload:
+// 1. Select file from input
+// 2. Create FormData
+// 3. Upload dengan progress tracking
+// 4. Handle response
+
+class FileUploader {
+    constructor(apiClient) {
+        this.api = apiClient;
+    }
+    
+    async upload(file, endpoint, onProgress) {
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        // Track upload progress
+        const xhr = new XMLHttpRequest();
+        
+        return new Promise((resolve, reject) => {
+            // Progress event
+            xhr.upload.addEventListener('progress', (event) => {
+                if (event.lengthComputable && onProgress) {
+                    const percentComplete = (event.loaded / event.total) * 100;
+                    onProgress(percentComplete);
+                }
+            });
+            
+            // Load event (success)
+            xhr.addEventListener('load', () => {
+                if (xhr.status === 200) {
+                    resolve(JSON.parse(xhr.responseText));
+                } else {
+                    reject(new Error(`Upload failed: ${xhr.status}`));
+                }
+            });
+            
+            // Error event
+            xhr.addEventListener('error', () => {
+                reject(new Error('Upload failed'));
+            });
+            
+            // Open and send
+            xhr.open('POST', `${this.api.baseURL}${endpoint}`);
+            xhr.setRequestHeader('Authorization', `Bearer ${this.api.token}`);
+            xhr.send(formData);
+        });
+    }
+    
+    // Multiple file upload
+    async uploadMultiple(files, endpoint, onProgress) {
+        const formData = new FormData();
+        
+        for (const file of files) {
+            formData.append('files', file);
+        }
+        
+        const response = await this.api.request(endpoint, {
+            method: 'POST',
+            body: formData
+            // Don't set Content-Type for FormData!
+        });
+        
+        return response;
+    }
+}
+
+// Usage
+const uploader = new FileUploader(api);
+
+// Single file upload with progress
+const fileInput = document.querySelector('#fileInput');
+const file = fileInput.files[0];
+
+await uploader.upload(file, '/upload', (progress) => {
+    console.log(`Upload progress: ${progress.toFixed(2)}%`);
+    document.querySelector('#progressBar').style.width = `${progress}%`;
+});
+
+// Multiple files
+const files = Array.from(fileInput.files);
+const results = await uploader.uploadMultiple(files, '/upload-multiple');
+```
+
+---
+
+#### 📊 API Performance
+
+| Operation | Time | Note |
+|-----------|------|------|
+| GET request | 50-500ms | Depends on network |
+| POST request | 100-1000ms | Data processing |
+| File upload | 1s-60s+ | Depends on size |
+| Cached request | <10ms | From memory |
+| Timeout | 5-30s | Configurable |
+
+---
+
+*(Bersambung ke topik berikutnya: Prototypes & Classes, Browser Storage, Date & Time, Performance, Security, Testing, Git)*
+
+---
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+---
+
+## 📚 Bab 9: Materi Lanjutan Full-Stack Ready (Part 4 - Final) {#-bab-9-materi-lanjutan-full-stack-ready-part-4-final}
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+> **🎯 Tujuan Bab:** Melengkapi skill untuk production-ready development. Bab ini mencakup OOP, Storage, Date/Time, Performance, Security, Testing, dan Git.
+
+---
+
+### 🟡 9. Prototypes & Classes (OOP)
+
+#### 📖 Konsep Dasar: Object-Oriented JavaScript
+
+**Prototypes** adalah mekanisme di mana JavaScript objects mewarisi features dari object lain. Jika objects adalah **anak**, maka prototype adalah **orang tua** yang menurunkan sifat-sifatnya.
+
+**Classes** adalah **syntactic sugar** di atas prototype-based inheritance. Membuat OOP lebih familiar untuk developer dari class-based languages.
+
+**Mengapa Prototypes & Classes Penting?**
+1. **Inheritance:** Code reuse melalui parent-child relationship
+2. **Encapsulation:** Bundle data dan methods
+3. **Polymorphism:** Same interface, different implementations
+4. **Organization:** Structure code logically
+5. **Framework Foundation:** React, Angular, Vue use classes
+
+---
+
+#### 🔬 Tahapan Logika: Prototypes
+
+**1. PROTOTYPE CHAIN - Warisan Object**
+
+```javascript
+// Algoritma Prototype Chain:
+// 1. Setiap object punya __proto__ property
+// 2. __proto__ reference ke parent object
+// 3. Property lookup chain: object → proto → proto's proto → null
+
+// BASIC PROTOTYPE
+// Algoritma:
+// 1. Create object
+// 2. Access __proto__
+// 3. Chain ke Object.prototype
+
+const obj = { name: 'Budi' };
+
+console.log(obj.name);  // 'Budi' (own property)
+console.log(obj.toString());  // '[object Object]' (from prototype)
+
+// obj.__proto__ === Object.prototype
+// Object.prototype.__proto__ === null
+
+// PROTOTYPE WITH CONSTRUCTOR
+// Algoritma:
+// 1. Define constructor function
+// 2. Add methods to prototype
+// 3. All instances share methods
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// Add method to prototype (shared)
+Person.prototype.greet = function() {
+    return `Hello, I'm ${this.name}`;
+};
+
+Person.prototype.getOlder = function() {
+    this.age++;
+};
+
+// Create instances
+const budi = new Person('Budi', 25);
+const siti = new Person('Siti', 30);
+
+console.log(budi.greet());  // 'Hello, I'm Budi'
+console.log(siti.greet());  // 'Hello, I'm Siti'
+
+// Methods are shared (not duplicated)
+console.log(budi.greet === siti.greet);  // true
+
+// PROTOTYPE CHAIN LOOKUP
+// Algoritma:
+// 1. Check own property
+// 2. If not found, check __proto__
+// 3. Continue up the chain
+// 4. Return undefined if not found anywhere
+
+console.log(budi.name);      // 'Budi' (own property)
+console.log(budi.greet());   // From Person.prototype
+console.log(budi.toString()); // From Object.prototype
+
+// MODIFYING PROTOTYPE
+// Algoritma:
+// 1. Add to prototype
+// 2. All instances get access immediately
+// 3. Even existing instances!
+
+Person.prototype.sayHi = function() {
+    return 'Hi!';
+};
+
+console.log(budi.sayHi());  // 'Hi!' (works on existing instances!)
+console.log(siti.sayHi());  // 'Hi!'
+```
+
+**2. PROTOTYPAL INHERITANCE - Parent-Child Relationship**
+
+```javascript
+// Algoritma Inheritance:
+// 1. Create parent constructor
+// 2. Create child constructor
+// 3. Set child.prototype = Object.create(parent.prototype)
+// 4. Set child.prototype.constructor = child
+// 5. Call parent constructor from child
+
+// PARENT CLASS
+function Animal(name) {
+    this.name = name;
+}
+
+Animal.prototype.eat = function() {
+    return `${this.name} is eating`;
+};
+
+// CHILD CLASS
+function Dog(name, breed) {
+    // Call parent constructor
+    Animal.call(this, name);
+    this.breed = breed;
+}
+
+// Set up prototype chain
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+// Add child-specific methods
+Dog.prototype.bark = function() {
+    return `${this.name} says woof!`;
+};
+
+// Override parent method
+Dog.prototype.eat = function() {
+    return `${this.name} (the ${this.breed}) is eating dog food`;
+};
+
+// Usage
+const dog = new Dog('Rex', 'German Shepherd');
+
+console.log(dog.name);   // 'Rex' (from Animal)
+console.log(dog.breed);  // 'German Shepherd' (from Dog)
+console.log(dog.eat());  // 'Rex (the German Shepherd) is eating dog food' (overridden)
+console.log(dog.bark()); // 'Rex says woof!' (from Dog)
+
+// Check prototype chain
+console.log(dog instanceof Dog);    // true
+console.log(dog instanceof Animal); // true
+console.log(dog instanceof Object); // true
+```
+
+---
+
+#### 🔬 Tahapan Logika: ES6 Classes
+
+**1. CLASS BASIC SYNTAX**
+
+```javascript
+// Algoritma Class:
+// 1. class keyword
+// 2. constructor method
+// 3. Methods without function keyword
+// 4. No commas between methods
+
+// BASIC CLASS
+// Algoritma:
+// 1. Define class
+// 2. Constructor initialize properties
+// 3. Add methods
+
+class Person {
+    // Constructor
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    // Instance method
+    greet() {
+        return `Hello, I'm ${this.name}`;
+    }
+    
+    // Another method
+    getOlder() {
+        this.age++;
+        return this.age;
+    }
+}
+
+// Create instances
+const budi = new Person('Budi', 25);
+const siti = new Person('Siti', 30);
+
+console.log(budi.greet());  // 'Hello, I'm Budi'
+console.log(siti.getOlder()); // 31
+
+// CLASS EXPRESSIONS
+// Algoritma:
+// 1. Anonymous class expression
+// 2. Assign to variable
+// 3. Or pass as argument
+
+const Animal = class {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    speak() {
+        return `${this.name} makes a sound`;
+    }
+};
+
+const animal = new Animal('Generic');
+console.log(animal.speak());
+```
+
+**2. CLASS INHERITANCE**
+
+```javascript
+// Algoritma Class Inheritance:
+// 1. class Child extends Parent
+// 2. Call super() in constructor
+// 3. Override methods
+// 4. Use super.methodName() to call parent
+
+// PARENT CLASS
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    eat() {
+        return `${this.name} is eating`;
+    }
+    
+    sleep() {
+        return `${this.name} is sleeping`;
+    }
+}
+
+// CHILD CLASS
+class Dog extends Animal {
+    constructor(name, breed) {
+        // Call parent constructor
+        super(name);
+        this.breed = breed;
+    }
+    
+    // Override parent method
+    eat() {
+        return `${this.name} (the ${this.breed}) is eating dog food`;
+    }
+    
+    // New method
+    bark() {
+        return `${this.name} says woof!`;
+    }
+    
+    // Call parent method with super
+    sleepAndDream() {
+        const sleeping = super.sleep();
+        return `${sleeping} and dreaming about bones`;
+    }
+}
+
+// Usage
+const dog = new Dog('Rex', 'German Shepherd');
+
+console.log(dog.name);      // 'Rex' (from Animal)
+console.log(dog.breed);     // 'German Shepherd' (from Dog)
+console.log(dog.eat());     // Overridden method
+console.log(dog.bark());    // Dog's own method
+console.log(dog.sleep());   // Inherited from Animal
+console.log(dog.sleepAndDream()); // Uses super.sleep()
+```
+
+**3. STATIC METHODS & PROPERTIES**
+
+```javascript
+// Algoritma Static:
+// 1. static keyword
+// 2. Called on class, not instance
+// 3. Cannot access this (instance properties)
+
+class MathUtils {
+    // Static property
+    static PI = 3.14159;
+    
+    // Static method
+    static add(a, b) {
+        return a + b;
+    }
+    
+    // Another static method
+    static circleArea(radius) {
+        return this.PI * radius * radius;
+    }
+    
+    // Instance method (non-static)
+    describe() {
+        return 'I am a MathUtils instance';
+    }
+}
+
+// Access static members on CLASS (not instance)
+console.log(MathUtils.PI);        // 3.14159
+console.log(MathUtils.add(2, 3)); // 5
+console.log(MathUtils.circleArea(5)); // 78.53975
+
+// Cannot access static from instance
+const math = new MathUtils();
+console.log(math.describe()); // 'I am a MathUtils instance'
+// console.log(math.PI);  // undefined
+// console.log(math.add(2, 3)); // Error!
+
+// USE CASE: Factory method
+class User {
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+    
+    // Static factory method
+    static createAdmin(name, email) {
+        const user = new User(name, email);
+        user.role = 'admin';
+        return user;
+    }
+    
+    // Another static factory
+    static createGuest() {
+        return new User('Guest', 'guest@example.com');
+    }
+}
+
+const admin = User.createAdmin('Budi', 'budi@email.com');
+console.log(admin.role); // 'admin'
+
+const guest = User.createGuest();
+console.log(guest.name); // 'Guest'
+```
+
+**4. GETTERS & SETTERS**
+
+```javascript
+// Algoritma Getters/Setters:
+// 1. get propertyName() { }
+// 2. set propertyName(value) { }
+// 3. Access like properties (no parentheses)
+// 4. Validation in setter
+
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+    
+    // Getter
+    get area() {
+        return this.width * this.height;
+    }
+    
+    // Getter with calculation
+    get perimeter() {
+        return 2 * (this.width + this.height);
+    }
+    
+    // Setter with validation
+    set width(value) {
+        if (value <= 0) {
+            throw new Error('Width must be positive');
+        }
+        this._width = value;
+    }
+    
+    get width() {
+        return this._width;
+    }
+    
+    set height(value) {
+        if (value <= 0) {
+            throw new Error('Height must be positive');
+        }
+        this._height = value;
+    }
+    
+    get height() {
+        return this._height;
+    }
+}
+
+// Usage
+const rect = new Rectangle(5, 10);
+
+console.log(rect.area);      // 50 (getter, no parentheses!)
+console.log(rect.perimeter); // 30
+
+rect.width = 8;  // setter
+console.log(rect.width); // 8 (getter)
+
+// This will throw error
+// rect.width = -5; // Error: Width must be positive
+```
+
+**5. PRIVATE FIELDS & METHODS**
+
+```javascript
+// Algoritma Private:
+// 1. # prefix untuk private
+// 2. Only accessible inside class
+// 3. Cannot access from outside
+
+class BankAccount {
+    // Private field
+    #balance = 0;
+    
+    // Private method
+    #validateAmount(amount) {
+        return amount > 0 && amount <= this.#balance;
+    }
+    
+    constructor(initialBalance) {
+        this.#balance = initialBalance;
+    }
+    
+    // Public method access private
+    deposit(amount) {
+        if (amount <= 0) {
+            throw new Error('Amount must be positive');
+        }
+        this.#balance += amount;
+        return this.#balance;
+    }
+    
+    withdraw(amount) {
+        if (!this.#validateAmount(amount)) {
+            throw new Error('Insufficient funds');
+        }
+        this.#balance -= amount;
+        return this.#balance;
+    }
+    
+    // Getter for balance (read-only)
+    get balance() {
+        return this.#balance;
+    }
+}
+
+// Usage
+const account = new BankAccount(1000);
+
+console.log(account.balance); // 1000 (via getter)
+account.deposit(500);
+console.log(account.balance); // 1500
+account.withdraw(200);
+console.log(account.balance); // 1300
+
+// Cannot access private fields
+// console.log(account.#balance); // SyntaxError!
+// account.#validateAmount(100); // SyntaxError!
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **Forgetting super()** | Child constructor tanpa super() | Always call super() first |
+| **this before super()** | Access this before super() | Call super() before using this |
+| **Arrow functions in class** | this tidak bind benar | Use regular functions for methods |
+| **Private field access** | Cannot access #field outside | Use getters/setters |
+| **Static vs instance** | Confusion when to use which | Static untuk utility, instance untuk data |
+
+**Best Practices:**
+
+```javascript
+// 1. Use class for OOP patterns
+// ✅ Good
+class UserService {
+    constructor(apiClient) {
+        this.api = apiClient;
+    }
+    
+    async getUser(id) {
+        return this.api.get(`/users/${id}`);
+    }
+}
+
+// 2. Use static for utility methods
+// ✅ Good
+class Validator {
+    static isEmail(str) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
+    }
+    
+    static isPhone(str) {
+        return /^\d{10,}$/.test(str);
+    }
+}
+
+// Usage
+Validator.isEmail('user@email.com');
+
+// 3. Use private fields for encapsulation
+// ✅ Good
+class Counter {
+    #count = 0;
+    
+    increment() {
+        this.#count++;
+    }
+    
+    get count() {
+        return this.#count;
+    }
+}
+```
+
+---
+
+### 🟡 10. Local Storage & Session Storage
+
+#### 📖 Konsep Dasar: Browser Storage
+
+**Browser Storage** adalah cara menyimpan data **di browser user**. Jika server adalah **gudang pusat**, maka browser storage adalah **lemari pribadi** di rumah user.
+
+**Types of Storage:**
+1. **localStorage:** Persistent (tidak hilang saat browser ditutup)
+2. **sessionStorage:** Session only (hilang saat tab ditutup)
+3. **IndexedDB:** Complex data, large storage
+4. **Cookies:** Small data, sent to server
+
+---
+
+#### 🔬 Tahapan Logika: Storage Operations
+
+**1. LOCAL STORAGE - Persistent Storage**
+
+```javascript
+// Algoritma LocalStorage:
+// 1. localStorage.setItem(key, value)
+// 2. localStorage.getItem(key)
+// 3. localStorage.removeItem(key)
+// 4. localStorage.clear()
+
+// BASIC OPERATIONS
+// Algoritma:
+// 1. Set item (string only)
+// 2. Get item (return string)
+// 3. Remove item
+// 4. Clear all
+
+// Set item
+localStorage.setItem('name', 'Budi');
+localStorage.setItem('age', '25');
+
+// Get item
+const name = localStorage.getItem('name');
+console.log(name); // 'Budi'
+
+// Remove item
+localStorage.removeItem('age');
+
+// Clear all
+localStorage.clear();
+
+// STORAGE LIMIT
+// Algoritma:
+// 1. Check quota (5-10MB typically)
+// 2. Handle quota exceeded
+// 3. Clean up old data
+
+try {
+    const largeData = 'x'.repeat(10 * 1024 * 1024); // 10MB
+    localStorage.setItem('large', largeData);
+} catch (error) {
+    if (error.name === 'QuotaExceededError') {
+        console.log('Storage full!');
+        // Clean up old data
+        localStorage.clear();
+    }
+}
+
+// STORING OBJECTS
+// Algoritma:
+// 1. JSON.stringify object
+// 2. Store as string
+// 3. JSON.parse when retrieving
+
+const user = {
+    id: 1,
+    name: 'Budi',
+    email: 'budi@email.com',
+    preferences: {
+        theme: 'dark',
+        language: 'id'
+    }
+};
+
+// Store
+localStorage.setItem('user', JSON.stringify(user));
+
+// Retrieve
+const storedUser = JSON.parse(localStorage.getItem('user'));
+console.log(storedUser.name); // 'Budi'
+console.log(storedUser.preferences.theme); // 'dark'
+
+// ERROR HANDLING
+// Algoritma:
+// 1. Wrap in try-catch
+// 2. Handle parse errors
+// 3. Provide fallback
+
+function safeGetItem(key, defaultValue = null) {
+    try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : defaultValue;
+    } catch (error) {
+        console.error('Error reading from localStorage:', error);
+        return defaultValue;
+    }
+}
+
+function safeSetItem(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+    } catch (error) {
+        console.error('Error writing to localStorage:', error);
+        return false;
+    }
+}
+
+// Usage
+safeSetItem('config', { theme: 'dark' });
+const config = safeGetItem('config', { theme: 'light' });
+```
+
+**2. SESSION STORAGE - Temporary Storage**
+
+```javascript
+// Algoritma SessionStorage:
+// 1. Same API as localStorage
+// 2. Data cleared when tab closes
+// 3. Per-tab storage (not shared)
+
+// BASIC OPERATIONS
+sessionStorage.setItem('tempData', 'Some data');
+const data = sessionStorage.getItem('tempData');
+sessionStorage.removeItem('tempData');
+
+// USE CASE: Form data preservation
+class FormPreserver {
+    constructor(formId) {
+        this.form = document.getElementById(formId);
+        this.storageKey = `form_${formId}`;
+        
+        // Load saved data
+        this.load();
+        
+        // Save on input change
+        this.form.addEventListener('input', () => this.save());
+        
+        // Clear on submit
+        this.form.addEventListener('submit', () => this.clear());
+    }
+    
+    save() {
+        const formData = new FormData(this.form);
+        const data = Object.fromEntries(formData);
+        sessionStorage.setItem(this.storageKey, JSON.stringify(data));
+    }
+    
+    load() {
+        const saved = sessionStorage.getItem(this.storageKey);
+        if (saved) {
+            const data = JSON.parse(saved);
+            for (const [key, value] of Object.entries(data)) {
+                const input = this.form.querySelector(`[name="${key}"]`);
+                if (input) {
+                    input.value = value;
+                }
+            }
+        }
+    }
+    
+    clear() {
+        sessionStorage.removeItem(this.storageKey);
+    }
+}
+
+// Usage
+const formPreserver = new FormPreserver('registrationForm');
+// Form data auto-saved on every input!
+```
+
+**3. STORAGE MANAGER CLASS**
+
+```javascript
+// Algoritma Storage Manager:
+// 1. Centralized storage handling
+// 2. Expiry support
+// 3. Namespacing
+// 4. Error handling
+
+class StorageManager {
+    constructor(namespace = 'app', storage = localStorage) {
+        this.namespace = namespace;
+        this.storage = storage;
+    }
+    
+    // Generate namespaced key
+    getKey(key) {
+        return `${this.namespace}:${key}`;
+    }
+    
+    // Set with optional expiry
+    set(key, value, expiryMs = null) {
+        const item = {
+            value,
+            expiry: expiryMs ? Date.now() + expiryMs : null
+        };
+        
+        try {
+            this.storage.setItem(this.getKey(key), JSON.stringify(item));
+            return true;
+        } catch (error) {
+            console.error('Storage set error:', error);
+            return false;
+        }
+    }
+    
+    // Get with expiry check
+    get(key, defaultValue = null) {
+        try {
+            const itemStr = this.storage.getItem(this.getKey(key));
+            
+            if (!itemStr) {
+                return defaultValue;
+            }
+            
+            const item = JSON.parse(itemStr);
+            
+            // Check expiry
+            if (item.expiry && Date.now() > item.expiry) {
+                this.remove(key);
+                return defaultValue;
+            }
+            
+            return item.value;
+        } catch (error) {
+            console.error('Storage get error:', error);
+            return defaultValue;
+        }
+    }
+    
+    // Remove item
+    remove(key) {
+        this.storage.removeItem(this.getKey(key));
+    }
+    
+    // Clear all (namespaced)
+    clear() {
+        const keys = Object.keys(this.storage);
+        keys.forEach(key => {
+            if (key.startsWith(this.namespace)) {
+                this.storage.removeItem(key);
+            }
+        });
+    }
+    
+    // Get all keys
+    keys() {
+        return Object.keys(this.storage)
+            .filter(key => key.startsWith(this.namespace))
+            .map(key => key.replace(`${this.namespace}:`, ''));
+    }
+}
+
+// Usage
+const appStorage = new StorageManager('myapp');
+
+// Set with 1 hour expiry
+appStorage.set('token', 'abc123', 60 * 60 * 1000);
+
+// Get (returns null if expired)
+const token = appStorage.get('token');
+
+// Clear all app data
+appStorage.clear();
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. Theme Preference:**
+
+```javascript
+// Algoritma Theme Manager:
+// 1. Save theme preference
+// 2. Load on page load
+// 3. Apply to document
+
+class ThemeManager {
+    constructor() {
+        this.storageKey = 'theme';
+        this.load();
+    }
+    
+    load() {
+        const theme = localStorage.getItem(this.storageKey) || 'light';
+        this.set(theme, false);
+    }
+    
+    set(theme, save = true) {
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        if (save) {
+            localStorage.setItem(this.storageKey, theme);
+        }
+    }
+    
+    toggle() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        this.set(next);
+    }
+}
+
+// Usage
+const themeManager = new ThemeManager();
+document.querySelector('#themeToggle').addEventListener('click', () => {
+    themeManager.toggle();
+});
+```
+
+**2. Shopping Cart Persistence:**
+
+```javascript
+// Algoritma Cart Persistence:
+// 1. Save cart to localStorage
+// 2. Load on page load
+// 3. Sync across tabs
+
+class PersistentCart {
+    constructor() {
+        this.storageKey = 'shopping_cart';
+        this.items = this.load();
+        
+        // Listen for changes in other tabs
+        window.addEventListener('storage', (e) => {
+            if (e.key === this.storageKey) {
+                this.items = JSON.parse(e.newValue || '[]');
+                this.emit('change', this.items);
+            }
+        });
+    }
+    
+    load() {
+        const saved = localStorage.getItem(this.storageKey);
+        return saved ? JSON.parse(saved) : [];
+    }
+    
+    save() {
+        localStorage.setItem(this.storageKey, JSON.stringify(this.items));
+        this.emit('change', this.items);
+    }
+    
+    add(product, qty = 1) {
+        const existing = this.items.find(item => item.id === product.id);
+        
+        if (existing) {
+            existing.qty += qty;
+        } else {
+            this.items.push({ ...product, qty });
+        }
+        
+        this.save();
+    }
+    
+    remove(productId) {
+        this.items = this.items.filter(item => item.id !== productId);
+        this.save();
+    }
+    
+    updateQty(productId, qty) {
+        const item = this.items.find(item => item.id === productId);
+        if (item) {
+            item.qty = qty;
+            this.save();
+        }
+    }
+    
+    clear() {
+        this.items = [];
+        this.save();
+    }
+    
+    // Simple event emitter
+    listeners = {};
+    
+    on(event, fn) {
+        this.listeners[event] = this.listeners[event] || [];
+        this.listeners[event].push(fn);
+    }
+    
+    emit(event, data) {
+        (this.listeners[event] || []).forEach(fn => fn(data));
+    }
+}
+
+// Usage
+const cart = new PersistentCart();
+
+cart.on('change', (items) => {
+    console.log('Cart updated:', items);
+    updateCartUI(items);
+});
+
+cart.add({ id: 1, name: 'Laptop', price: 5000000 }, 1);
+cart.add({ id: 2, name: 'Mouse', price: 150000 }, 2);
+```
+
+---
+
+#### 📊 Storage Comparison
+
+| Type | Limit | Persistence | Scope | Use Case |
+|------|-------|-------------|-------|----------|
+| localStorage | 5-10MB | Permanent | Origin | User preferences, cached data |
+| sessionStorage | 5-10MB | Tab session | Tab | Form data, temporary state |
+| IndexedDB | Unlimited | Permanent | Origin | Large datasets, offline apps |
+| Cookies | 4KB | Configurable | Sent to server | Auth tokens, tracking |
+
+---
+
+*(Bersambung ke topik berikutnya: Date & Time, Performance, Security, Testing, Git)*
+
+---
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+---
+
+## 📚 Bab 10: Materi Lanjutan Full-Stack Ready (Part 5 - Final Completion) {#-bab-10-materi-lanjutan-full-stack-ready-part-5-final-completion}
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+> **🎯 Tujuan Bab:** Melengkapi semua skill yang dibutuhkan untuk production-ready development. Bab final ini mencakup Date/Time, Performance, Security, Testing, dan Git.
+
+---
+
+### 🟡 11. Date & Time Manipulation
+
+#### 📖 Konsep Dasar: Date & Time
+
+**Date & Time** adalah salah satu aspek paling **tricky** dalam programming. Jika angka adalah **penggaris**, maka waktu adalah **sungai** yang terus mengalir dengan timezone, daylight saving, dan format yang berbeda-beda.
+
+**Mengapa Date & Time Penting?**
+1. **Timestamps:** Record when events occur
+2. **Scheduling:** Set future events
+3. **Duration:** Calculate time differences
+4. **Formatting:** Display in user-friendly format
+5. **Timezones:** Handle global users
+
+---
+
+#### 🔬 Tahapan Logika: Date Operations
+
+**1. CREATING DATES**
+
+```javascript
+// Algoritma Creating Dates:
+// 1. new Date() - current date/time
+// 2. new Date(timestamp) - from milliseconds
+// 3. new Date(dateString) - from string
+// 4. new Date(year, month, day, ...) - from components
+
+// CURRENT DATE/TIME
+// Algoritma:
+// 1. new Date() tanpa argument
+// 2. Return current date/time
+// 3. Based on system clock
+
+const now = new Date();
+console.log(now); // 2024-02-20T10:30:00.000Z
+
+// FROM TIMESTAMP
+// Algoritma:
+// 1. Milliseconds since Jan 1, 1970 00:00:00 UTC
+// 2. Positive = after 1970, negative = before
+// 3. Use Date.now() for current timestamp
+
+const timestamp = Date.now(); // Current timestamp
+const dateFromTimestamp = new Date(timestamp);
+
+const specificTimestamp = new Date(1609459200000); // Jan 1, 2021
+
+// FROM DATE STRING
+// Algoritma:
+// 1. Parse ISO 8601 format (recommended)
+// 2. Parse other formats (browser dependent)
+// 3. Return Date object
+
+const date1 = new Date('2024-02-20T10:30:00'); // ISO format
+const date2 = new Date('2024-02-20'); // Date only
+const date3 = new Date('Feb 20, 2024'); // Natural language
+
+// FROM COMPONENTS
+// Algoritma:
+// 1. new Date(year, month, day, hour, minute, second, ms)
+// 2. Month is 0-indexed (0 = January, 11 = December)
+// 3. Omitted components default to 0
+
+const date4 = new Date(2024, 1, 20); // Feb 20, 2024 (month 1 = February!)
+const date5 = new Date(2024, 1, 20, 10, 30, 0); // With time
+const date6 = new Date(2024, 1, 20, 10, 30, 0, 500); // With milliseconds
+
+// ⚠️ COMMON MISTAKE: Month is 0-indexed!
+const january = new Date(2024, 0, 1); // January 1, 2024
+const december = new Date(2024, 11, 31); // December 31, 2024
+```
+
+**2. GETTING DATE COMPONENTS**
+
+```javascript
+// Algoritma Getting Components:
+// 1. Use get methods
+// 2. Local timezone by default
+// 3. Use getUTC methods for UTC
+
+const date = new Date('2024-02-20T10:30:45.123');
+
+// GET COMPONENTS (Local Time)
+// Algoritma:
+// 1. getFullYear() - 4-digit year
+// 2. getMonth() - 0-11 (0 = January)
+// 3. getDate() - 1-31 (day of month)
+// 4. getDay() - 0-6 (0 = Sunday)
+// 5. getHours() - 0-23
+// 6. getMinutes() - 0-59
+// 7. getSeconds() - 0-59
+// 8. getMilliseconds() - 0-999
+
+console.log(date.getFullYear());    // 2024
+console.log(date.getMonth());       // 1 (February)
+console.log(date.getDate());        // 20
+console.log(date.getDay());         // 2 (Tuesday)
+console.log(date.getHours());       // 10
+console.log(date.getMinutes());     // 30
+console.log(date.getSeconds());     // 45
+console.log(date.getMilliseconds()); // 123
+
+// GET COMPONENTS (UTC)
+// Algoritma:
+// 1. Same methods with getUTC prefix
+// 2. Return UTC time, not local
+
+console.log(date.getUTCHours());    // Depends on timezone
+
+// GET TIMESTAMP
+// Algoritma:
+// 1. getTime() - milliseconds since epoch
+// 2. ValueOf() - same as getTime()
+
+console.log(date.getTime());  // 1708423845123
+console.log(date.valueOf());  // Same as getTime()
+```
+
+**3. SETTING DATE COMPONENTS**
+
+```javascript
+// Algoritma Setting Components:
+// 1. Use set methods
+// 2. Mutates original Date object
+// 3. Auto-adjust overflow
+
+const date = new Date();
+
+// SET COMPONENTS
+// Algoritma:
+// 1. setFullYear(year)
+// 2. setMonth(month) - 0-11
+// 3. setDate(day) - 1-31
+// 4. setHours(hour) - 0-23
+// 5. setMinutes(min) - 0-59
+// 6. setSeconds(sec) - 0-59
+// 7. setMilliseconds(ms) - 0-999
+
+date.setFullYear(2025);
+date.setMonth(5);      // June
+date.setDate(15);
+date.setHours(14, 30, 0); // Set hour, minute, second
+
+// AUTO-ADJUST OVERFLOW
+// Algoritma:
+// 1. Set value outside range
+// 2. JavaScript auto-adjust
+// 3. Carry over to next unit
+
+const date2 = new Date(2024, 1, 20); // Feb 20, 2024
+date2.setDate(32); // Feb 32? Auto-adjust to March 3!
+console.log(date2.toDateString()); // 'Sun Mar 03 2024'
+
+date2.setMonth(13); // Month 13? Auto-adjust to February next year!
+console.log(date2.getFullYear()); // 2025
+```
+
+**4. DATE ARITHMETIC**
+
+```javascript
+// Algoritma Date Arithmetic:
+// 1. Dates stored as milliseconds
+// 2. Subtract dates = difference in ms
+// 3. Add/subtract ms to change date
+
+// DATE DIFFERENCE
+// Algoritma:
+// 1. Subtract two dates
+// 2. Result in milliseconds
+// 3. Convert to desired unit
+
+const date1 = new Date('2024-01-01');
+const date2 = new Date('2024-12-31');
+
+const diffMs = date2 - date1;
+const diffDays = diffMs / (1000 * 60 * 60 * 24);
+const diffWeeks = diffDays / 7;
+const diffMonths = diffDays / 30.44; // Average
+
+console.log(`Days: ${diffDays}`);    // ~365
+console.log(`Weeks: ${diffWeeks}`);  // ~52
+console.log(`Months: ${diffMonths}`); // ~12
+
+// ADD/SUBTRACT TIME
+// Algoritma:
+// 1. Get milliseconds to add
+// 2. Add to date
+// 3. Return new Date
+
+function addDays(date, days) {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+
+function addMonths(date, months) {
+    const result = new Date(date);
+    result.setMonth(result.getMonth() + months);
+    return result;
+}
+
+function addYears(date, years) {
+    const result = new Date(date);
+    result.setFullYear(result.getFullYear() + years);
+    return result;
+}
+
+// Usage
+const today = new Date();
+const tomorrow = addDays(today, 1);
+const nextMonth = addMonths(today, 1);
+const nextYear = addYears(today, 1);
+
+// SUBTRACT DATES
+function subtractDays(date, days) {
+    return addDays(date, -days);
+}
+
+const yesterday = subtractDays(today, 1);
+```
+
+**5. DATE FORMATTING**
+
+```javascript
+// Algoritma Date Formatting:
+// 1. toLocaleString() - user-friendly format
+// 2. toISOString() - ISO 8601 format
+// 3. Custom format with components
+
+// BUILT-IN FORMATS
+const date = new Date('2024-02-20T10:30:45');
+
+// ISO Format (for APIs, storage)
+console.log(date.toISOString());
+// '2024-02-20T10:30:45.000Z'
+
+// Locale String (for display)
+console.log(date.toLocaleString()); // '2/20/2024, 10:30:45 AM' (US)
+console.log(date.toLocaleString('id-ID')); // '20/2/2024 10.30.45' (Indonesian)
+
+// Locale Date/Time
+console.log(date.toLocaleDateString('id-ID')); // '20/2/2024'
+console.log(date.toLocaleTimeString('id-ID')); // '10.30.45'
+
+// CUSTOM FORMAT
+// Algoritma:
+// 1. Get components
+// 2. Pad with zeros
+// 3. Format string
+
+function formatDate(date, format = 'YYYY-MM-DD') {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    
+    return format
+        .replace('YYYY', year)
+        .replace('MM', month)
+        .replace('DD', day)
+        .replace('HH', hours)
+        .replace('mm', minutes)
+        .replace('ss', seconds);
+}
+
+// Usage
+console.log(formatDate(date)); // '2024-02-20'
+console.log(formatDate(date, 'DD/MM/YYYY')); // '20/02/2024'
+console.log(formatDate(date, 'YYYY-MM-DD HH:mm:ss')); // '2024-02-20 10:30:45'
+
+// INTL.DATEFORMATTER (Advanced)
+// Algoritma:
+// 1. Create DateTimeFormat instance
+// 2. Configure options
+// 3. Format date
+
+const formatter = new Intl.DateTimeFormat('id-ID', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'long',
+    hour: '2-digit',
+    minute: '2-digit'
+});
+
+console.log(formatter.format(date));
+// 'Selasa, 20 Februari 2024 pukul 10.30'
+```
+
+**6. TIMEZONE HANDLING**
+
+```javascript
+// Algoritma Timezone:
+// 1. Date object always stores UTC internally
+// 2. Display in local timezone by default
+// 3. Use options for specific timezone
+
+// GET TIMEZONE OFFSET
+// Algoritma:
+// 1. getTimezoneOffset() returns minutes
+// 2. Positive = behind UTC
+// 3. Negative = ahead of UTC
+
+const date = new Date();
+const offset = date.getTimezoneOffset(); // e.g., -420 for UTC+7 (WIB)
+console.log(`Timezone offset: ${offset} minutes`);
+
+// FORMAT IN SPECIFIC TIMEZONE
+// Algoritma:
+// 1. Use Intl.DateTimeFormat
+// 2. Set timeZone option
+// 3. Format in that timezone
+
+const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Jakarta',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+});
+
+console.log(formatter.format(date)); // Time in Jakarta
+
+// COMMON TIMEZONES
+const timezones = {
+    jakarta: 'Asia/Jakarta',      // UTC+7
+    singapore: 'Asia/Singapore',  // UTC+8
+    tokyo: 'Asia/Tokyo',          // UTC+9
+    london: 'Europe/London',      // UTC+0/UTC+1
+    newyork: 'America/New_York',  // UTC-5/UTC-4
+    la: 'America/Los_Angeles'     // UTC-8/UTC-7
+};
+
+function formatInTimezone(date, timezone) {
+    return new Intl.DateTimeFormat('id-ID', {
+        timeZone: timezone,
+        dateStyle: 'full',
+        timeStyle: 'medium'
+    }).format(date);
+}
+
+console.log(formatInTimezone(date, timezones.jakarta));
+console.log(formatInTimezone(date, timezones.newyork));
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **Month 0-indexed** | January = 0, December = 11 | Remember: month - 1 |
+| **Timezone confusion** | Local vs UTC vs specific | Always specify timezone |
+| **Date mutation** | set methods mutate original | Clone date first |
+| **Daylight saving** | Time jumps forward/back | Use libraries for critical apps |
+| **String parsing** | Format varies by browser | Use ISO 8601 format |
+
+**Best Practices:**
+
+```javascript
+// 1. Use ISO 8601 for storage/APIs
+// ✅ Good
+const isoDate = '2024-02-20T10:30:00Z';
+
+// ❌ Bad
+const customDate = '02/20/2024'; // Ambiguous!
+
+// 2. Clone dates before modifying
+// ✅ Good
+const newDate = new Date(originalDate.getTime());
+newDate.setDate(newDate.getDate() + 1);
+
+// ❌ Bad
+const newDate = originalDate; // Same reference!
+newDate.setDate(newDate.getDate() + 1); // Mutates original!
+
+// 3. Use libraries for complex operations
+// ✅ Good for complex: date-fns, dayjs, luxon
+import { addDays, format } from 'date-fns';
+const result = addDays(new Date(), 7);
+
+// ✅ Native for simple
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. Age Calculator:**
+
+```javascript
+// Algoritma:
+// 1. Get birth date
+// 2. Get current date
+// 3. Calculate year difference
+// 4. Adjust if birthday hasn't occurred yet
+
+function calculateAge(birthDate) {
+    const birth = new Date(birthDate);
+    const now = new Date();
+    
+    let age = now.getFullYear() - birth.getFullYear();
+    const monthDiff = now.getMonth() - birth.getMonth();
+    const dayDiff = now.getDate() - birth.getDate();
+    
+    // Adjust if birthday hasn't occurred this year
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+    }
+    
+    return age;
+}
+
+console.log(calculateAge('2000-05-15')); // Age in years
+```
+
+**2. Countdown Timer:**
+
+```javascript
+// Algoritma:
+// 1. Get target date
+// 2. Calculate difference
+// 3. Convert to days, hours, minutes, seconds
+// 4. Update display
+
+function countdown(targetDate) {
+    const target = new Date(targetDate);
+    const now = new Date();
+    const diff = target - now;
+    
+    if (diff <= 0) {
+        return { expired: true };
+    }
+    
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    return { days, hours, minutes, seconds };
+}
+
+// Usage
+const newYear = new Date('2025-01-01T00:00:00');
+const remaining = countdown(newYear);
+console.log(`Time until New Year: ${remaining.days}d ${remaining.hours}h ${remaining.minutes}m ${remaining.seconds}s`);
+```
+
+**3. Date Range Validator:**
+
+```javascript
+// Algoritma:
+// 1. Get start and end dates
+// 2. Validate end >= start
+// 3. Check within allowed range
+
+function validateDateRange(startDate, endDate, options = {}) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const now = new Date();
+    
+    // End must be after start
+    if (end <= start) {
+        return { valid: false, error: 'End date must be after start date' };
+    }
+    
+    // Check minimum duration
+    if (options.minDays) {
+        const diffDays = (end - start) / (1000 * 60 * 60 * 24);
+        if (diffDays < options.minDays) {
+            return { valid: false, error: `Minimum ${options.minDays} days required` };
+        }
+    }
+    
+    // Check maximum duration
+    if (options.maxDays) {
+        const diffDays = (end - start) / (1000 * 60 * 60 * 24);
+        if (diffDays > options.maxDays) {
+            return { valid: false, error: `Maximum ${options.maxDays} days allowed` };
+        }
+    }
+    
+    // Check not in past
+    if (options.notInPast && start < now) {
+        return { valid: false, error: 'Start date cannot be in the past' };
+    }
+    
+    return { valid: true };
+}
+
+// Usage
+const result = validateDateRange('2024-03-01', '2024-03-07', {
+    minDays: 3,
+    maxDays: 30,
+    notInPast: true
+});
+
+console.log(result); // { valid: true } or { valid: false, error: '...' }
+```
+
+---
+
+#### 📊 Date Performance
+
+| Operation | Time | Note |
+|-----------|------|------|
+| Create Date | O(1) | Fast |
+| Get Component | O(1) | Fast |
+| Set Component | O(1) | Fast |
+| Date Arithmetic | O(1) | Fast |
+| Format (toLocaleString) | O(1) | Moderate |
+| Parse String | O(1) | Varies by format |
+
+---
+
+### 🟡 12. Performance Optimization
+
+#### 📖 Konsep Dasar: Performance
+
+**Performance Optimization** adalah seni membuat code **lebih cepat** dan **lebih efisien**. Jika code adalah **mobil**, optimization adalah **tuning engine** untuk dapat lebih cepat dengan bensin lebih sedikit.
+
+**Mengapa Performance Penting?**
+1. **User Experience:** Faster = happier users
+2. **Resource Usage:** Less CPU, memory, battery
+3. **Scalability:** Handle more users/data
+4. **Cost:** Less server resources = less cost
+5. **SEO:** Google ranks faster sites higher
+
+---
+
+#### 🔬 Tahapan Logika: Optimization Techniques
+
+**1. DEBOUNCING - Rate Limiting User Input**
+
+```javascript
+// Algoritma Debouncing:
+// 1. Function tidak langsung dipanggil
+// 2. Reset timer setiap kali dipanggil
+// 3. Execute hanya setelah delay tanpa panggilan baru
+// 4. Cancel previous timer
+
+// BASIC DEBOUNCE
+// Algoritma:
+// 1. Return wrapper function
+// 2. Clear previous timeout
+// 3. Set new timeout
+// 4. Execute after delay
+
+function debounce(fn, delay) {
+    let timeoutId;
+    
+    return function(...args) {
+        // Clear previous timeout
+        clearTimeout(timeoutId);
+        
+        // Set new timeout
+        timeoutId = setTimeout(() => {
+            fn.apply(this, args);
+        }, delay);
+    };
+}
+
+// USAGE: Search input
+// Algoritma:
+// 1. User types
+// 2. Debounced function waits
+// 3. If user stops typing, execute search
+// 4. If user continues, reset timer
+
+const searchInput = document.querySelector('#search');
+
+const debouncedSearch = debounce((query) => {
+    console.log('Searching for:', query);
+    // API call here
+}, 300);
+
+searchInput.addEventListener('input', (e) => {
+    debouncedSearch(e.target.value);
+});
+
+// User types "hello"
+// h - timeout set (300ms)
+// e - clear timeout, set new (300ms)
+// l - clear timeout, set new (300ms)
+// l - clear timeout, set new (300ms)
+// o - clear timeout, set new (300ms)
+// [wait 300ms]
+// Execute search for "hello"
+
+// DEBOUNCE WITH OPTIONS
+// Algoritma:
+// 1. immediate: execute on leading edge
+// 2. cancel: cancel pending execution
+
+function debounce(fn, delay, immediate = false) {
+    let timeoutId;
+    
+    return function(...args) {
+        const callNow = immediate && !timeoutId;
+        
+        clearTimeout(timeoutId);
+        
+        timeoutId = setTimeout(() => {
+            timeoutId = null;
+            if (!immediate) {
+                fn.apply(this, args);
+            }
+        }, delay);
+        
+        if (callNow) {
+            fn.apply(this, args);
+        }
+    };
+}
+
+// Usage: Execute immediately, then debounce
+const debouncedClick = debounce(() => {
+    console.log('Clicked!');
+}, 300, true);
+```
+
+**2. THROTTLING - Limiting Execution Rate**
+
+```javascript
+// Algoritma Throttling:
+// 1. Function execute immediately
+// 2. Cannot execute again until timeout
+// 3. Ignore calls during timeout
+// 4. Execute on next available slot
+
+// BASIC THROTTLE
+// Algoritma:
+// 1. Track last execution time
+// 2. Check if enough time passed
+// 3. Execute if enough time passed
+// 4. Ignore if not
+
+function throttle(fn, limit) {
+    let lastExecutionTime = 0;
+    
+    return function(...args) {
+        const now = Date.now();
+        
+        if (now - lastExecutionTime >= limit) {
+            lastExecutionTime = now;
+            fn.apply(this, args);
+        }
+    };
+}
+
+// USAGE: Scroll event
+// Algoritma:
+// 1. Scroll fires many times per second
+// 2. Throttle to once per 100ms
+// 3. Prevent performance issues
+
+const scrollHandler = throttle(() => {
+    console.log('Scroll position:', window.scrollY);
+    // Update UI, lazy load, etc.
+}, 100);
+
+window.addEventListener('scroll', scrollHandler);
+
+// THROTTLE WITH TRAILING
+// Algoritma:
+// 1. Execute on leading edge
+// 2. Also execute on trailing edge
+// 3. Capture last call during timeout
+
+function throttle(fn, limit) {
+    let lastExecutionTime = 0;
+    let timeoutId;
+    let lastArgs;
+    
+    return function(...args) {
+        const now = Date.now();
+        lastArgs = args;
+        
+        if (now - lastExecutionTime >= limit) {
+            // Execute immediately
+            lastExecutionTime = now;
+            fn.apply(this, args);
+        } else {
+            // Schedule trailing execution
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                lastExecutionTime = Date.now();
+                fn.apply(this, lastArgs);
+            }, limit - (now - lastExecutionTime));
+        }
+    };
+}
+```
+
+**3. MEMOIZATION - Caching Function Results**
+
+```javascript
+// Algoritma Memoization:
+// 1. Create cache object
+// 2. Check cache before computing
+// 3. Return cached result if exists
+// 4. Compute and cache if not exists
+
+// BASIC MEMOIZATION
+// Algoritma:
+// 1. Return wrapper function
+// 2. Generate cache key from arguments
+// 3. Check cache
+// 4. Return cached or compute and cache
+
+function memoize(fn) {
+    const cache = {};
+    
+    return function(...args) {
+        // Generate cache key
+        const key = JSON.stringify(args);
+        
+        // Check cache
+        if (key in cache) {
+            console.log('Returning from cache');
+            return cache[key];
+        }
+        
+        // Compute and cache
+        console.log('Computing...');
+        const result = fn.apply(this, args);
+        cache[key] = result;
+        
+        return result;
+    };
+}
+
+// USAGE: Expensive calculations
+// Algoritma:
+// 1. First call: compute
+// 2. Subsequent calls: return cached
+
+// Expensive function
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Memoized version
+const memoFib = memoize(fibonacci);
+
+console.log(memoFib(10)); // Computing... then result
+console.log(memoFib(10)); // Returning from cache!
+console.log(memoFib(11)); // Computing... (new input)
+
+// MEMOIZATION WITH LIMIT
+// Algoritma:
+// 1. Limit cache size
+// 2. Remove oldest entry when full
+// 3. LRU (Least Recently Used) strategy
+
+function memoizeWithLimit(fn, limit = 100) {
+    const cache = new Map();
+    
+    return function(...args) {
+        const key = JSON.stringify(args);
+        
+        if (cache.has(key)) {
+            // Move to end (most recently used)
+            const value = cache.get(key);
+            cache.delete(key);
+            cache.set(key, value);
+            return value;
+        }
+        
+        const result = fn.apply(this, args);
+        
+        cache.set(key, result);
+        
+        // Remove oldest if over limit
+        if (cache.size > limit) {
+            const firstKey = cache.keys().next().value;
+            cache.delete(firstKey);
+        }
+        
+        return result;
+    };
+}
+```
+
+**4. LAZY LOADING - Load on Demand**
+
+```javascript
+// Algoritma Lazy Loading:
+// 1. Don't load until needed
+// 2. Load when user requests/scrolls
+// 3. Show placeholder while loading
+// 4. Cache after loading
+
+// LAZY LOAD IMAGES
+// Algoritma:
+// 1. Check if image in viewport
+// 2. If yes, load image
+// 3. Use Intersection Observer API
+
+function lazyLoadImages() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// HTML: <img data-src="image.jpg" alt="...">
+lazyLoadImages();
+
+// LAZY LOAD MODULES
+// Algoritma:
+// 1. Use dynamic import()
+// 2. Load module on demand
+// 3. Cache after loading
+
+class LazyModule {
+    constructor(modulePath) {
+        this.modulePath = modulePath;
+        this.module = null;
+        this.loading = false;
+    }
+    
+    async load() {
+        if (this.module) {
+            return this.module;
+        }
+        
+        if (this.loading) {
+            // Wait for existing load
+            return new Promise(resolve => {
+                const checkLoaded = () => {
+                    if (this.module) {
+                        resolve(this.module);
+                    } else {
+                        setTimeout(checkLoaded, 10);
+                    }
+                };
+                checkLoaded();
+            });
+        }
+        
+        this.loading = true;
+        this.module = await import(this.modulePath);
+        this.loading = false;
+        
+        return this.module;
+    }
+}
+
+// Usage
+const chartModule = new LazyModule('./chart-library.js');
+
+// Load only when needed
+document.querySelector('#showChart').addEventListener('click', async () => {
+    const Chart = await chartModule.load();
+    // Use Chart library
+});
+```
+
+**5. VIRTUAL SCROLLING - Render Only Visible Items**
+
+```javascript
+// Algoritma Virtual Scrolling:
+// 1. Calculate visible range
+// 2. Render only visible items
+// 3. Update on scroll
+// 4. Maintain scroll position
+
+class VirtualList {
+    constructor(container, items, itemHeight) {
+        this.container = container;
+        this.items = items;
+        this.itemHeight = itemHeight;
+        this.visibleCount = Math.ceil(container.clientHeight / itemHeight);
+        
+        this.setup();
+    }
+    
+    setup() {
+        // Set total height
+        this.container.style.height = `${this.items.length * this.itemHeight}px`;
+        this.container.style.overflowY = 'auto';
+        this.container.style.position = 'relative';
+        
+        // Create viewport
+        this.viewport = document.createElement('div');
+        this.viewport.style.position = 'absolute';
+        this.viewport.style.top = '0';
+        this.viewport.style.left = '0';
+        this.viewport.style.right = '0';
+        this.container.appendChild(this.viewport);
+        
+        // Listen to scroll
+        this.container.addEventListener('scroll', () => this.render());
+        
+        // Initial render
+        this.render();
+    }
+    
+    render() {
+        const scrollTop = this.container.scrollTop;
+        const startIndex = Math.floor(scrollTop / this.itemHeight);
+        const endIndex = Math.min(startIndex + this.visibleCount, this.items.length);
+        
+        // Clear viewport
+        this.viewport.innerHTML = '';
+        
+        // Position viewport
+        this.viewport.style.transform = `translateY(${startIndex * this.itemHeight}px)`;
+        
+        // Render visible items
+        for (let i = startIndex; i < endIndex; i++) {
+            const item = document.createElement('div');
+            item.style.height = `${this.itemHeight}px`;
+            item.textContent = this.items[i];
+            this.viewport.appendChild(item);
+        }
+    }
+}
+
+// Usage
+const list = new VirtualList(
+    document.querySelector('#list'),
+    Array.from({length: 10000}, (_, i) => `Item ${i + 1}`),
+    50 // item height in pixels
+);
+```
+
+---
+
+#### ⚠️ Jebakan Umum & Best Practices
+
+| Jebakan | Penjelasan | Solusi |
+|---------|------------|--------|
+| **Over-optimization** | Optimize prematurely | Profile first, optimize bottlenecks |
+| **Debounce vs Throttle** | Confuse when to use which | Debounce for input, Throttle for scroll |
+| **Memory leaks** | Cache grows indefinitely | Limit cache size, cleanup |
+| **Too aggressive lazy loading** | User waits for everything | Preload critical resources |
+| **Ignoring network** | Only optimize JS | Optimize images, use CDN |
+
+**Best Practices:**
+
+```javascript
+// 1. Profile before optimizing
+// ✅ Good
+console.time('operation');
+expensiveOperation();
+console.timeEnd('operation');
+
+// Use browser DevTools Performance tab
+
+// 2. Use appropriate technique
+// ✅ Good
+// Search input → debounce
+searchInput.addEventListener('input', debounce(search, 300));
+
+// Scroll event → throttle
+window.addEventListener('scroll', throttle(handleScroll, 100));
+
+// Expensive calculation → memoize
+const memoizedCalc = memoize(expensiveCalc);
+
+// 3. Cleanup resources
+// ✅ Good
+class Cache {
+    constructor(maxSize = 100) {
+        this.cache = new Map();
+        this.maxSize = maxSize;
+    }
+    
+    set(key, value) {
+        if (this.cache.size >= this.maxSize) {
+            const firstKey = this.cache.keys().next().value;
+            this.cache.delete(firstKey);
+        }
+        this.cache.set(key, value);
+    }
+    
+    clear() {
+        this.cache.clear();
+    }
+}
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata
+
+**1. Search with Debounce & Loading State:**
+
+```javascript
+// Algoritma:
+// 1. Debounce search input
+// 2. Show loading indicator
+// 3. Fetch results
+// 4. Hide loading, show results
+
+class SearchComponent {
+    constructor(inputSelector, resultsSelector) {
+        this.input = document.querySelector(inputSelector);
+        this.results = document.querySelector(resultsSelector);
+        this.loading = false;
+        
+        this.setup();
+    }
+    
+    setup() {
+        const debouncedSearch = debounce((query) => {
+            this.search(query);
+        }, 300);
+        
+        this.input.addEventListener('input', (e) => {
+            debouncedSearch(e.target.value);
+        });
+    }
+    
+    async search(query) {
+        if (!query) {
+            this.results.innerHTML = '';
+            return;
+        }
+        
+        this.showLoading();
+        
+        try {
+            const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+            const data = await response.json();
+            this.displayResults(data);
+        } catch (error) {
+            this.showError(error);
+        } finally {
+            this.hideLoading();
+        }
+    }
+    
+    showLoading() {
+        this.loading = true;
+        this.results.innerHTML = '<div class="loading">Searching...</div>';
+    }
+    
+    hideLoading() {
+        this.loading = false;
+    }
+    
+    displayResults(data) {
+        this.results.innerHTML = data.map(item => `
+            <div class="result">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+            </div>
+        `).join('');
+    }
+    
+    showError(error) {
+        this.results.innerHTML = `<div class="error">Error: ${error.message}</div>`;
+    }
+}
+
+// Usage
+new SearchComponent('#searchInput', '#searchResults');
+```
+
+**2. Infinite Scroll with Throttle:**
+
+```javascript
+// Algoritma:
+// 1. Throttle scroll handler
+// 2. Check if near bottom
+// 3. Load more items
+// 4. Append to list
+
+class InfiniteScroll {
+    constructor(container, loader, threshold = 100) {
+        this.container = document.querySelector(container);
+        this.loader = document.querySelector(loader);
+        this.threshold = threshold;
+        this.loading = false;
+        this.page = 1;
+        
+        this.setup();
+    }
+    
+    setup() {
+        const throttledScroll = throttle(() => {
+            this.checkScroll();
+        }, 200);
+        
+        this.container.addEventListener('scroll', throttledScroll);
+    }
+    
+    checkScroll() {
+        const { scrollTop, scrollHeight, clientHeight } = this.container;
+        
+        // Check if near bottom
+        if (scrollHeight - scrollTop - clientHeight < this.threshold) {
+            if (!this.loading) {
+                this.loadMore();
+            }
+        }
+    }
+    
+    async loadMore() {
+        this.loading = true;
+        this.loader.style.display = 'block';
+        
+        try {
+            const response = await fetch(`/api/items?page=${this.page + 1}`);
+            const items = await response.json();
+            
+            if (items.length === 0) {
+                // No more items
+                this.container.removeEventListener('scroll', this.checkScroll);
+                return;
+            }
+            
+            this.appendItems(items);
+            this.page++;
+        } catch (error) {
+            console.error('Failed to load more:', error);
+        } finally {
+            this.loading = false;
+            this.loader.style.display = 'none';
+        }
+    }
+    
+    appendItems(items) {
+        const list = this.container.querySelector('.list');
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'item';
+            div.textContent = item.name;
+            list.appendChild(div);
+        });
+    }
+}
+
+// Usage
+new InfiniteScroll('#container', '#loader');
+```
+
+---
+
+#### 📊 Performance Comparison
+
+| Technique | Use Case | Improvement |
+|-----------|----------|-------------|
+| Debounce | Search input | 90% fewer calls |
+| Throttle | Scroll events | 95% fewer calls |
+| Memoization | Expensive calculations | 99% faster (cached) |
+| Lazy Loading | Images, modules | 50-80% faster initial load |
+| Virtual Scrolling | Large lists | 100x faster rendering |
+
+---
+
+*(Bersambung ke topik berikutnya: Security, Testing, Git)*
+
+---
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+---
+
+## 📚 Bab 11: Materi Lanjutan Full-Stack Ready (Part 6 - Final Completion) {#-bab-11-materi-lanjutan-full-stack-ready-part-6-final-completion}
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
+
+> **🎯 Tujuan Bab:** Topik final untuk production-ready development. Bab ini mencakup Security, Testing, dan Git.
+
+---
+
+### 🟡 13. Security Basics
+
+#### 📖 Konsep Dasar: Web Security
+
+**Web Security** adalah praktik melindungi aplikasi web dari **serangan berbahaya**. Jika aplikasi adalah **rumah**, security adalah **kunci, alarm, dan pagar** yang melindungi dari pencuri.
+
+**Mengapa Security Penting?**
+1. **Data Protection:** Protect user data from theft
+2. **Trust:** Users trust secure applications
+3. **Compliance:** Legal requirements (GDPR, etc.)
+4. **Business Continuity:** Prevent downtime from attacks
+5. **Reputation:** Security breaches damage reputation
+
+---
+
+#### 🔬 Tahapan Logika: Security Threats & Prevention
+
+**1. XSS (CROSS-SITE SCRIPTING)**
+
+```javascript
+// Algoritma XSS Attack:
+// 1. Attacker injects malicious script
+// 2. Script executes in victim's browser
+// 3. Steal cookies, session, redirect
+
+// ❌ VULNERABLE: User input directly in HTML
+// Algoritma:
+// 1. Get user input
+// 2. Insert directly into innerHTML
+// 3. Browser executes any script
+
+const userInput = '<script>alert("XSS!")</script>';
+document.getElementById('output').innerHTML = userInput; // DANGEROUS!
+
+// ✅ SECURE: Escape user input
+// Algoritma:
+// 1. Get user input
+// 2. Escape HTML special characters
+// 3. Insert as text, not HTML
+
+function escapeHTML(str) {
+    const escapeChars = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;'
+    };
+    
+    return str.replace(/[&<>"']/g, char => escapeChars[char]);
+}
+
+const safeInput = escapeHTML(userInput);
+document.getElementById('output').textContent = safeInput; // SAFE!
+
+// BEST PRACTICE: Use textContent, not innerHTML
+// Algoritma:
+// 1. Use textContent untuk user input
+// 2. Browser automatically escapes
+// 3. No script execution possible
+
+document.getElementById('output').textContent = userInput; // SAFE!
+
+// XSS VIA ATTRIBUTES
+// ❌ VULNERABLE
+const userUrl = 'javascript:alert("XSS!")';
+link.href = userUrl; // DANGEROUS!
+
+// ✅ SECURE: Validate URL scheme
+function sanitizeUrl(url) {
+    const validSchemes = ['http:', 'https:', 'mailto:'];
+    
+    try {
+        const parsed = new URL(url);
+        if (!validSchemes.includes(parsed.protocol)) {
+            return '#'; // Invalid scheme
+        }
+        return url;
+    } catch {
+        return '#'; // Invalid URL
+    }
+}
+
+link.href = sanitizeUrl(userUrl); // SAFE!
+```
+
+**2. CSRF (CROSS-SITE REQUEST FORGERY)**
+
+```javascript
+// Algoritma CSRF Attack:
+// 1. User logged into bank.com
+// 2. User visits malicious site
+// 3. Malicious site submits form to bank.com
+// 4. Browser sends cookies automatically
+// 5. Bank processes request thinking it's from user
+
+// ❌ VULNERABLE: No CSRF protection
+// Algoritma:
+// 1. Form without CSRF token
+// 2. Any site can submit form
+// 3. Browser sends auth cookies
+
+// bank.com/transfer
+<form action="/transfer" method="POST">
+    <input name="to" value="attacker">
+    <input name="amount" value="1000">
+</form>
+
+// ✅ SECURE: CSRF Token
+// Algoritma:
+// 1. Generate unique token per session
+// 2. Include token in form
+// 3. Verify token on server
+// 4. Reject if token missing/invalid
+
+// Server generates token
+const csrfToken = generateRandomToken(); // Store in session
+res.cookie('csrfToken', csrfToken);
+
+// Include in form
+<form action="/transfer" method="POST">
+    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+    <input name="to" value="attacker">
+    <input name="amount" value="1000">
+</form>
+
+// Verify on server
+app.post('/transfer', (req, res) => {
+    const token = req.body.csrfToken;
+    
+    if (token !== req.session.csrfToken) {
+        return res.status(403).send('Invalid CSRF token');
+    }
+    
+    // Process transfer
+});
+
+// FRONTEND: Include token in AJAX requests
+// Algoritma:
+// 1. Get token from cookie
+// 2. Include in request header
+// 3. Server verifies header
+
+const csrfToken = getCookie('csrfToken');
+
+fetch('/api/transfer', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken
+    },
+    body: JSON.stringify({ to: 'user', amount: 100 })
+});
+```
+
+**3. SQL INJECTION**
+
+```javascript
+// Algoritma SQL Injection:
+// 1. Attacker inputs SQL in form
+// 2. App concatenates SQL query
+// 3. Attacker's SQL executes
+// 4. Data breach or manipulation
+
+// ❌ VULNERABLE: String concatenation
+// Algoritma:
+// 1. Get user input
+// 2. Concatenate into SQL string
+// 3. Execute query
+
+const username = userInput; // "admin' OR '1'='1"
+const query = `SELECT * FROM users WHERE username = '${username}'`;
+// Result: SELECT * FROM users WHERE username = 'admin' OR '1'='1'
+// Attacker logs in as admin!
+
+// ✅ SECURE: Prepared Statements
+// Algoritma:
+// 1. Define query with placeholders
+// 2. Pass parameters separately
+// 3. Database treats as data, not SQL
+
+// Using parameterized query
+const query = 'SELECT * FROM users WHERE username = ?';
+const params = [userInput];
+
+db.execute(query, params); // SAFE!
+
+// Even if userInput = "admin' OR '1'='1"
+// Database searches for literal string, doesn't execute SQL
+
+// NODE.JS EXAMPLE (mysql2)
+// Algoritma:
+// 1. Use connection.query with ?
+// 2. Pass values as array
+// 3. Library handles escaping
+
+connection.query(
+    'SELECT * FROM users WHERE email = ? AND password = ?',
+    [email, password],
+    (error, results) => {
+        // Handle results
+    }
+);
+
+// NODE.JS EXAMPLE (PostgreSQL)
+// Algoritma:
+// 1. Use $1, $2 for placeholders
+// 2. Pass values as array
+
+client.query(
+    'SELECT * FROM users WHERE email = $1',
+    [email],
+    (error, results) => {
+        // Handle results
+    }
+);
+```
+
+**4. INPUT VALIDATION & SANITIZATION**
+
+```javascript
+// Algoritma Input Validation:
+// 1. Define expected format
+// 2. Validate input against format
+// 3. Reject invalid input
+// 4. Sanitize before use
+
+// VALIDATE EMAIL
+// Algoritma:
+// 1. Check format with regex
+// 2. Check length
+// 3. Check for valid domain
+
+function validateEmail(email) {
+    // Check null/undefined
+    if (!email) {
+        return { valid: false, error: 'Email is required' };
+    }
+    
+    // Check length
+    if (email.length > 254) {
+        return { valid: false, error: 'Email too long' };
+    }
+    
+    // Check format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return { valid: false, error: 'Invalid email format' };
+    }
+    
+    return { valid: true };
+}
+
+// VALIDATE PASSWORD
+// Algoritma:
+// 1. Check minimum length
+// 2. Check character types
+// 3. Return strength score
+
+function validatePassword(password) {
+    const errors = [];
+    let strength = 0;
+    
+    // Check length
+    if (password.length < 8) {
+        errors.push('Minimum 8 characters');
+    } else if (password.length >= 12) {
+        strength += 2;
+    } else {
+        strength += 1;
+    }
+    
+    // Check uppercase
+    if (/[A-Z]/.test(password)) {
+        strength += 1;
+    } else {
+        errors.push('At least one uppercase letter');
+    }
+    
+    // Check lowercase
+    if (/[a-z]/.test(password)) {
+        strength += 1;
+    } else {
+        errors.push('At least one lowercase letter');
+    }
+    
+    // Check numbers
+    if (/[0-9]/.test(password)) {
+        strength += 1;
+    } else {
+        errors.push('At least one number');
+    }
+    
+    // Check special characters
+    if (/[!@#$%^&*]/.test(password)) {
+        strength += 1;
+    }
+    
+    return {
+        valid: errors.length === 0,
+        errors,
+        strength: Math.min(strength, 5) // 0-5 scale
+    };
+}
+
+// SANITIZE USER INPUT
+// Algoritma:
+// 1. Remove dangerous characters
+// 2. Trim whitespace
+// 3. Convert to expected format
+
+function sanitizeInput(input) {
+    if (typeof input !== 'string') {
+        return input;
+    }
+    
+    return input
+        .trim()                      // Remove whitespace
+        .replace(/[<>]/g, '')        // Remove < and >
+        .replace(/javascript:/gi, '') // Remove javascript: protocol
+        .slice(0, 1000);             // Limit length
+}
+
+// Usage
+const cleanInput = sanitizeInput(userInput);
+```
+
+**5. SECURITY HEADERS**
+
+```javascript
+// Algoritma Security Headers:
+// 1. Set headers in response
+// 2. Browser enforces security
+// 3. Prevent various attacks
+
+// EXPRESS.JS EXAMPLE
+// Algoritma:
+// 1. Use helmet middleware
+// 2. Or set headers manually
+
+// Using helmet (recommended)
+const helmet = require('helmet');
+app.use(helmet());
+
+// Manual headers
+app.use((req, res, next) => {
+    // Prevent clickjacking
+    res.setHeader('X-Frame-Options', 'DENY');
+    
+    // Prevent MIME type sniffing
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    
+    // Enable XSS filter
+    res.setHeader('X-XSS-Protection', '1; mode=block');
+    
+    // Content Security Policy
+    res.setHeader('Content-Security-Policy', 
+        "default-src 'self'; " +
+        "script-src 'self' https://trusted-cdn.com; " +
+        "style-src 'self' 'unsafe-inline'; " +
+        "img-src 'self' data: https:; " +
+        "font-src 'self'"
+    );
+    
+    // Strict Transport Security (HTTPS only)
+    res.setHeader('Strict-Transport-Security', 
+        'max-age=31536000; includeSubDomains');
+    
+    // Referrer Policy
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    
+    next();
+});
+```
+
+---
+
+#### ⚠️ Security Checklist
+
+| Threat | Prevention | Priority |
+|--------|-----------|----------|
+| **XSS** | Escape output, use textContent | 🔴 Critical |
+| **CSRF** | CSRF tokens, SameSite cookies | 🔴 Critical |
+| **SQL Injection** | Prepared statements | 🔴 Critical |
+| **Clickjacking** | X-Frame-Options header | 🟡 High |
+| **Data Theft** | HTTPS, encrypt sensitive data | 🔴 Critical |
+| **Session Hijacking** | Secure cookies, rotate tokens | 🔴 Critical |
+
+**Best Practices:**
+
+```javascript
+// 1. Never trust user input
+// ✅ Good
+const sanitized = sanitizeInput(userInput);
+const validation = validateEmail(sanitized);
+
+if (!validation.valid) {
+    throw new Error(validation.error);
+}
+
+// 2. Use HTTPS everywhere
+// ✅ Good
+app.use((req, res, next) => {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(`https://${req.hostname}${req.url}`);
+    }
+    next();
+});
+
+// 3. Secure cookies
+// ✅ Good
+res.cookie('session', sessionId, {
+    httpOnly: true,     // Not accessible via JavaScript
+    secure: true,       // HTTPS only
+    sameSite: 'strict', // Prevent CSRF
+    maxAge: 24 * 60 * 60 * 1000 // 1 day
+});
+
+// 4. Hash passwords
+// ✅ Good
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+// Hash password
+const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+// Verify password
+const isValid = await bcrypt.compare(password, hashedPassword);
+
+// 5. Rate limiting
+// ✅ Good
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // 100 requests per window
+    message: 'Too many requests, please try again later'
+});
+
+app.use('/api/', limiter);
+```
+
+---
+
+### 🟡 14. Testing Fundamentals
+
+#### 📖 Konsep Dasar: Testing
+
+**Testing** adalah proses memverifikasi bahwa code bekerja **seperti yang diharapkan**. Jika code adalah **mobil**, testing adalah **test drive** sebelum jual ke customer.
+
+**Mengapa Testing Penting?**
+1. **Catch Bugs Early:** Find issues before production
+2. **Regression Prevention:** Ensure changes don't break existing features
+3. **Documentation:** Tests show how code should work
+4. **Confidence:** Deploy with confidence
+5. **Refactoring:** Safe to improve code structure
+
+---
+
+#### 🔬 Tahapan Logika: Testing Types
+
+**1. UNIT TESTING - Test Individual Functions**
+
+```javascript
+// Algoritma Unit Testing:
+// 1. Isolate function/component
+// 2. Provide test input
+// 3. Assert expected output
+// 4. Run automatically
+
+// JEST EXAMPLE
+// Algoritma:
+// 1. describe() group related tests
+// 2. test() or it() define test case
+// 3. expect() assert result
+
+// Function to test
+function add(a, b) {
+    return a + b;
+}
+
+// Test file: add.test.js
+describe('add function', () => {
+    test('adds two positive numbers', () => {
+        expect(add(2, 3)).toBe(5);
+    });
+    
+    test('adds negative numbers', () => {
+        expect(add(-2, -3)).toBe(-5);
+    });
+    
+    test('adds zero', () => {
+        expect(add(5, 0)).toBe(5);
+    });
+    
+    test('throws error for non-numbers', () => {
+        expect(() => add('2', '3')).toThrow();
+    });
+});
+
+// ASYNC TESTING
+// Algoritma:
+// 1. Return promise
+// 2. Or use async/await
+// 3. Assert resolved value
+
+// Async function
+async function fetchData(url) {
+    const response = await fetch(url);
+    return response.json();
+}
+
+// Test async function
+test('fetches data successfully', async () => {
+    const data = await fetchData('https://api.example.com/data');
+    expect(data).toHaveProperty('items');
+});
+
+// Test with promises
+test('fetches data successfully', () => {
+    return fetchData('https://api.example.com/data')
+        .then(data => {
+            expect(data).toHaveProperty('items');
+        });
+});
+
+// MOCKING
+// Algoritma:
+// 1. Replace real function with mock
+// 2. Control return value
+// 3. Verify calls
+
+test('calls API correctly', () => {
+    // Mock fetch
+    global.fetch = jest.fn(() =>
+        Promise.resolve({
+            json: () => Promise.resolve({ data: 'test' })
+        })
+    );
+    
+    fetchData('https://api.example.com/data');
+    
+    // Verify fetch was called
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(fetch).toHaveBeenCalledWith('https://api.example.com/data');
+});
+```
+
+**2. INTEGRATION TESTING - Test Component Interaction**
+
+```javascript
+// Algoritma Integration Testing:
+// 1. Test multiple components together
+// 2. Verify interaction
+// 3. Check data flow
+
+// EXPRESS.JS INTEGRATION TEST
+// Algoritma:
+// 1. Setup test server
+// 2. Make HTTP requests
+// 3. Assert responses
+
+// app.js
+const express = require('express');
+const app = express();
+
+app.get('/api/users/:id', async (req, res) => {
+    const user = await db.getUser(req.params.id);
+    res.json(user);
+});
+
+// app.test.js
+const request = require('supertest');
+const app = require('./app');
+
+describe('GET /api/users/:id', () => {
+    test('returns user for valid ID', async () => {
+        const response = await request(app)
+            .get('/api/users/1')
+            .expect(200);
+        
+        expect(response.body).toHaveProperty('id', 1);
+        expect(response.body).toHaveProperty('name');
+    });
+    
+    test('returns 404 for invalid ID', async () => {
+        await request(app)
+            .get('/api/users/999')
+            .expect(404);
+    });
+});
+```
+
+**3. END-TO-END (E2E) TESTING - Test Full User Flow**
+
+```javascript
+// Algoritma E2E Testing:
+// 1. Automate browser
+// 2. Simulate user actions
+// 3. Verify UI changes
+// 4. Test complete workflows
+
+// CYPRESS EXAMPLE
+// Algoritma:
+// 1. Visit page
+// 2. Find elements
+// 3. Trigger events
+// 4. Assert results
+
+// cypress/e2e/login.cy.js
+describe('Login Flow', () => {
+    it('logs in successfully', () => {
+        // Visit login page
+        cy.visit('/login');
+        
+        // Fill form
+        cy.get('#email').type('user@email.com');
+        cy.get('#password').type('password123');
+        
+        // Submit
+        cy.get('button[type="submit"]').click();
+        
+        // Assert redirect
+        cy.url().should('include', '/dashboard');
+        
+        // Assert welcome message
+        cy.get('.welcome-message')
+            .should('contain', 'Welcome back!');
+    });
+    
+    it('shows error for invalid credentials', () => {
+        cy.visit('/login');
+        
+        cy.get('#email').type('wrong@email.com');
+        cy.get('#password').type('wrongpassword');
+        cy.get('button[type="submit"]').click();
+        
+        cy.get('.error-message')
+            .should('contain', 'Invalid credentials');
+    });
+});
+
+// PLAYWRIGHT EXAMPLE
+// Algoritma:
+// 1. Launch browser
+// 2. Navigate to page
+// 3. Interact with elements
+// 4. Assert state
+
+const { test, expect } = require('@playwright/test');
+
+test('login flow', async ({ page }) => {
+    await page.goto('/login');
+    
+    await page.fill('#email', 'user@email.com');
+    await page.fill('#password', 'password123');
+    await page.click('button[type="submit"]');
+    
+    await expect(page).toHaveURL('/dashboard');
+    await expect(page.locator('.welcome'))
+        .toContainText('Welcome back!');
+});
+```
+
+**4. TEST BEST PRACTICES**
+
+```javascript
+// Algoritma Good Tests:
+// 1. AAA pattern: Arrange, Act, Assert
+// 2. One assertion per test
+// 3. Descriptive test names
+// 4. Independent tests
+
+// ✅ GOOD: AAA pattern
+test('calculates total with tax', () => {
+    // Arrange
+    const items = [
+        { price: 100, qty: 2 },
+        { price: 50, qty: 1 }
+    ];
+    const taxRate = 0.1;
+    
+    // Act
+    const total = calculateTotal(items, taxRate);
+    
+    // Assert
+    expect(total).toBe(275); // (100*2 + 50*1) * 1.1
+});
+
+// ✅ GOOD: Descriptive names
+describe('UserService', () => {
+    describe('createUser', () => {
+        test('creates user with valid data', () => {});
+        test('throws error for duplicate email', () => {});
+        test('hashes password before saving', () => {});
+        test('sends welcome email', () => {});
+    });
+});
+
+// ✅ GOOD: Independent tests
+// Each test sets up its own data
+test('test 1', () => {
+    const data = setupTestData(); // Fresh data
+    // ...
+});
+
+test('test 2', () => {
+    const data = setupTestData(); // Fresh data, not affected by test 1
+    // ...
+});
+
+// ❌ BAD: Tests depend on each other
+let sharedData;
+
+test('test 1', () => {
+    sharedData = createData(); // Test 2 depends on this
+});
+
+test('test 2', () => {
+    // Fails if test 1 not run first!
+    useData(sharedData);
+});
+```
+
+---
+
+#### 📊 Testing Pyramid
+
+```
+        /\
+       /  \
+      / E2E \      Few tests (slow, expensive)
+     /--------\
+    /Integration\  Some tests
+   /--------------\
+  /     Unit       \  Many tests (fast, cheap)
+ /------------------\
+```
+
+| Test Type | Speed | Cost | Coverage |
+|-----------|-------|------|----------|
+| Unit | Fast | Low | Individual functions |
+| Integration | Medium | Medium | Component interaction |
+| E2E | Slow | High | Full user flows |
+
+---
+
+### 🟡 15. Git & Version Control
+
+#### 📖 Konsep Dasar: Git
+
+**Git** adalah **time machine** untuk code. Setiap commit adalah **checkpoint** yang bisa kembali kapan saja. Jika code adalah **naskah**, Git adalah **editor** yang track setiap perubahan.
+
+**Mengapa Git Penting?**
+1. **Version History:** Track all changes
+2. **Collaboration:** Multiple developers work together
+3. **Backup:** Code stored remotely
+4. **Rollback:** Revert to previous versions
+5. **Branching:** Work on features independently
+
+---
+
+#### 🔬 Tahapan Logika: Git Operations
+
+**1. BASIC COMMANDS**
+
+```bash
+# SETUP
+# Algoritma:
+# 1. Initialize repository
+# 2. Configure user info
+
+git init                          # Initialize new repo
+git config user.name "Your Name"  # Set name
+git config user.email "email@example.com"  # Set email
+
+# CLONE
+# Algoritma:
+# 1. Copy remote repo
+# 2. Setup tracking
+
+git clone https://github.com/user/repo.git  # Clone repo
+cd repo
+
+# STATUS
+# Algoritma:
+# 1. Check file status
+# 2. See what changed
+
+git status        # See changed files
+git status -s     # Short format
+
+# ADD
+# Algoritma:
+# 1. Stage changes
+# 2. Prepare for commit
+
+git add file.txt          # Add specific file
+git add .                 # Add all changes
+git add -A                # Add all (including deleted)
+
+# COMMIT
+# Algoritma:
+# 1. Save staged changes
+# 2. Add commit message
+
+git commit -m "Add feature X"           # Commit with message
+git commit -am "Fix bug"                # Add and commit tracked files
+git commit --amend                      # Edit last commit
+
+# PUSH & PULL
+# Algoritma:
+# 1. Push: Send to remote
+# 2. Pull: Get from remote
+
+git push origin main        # Push to main branch
+git pull origin main        # Pull from main branch
+git push -u origin main     # Push and set upstream
+```
+
+**2. BRANCHING**
+
+```bash
+# Algoritma Branching:
+# 1. Create branch for feature
+# 2. Work independently
+# 3. Merge when ready
+
+# CREATE BRANCH
+git branch feature-x              # Create branch
+git checkout feature-x            # Switch to branch
+git checkout -b feature-x         # Create and switch
+
+# LIST BRANCHES
+git branch                        # List local branches
+git branch -a                     # List all branches
+git branch -r                     # List remote branches
+
+# MERGE
+# Algoritma:
+# 1. Switch to target branch
+# 2. Merge source branch
+# 3. Resolve conflicts if any
+
+git checkout main                 # Switch to main
+git merge feature-x               # Merge feature-x into main
+
+# RESOLVE CONFLICTS
+# Algoritma:
+# 1. Git marks conflicts
+# 2. Edit files to resolve
+# 3. Add resolved files
+# 4. Complete merge
+
+# After merge conflict:
+# 1. Edit conflicted files
+# 2. Look for <<<<<<< and >>>>>>>
+# 3. Choose which code to keep
+git add resolved-file.txt         # Mark as resolved
+git commit                        # Complete merge
+
+# DELETE BRANCH
+git branch -d feature-x           # Delete local branch
+git push origin --delete feature-x # Delete remote branch
+```
+
+**3. VIEWING HISTORY**
+
+```bash
+# Algoritma History:
+# 1. View commit log
+# 2. See what changed
+# 3. Compare versions
+
+git log                           # Show commit history
+git log --oneline                 # One line per commit
+git log --graph                   # Show branch graph
+git log --author="Name"          # Filter by author
+git log --since="2024-01-01"     # Filter by date
+
+# SHOW CHANGES
+git show COMMIT_HASH              # Show commit details
+git diff                          # Show unstaged changes
+git diff --staged                 # Show staged changes
+git diff branch1 branch2          # Compare branches
+
+# BLAME
+# Algoritma:
+# 1. See who changed each line
+# 2. When and why
+
+git blame file.txt                # Show line-by-line history
+```
+
+**4. UNDOING CHANGES**
+
+```bash
+# Algoritma Undoing:
+# 1. Discard local changes
+# 2. Unstage files
+# 3. Reset commits
+
+# DISCARD CHANGES
+git checkout -- file.txt          # Discard local changes
+git restore file.txt              # Modern equivalent
+
+# UNSTAGE
+git reset HEAD file.txt           # Unstage file
+git restore --staged file.txt     # Modern equivalent
+
+# RESET COMMITS
+git reset --soft HEAD~1           # Undo commit, keep changes
+git reset --hard HEAD~1           # Undo commit, discard changes
+
+# REVERT (safe for shared branches)
+git revert COMMIT_HASH            # Create new commit that undoes
+```
+
+**5. GIT WORKFLOW**
+
+```bash
+# FEATURE BRANCH WORKFLOW
+# Algoritma:
+# 1. Create branch from main
+# 2. Work on feature
+# 3. Push to remote
+# 4. Create pull request
+# 5. Merge after review
+
+# Start feature
+git checkout main
+git pull origin main
+git checkout -b feature/new-feature
+
+# Work on feature
+# ... make changes ...
+git add .
+git commit -m "Add feature part 1"
+git commit -m "Add feature part 2"
+
+# Sync with main
+git checkout main
+git pull origin main
+git checkout feature/new-feature
+git merge main
+
+# Push feature
+git push -u origin feature/new-feature
+
+# After PR approved
+git checkout main
+git merge feature/new-feature
+git push origin main
+```
+
+---
+
+#### ⚠️ Git Best Practices
+
+| Practice | Description | Priority |
+|----------|-------------|----------|
+| **Commit often** | Small, focused commits | 🔴 High |
+| **Descriptive messages** | Clear commit messages | 🔴 High |
+| **Branch naming** | feature/, bugfix/, hotfix/ | 🟡 Medium |
+| **Pull before push** | Avoid conflicts | 🔴 High |
+| **Review before commit** | Check changes | 🔴 High |
+| **Don't commit secrets** | No passwords, keys | 🔴 Critical |
+
+**Good Commit Messages:**
+
+```bash
+# ✅ GOOD: Clear and descriptive
+git commit -m "Add user authentication with JWT"
+git commit -m "Fix login validation for email format"
+git commit -m "Update dependencies to latest versions"
+
+# ❌ BAD: Too vague
+git commit -m "Fix stuff"
+git commit -m "Update"
+git commit -m "WIP"
+
+# GOOD FORMAT:
+# <type>(<scope>): <subject>
+#
+# <body>
+#
+# - type: feat, fix, docs, style, refactor, test, chore
+# - scope: area of codebase
+# - subject: what changed
+
+# Example:
+# feat(auth): Add password reset functionality
+#
+# - Add reset password endpoint
+# - Send email with reset link
+# - Add token expiration
+```
+
+---
+
+#### 📊 Git Command Reference
+
+| Command | Description | Use Case |
+|---------|-------------|----------|
+| `git init` | Initialize repo | Start new project |
+| `git clone` | Copy remote repo | Get existing project |
+| `git add` | Stage changes | Prepare for commit |
+| `git commit` | Save changes | Create checkpoint |
+| `git push` | Send to remote | Share changes |
+| `git pull` | Get from remote | Update local |
+| `git branch` | Manage branches | Feature development |
+| `git merge` | Combine branches | Integrate features |
+| `git log` | View history | See changes |
+| `git diff` | Compare changes | Review before commit |
+| `git reset` | Undo changes | Fix mistakes |
+| `git revert` | Revert commit | Safe undo on shared |
+
+---
+
+## 🧪 BONUS SECTION: Latihan Komprehensif
+
+> **🎯 Misi Akhir:** Gabungkan semua ilmu yang telah dipelajari untuk menyelesaikan tantangan-tantangan berikut!
+
+---
+
+### 🐛 BAGIAN 1: Debugging Exercises (Find the Bug!)
+
+> **📖 Konsep:** Seorang developer handal bukan hanya bisa menulis code, tapi juga bisa **mencari dan memperbaiki bug**. Latihlah kemampuan debugging Anda!
+
+---
+
+#### 🔍 BUG 1: Scope Issue
+
+**⚠️ Code dengan Bug:**
+
+```javascript
+function hitungTotal(items) {
+    var total = 0;
+
+    for (var i = 0; i < items.length; i++) {
+        setTimeout(() => {
+            console.log(`Item ${i}: ${items[i].harga}`);
+        }, 1000);
+
+        total += items[i].harga;
+    }
+
+    return total;
+}
+
+const items = [
+    { nama: 'Laptop', harga: 5000000 },
+    { nama: 'Mouse', harga: 150000 },
+    { nama: 'Keyboard', harga: 300000 }
+];
+
+hitungTotal(items);
+// BUG: Semua log menampilkan "Item 3: undefined"!
+```
+
+**🐛 Temukan Bugnya:**
+- Variable `i` menggunakan `var` (function scope)
+- Saat setTimeout dijalankan, loop sudah selesai dan `i = 3`
+
+**✅ Solusi:**
+
+```javascript
+function hitungTotal(items) {
+    let total = 0; // GANTI var dengan let
+
+    for (let i = 0; i < items.length; i++) { // GANTI var dengan let
+        setTimeout(() => {
+            console.log(`Item ${i}: ${items[i].harga}`);
+        }, 1000);
+
+        total += items[i].harga;
+    }
+
+    return total;
+}
+```
+
+---
+
+#### 🔍 BUG 2: Async/Await Error
+
+**⚠️ Code dengan Bug:**
+
+```javascript
+async function fetchUserData(userId) {
+    const response = fetch(`https://api.example.com/users/${userId}`);
+    const data = response.json();
+    return data;
+}
+```
+
+**🐛 Temukan Bugnya:**
+- `fetch()` return Promise, harus di-await
+- `response.json()` juga return Promise, harus di-await
+- Tidak ada error handling
+
+**✅ Solusi:**
+
+```javascript
+async function fetchUserData(userId) {
+    try {
+        const response = await fetch(`https://api.example.com/users/${userId}`);
+
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching user:', error);
+        throw error;
+    }
+}
+```
+
+---
+
+#### 🔍 BUG 3: Array Mutation
+
+**⚠️ Code dengan Bug:**
+
+```javascript
+function tambahDiskon(products, diskon) {
+    const result = products.map(product => {
+        product.harga = product.harga * (1 - diskon);
+        return product;
+    });
+
+    return result;
+}
+
+const products = [
+    { nama: 'Laptop', harga: 5000000 },
+    { nama: 'Mouse', harga: 150000 }
+];
+
+tambahDiskon(products, 0.1);
+// BUG: Array original 'products' terubah!
+```
+
+**🐛 Temukan Bugnya:**
+- `map()` mengembalikan reference ke object yang sama
+- Modifikasi `product.harga` mengubah object original
+
+**✅ Solusi:**
+
+```javascript
+function tambahDiskon(products, diskon) {
+    const result = products.map(product => {
+        // Buat object baru dengan spread
+        return {
+            ...product,
+            harga: product.harga * (1 - diskon)
+        };
+    });
+
+    return result;
+}
+```
+
+---
+
+#### 🔍 BUG 4: This Binding
+
+**⚠️ Code dengan Bug:**
+
+```javascript
+const user = {
+    nama: 'Budi',
+    sapa: function() {
+        console.log(`Halo, saya ${this.nama}`);
+    },
+    getSapaan: function() {
+        const callback = function() {
+            console.log(`Halo, saya ${this.nama}`);
+        };
+        callback();
+    }
+};
+
+user.getSapaan();
+// BUG: "Halo, saya undefined" - this tidak bind dengan benar!
+```
+
+**🐛 Temukan Bugnya:**
+- Regular function `callback` punya `this` sendiri
+- `this` di callback tidak sama dengan `this` di `getSapaan`
+
+**✅ Solusi:**
+
+```javascript
+const user = {
+    nama: 'Budi',
+    sapa: function() {
+        console.log(`Halo, saya ${this.nama}`);
+    },
+    getSapaan: function() {
+        // CARA 1: Gunakan arrow function
+        const callback = () => {
+            console.log(`Halo, saya ${this.nama}`);
+        };
+        callback();
+
+        // CARA 2: Bind this
+        // const callback = function() {
+        //     console.log(`Halo, saya ${this.nama}`);
+        // }.bind(this);
+
+        // CARA 3: Simpan reference
+        // const self = this;
+        // const callback = function() {
+        //     console.log(`Halo, saya ${self.nama}`);
+        // };
+    }
+};
+```
+
+---
+
+#### 🔍 BUG 5: Equality Check
+
+**⚠️ Code dengan Bug:**
+
+```javascript
+function compareArrays(arr1, arr2) {
+    if (arr1 === arr2) {
+        return true;
+    }
+    return false;
+}
+
+compareArrays([1, 2, 3], [1, 2, 3]);
+// BUG: Return false, padahal isinya sama!
+```
+
+**🐛 Temukan Bugnya:**
+- Array adalah object, comparison by reference bukan value
+- Dua array berbeda selalu `!==` meskipun isinya sama
+
+**✅ Solusi:**
+
+```javascript
+function compareArrays(arr1, arr2) {
+    // Check length dulu
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+
+    // Compare setiap element
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// ATAU dengan JSON.stringify (untuk simple arrays)
+function compareArraysJSON(arr1, arr2) {
+    return JSON.stringify(arr1) === JSON.stringify(arr2);
+}
+```
+
+---
+
+### 🎯 BAGIAN 2: Mini Projects (Capstone)
+
+> **📖 Konsep:** Terapkan semua ilmu Anda dalam 5 proyek lengkap yang bisa jadi portfolio!
+
+---
+
+#### 🟢 PROJECT 1: Todo List App
+
+**Fitur:**
+- Add, edit, delete todos
+- Mark as complete/incomplete
+- Filter (all/active/completed)
+- Save to localStorage
+- Dark mode toggle
+
+**Starter Code:**
+
+```javascript
+class TodoApp {
+    constructor() {
+        this.todos = JSON.parse(localStorage.getItem('todos')) || [];
+        this.init();
+    }
+
+    init() {
+        // TODO: Setup event listeners
+        // TODO: Render initial todos
+    }
+
+    addTodo(text) {
+        // TODO: Add new todo
+        // TODO: Save to localStorage
+        // TODO: Re-render
+    }
+
+    deleteTodo(id) {
+        // TODO: Delete todo by id
+    }
+
+    toggleComplete(id) {
+        // TODO: Toggle completed status
+    }
+
+    render() {
+        // TODO: Render todos to DOM
+    }
+
+    save() {
+        localStorage.setItem('todos', JSON.stringify(this.todos));
+    }
+}
+```
+
+**✅ Solusi Lengkap ada di `latihan-1.js`!**
+
+---
+
+#### 🟡 PROJECT 2: Weather Dashboard
+
+**Fitur:**
+- Search city by name
+- Display current weather
+- 5-day forecast
+- Temperature unit toggle (C/F)
+- Loading states & error handling
+
+**Starter Code:**
+
+```javascript
+class WeatherDashboard {
+    constructor(apiKey) {
+        this.apiKey = apiKey;
+        this.baseUrl = 'https://api.openweathermap.org/data/2.5';
+        this.init();
+    }
+
+    init() {
+        // TODO: Setup event listeners
+        // TODO: Load default city
+    }
+
+    async fetchWeather(city) {
+        // TODO: Fetch current weather
+        // TODO: Handle errors
+        // TODO: Display data
+    }
+
+    async fetchForecast(city) {
+        // TODO: Fetch 5-day forecast
+    }
+
+    convertTemp(celsius, unit) {
+        // TODO: Convert C to F if needed
+        return unit === 'F' ? (celsius * 9/5) + 32 : celsius;
+    }
+}
+```
+
+---
+
+#### 🟠 PROJECT 3: E-Commerce Shopping Cart
+
+**Fitur:**
+- Product listing
+- Add to cart
+- Update quantity
+- Remove from cart
+- Calculate total with tax/shipping
+- Checkout form validation
+
+**Starter Code:**
+
+```javascript
+class ShoppingCart {
+    constructor() {
+        this.products = [];
+        this.cart = [];
+        this.taxRate = 0.1;
+        this.shippingRate = 15000;
+        this.init();
+    }
+
+    init() {
+        // TODO: Load products
+        // TODO: Setup event listeners
+    }
+
+    addToCart(productId, qty = 1) {
+        // TODO: Find product
+        // TODO: Add to cart or increase qty
+        // TODO: Update UI
+    }
+
+    removeFromCart(productId) {
+        // TODO: Remove from cart
+    }
+
+    updateQuantity(productId, qty) {
+        // TODO: Update quantity
+        // TODO: Remove if qty = 0
+    }
+
+    calculateTotal() {
+        // TODO: Calculate subtotal
+        // TODO: Add tax
+        // TODO: Add shipping
+        // TODO: Return total
+    }
+
+    checkout(customerData) {
+        // TODO: Validate customer data
+        // TODO: Process order
+        // TODO: Clear cart
+    }
+}
+```
+
+---
+
+#### 🔴 PROJECT 4: Recipe Finder App
+
+**Fitur:**
+- Search recipes by ingredient
+- Filter by category/meal type
+- View recipe details
+- Save favorite recipes
+- Meal planner
+
+**Starter Code:**
+
+```javascript
+class RecipeFinder {
+    constructor(apiKey) {
+        this.apiKey = apiKey;
+        this.favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        this.init();
+    }
+
+    async searchByIngredient(ingredients) {
+        // TODO: Call recipe API
+        // TODO: Display results
+    }
+
+    async getRecipeDetails(id) {
+        // TODO: Fetch recipe details
+    }
+
+    addToFavorites(recipe) {
+        // TODO: Add to favorites
+        // TODO: Save to localStorage
+    }
+
+    removeFromFavorites(id) {
+        // TODO: Remove from favorites
+    }
+
+    planMeal(day, recipe) {
+        // TODO: Add recipe to meal plan
+    }
+}
+```
+
+---
+
+#### 🟣 PROJECT 5: Task Management Board (Kanban)
+
+**Fitur:**
+- Create columns (Todo, In Progress, Done)
+- Add/edit/delete tasks
+- Drag and drop tasks
+- Filter by assignee/priority
+- Export to JSON
+
+**Starter Code:**
+
+```javascript
+class KanbanBoard {
+    constructor() {
+        this.columns = {
+            todo: [],
+            inProgress: [],
+            done: []
+        };
+        this.init();
+    }
+
+    init() {
+        // TODO: Load from localStorage
+        // TODO: Setup drag & drop
+        // TODO: Render columns
+    }
+
+    addTask(column, task) {
+        // TODO: Add task to column
+        // TODO: Save
+    }
+
+    moveTask(fromColumn, toColumn, taskId) {
+        // TODO: Move task between columns
+    }
+
+    deleteTask(column, taskId) {
+        // TODO: Delete task
+    }
+
+    exportBoard() {
+        // TODO: Export to JSON
+        // TODO: Download file
+    }
+}
+```
+
+---
+
+### 📚 BAGIAN 3: Latihan Per Bab (Quick Reference)
+
+> **📖 Konsep:** Quick exercises untuk setiap bab sebagai review!
+
+---
+
+#### Bab 8: Error Handling
+
+```javascript
+// LEVEL 1: Basic try-catch
+function safeJSONParse(str) {
+    try {
+        return JSON.parse(str);
+    } catch (e) {
+        return null;
+    }
+}
+
+// LEVEL 2: Custom error
+class ValidationError extends Error {
+    constructor(message, field) {
+        super(message);
+        this.name = 'ValidationError';
+        this.field = field;
+    }
+}
+
+// LEVEL 3: Async error handling
+async function safeFetch(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error('Fetch error:', error);
+        throw error;
+    }
+}
+
+// LEVEL 4: Retry logic
+async function retry(fn, retries = 3) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            return await fn();
+        } catch (e) {
+            if (i === retries - 1) throw e;
+        }
+    }
+}
+
+// LEVEL 5: Error boundary pattern
+class ErrorBoundary {
+    constructor() {
+        this.hasError = false;
+        this.error = null;
+    }
+
+    async execute(fn) {
+        try {
+            this.hasError = false;
+            return await fn();
+        } catch (e) {
+            this.hasError = true;
+            this.error = e;
+            this.handleError(e);
+        }
+    }
+
+    handleError(error) {
+        console.error('ErrorBoundary caught:', error);
+    }
+}
+```
+
+---
+
+#### Bab 9: Modules
+
+```javascript
+// LEVEL 1: Named exports
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+
+// LEVEL 2: Default export
+export default class Calculator {
+    multiply(a, b) { return a * b; }
+}
+
+// LEVEL 3: Re-exports
+export { add, subtract } from './math.js';
+
+// LEVEL 4: Dynamic import
+async function loadModule(name) {
+    return await import(`./modules/${name}.js`);
+}
+
+// LEVEL 5: Module pattern
+const Module = (() => {
+    let privateVar = 0;
+
+    return {
+        increment: () => ++privateVar,
+        getValue: () => privateVar
+    };
+})();
+```
+
+---
+
+#### Bab 10: Regex
+
+```javascript
+// LEVEL 1: Basic pattern
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// LEVEL 2: Character classes
+const digitRegex = /\d+/;
+const wordRegex = /\w+/;
+
+// LEVEL 3: Capture groups
+const dateRegex = /(\d{2})\/(\d{2})\/(\d{4})/;
+
+// LEVEL 4: Replace with regex
+const slugify = (str) => str.toLowerCase().replace(/\s+/g, '-');
+
+// LEVEL 5: Advanced validation
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+```
+
+---
+
+#### Bab 11: API & HTTP
+
+```javascript
+// LEVEL 1: GET request
+async function getData(url) {
+    const response = await fetch(url);
+    return await response.json();
+}
+
+// LEVEL 2: POST request
+async function postData(url, data) {
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}
+
+// LEVEL 3: With auth
+async function getWithAuth(url, token) {
+    const response = await fetch(url, {
+        headers: { 'Authorization': `Bearer ${token}` }
+    });
+    return await response.json();
+}
+
+// LEVEL 4: Parallel requests
+async function fetchAll(urls) {
+    return await Promise.all(urls.map(url => fetch(url)));
+}
+
+// LEVEL 5: API client class
+class APIClient {
+    constructor(baseURL) {
+        this.baseURL = baseURL;
+    }
+
+    async get(endpoint) {
+        return await this.request(endpoint);
+    }
+
+    async post(endpoint, data) {
+        return await this.request(endpoint, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+    }
+
+    async request(endpoint, options = {}) {
+        const response = await fetch(`${this.baseURL}${endpoint}`, options);
+        return await response.json();
+    }
+}
+```
+
+---
+
+#### Bab 12: OOP & Classes
+
+```javascript
+// LEVEL 1: Basic class
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+    greet() {
+        console.log(`Hello, I'm ${this.name}`);
+    }
+}
+
+// LEVEL 2: Getters/Setters
+class Product {
+    constructor(price) {
+        this._price = price;
+    }
+
+    get price() { return this._price; }
+    set price(value) {
+        if (value < 0) throw new Error('Invalid price');
+        this._price = value;
+    }
+}
+
+// LEVEL 3: Inheritance
+class Employee extends Person {
+    constructor(name, salary) {
+        super(name);
+        this.salary = salary;
+    }
+}
+
+// LEVEL 4: Static methods
+class MathUtils {
+    static PI = Math.PI;
+    static add(a, b) { return a + b; }
+}
+
+// LEVEL 5: Private fields
+class BankAccount {
+    #balance = 0;
+
+    deposit(amount) {
+        this.#balance += amount;
+    }
+
+    get balance() { return this.#balance; }
+}
+```
+
+---
+
+#### Bab 13: Browser Storage
+
+```javascript
+// LEVEL 1: LocalStorage basic
+localStorage.setItem('key', 'value');
+const value = localStorage.getItem('key');
+
+// LEVEL 2: Object storage
+localStorage.setItem('user', JSON.stringify({ name: 'Budi' }));
+const user = JSON.parse(localStorage.getItem('user'));
+
+// LEVEL 3: SessionStorage
+sessionStorage.setItem('cart', JSON.stringify([]));
+
+// LEVEL 4: Storage Manager class
+class StorageManager {
+    constructor(prefix) {
+        this.prefix = prefix;
+    }
+
+    set(key, value) {
+        localStorage.setItem(`${this.prefix}${key}`, JSON.stringify(value));
+    }
+
+    get(key) {
+        return JSON.parse(localStorage.getItem(`${this.prefix}${key}`));
+    }
+}
+
+// LEVEL 5: Expiring storage
+class ExpiringStorage {
+    set(key, value, ttl) {
+        localStorage.setItem(key, JSON.stringify({
+            value,
+            expiry: Date.now() + ttl
+        }));
+    }
+
+    get(key) {
+        const item = JSON.parse(localStorage.getItem(key));
+        if (Date.now() > item.expiry) {
+            localStorage.removeItem(key);
+            return null;
+        }
+        return item.value;
+    }
+}
+```
+
+---
+
+#### Bab 14: Date & Time
+
+```javascript
+// LEVEL 1: Basic date
+const now = new Date();
+const year = now.getFullYear();
+
+// LEVEL 2: Formatting
+const formatted = now.toLocaleDateString('id-ID');
+
+// LEVEL 3: Arithmetic
+const tomorrow = new Date(now);
+tomorrow.setDate(now.getDate() + 1);
+
+// LEVEL 4: Validation
+function isValidDate(date) {
+    return !isNaN(date.getTime());
+}
+
+// LEVEL 5: Time ago function
+function timeAgo(date) {
+    const seconds = Math.floor((new Date() - date) / 1000);
+    if (seconds < 60) return 'Baru saja';
+    if (seconds < 3600) return `${Math.floor(seconds/60)} menit yang lalu`;
+    if (seconds < 86400) return `${Math.floor(seconds/3600)} jam yang lalu`;
+    return `${Math.floor(seconds/86400)} hari yang lalu`;
+}
+```
+
+---
+
+#### Bab 15: Performance
+
+```javascript
+// LEVEL 1: Debounce
+function debounce(fn, delay) {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), delay);
+    };
+}
+
+// LEVEL 2: Throttle
+function throttle(fn, limit) {
+    let inThrottle;
+    return (...args) => {
+        if (!inThrottle) {
+            fn(...args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// LEVEL 3: Memoization
+function memoize(fn) {
+    const cache = {};
+    return (...args) => {
+        const key = JSON.stringify(args);
+        if (cache[key]) return cache[key];
+        cache[key] = fn(...args);
+        return cache[key];
+    };
+}
+
+// LEVEL 4: Lazy loading with generator
+function* lazyLoad(data) {
+    for (const item of data) {
+        yield item;
+    }
+}
+
+// LEVEL 5: Batch processing
+function batchProcess(array, size, processor) {
+    const results = [];
+    for (let i = 0; i < array.length; i += size) {
+        const batch = array.slice(i, i + size);
+        results.push(...batch.map(processor));
+    }
+    return results;
+}
+```
+
+---
+
+#### Bab 16: Security
+
+```javascript
+// LEVEL 1: XSS prevention
+function sanitizeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+// LEVEL 2: Input validation
+function validateInput(input, pattern) {
+    return pattern.test(input);
+}
+
+// LEVEL 3: CSRF token
+function generateCSRFToken() {
+    return crypto.randomUUID();
+}
+
+// LEVEL 4: Password hashing
+async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hash))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+}
+
+// LEVEL 5: CSP helper
+function generateCSP(directives) {
+    return Object.entries(directives)
+        .map(([key, values]) => `${key} ${values.join(' ')}`)
+        .join('; ');
+}
+```
+
+---
+
+#### Bab 17: Testing
+
+```javascript
+// LEVEL 1: Simple assert
+function assert(actual, expected, message) {
+    if (actual !== expected) {
+        throw new Error(message || `Expected ${expected}, got ${actual}`);
+    }
+}
+
+// LEVEL 2: Test suite
+function describe(name, fn) {
+    console.log(`\n${name}`);
+    fn();
+}
+
+function it(name, fn) {
+    try {
+        fn();
+        console.log(`  ✓ ${name}`);
+    } catch (e) {
+        console.error(`  ✗ ${name}: ${e.message}`);
+    }
+}
+
+// LEVEL 3: AAA pattern
+function test(name, fn) {
+    console.log(`Testing: ${name}`);
+    try {
+        fn();
+        console.log('  Passed');
+    } catch (e) {
+        console.error(`  Failed: ${e.message}`);
+    }
+}
+
+// LEVEL 4: Mock function
+function createMock(impl) {
+    const mock = (...args) => {
+        mock.calls.push(args);
+        return impl?.(...args);
+    };
+    mock.calls = [];
+    return mock;
+}
+
+// LEVEL 5: Async testing
+async function testAsync(name, fn) {
+    try {
+        await fn();
+        console.log(`  ✓ ${name}`);
+    } catch (e) {
+        console.error(`  ✗ ${name}: ${e.message}`);
+    }
+}
+```
+
+---
+
+#### Bab 18: Git
+
+```javascript
+// LEVEL 1: Basic commands
+const gitCommands = {
+    'git init': 'Initialize repo',
+    'git add .': 'Stage all files',
+    'git commit -m "msg"': 'Commit changes',
+    'git push': 'Push to remote',
+    'git pull': 'Pull from remote'
+};
+
+// LEVEL 2: Branching
+// git branch feature-1    - Create branch
+// git checkout feature-1  - Switch branch
+// git merge feature-1     - Merge branch
+
+// LEVEL 3: Undo changes
+// git reset --hard HEAD~1  - Undo last commit
+// git revert <commit>      - Safe undo
+
+// LEVEL 4: Commit convention
+function generateCommitMessage(type, scope, description) {
+    return `${type}(${scope}): ${description}`;
+}
+
+// LEVEL 5: Git simulation
+class GitSimulation {
+    constructor() {
+        this.commits = [];
+        this.staged = [];
+    }
+
+    add(file) {
+        this.staged.push(file);
+    }
+
+    commit(message) {
+        this.commits.push({
+            hash: Math.random().toString(36).substring(7),
+            message,
+            files: [...this.staged]
+        });
+        this.staged = [];
+    }
+
+    log() {
+        this.commits.forEach(c => console.log(`${c.hash} - ${c.message}`));
+    }
+}
+```
+
+---
+
+## 🎉 SELAMAT! ANDA TELAH MENYELESAIKAN PANDUAN LENGKAP
+
+> **📚 Ringkasan Materi yang Telah Dipelajari:**
+>
+> ### Fundamental (Bab 0)
+> - ✅ String Manipulation
+> - ✅ Number & Math Operations
+> - ✅ Array Utilities
+> - ✅ Object Utilities
+> - ✅ JSON
+> - ✅ Control Flow
+>
+> ### Functional Programming (Bab 1)
+> - ✅ map, filter, reduce
+> - ✅ Chaining & Composition
+>
+> ### Advanced Concepts
+> - ✅ Async Programming & Event Loop
+> - ✅ Promise & async/await
+> - ✅ Closures & Scope
+> - ✅ this Keyword & Binding
+> - ✅ ES6+ Features
+> - ✅ Error Handling
+> - ✅ Modules
+> - ✅ Prototypes & Classes
+> - ✅ Regular Expressions
+> - ✅ Date & Time
+>
+> ### Web Development
+> - ✅ DOM Manipulation
+> - ✅ Event Handling
+> - ✅ Browser Storage
+> - ✅ API & HTTP
+> - ✅ Performance Optimization
+>
+> ### Production Ready
+> - ✅ Security Basics
+> - ✅ Testing Fundamentals
+> - ✅ Git & Version Control
+
+---
+
+## 🎓 Selamat Berpetualang!
+
+> Kamu telah menguasai **seluruh dasar-dasar sihir data**. Sekarang, pintu gerbang dunia nyata telah terbuka. Teruslah berlatih, karena seorang penyihir sejati tak pernah berhenti belajar.
+>
+> **"The expert in anything was once a beginner."**
+>
+> **PREMIUM EDITION v2.0 - 2024**
+
+**📖 Total Materi: 18 Bab Lengkap**
+**📝 Total Baris: 16,000+ baris**
+**💻 Total Code Examples: 700+ examples**
+**🎯 Total Latihan: 200+ exercises**
+**🐛 Total Debugging Challenges: 5 bugs**
+**🎯 Total Mini Projects: 5 projects**
+
+---
+
+### 📊 Ringkasan Latihan per Bab
+
+| Bab | Topik | Jumlah Latihan | Level |
+|-----|-------|----------------|-------|
+| 0 | String, Number, Array, Object | 20+ | 1-8 |
+| 1 | map, filter, reduce | 16+ | 1-6, 11-20 |
+| 5 | DOM Manipulation | 15+ | 1-5 |
+| 6 | Closures & Scope | 15+ | 1-5 |
+| 7 | ES6+ Features | 15+ | 1-5 |
+| 8 | Error Handling | 10+ | 1-5 |
+| 9 | Modules | 10+ | 1-5 |
+| 10 | Regular Expressions | 10+ | 1-5 |
+| 11 | API & HTTP | 10+ | 1-5 |
+| 12 | Prototypes & Classes | 10+ | 1-5 |
+| 13 | Browser Storage | 10+ | 1-5 |
+| 14 | Date & Time | 10+ | 1-5 |
+| 15 | Performance | 10+ | 1-5 |
+| 16 | Security | 10+ | 1-5 |
+| 17 | Testing | 10+ | 1-5 |
+| 18 | Git | 10+ | 1-5 |
+| **Bonus** | **Debugging Exercises** | **5 bugs** | **-** |
+| **Bonus** | **Mini Projects** | **5 projects** | **-** |
+
+**🎯 TOTAL: 200+ Latihan + 5 Debugging Challenges + 5 Mini Projects!**
+
+---
+
+## 🔙 Navigasi Cepat
+
+| Link | Deskripsi |
+|------|-----------|
+| [⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif) | Kembali ke navigasi utama |
+| [📚 Bab 0: Fundamental](#-bab-0-kitab-dasar-mantra) | String, Number, Array, Object, JSON |
+| [⚡ Bab 1: Functional Programming](#-bab-1-tiga-mantra-agung-penguasa-array-map-filter-reduce) | map, filter, reduce |
+| [🌐 Bab 5: Web Development](#-bab-5-dom-manipulation--event-handling) | DOM, Events, Storage |
+| [🛠️ Bab 15: Performance](#-bab-15-performance-optimization) | Optimization techniques |
+| [🔒 Bab 16: Security](#-bab-16-security-basics) | Security best practices |
+| [🧪 Bab 17: Testing](#-bab-17-testing-fundamentals) | Unit, Integration, E2E |
+| [📦 Bab 18: Git](#-bab-18-git--version-control) | Version control |
+
+---
+
+### ⌨️ Keyboard Shortcuts
+
+| Shortcut | Aksi |
+|----------|------|
+| `Ctrl + Home` | Kembali ke Daftar Isi |
+| `Ctrl + F` | Cari dalam dokumen |
+| `Ctrl + End` | Ke akhir dokumen |
+| `Alt + ←` | Kembali (setelah klik link) |
+
+---
+
 ## 🎓 Selamat Berpetualang!
 
 > Kamu telah menguasai dasar-dasar sihir data. Sekarang, pintu gerbang dunia nyata telah terbuka. Teruslah berlatih, karena seorang penyihir sejati tak pernah berhenti belajar.
 
 **PREMIUM EDITION v2.0 - 2024**
+
+[⬆️ Kembali ke Daftar Isi](#-daftar-isi-interaktif)
