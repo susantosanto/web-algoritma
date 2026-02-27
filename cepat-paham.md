@@ -204,6 +204,579 @@ Cara modern menyisipkan variabel ke dalam string tanpa `+` yang berantakan.
 
 ---
 
+### 📖 LATIHAN TERPERINCI: STRING MANIPULATION
+
+#### LEVEL 1 - FUNDAMENTAL (Pemula)
+
+**Latihan 1.1: Membersihkan Input User**
+
+```javascript
+// 🎯 TUJUAN: Membersihkan input dari spasi berlebih dan seragamkan case
+// ⏱️ WAKTU: 5 menit
+// 💪 KESULITAN: ⭐
+
+// SOAL:
+// Buat fungsi yang menerima input dari user dan membersihkannya dengan aturan:
+// 1. Hapus spasi di awal dan akhir
+// 2. Ubah menjadi lowercase
+// 3. Hapus spasi berlebih di tengah kata (lebih dari 1 spasi jadi 1)
+
+// CONTOH:
+// "  BUDI   SANTOSO  " → "budi santoso"
+// "  HELLO   WORLD  " → "hello world"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function bersihkanInput(input) {
+    // Langkah 1: _______ (hapus spasi awal/akhir)
+    // Langkah 2: _______ (ubah ke lowercase)
+    // Langkah 3: _______ (replace multiple spaces dengan single space)
+    
+    // HINT: Gunakan chain: trim().toLowerCase().replace(/\\s+/g, ' ')
+}
+
+// ✅ TEST CASE
+console.log(bersihkanInput("  BUDI   SANTOSO  "));  // "budi santoso"
+console.log(bersihkanInput("  HELLO   WORLD  "));   // "hello world"
+console.log(bersihkanInput("  JavaScript  "));      // "javascript"
+```
+
+---
+
+**Latihan 1.2: Menghitung Panjang Karakter**
+
+```javascript
+// 🎯 TUJUAN: Menghitung panjang string tanpa spasi
+// ⏱️ WAKTU: 5 menit
+// 💪 KESULITAN: ⭐
+
+// SOAL:
+// Buat fungsi yang menghitung jumlah karakter dalam string, 
+// TIDAK termasuk spasi!
+
+// CONTOH:
+// "Hello World" → 10 (H-e-l-l-o-W-o-r-l-d)
+// "Budi Santoso" → 11
+// "A B C D" → 4
+
+// ✍️ TULIS KODE ANDA DI SINI
+function hitungKarakterTanpaSpasi(teks) {
+    // CARA 1: Replace spasi lalu hitung length
+    // Langkah 1: _______ (hapus semua spasi dengan replace)
+    // Langkah 2: _______ (return length)
+    
+    // CARA 2: Loop dan hitung manual
+    // Langkah 1: Buat variabel counter = 0
+    // Langkah 2: Loop setiap karakter
+    // Langkah 3: Jika karakter bukan spasi, counter++
+    // Langkah 4: Return counter
+}
+
+// ✅ TEST CASE
+console.log(hitungKarakterTanpaSpasi("Hello World"));  // 10
+console.log(hitungKarakterTanpaSpasi("Budi Santoso")); // 11
+console.log(hitungKarakterTanpaSpasi("A B C D"));      // 4
+```
+
+---
+
+**Latihan 1.3: Memisahkan Nama Depan dan Belakang**
+
+```javascript
+// 🎯 TUJUAN: Extract nama depan dan belakang dari string
+// ⏱️ WAKTU: 7 menit
+// 💪 KESULITAN: ⭐⭐
+
+// SOAL:
+// Buat fungsi yang menerima nama lengkap dan mengembalikan object
+// dengan properti 'depan' dan 'belakang'
+
+// CONTOH:
+// "Budi Santoso" → { depan: "Budi", belakang: "Santoso" }
+// "Siti Aminah Nur" → { depan: "Siti", belakang: "Nur" }
+
+// ✍️ TULIS KODE ANDA DI SINI
+function pisahkanNama(namaLengkap) {
+    // Langkah 1: _______ (split nama berdasarkan spasi)
+    // Langkah 2: _______ (ambil element pertama sebagai nama depan)
+    // Langkah 3: _______ (ambil element terakhir sebagai nama belakang)
+    // Langkah 4: _______ (return object dengan properti depan dan belakang)
+    
+    // HINT: Gunakan split(), array[0], array[array.length - 1]
+}
+
+// ✅ TEST CASE
+console.log(pisahkanNama("Budi Santoso"));
+// { depan: "Budi", belakang: "Santoso" }
+
+console.log(pisahkanNama("Siti Aminah Nur"));
+// { depan: "Siti", belakang: "Nur" }
+```
+
+---
+
+#### LEVEL 2 - INTERMEDIATE (Menengah)
+
+**Latihan 2.1: Sensor Kata Otomatis**
+
+```javascript
+// 🎯 TUJUAN: Menyensor kata-kata yang tidak pantas
+// ⏱️ WAKTU: 10 menit
+// 💪 KESULITAN: ⭐⭐
+
+// SOAL:
+// Buat fungsi yang menyensor kata-kata dalam array sensor
+// Ganti setiap huruf dengan "*"
+
+// CONTOH:
+// sensorKata("Anjing itu galak", ["anjing"]) → "****** itu galak"
+// sensorKata("Dasar bodoh kamu", ["bodoh", "kamu"]) → "Dasar ***** *****"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function sensorKata(kalimat, kataSensor) {
+    // CARA 1: Loop array kata sensor
+    // Langkah 1: Buat variabel hasil = kalimat
+    // Langkah 2: Loop setiap kata dalam array kataSensor
+    // Langkah 3: Buat string sensor dengan panjang kata (repeat('*'))
+    // Langkah 4: Replace semua occurrence dengan sensor
+    // Langkah 5: Return hasil
+    
+    // CARA 2: Menggunakan regex (ADVANCED)
+    // Langkah 1: Buat regex pattern dari kata sensor
+    // Langkah 2: Gunakan replace dengan regex global
+}
+
+// ✅ TEST CASE
+console.log(sensorsKata("Anjing itu galak", ["anjing"]));
+// "****** itu galak"
+
+console.log(sensorsKata("Dasar bodoh kamu", ["bodoh", "kamu"]));
+// "Dasar ***** *****"
+```
+
+---
+
+**Latihan 2.2: Format Nomor Telepon**
+
+```javascript
+// 🎯 TUJUAN: Format nomor telepon menjadi (XXX) XXX-XXXX
+// ⏱️ WAKTU: 10 menit
+// 💪 KESULITAN: ⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang menerima 10 digit angka dan memformatnya
+// menjadi format telepon US: (XXX) XXX-XXXX
+
+// CONTOH:
+// formatPhone("1234567890") → "(123) 456-7890"
+// formatPhone("9876543210") → "(987) 654-3210"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function formatPhone(nomor) {
+    // CARA 1: Menggunakan slice
+    // Langkah 1: Ambil 3 digit pertama (area code)
+    // Langkah 2: Ambil 3 digit tengah
+    // Langkah 3: Ambil 4 digit terakhir
+    // Langkah 4: Gabungkan dengan format "(XXX) XXX-XXXX"
+    
+    // CARA 2: Menggunakan regex replace
+    // Langkah 1: Gunakan replace dengan pattern dan backreferences
+}
+
+// ✅ TEST CASE
+console.log(formatPhone("1234567890"));  // "(123) 456-7890"
+console.log(formatPhone("9876543210"));  // "(987) 654-3210"
+console.log(formatPhone("5551234567"));  // "(555) 123-4567"
+```
+
+---
+
+**Latihan 2.3: Reverse String dengan Kondisi**
+
+```javascript
+// 🎯 TUJUAN: Membalik string dengan logika kondisional
+// ⏱️ WAKTU: 12 menit
+// 💪 KESULITAN: ⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang membalik string, TETAPI:
+// - Jika panjang string < 5, kembalikan string asli
+// - Jika panjang string >= 5, balik string
+// - Jika panjang string > 10, balik DAN ubah ke uppercase
+
+// CONTOH:
+// reverseKondisi("Hi") → "Hi" (terlalu pendek)
+// reverseKondisi("Hello") → "olleH"
+// reverseKondisi("JavaScript") → "TPIRCSEVAJ"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function reverseKondisi(teks) {
+    // Langkah 1: Cek panjang string
+    // Langkah 2: Jika < 5, return teks asli
+    // Langkah 3: Jika >= 5 dan <= 10, reverse string
+    // Langkah 4: Jika > 10, reverse DAN uppercase
+    
+    // HINT: 
+    // - Reverse: split('').reverse().join('')
+    // - Atau manual: loop dari akhir ke awal
+}
+
+// ✅ TEST CASE
+console.log(reverseKondisi("Hi"));          // "Hi"
+console.log(reverseKondisi("Hello"));       // "olleH"
+console.log(reverseKondisi("JavaScript"));  // "TPIRCSEVAJ"
+```
+
+---
+
+#### LEVEL 3 - ADVANCED (Lanjut)
+
+**Latihan 3.1: URL Slug Generator**
+
+```javascript
+// 🎯 TUJUAN: Membuat URL-friendly slug dari judul artikel
+// ⏱️ WAKTU: 15 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang mengubah judul menjadi URL slug dengan aturan:
+// 1. Ubah ke lowercase
+// 2. Ganti spasi dengan dash (-)
+// 3. Hapus karakter spesial (!@#$%^&*() dll)
+// 4. Ganti multiple dash dengan single dash
+// 5. Hapus dash di awal/akhir
+
+// CONTOH:
+// slugify("  Belajar JavaScript!!!  ") → "belajar-javascript"
+// slugify("Cara Membuat Web App 2024") → "cara-membuat-web-app-2024"
+// slugify("React vs Vue vs Angular") → "react-vs-vue-vs-angular"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function slugify(judul) {
+    // Langkah 1: _______ (trim dan lowercase)
+    // Langkah 2: _______ (hapus karakter non-alphanumeric kecuali spasi)
+    // Langkah 3: _______ (replace spasi dengan dash)
+    // Langkah 4: _______ (replace multiple dash dengan single)
+    // Langkah 5: _______ (trim dash di awal/akhir)
+    
+    // CHAINING VERSION:
+    // return judul
+    //     .trim()
+    //     .toLowerCase()
+    //     .replace(/[^a-z0-9\s-]/g, '')  // Hapus karakter spesial
+    //     .replace(/\s+/g, '-')           // Spasi → dash
+    //     .replace(/-+/g, '-')            // Multiple dash → single
+    //     .replace(/^-|-$/g, '');         // Hapus dash di awal/akhir
+}
+
+// ✅ TEST CASE
+console.log(slugify("  Belajar JavaScript!!!  "));  
+// "belajar-javascript"
+
+console.log(slugify("Cara Membuat Web App 2024"));  
+// "cara-membuat-web-app-2024"
+
+console.log(slugify("React vs Vue vs Angular"));  
+// "react-vs-vue-vs-angular"
+```
+
+---
+
+**Latihan 3.2: Email Validator Sederhana**
+
+```javascript
+// 🎯 TUJUAN: Validasi format email
+// ⏱️ WAKTU: 15 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang mengecek apakah string adalah email valid dengan kriteria:
+// 1. Harus ada tepat satu @
+// 2. Harus ada teks sebelum @
+// 3. Harus ada domain setelah @ (minimal 2 karakter)
+// 4. Harus ada titik (.) setelah @
+// 5. Harus ada ekstensi domain setelah titik (minimal 2 karakter)
+
+// CONTOH:
+// isValidEmail("user@example.com") → true
+// isValidEmail("user.name@domain.co.id") → true
+// isValidEmail("@example.com") → false (tidak ada nama user)
+// isValidEmail("user@") → false (tidak ada domain)
+// isValidEmail("user@domain") → false (tidak ada titik)
+
+// ✍️ TULIS KODE ANDA DI SINI
+function isValidEmail(email) {
+    // Langkah 1: Cek apakah ada @ dan hanya ada 1
+    // Langkah 2: Split berdasarkan @
+    // Langkah 3: Cek apakah ada bagian sebelum @ (username)
+    // Langkah 4: Cek apakah ada bagian setelah @ (domain)
+    // Langkah 5: Cek apakah domain mengandung titik
+    // Langkah 6: Cek apakah ekstensi setelah titik minimal 2 karakter
+    
+    // ALTERNATIF: Gunakan regex
+    // const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // return pattern.test(email);
+}
+
+// ✅ TEST CASE
+console.log(isValidEmail("user@example.com"));      // true
+console.log(isValidEmail("user.name@domain.co.id")); // true
+console.log(isValidEmail("@example.com"));          // false
+console.log(isValidEmail("user@"));                 // false
+console.log(isValidEmail("user@domain"));           // false
+```
+
+---
+
+**Latihan 3.3: Template String Parser**
+
+```javascript
+// 🎯 TUJUAN: Membuat template string engine sederhana
+// ⏱️ WAKTU: 20 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang mengganti placeholder {{nama}} dengan nilai dari object
+// Mirip seperti template literal tapi dengan custom syntax
+
+// CONTOH:
+// const template = "Halo, nama saya {{nama}}. Saya {{umur}} tahun.";
+// const data = { nama: "Budi", umur: 25 };
+// parseTemplate(template, data) → "Halo, nama saya Budi. Saya 25 tahun."
+
+// ✍️ TULIS KODE ANDA DI SINI
+function parseTemplate(template, data) {
+    // CARA 1: Loop semua key di object data
+    // Langkah 1: Buat variabel hasil = template
+    // Langkah 2: Loop semua key di object data
+    // Langkah 3: Buat placeholder = `{{${key}}}`
+    // Langkah 4: Replace semua placeholder dengan value
+    // Langkah 5: Return hasil
+    
+    // CARA 2: Menggunakan regex replace dengan callback
+    // Langkah 1: Gunakan replace dengan regex /{{(\w+)}}/g
+    // Langkah 2: Callback function mengambil key dan return value dari data
+}
+
+// ✅ TEST CASE
+const template1 = "Halo, nama saya {{nama}}. Saya {{umur}} tahun.";
+const data1 = { nama: "Budi", umur: 25 };
+console.log(parseTemplate(template1, data1));
+// "Halo, nama saya Budi. Saya 25 tahun."
+
+const template2 = "Produk {{produk}} harga Rp {{harga}}";
+const data2 = { produk: "Laptop", harga: "5.000.000" };
+console.log(parseTemplate(template2, data2));
+// "Produk Laptop harga Rp 5.000.000"
+```
+
+---
+
+#### LEVEL 4 - EXPERT (Mastery)
+
+**Latihan 4.1: Run-Length Encoding (Kompresi String)**
+
+```javascript
+// 🎯 TUJUAN: Implementasi algoritma kompresi string sederhana
+// ⏱️ WAKTU: 25 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐⭐
+
+// SOAL:
+// Implementasikan Run-Length Encoding untuk mengkompresi string
+// Aturan: Ganti karakter berulang dengan karakter + count
+
+// CONTOH:
+// compress("aaabbbcccc") → "3a3b4c"
+// compress("abcd") → "1a1b1c1d"
+// compress("aabcccccaaa") → "2a1b5c3a"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function compress(teks) {
+    // Algoritma:
+    // 1. Handle edge case: string kosong
+    // 2. Inisialisasi result = "" dan count = 1
+    // 3. Loop dari index 0 hingga length-2
+    // 4. Jika karakter saat ini == karakter berikutnya, count++
+    // 5. Jika berbeda, append count + karakter ke result, reset count = 1
+    // 6. Setelah loop, append count + karakter terakhir
+    // 7. Return result
+}
+
+// ✅ TEST CASE
+console.log(compress("aaabbbcccc"));    // "3a3b4c"
+console.log(compress("abcd"));          // "1a1b1c1d"
+console.log(compress("aabcccccaaa"));   // "2a1b5c3a"
+console.log(compress(""));              // ""
+```
+
+---
+
+**Latihan 4.2: Palindrome Checker dengan Ignoransi**
+
+```javascript
+// 🎯 TUJUAN: Cek palindrome dengan mengabaikan case, spasi, dan simbol
+// ⏱️ WAKTU: 20 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang mengecek apakah string adalah palindrome
+// dengan mengabaikan:
+// - Huruf besar/kecil
+// - Spasi
+// - Karakter spesial
+
+// CONTOH:
+// isPalindrome("A man a plan a canal Panama") → true
+// isPalindrome("race a car") → false
+// isPalindrome("Was it a car or a cat I saw?") → true
+
+// ✍️ TULIS KODE ANDA DI SINI
+function isPalindrome(teks) {
+    // Langkah 1: Bersihkan string (lowercase, hapus non-alphanumeric)
+    // Langkah 2: Reverse string bersih
+    // Langkah 3: Compare string bersih dengan reverse-nya
+    
+    // ALTERNATIF: Two-pointer approach (lebih efisien)
+    // 1. Pointer kiri di awal, pointer kanan di akhir
+    // 2. Loop sambil kiri < kanan
+    // 3. Skip karakter non-alphanumeric
+    // 4. Compare karakter di kiri dan kanan
+    // 5. Jika berbeda, return false
+    // 6. Jika sama, kiri++, right--
+    // 7. Jika loop selesai, return true
+}
+
+// ✅ TEST CASE
+console.log(isPalindrome("A man a plan a canal Panama"));  // true
+console.log(isPalindrome("race a car"));                   // false
+console.log(isPalindrome("Was it a car or a cat I saw?")); // true
+console.log(isPalindrome("Madam"));                        // true
+```
+
+---
+
+**Latihan 4.3: String Calculator**
+
+```javascript
+// 🎯 TUJUAN: Parse dan evaluate ekspresi matematika sederhana dari string
+// ⏱️ WAKTU: 30 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang menerima string ekspresi matematika dan menghitungnya
+// Support: +, -, *, / dan angka (termasuk desimal)
+
+// CONTOH:
+// calculate("2 + 3") → 5
+// calculate("10 - 4 * 2") → 2
+// calculate("3.5 + 2.5") → 6
+// calculate("100 / 4 + 5") → 30
+
+// ✍️ TULIS KODE ANDA DI SINI
+function calculate(ekspresi) {
+    // CARA SIMPLE (tidak aman untuk production):
+    // 1. Hapus spasi
+    // 2. Validasi hanya mengandung angka dan operator
+    // 3. Gunakan Function constructor (lebih aman dari eval)
+    
+    // CARA MANUAL (lebih edukatif):
+    // 1. Tokenize: pisahkan angka dan operator
+    // 2. Parse: handle precedence (* dan / sebelum + dan -)
+    // 3. Evaluate: hitung hasil
+}
+
+// ✅ TEST CASE
+console.log(calculate("2 + 3"));        // 5
+console.log(calculate("10 - 4 * 2"));   // 2
+console.log(calculate("3.5 + 2.5"));    // 6
+console.log(calculate("100 / 4 + 5"));  // 30
+```
+
+---
+
+### 🎯 PROYEK MINI: Text Analyzer
+
+```javascript
+// 🎯 TUJUAN: Membuat aplikasi analisis teks lengkap
+// ⏱️ WAKTU: 45 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐⭐
+
+// SOAL:
+// Buat object dengan fungsi-fungsi untuk menganalisis teks:
+// - hitungKarakter(): jumlah total karakter
+// - hitungKata(): jumlah kata
+// - hitungKalimat(): jumlah kalimat (berdasarkan . ! ?)
+// - kataTerpanjang(): kata dengan panjang maksimal
+// - kataTerpendek(): kata dengan panjang minimal
+// - frekuensiKata(): object frekuensi setiap kata
+
+// CONTOH PENGGUNAAN:
+const analyzer = buatTextAnalyzer("Halo dunia. Selamat pagi dunia!");
+analyzer.hitungKarakter();    // 31
+analyzer.hitungKata();        // 5
+analyzer.hitungKalimat();     // 2
+analyzer.kataTerpanjang();    // "Selamat"
+analyzer.kataTerpendek();     // "Halo"
+analyzer.frekuensiKata();     // { halo: 1, dunia: 2, selamat: 1, pagi: 1 }
+
+// ✍️ TULIS KODE ANDA DI SINI
+function buatTextAnalyzer(teks) {
+    // Bersihkan teks dulu
+    const teksBersih = teks.trim();
+    
+    // Split menjadi array kata (hapus tanda baca)
+    const kataArray = teksBersih
+        .replace(/[.,!?;:]/g, '')
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(k => k.length > 0);
+    
+    // Return object dengan method
+    return {
+        hitungKarakter: () => {
+            // TODO: Implementasi
+        },
+        
+        hitungKata: () => {
+            // TODO: Implementasi
+        },
+        
+        hitungKalimat: () => {
+            // TODO: Implementasi
+        },
+        
+        kataTerpanjang: () => {
+            // TODO: Implementasi
+        },
+        
+        kataTerpendek: () => {
+            // TODO: Implementasi
+        },
+        
+        frekuensiKata: () => {
+            // TODO: Implementasi
+        }
+    };
+}
+```
+
+---
+
+### 📝 RANGKUMAN STRING MANIPULATION
+
+| Method | Fungsi | Contoh | Return |
+|--------|--------|--------|--------|
+| `toLowerCase()` | Lowercase | `"ABC".toLowerCase()` | `"abc"` |
+| `toUpperCase()` | Uppercase | `"abc".toUpperCase()` | `"ABC"` |
+| `trim()` | Hapus spasi | `"  a  ".trim()` | `"a"` |
+| `includes()` | Cek substring | `"abc".includes("b")` | `true` |
+| `split()` | String → Array | `"a,b".split(",")` | `["a","b"]` |
+| `replace()` | Replace pertama | `"aaa".replace("a","x")` | `"xaa"` |
+| `replaceAll()` | Replace semua | `"aaa".replaceAll("a","x")` | `"xxx"` |
+| `slice()` | Potong string | `"abcde".slice(1,3)` | `"bc"` |
+| `padStart()` | Padding kiri | `"7".padStart(3,"0")` | `"007"` |
+
+---
+
 ## 🧬 Penjelasan Mendalam: String dan Manipulasi Teks
 
 ### 📖 Apa itu String?
@@ -854,7 +1427,667 @@ const value = parseUserInput(userInput.replace(',', '.')); // 1.500
 
 ---
 
-### 📦 3. Sihir Wadah (Array Utilities)
+### 📖 LATIHAN TERPERINCI: NUMBER & MATH OPERATIONS
+
+#### LEVEL 1 - FUNDAMENTAL (Pemula)
+
+**Latihan 1.1: Cek Ganjil atau Genap**
+
+```javascript
+// 🎯 TUJUAN: Menentukan apakah angka ganjil atau genap
+// ⏱️ WAKTU: 5 menit
+// 💪 KESULITAN: ⭐
+
+// SOAL:
+// Buat fungsi yang menerima angka dan mengembalikan:
+// - "Genap" jika angka habis dibagi 2
+// - "Ganjil" jika tidak
+
+// CONTOH:
+// cekGanjilGenap(4) → "Genap"
+// cekGanjilGenap(7) → "Ganjil"
+// cekGanjilGenap(0) → "Genap"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function cekGanjilGenap(angka) {
+    // Langkah 1: _______ (gunakan operator modulus %)
+    // Langkah 2: _______ (jika sisa bagi = 0, maka genap)
+    // Langkah 3: _______ (return "Genap" atau "Ganjil")
+    
+    // HINT: angka % 2 === 0 → Genap
+}
+
+// ✅ TEST CASE
+console.log(cekGanjilGenap(4));   // "Genap"
+console.log(cekGanjilGenap(7));   // "Ganjil"
+console.log(cekGanjilGenap(0));   // "Genap"
+console.log(cekGanjilGenap(-2));  // "Genap"
+```
+
+---
+
+**Latihan 1.2: Konversi Suhu**
+
+```javascript
+// 🎯 TUJUAN: Konversi Celcius ke Fahrenheit dan sebaliknya
+// ⏱️ WAKTU: 7 menit
+// 💪 KESULITAN: ⭐⭐
+
+// SOAL:
+// Buat dua fungsi:
+// 1. celciusToFahrenheit(c): (c × 9/5) + 32
+// 2. fahrenheitToCelcius(f): (f - 32) × 5/9
+// Bulatkan hasil ke 1 desimal menggunakan toFixed()
+
+// CONTOH:
+// cToF(0) → "32.0°F"
+// cToF(100) → "212.0°F"
+// fToC(32) → "0.0°C"
+// fToC(212) → "100.0°C"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function cToF(celcius) {
+    // Rumus: (c × 9/5) + 32
+    // Return dengan format: "X.X°F"
+}
+
+function fToC(fahrenheit) {
+    // Rumus: (f - 32) × 5/9
+    // Return dengan format: "X.X°C"
+}
+
+// ✅ TEST CASE
+console.log(cToF(0));      // "32.0°F"
+console.log(cToF(100));    // "212.0°F"
+console.log(cToF(37));     // "98.6°F"
+console.log(fToC(32));     // "0.0°C"
+console.log(fToC(212));    // "100.0°C"
+```
+
+---
+
+**Latihan 1.3: Kalkulator Diskon**
+
+```javascript
+// 🎯 TUJUAN: Menghitung harga setelah diskon
+// ⏱️ WAKTU: 7 menit
+// 💪 KESULITAN: ⭐⭐
+
+// SOAL:
+// Buat fungsi yang menghitung:
+// 1. Harga setelah diskon
+// 2. Jumlah yang dihemat
+
+// CONTOH:
+// hitungDiskon(100000, 20) → 
+//   { hargaAkhir: 80000, hemat: 20000 }
+
+// ✍️ TULIS KODE ANDA DI SINI
+function hitungDiskon(hargaAwal, persenDiskon) {
+    // Langkah 1: _______ (hitung jumlah diskon)
+    // Langkah 2: _______ (hitung harga akhir)
+    // Langkah 3: _______ (return object dengan hargaAkhir dan hemat)
+    
+    // Rumus:
+    // jumlahDiskon = hargaAwal × (persenDiskon / 100)
+    // hargaAkhir = hargaAwal - jumlahDiskon
+}
+
+// ✅ TEST CASE
+console.log(hitungDiskon(100000, 20));
+// { hargaAkhir: 80000, hemat: 20000 }
+
+console.log(hitungDiskon(50000, 10));
+// { hargaAkhir: 45000, hemat: 5000 }
+```
+
+---
+
+#### LEVEL 2 - INTERMEDIATE (Menengah)
+
+**Latihan 2.1: Generator Dadu RPG**
+
+```javascript
+// 🎯 TUJUAN: Simulasi roll dadu untuk game RPG
+// ⏱️ WAKTU: 10 menit
+// 💪 KESULITAN: ⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang mensimulasikan roll berbagai jenis dadu:
+// - D4 (1-4), D6 (1-6), D8 (1-8), D10 (1-10), D12 (1-12), D20 (1-20)
+// Gunakan Math.random() dan Math.floor()
+
+// CONTOH:
+// rollD6() → random 1-6
+// rollD20() → random 1-20
+// rollD100() → random 1-100
+
+// ✍️ TULIS KODE ANDA DI SINI
+function rollDadu(sisi) {
+    // Rumus: Math.floor(Math.random() * sisi) + 1
+    // Langkah 1: Generate random 0-1
+    // Langkah 2: Kalikan dengan jumlah sisi
+    // Langkah 3: Floor untuk dapat integer
+    // Langkah 4: Tambah 1 untuk mulai dari 1
+}
+
+// Helper functions untuk dadu umum
+function rollD4() { return rollDadu(4); }
+function rollD6() { return rollDadu(6); }
+function rollD8() { return rollDadu(8); }
+function rollD10() { return rollDadu(10); }
+function rollD12() { return rollDadu(12); }
+function rollD20() { return rollDadu(20); }
+function rollD100() { return rollDadu(100); }
+
+// ✅ TEST CASE (jalankan beberapa kali)
+console.log(`Roll D6: ${rollD6()}`);    // 1-6
+console.log(`Roll D20: ${rollD20()}`);  // 1-20
+console.log(`Roll D100: ${rollD100()}`); // 1-100
+
+// Test distribusi (jalankan 100 kali)
+function testDistribusi() {
+    const hasil = {};
+    for (let i = 0; i < 100; i++) {
+        const roll = rollD6();
+        hasil[roll] = (hasil[roll] || 0) + 1;
+    }
+    console.log("Distribusi 100 roll D6:", hasil);
+}
+```
+
+---
+
+**Latihan 2.2: Format Mata Uang Indonesia**
+
+```javascript
+// 🎯 TUJUAN: Format angka menjadi Rupiah dengan pemisah ribuan
+// ⏱️ WAKTU: 10 menit
+// 💪 KESULITAN: ⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang memformat angka menjadi string Rupiah
+// Format: "Rp 1.000.000" (titik sebagai pemisah ribuan)
+
+// CONTOH:
+// formatRupiah(1000000) → "Rp 1.000.000"
+// formatRupiah(15000) → "Rp 15.000"
+// formatRupiah(1234567) → "Rp 1.234.567"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function formatRupiah(angka) {
+    // CARA 1: Manual dengan loop
+    // Langkah 1: Convert ke string
+    // Langkah 2: Loop dari belakang, setiap 3 digit tambahkan titik
+    // Langkah 3: Prefix dengan "Rp "
+    
+    // CARA 2: Menggunakan toLocaleString (RECOMMENDED)
+    // Langkah 1: Gunakan toLocaleString('id-ID')
+    // Langkah 2: Prefix dengan "Rp "
+}
+
+// ✅ TEST CASE
+console.log(formatRupiah(1000000));    // "Rp 1.000.000"
+console.log(formatRupiah(15000));      // "Rp 15.000"
+console.log(formatRupiah(1234567));    // "Rp 1.234.567"
+console.log(formatRupiah(100));        // "Rp 100"
+console.log(formatRupiah(0));          // "Rp 0"
+```
+
+---
+
+**Latihan 2.3: Kalkulator BMI (Body Mass Index)**
+
+```javascript
+// 🎯 TUJUAN: Menghitung dan mengategorikan BMI
+// ⏱️ WAKTU: 12 menit
+// 💪 KESULITAN: ⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang menghitung BMI dengan rumus:
+// BMI = beratBadan(kg) / (tinggiBadan(m) ^ 2)
+// 
+// Kategorikan:
+// - < 18.5: "Underweight"
+// - 18.5 - 24.9: "Normal"
+// - 25 - 29.9: "Overweight"
+// - >= 30: "Obese"
+
+// CONTOH:
+// hitungBMI(70, 1.75) → { bmi: 22.86, kategori: "Normal" }
+
+// ✍️ TULIS KODE ANDA DI SINI
+function hitungBMI(berat, tinggi) {
+    // Langkah 1: _______ (hitung BMI: berat / (tinggi * tinggi))
+    // Langkah 2: _______ (bulatkan ke 2 desimal)
+    // Langkah 3: _______ (tentukan kategori dengan if-else)
+    // Langkah 4: _______ (return object dengan bmi dan kategori)
+}
+
+// ✅ TEST CASE
+console.log(hitungBMI(70, 1.75));   // { bmi: 22.86, kategori: "Normal" }
+console.log(hitungBMI(50, 1.65));   // { bmi: 18.37, kategori: "Underweight" }
+console.log(hitungBMI(80, 1.70));   // { bmi: 27.68, kategori: "Overweight" }
+console.log(hitungBMI(100, 1.60));  // { bmi: 39.06, kategori: "Obese" }
+```
+
+---
+
+#### LEVEL 3 - ADVANCED (Lanjut)
+
+**Latihan 3.1: Format Angka Kompak**
+
+```javascript
+// 🎯 TUJUAN: Format angka besar menjadi notasi kompak (K, M, B)
+// ⏱️ WAKTU: 15 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang memformat angka besar:
+// - 1000 → "1K" (ribu)
+// - 1000000 → "1M" (juta)
+// - 1000000000 → "1B" (milyar)
+// - 1500000 → "1.5M"
+
+// CONTOH:
+// formatKompak(1500) → "1.5K"
+// formatKompak(2500000) → "2.5M"
+// formatKompak(3500000000) → "3.5B"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function formatKompak(angka) {
+    // Langkah 1: Cek apakah >= 1 milyar (10^9)
+    //   - Jika ya, bagi dengan 10^9, tambahkan "B"
+    // Langkah 2: Cek apakah >= 1 juta (10^6)
+    //   - Jika ya, bagi dengan 10^6, tambahkan "M"
+    // Langkah 3: Cek apakah >= 1 ribu (10^3)
+    //   - Jika ya, bagi dengan 10^3, tambahkan "K"
+    // Langkah 4: Jika tidak, return angka asli
+    // 
+    // HINT: Gunakan toFixed(1) untuk 1 desimal, tapi hapus jika .0
+}
+
+// ✅ TEST CASE
+console.log(formatKompak(500));        // "500"
+console.log(formatKompak(1500));       // "1.5K"
+console.log(formatKompak(25000));      // "25K"
+console.log(formatKompak(1500000));    // "1.5M"
+console.log(formatKompak(3500000000)); // "3.5B"
+```
+
+---
+
+**Latihan 3.2: Kalkulator Bunga Majemuk**
+
+```javascript
+// 🎯 TUJUAN: Menghitung bunga majemuk untuk investasi
+// ⏱️ WAKTU: 15 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang menghitung bunga majemuk dengan rumus:
+// A = P(1 + r/n)^(n*t)
+// 
+// Dimana:
+// - A = jumlah akhir
+// - P = pokok (principal)
+// - r = suku bunga tahunan (desimal, misal 5% = 0.05)
+// - n = frekuensi compound per tahun
+// - t = waktu dalam tahun
+
+// CONTOH:
+// hitungBungaMajemuk(1000000, 0.05, 12, 10) → 
+//   { jumlahAkhir: 1647009, totalBunga: 647009 }
+
+// ✍️ TULIS KODE ANDA DI SINI
+function hitungBungaMajemuk(pokok, bunga, frekuensi, tahun) {
+    // Rumus: A = P * Math.pow(1 + r/n, n * t)
+    // Langkah 1: _______ (hitung factor: (1 + r/n)^(n*t))
+    // Langkah 2: _______ (hitung jumlah akhir: P * factor)
+    // Langkah 3: _______ (hitung total bunga: A - P)
+    // Langkah 4: _______ (return object dengan jumlahAkhir dan totalBunga)
+    
+    // HINT: Gunakan Math.pow(base, exponent) atau operator **
+}
+
+// ✅ TEST CASE
+console.log(hitungBungaMajemuk(1000000, 0.05, 12, 10));
+// { jumlahAkhir: 1647009, totalBunga: 647009 }
+
+console.log(hitungBungaMajemuk(5000000, 0.08, 4, 5));
+// { jumlahAkhir: 7429741, totalBunga: 2429741 }
+```
+
+---
+
+**Latihan 3.3: Konversi Detik ke Format Waktu**
+
+```javascript
+// 🎯 TUJUAN: Konversi detik menjadi format HH:MM:SS
+// ⏱️ WAKTU: 15 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang mengkonversi total detik menjadi format waktu
+// HH:MM:SS dengan leading zero
+
+// CONTOH:
+// formatWaktu(3661) → "01:01:01"
+// formatWaktu(7384) → "02:03:04"
+// formatWaktu(90) → "00:01:30"
+
+// ✍️ TULIS KODE ANDA DI SINI
+function formatWaktu(totalDetik) {
+    // Langkah 1: _______ (hitung jam: Math.floor(totalDetik / 3600))
+    // Langkah 2: _______ (hitung menit: Math.floor((totalDetik % 3600) / 60))
+    // Langkah 3: _______ (hitung detik: totalDetik % 60)
+    // Langkah 4: _______ (format dengan padStart(2, '0'))
+    // Langkah 5: _______ (gabungkan dengan template literal)
+}
+
+// ✅ TEST CASE
+console.log(formatWaktu(3661));   // "01:01:01"
+console.log(formatWaktu(7384));   // "02:03:04"
+console.log(formatWaktu(90));     // "00:01:30"
+console.log(formatWaktu(0));      // "00:00:00"
+console.log(formatWaktu(86400));  // "24:00:00"
+```
+
+---
+
+#### LEVEL 4 - EXPERT (Mastery)
+
+**Latihan 4.1: Prime Number Checker**
+
+```javascript
+// 🎯 TUJUAN: Mengecek apakah angka adalah bilangan prima
+// ⏱️ WAKTU: 20 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang mengecek apakah angka adalah bilangan prima
+// Bilangan prima: hanya bisa dibagi oleh 1 dan dirinya sendiri
+
+// CONTOH:
+// isPrime(2) → true
+// isPrime(17) → true
+// isPrime(4) → false
+// isPrime(1) → false
+
+// ✍️ TULIS KODE ANDA DI SINI
+function isPrime(angka) {
+    // Langkah 1: Jika angka < 2, return false
+    // Langkah 2: Jika angka = 2, return true
+    // Langkah 3: Jika angka genap, return false
+    // Langkah 4: Loop dari 3 hingga sqrt(angka), step 2
+    //   - Jika angka habis dibagi loop, return false
+    // Langkah 5: Jika loop selesai tanpa return, return true
+    
+    // OPTIMISASI: Cukup cek hingga Math.sqrt(angka)
+    // Karena jika n = a * b, maka salah satu faktor <= sqrt(n)
+}
+
+// ✅ TEST CASE
+console.log(isPrime(2));    // true
+console.log(isPrime(17));   // true
+console.log(isPrime(4));    // false
+console.log(isPrime(1));    // false
+console.log(isPrime(97));   // true
+console.log(isPrime(100));  // false
+```
+
+---
+
+**Latihan 4.2: Faktorial dengan Rekursi dan Iterasi**
+
+```javascript
+// 🎯 TUJUAN: Menghitung faktorial dengan dua pendekatan
+// ⏱️ WAKTU: 20 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐⭐
+
+// SOAL:
+// Buat dua fungsi untuk menghitung faktorial:
+// 1. Iteratif: menggunakan loop
+// 2. Rekursif: fungsi memanggil dirinya sendiri
+// 
+// n! = n × (n-1) × (n-2) × ... × 1
+// 5! = 5 × 4 × 3 × 2 × 1 = 120
+
+// CONTOH:
+// faktorialIteratif(5) → 120
+// faktorialRekursif(5) → 120
+
+// ✍️ TULIS KODE ANDA DI SINI
+
+// CARA 1: ITERATIF
+function faktorialIteratif(n) {
+    // Langkah 1: Jika n < 0, return error
+    // Langkah 2: Jika n = 0 atau 1, return 1
+    // Langkah 3: Loop dari 2 hingga n, akumulasi hasil perkalian
+    // Langkah 4: Return hasil
+}
+
+// CARA 2: REKURSIF
+function faktorialRekursif(n) {
+    // Base case: jika n = 0 atau 1, return 1
+    // Recursive case: return n * faktorialRekursif(n - 1)
+}
+
+// ✅ TEST CASE
+console.log(faktorialIteratif(5));  // 120
+console.log(faktorialIteratif(0));  // 1
+console.log(faktorialIteratif(10)); // 3628800
+
+console.log(faktorialRekursif(5));  // 120
+console.log(faktorialRekursif(0));  // 1
+console.log(faktorialRekursif(10)); // 3628800
+```
+
+---
+
+**Latihan 4.3: Random ID Generator**
+
+```javascript
+// 🎯 TUJUAN: Generate unique ID secara random
+// ⏱️ WAKTU: 20 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang menghasilkan random ID unik dengan format:
+// - Panjang: 12 karakter
+// - Karakter: alphanumeric (a-z, 0-9)
+// - Format: XXXX-XXXX-XXXX (dengan dash setiap 4 karakter)
+
+// CONTOH:
+// generateId() → "k9j2-l4m8-n1p3"
+// generateId() → "x7y2-z5w8-q1r4" (selalu unik)
+
+// ✍️ TULIS KODE ANDA DI SINI
+function generateId() {
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let id = '';
+    
+    // Langkah 1: Loop 12 kali
+    // Langkah 2: Setiap iterasi, pick random character dari chars
+    // Langkah 3: Setiap 4 karakter, tambahkan dash (kecuali di akhir)
+    // Langkah 4: Return id
+    
+    // HINT: Gunakan Math.random() dan Math.floor() untuk pick random index
+}
+
+// ALTERNATIF: Versi lebih singkat dengan teknik array
+function generateIdV2() {
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    // Langkah 1: Array.from({length: 12}, ...) untuk generate 12 chars
+    // Langkah 2: Map ke random character
+    // Langkah 3: Join dengan dash setiap 4 karakter
+}
+
+// ✅ TEST CASE
+console.log(generateId());  // "k9j2-l4m8-n1p3" (contoh)
+console.log(generateId());  // "x7y2-z5w8-q1r4" (contoh)
+console.log(generateId());  // Selalu unik!
+```
+
+---
+
+**Latihan 4.4: Kalkulator Pajak Progresif**
+
+```javascript
+// 🎯 TUJUAN: Menghitung pajak dengan sistem progresif bertahap
+// ⏱️ WAKTU: 25 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐⭐
+
+// SOAL:
+// Hitung pajak penghasilan dengan tarif progresif:
+// 
+// - 0 - 50jt: 0%
+// - 50jt - 250jt: 5%
+// - 250jt - 500jt: 15%
+// - 500jt - 1M: 25%
+// - > 1M: 30%
+//
+// CONTOH:
+// hitungPajak(300000000) → { pajak: 20000000, efektif: 6.67 }
+
+// ✍️ TULIS KODE ANDA DI SINI
+function hitungPajak(penghasilan) {
+    // Tarif progresif (dihitung per lapisan)
+    const lapisan = [
+        { batas: 50000000, tarif: 0 },
+        { batas: 250000000, tarif: 0.05 },
+        { batas: 500000000, tarif: 0.15 },
+        { batas: 1000000000, tarif: 0.25 },
+        { batas: Infinity, tarif: 0.30 }
+    ];
+    
+    // Langkah 1: Loop setiap lapisan
+    // Langkah 2: Hitung penghasilan kena pajak di lapisan ini
+    // Langkah 3: Hitung pajak untuk lapisan ini
+    // Langkah 4: Akumulasi total pajak
+    // Langkah 5: Hitung tarif efektif (total pajak / penghasilan * 100)
+    // Langkah 6: Return object dengan pajak dan tarifEfektif
+}
+
+// ✅ TEST CASE
+console.log(hitungPajak(300000000));  
+// { pajak: 20000000, tarifEfektif: 6.67 }
+
+console.log(hitungPajak(600000000));  
+// { pajak: 65000000, tarifEfektif: 10.83 }
+
+console.log(hitungPajak(1500000000)); 
+// { pajak: 215000000, tarifEfektif: 14.33 }
+```
+
+---
+
+### 🎯 PROYEK MINI: Kalkulator Finansial Pribadi
+
+```javascript
+// 🎯 TUJUAN: Membuat aplikasi kalkulator finansial lengkap
+// ⏱️ WAKTU: 60 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐⭐
+
+// SOAL:
+// Buat object dengan fungsi-fungsi untuk kalkulasi finansial:
+// - hitungTabungan(): proyeksi tabungan dengan bunga
+// - hitungCicilan(): angsuran bulanan (rumus annuity)
+// - hitungROI(): return on investment
+// - konversiMataUang(): konversi antar mata uang
+
+// CONTOH PENGGUNAAN:
+const kalkulator = buatKalkulatorFinansial();
+
+kalkulator.hitungTabungan({
+    pokok: 10000000,
+    bungaTahunan: 0.05,
+    bulan: 12
+}); 
+// { total: 10511619, bunga: 511619 }
+
+kalkulator.hitungCicilan({
+    pokok: 100000000,
+    bungaTahunan: 0.12,
+    bulan: 24
+});
+// { angsuranBulanan: 4707347, totalBayar: 112976328 }
+
+// ✍️ TULIS KODE ANDA DI SINI
+function buatKalkulatorFinansial() {
+    return {
+        hitungTabungan: ({ pokok, bungaTahunan, bulan }) => {
+            // TODO: Implementasi dengan bunga majemuk
+            // Rumus: A = P(1 + r/n)^(n*t)
+            // n = 12 (monthly compounding)
+        },
+        
+        hitungCicilan: ({ pokok, bungaTahunan, bulan }) => {
+            // TODO: Implementasi dengan rumus annuity
+            // M = P * [r(1+r)^n] / [(1+r)^n - 1]
+            // r = bunga bulanan, n = jumlah bulan
+        },
+        
+        hitungROI: ({ investasiAwal, nilaiAkhir }) => {
+            // TODO: ROI = ((nilaiAkhir - investasiAwal) / investasiAwal) * 100
+        },
+        
+        konversiMataUang: ({ jumlah, dari, ke, rate }) => {
+            // TODO: konversi = jumlah * rate
+            // Return dengan format yang sesuai
+        }
+    };
+}
+```
+
+---
+
+### 📝 RANGKUMAN NUMBER & MATH
+
+| Method | Fungsi | Contoh | Return |
+|--------|--------|--------|--------|
+| `toFixed(n)` | Format desimal | `(123.456).toFixed(2)` | `"123.46"` |
+| `parseInt()` | Parse integer | `parseInt("100px")` | `100` |
+| `parseFloat()` | Parse float | `parseFloat("3.14px")` | `3.14` |
+| `Math.random()` | Random 0-1 | `Math.random()` | `0.xxxx` |
+| `Math.floor()` | Bulatkan ke bawah | `Math.floor(3.7)` | `3` |
+| `Math.ceil()` | Bulatkan ke atas | `Math.ceil(3.2)` | `4` |
+| `Math.round()` | Bulatkan terdekat | `Math.round(3.5)` | `4` |
+| `Math.pow()` | Pangkat | `Math.pow(2, 3)` | `8` |
+| `Math.sqrt()` | Akar kuadrat | `Math.sqrt(16)` | `4` |
+| `Math.abs()` | Nilai absolut | `Math.abs(-5)` | `5` |
+| `Math.max()` | Nilai maksimal | `Math.max(1,5,3)` | `5` |
+| `Math.min()` | Nilai minimal | `Math.min(1,5,3)` | `1` |
+
+---
+
+### 🔑 RUMUS-RUMUS PENTING
+
+```javascript
+// 1. Random Range
+const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+// 2. Clamp (batasi nilai dalam range)
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+// 3. Map Range (konversi dari satu range ke range lain)
+const mapRange = (value, inMin, inMax, outMin, outMax) => {
+    return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+};
+
+// 4. Format Currency Indonesia
+const formatIDR = (num) => new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR'
+}).format(num);
+
+// 5. Percentage Calculation
+const percentage = (part, total) => ((part / total) * 100).toFixed(2) + '%';
+```
+
+---
+
+## 🧬 Penjelasan Mendalam: Number & Math Operations
 
 > Ini adalah mantra-mantra terpenting kedua setelah `map`, `filter`, `reduce`.
 
@@ -15233,13 +16466,2909 @@ git commit -m "WIP"
 
 ---
 
-## 🧪 BONUS SECTION: Latihan Komprehensif
+## 📚 Bab 19: Data Structures & Algorithms Fundamentals {#-bab-19-data-structures-algorithms-fundamentals}
 
-> **🎯 Misi Akhir:** Gabungkan semua ilmu yang telah dipelajari untuk menyelesaikan tantangan-tantangan berikut!
+> **🎯 Misi Bab 19:** Menguasai struktur data fundamental dan algoritma yang menjadi dasar problem-solving dalam programming. Ini adalah **senjata rahasia** untuk menjadi developer yang handal dalam menyelesaikan masalah kompleks.
+
+### 🔴 1. Data Structures: Stack & Queue
+
+#### 📖 Konsep Dasar: Apa itu Stack?
+
+**Stack (Tumpukan)** adalah struktur data yang mengikuti prinsip **LIFO (Last In, First Out)**. Bayangkan **tumpukan piring** di restoran:
+- Piring yang **terakhir** ditaruh di atas adalah yang **pertama** diambil
+- Anda hanya bisa akses piring di **paling atas**
+- Tidak bisa mengambil piring di tengah tanpa memindahkan yang di atasnya
+
+**Mengapa Stack Penting?**
+1. **Function Call Stack:** Setiap function call disimpan di stack
+2. **Undo/Redo:** History tindakan user
+3. **Browser History:** Tombol back
+4. **Expression Evaluation:** Kalkulator, compiler
+5. **Backtracking Algorithms:** Maze solving, puzzle
 
 ---
 
-### 🐛 BAGIAN 1: Debugging Exercises (Find the Bug!)
+#### 🔬 Algoritma Internal Stack Operations
+
+**1. PUSH (Menambah Item)**
+
+```javascript
+// Algoritma Push:
+// 1. Terima item baru
+// 2. Taruh di index length (posisi terakhir)
+// 3. Increment length
+// 4. Return new length
+
+class Stack {
+    constructor() {
+        this.items = [];
+        this.top = -1;  // Pointer ke item teratas
+    }
+
+    push(item) {
+        // Langkah 1: Tambahkan item ke akhir array
+        this.items.push(item);
+        
+        // Langkah 2: Update pointer top
+        this.top++;
+        
+        // Langkah 3: Return success
+        return true;
+    }
+}
+
+// Contoh Penggunaan:
+const stack = new Stack();
+stack.push("Piring 1");  // top = 0
+stack.push("Piring 2");  // top = 1
+stack.push("Piring 3");  // top = 2
+// Stack: ["Piring 1", "Piring 2", "Piring 3"]
+```
+
+**2. POP (Menghapus Item)**
+
+```javascript
+// Algoritma Pop:
+// 1. Cek apakah stack kosong
+// 2. Jika tidak, ambil item di index length-1
+// 3. Hapus item tersebut
+// 4. Decrement pointer top
+// 5. Return item yang dihapus
+
+class Stack {
+    // ... constructor dan push ...
+
+    pop() {
+        // Langkah 1: Cek edge case - stack kosong
+        if (this.isEmpty()) {
+            console.log("Stack kosong! Tidak ada yang bisa di-pop");
+            return null;
+        }
+        
+        // Langkah 2: Ambil dan hapus item terakhir
+        const item = this.items.pop();
+        
+        // Langkah 3: Update pointer
+        this.top--;
+        
+        // Langkah 4: Return item
+        return item;
+    }
+}
+
+// Contoh Penggunaan:
+const stack = new Stack();
+stack.push("A");
+stack.push("B");
+stack.push("C");
+
+console.log(stack.pop());  // "C" (terakhir masuk, pertama keluar)
+console.log(stack.pop());  // "B"
+console.log(stack.pop());  // "A"
+console.log(stack.pop());  // null (stack kosong)
+```
+
+**3. PEEK (Melihat Item Teratas)**
+
+```javascript
+// Algoritma Peek:
+// 1. Cek apakah stack kosong
+// 2. Jika tidak, return item di index top
+// 3. Tidak menghapus item
+
+class Stack {
+    // ... methods sebelumnya ...
+
+    peek() {
+        // Langkah 1: Cek edge case
+        if (this.isEmpty()) {
+            return null;
+        }
+        
+        // Langkah 2: Return item teratas TANPA menghapus
+        return this.items[this.top];
+    }
+
+    isEmpty() {
+        return this.items.length === 0;
+    }
+
+    size() {
+        return this.items.length;
+    }
+}
+
+// Contoh Penggunaan:
+const stack = new Stack();
+stack.push("X");
+stack.push("Y");
+stack.push("Z");
+
+console.log(stack.peek());  // "Z" (hanya melihat)
+console.log(stack.peek());  // "Z" (masih "Z", tidak berubah)
+console.log(stack.pop());   // "Z" (sekarang dihapus)
+console.log(stack.peek());  // "Y" (sekarang teratas adalah "Y")
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata: Stack
+
+**1. Browser History (Tombol Back)**
+
+```javascript
+// Algoritma Browser History:
+// 1. Setiap navigate → push URL ke stack
+// 2. Tombol back → pop URL dari stack
+// 3. Tombol forward → push ke forward stack
+
+class BrowserHistory {
+    constructor() {
+        this.backStack = [];
+        this.forwardStack = [];
+        this.currentPage = null;
+    }
+
+    navigate(url) {
+        // Jika ada halaman saat ini, simpan ke back stack
+        if (this.currentPage) {
+            this.backStack.push(this.currentPage);
+        }
+        
+        // Reset forward stack (karena navigate baru)
+        this.forwardStack = [];
+        
+        // Set halaman saat ini
+        this.currentPage = url;
+        
+        console.log(`Navigating to: ${url}`);
+    }
+
+    goBack() {
+        // Cek apakah bisa back
+        if (this.backStack.length === 0) {
+            console.log("Tidak ada history untuk kembali!");
+            return null;
+        }
+        
+        // Push current ke forward stack
+        this.forwardStack.push(this.currentPage);
+        
+        // Pop dari back stack dan set sebagai current
+        this.currentPage = this.backStack.pop();
+        
+        console.log(`Going back to: ${this.currentPage}`);
+        return this.currentPage;
+    }
+
+    goForward() {
+        // Cek apakah bisa forward
+        if (this.forwardStack.length === 0) {
+            console.log("Tidak ada halaman untuk forward!");
+            return null;
+        }
+        
+        // Push current ke back stack
+        this.backStack.push(this.currentPage);
+        
+        // Pop dari forward stack dan set sebagai current
+        this.currentPage = this.forwardStack.pop();
+        
+        console.log(`Going forward to: ${this.currentPage}`);
+        return this.currentPage;
+    }
+}
+
+// Contoh Penggunaan:
+const browser = new BrowserHistory();
+browser.navigate("google.com");
+browser.navigate("youtube.com");
+browser.navigate("github.com");
+// Current: github.com, Back Stack: [google, youtube]
+
+browser.goBack();  
+// Current: youtube.com, Back Stack: [google], Forward Stack: [github]
+
+browser.goBack();  
+// Current: google.com, Back Stack: [], Forward Stack: [github, youtube]
+
+browser.goForward(); 
+// Current: youtube.com, Forward Stack: [github]
+```
+
+**2. Undo/Redo System**
+
+```javascript
+// Algoritma Undo/Redo:
+// 1. Setiap action → push ke undo stack
+// 2. Undo → pop dari undo, push ke redo
+// 3. Redo → pop dari redo, push ke undo
+// 4. Action baru → clear redo stack
+
+class UndoRedoManager {
+    constructor() {
+        this.undoStack = [];
+        this.redoStack = [];
+        this.currentState = null;
+    }
+
+    execute(action) {
+        // Simpan state saat ini ke undo stack
+        if (this.currentState !== null) {
+            this.undoStack.push(this.currentState);
+        }
+        
+        // Clear redo stack (karena action baru)
+        this.redoStack = [];
+        
+        // Execute action dan simpan result
+        this.currentState = action();
+        
+        console.log("Action executed");
+        return this.currentState;
+    }
+
+    undo() {
+        if (this.undoStack.length === 0) {
+            console.log("Nothing to undo!");
+            return null;
+        }
+        
+        // Push current ke redo stack
+        this.redoStack.push(this.currentState);
+        
+        // Pop dari undo stack
+        this.currentState = this.undoStack.pop();
+        
+        console.log("Undo performed");
+        return this.currentState;
+    }
+
+    redo() {
+        if (this.redoStack.length === 0) {
+            console.log("Nothing to redo!");
+            return null;
+        }
+        
+        // Push current ke undo stack
+        this.undoStack.push(this.currentState);
+        
+        // Pop dari redo stack
+        this.currentState = this.redoStack.pop();
+        
+        console.log("Redo performed");
+        return this.currentState;
+    }
+}
+
+// Contoh Penggunaan:
+const editor = new UndoRedoManager();
+
+editor.execute(() => "Text A");      // State: "Text A"
+editor.execute(() => "Text B");      // State: "Text B", Undo: ["Text A"]
+editor.execute(() => "Text C");      // State: "Text C", Undo: ["Text A", "Text B"]
+
+editor.undo();  // State: "Text B", Undo: ["Text A"], Redo: ["Text C"]
+editor.undo();  // State: "Text A", Undo: [], Redo: ["Text C", "Text B"]
+
+editor.redo();  // State: "Text B", Redo: ["Text C"]
+```
+
+**3. Function Call Stack (Expression Evaluation)**
+
+```javascript
+// Algoritma Calculator dengan Stack:
+// 1. Parse expression
+// 2. Push numbers ke stack
+// 3. Pop dan calculate ketika encounter operator
+// 4. Push result kembali
+
+class Calculator {
+    constructor() {
+        this.stack = [];
+    }
+
+    // Reverse Polish Notation (RPN) Calculator
+    // Contoh: "3 4 +" berarti 3 + 4
+    evaluateRPN(expression) {
+        const tokens = expression.split(" ");
+        
+        for (const token of tokens) {
+            if (this.isNumber(token)) {
+                // Jika angka, push ke stack
+                this.stack.push(parseFloat(token));
+            } else if (this.isOperator(token)) {
+                // Jika operator, pop 2 angka dan calculate
+                const b = this.stack.pop();
+                const a = this.stack.pop();
+                const result = this.calculate(a, b, token);
+                this.stack.push(result);
+            }
+        }
+        
+        return this.stack.pop();
+    }
+
+    isNumber(str) {
+        return !isNaN(parseFloat(str));
+    }
+
+    isOperator(str) {
+        return ["+", "-", "*", "/"].includes(str);
+    }
+
+    calculate(a, b, operator) {
+        switch (operator) {
+            case "+": return a + b;
+            case "-": return a - b;
+            case "*": return a * b;
+            case "/": return a / b;
+            default: throw new Error("Unknown operator");
+        }
+    }
+}
+
+// Contoh Penggunaan:
+const calc = new Calculator();
+
+// "3 4 +" = 3 + 4 = 7
+console.log(calc.evaluateRPN("3 4 +"));  // 7
+
+// "5 1 2 + 4 * + 3 -" = 5 + ((1 + 2) * 4) - 3 = 14
+console.log(calc.evaluateRPN("5 1 2 + 4 * + 3 -"));  // 14
+```
+
+---
+
+#### 📖 Konsep Dasar: Apa itu Queue?
+
+**Queue (Antrean)** adalah struktur data yang mengikuti prinsip **FIFO (First In, First Out)**. Bayangkan **antrean di kasir**:
+- Orang yang **pertama** datang adalah yang **pertama** dilayani
+- Orang baru masuk di **belakang** antrean
+- Orang yang dilayani keluar dari **depan** antrean
+
+**Mengapa Queue Penting?**
+1. **Task Queue:** Print queue, CPU scheduling
+2. **Message Queue:** RabbitMQ, Kafka
+3. **Breadth-First Search:** Graph traversal
+4. **Buffer:** Streaming data, audio/video buffer
+5. **Request Handling:** Web server request queue
+
+---
+
+#### 🔬 Algoritma Internal Queue Operations
+
+**1. ENQUEUE (Menambah Item)**
+
+```javascript
+// Algoritma Enqueue:
+// 1. Terima item baru
+// 2. Taruh di belakang antrean (index length)
+// 3. Increment length
+// 4. Return success
+
+class Queue {
+    constructor() {
+        this.items = [];
+        this.front = 0;
+        this.rear = 0;
+    }
+
+    enqueue(item) {
+        // Langkah 1: Tambahkan item ke belakang
+        this.items[this.rear] = item;
+        
+        // Langkah 2: Increment rear pointer
+        this.rear++;
+        
+        // Langkah 3: Return success
+        return true;
+    }
+}
+
+// Contoh Penggunaan:
+const queue = new Queue();
+queue.enqueue("Orang 1");  // rear = 1
+queue.enqueue("Orang 2");  // rear = 2
+queue.enqueue("Orang 3");  // rear = 3
+// Queue: ["Orang 1", "Orang 2", "Orang 3"]
+```
+
+**2. DEQUEUE (Menghapus Item)**
+
+```javascript
+// Algoritma Dequeue:
+// 1. Cek apakah queue kosong
+// 2. Jika tidak, ambil item di front
+// 3. Increment front pointer
+// 4. Return item
+
+class Queue {
+    // ... constructor dan enqueue ...
+
+    dequeue() {
+        // Langkah 1: Cek edge case - queue kosong
+        if (this.isEmpty()) {
+            console.log("Queue kosong!");
+            return null;
+        }
+        
+        // Langkah 2: Ambil item di depan
+        const item = this.items[this.front];
+        
+        // Langkah 3: Hapus referensi (optional, untuk memory management)
+        delete this.items[this.front];
+        
+        // Langkah 4: Increment front pointer
+        this.front++;
+        
+        // Langkah 5: Return item
+        return item;
+    }
+
+    isEmpty() {
+        return this.rear - this.front === 0;
+    }
+
+    peek() {
+        return this.items[this.front];
+    }
+
+    size() {
+        return this.rear - this.front;
+    }
+}
+
+// Contoh Penggunaan:
+const queue = new Queue();
+queue.enqueue("A");
+queue.enqueue("B");
+queue.enqueue("C");
+
+console.log(queue.dequeue());  // "A" (pertama masuk, pertama keluar)
+console.log(queue.dequeue());  // "B"
+console.log(queue.dequeue());  // "C"
+console.log(queue.dequeue());  // null (queue kosong)
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata: Queue
+
+**1. Print Queue System**
+
+```javascript
+// Algoritma Print Queue:
+// 1. Document masuk → enqueue ke queue
+// 2. Printer ready → dequeue dan print
+// 3. Priority document → enqueue di depan (priority queue)
+
+class PrintQueue {
+    constructor() {
+        this.queue = [];
+    }
+
+    addDocument(name, pages, isPriority = false) {
+        const document = {
+            id: Date.now(),
+            name,
+            pages,
+            isPriority,
+            addedAt: new Date()
+        };
+
+        if (isPriority) {
+            // Priority document: enqueue di depan (setelah priority lain)
+            const priorityIndex = this.queue.findIndex(doc => !doc.isPriority);
+            if (priorityIndex === -1) {
+                this.queue.push(document);
+            } else {
+                this.queue.splice(priorityIndex, 0, document);
+            }
+        } else {
+            // Normal document: enqueue di belakang
+            this.queue.push(document);
+        }
+
+        console.log(`Document added: ${name} (${pages} pages)`);
+        return document.id;
+    }
+
+    printNext() {
+        if (this.queue.length === 0) {
+            console.log("No documents to print!");
+            return null;
+        }
+
+        // Dequeue document pertama
+        const document = this.queue.shift();
+        
+        console.log(`Printing: ${document.name} (${document.pages} pages)`);
+        console.log(`Estimated time: ${document.pages * 2} seconds`);
+        
+        return document;
+    }
+
+    showQueue() {
+        console.log("\n=== Print Queue ===");
+        if (this.queue.length === 0) {
+            console.log("Queue is empty");
+            return;
+        }
+
+        this.queue.forEach((doc, index) => {
+            const priority = doc.isPriority ? "🔴 PRIORITY" : "⚪ NORMAL";
+            console.log(`${index + 1}. ${doc.name} - ${doc.pages} pages ${priority}`);
+        });
+        console.log("====================\n");
+    }
+}
+
+// Contoh Penggunaan:
+const printer = new PrintQueue();
+
+printer.addDocument("Report.pdf", 10);        // Normal
+printer.addDocument("Memo.docx", 2);          // Normal
+printer.addDocument("Urgent.pdf", 5, true);   // Priority!
+printer.addDocument("Backup.txt", 1);         // Normal
+
+printer.showQueue();
+// 1. Urgent.pdf - 5 pages 🔴 PRIORITY
+// 2. Report.pdf - 10 pages ⚪ NORMAL
+// 3. Memo.docx - 2 pages ⚪ NORMAL
+// 4. Backup.txt - 1 page ⚪ NORMAL
+
+printer.printNext();  // Prints Urgent.pdf first!
+```
+
+**2. Task Scheduler (CPU Scheduling)**
+
+```javascript
+// Algoritma Round-Robin Scheduling:
+// 1. Setiap task dapat time slice
+// 2. Jika tidak selesai, enqueue kembali
+// 3. Lanjut ke task berikutnya
+// 4. Repeat hingga semua selesai
+
+class TaskScheduler {
+    constructor(timeSlice = 100) {
+        this.queue = [];
+        this.timeSlice = timeSlice; // ms
+    }
+
+    addTask(name, duration) {
+        const task = {
+            id: Date.now(),
+            name,
+            remainingTime: duration,
+            totalTime: duration
+        };
+
+        this.queue.push(task);
+        console.log(`Task added: ${name} (${duration}ms)`);
+    }
+
+    async run() {
+        console.log("\n🚀 Starting Task Scheduler...\n");
+
+        while (this.queue.length > 0) {
+            // Dequeue task pertama
+            const task = this.queue.shift();
+
+            console.log(`⏳ Running: ${task.name} (${task.remainingTime}ms remaining)`);
+
+            // Simulate execution untuk time slice
+            await this.sleep(Math.min(this.timeSlice, task.remainingTime));
+
+            // Kurangi remaining time
+            task.remainingTime -= this.timeSlice;
+
+            // Jika belum selesai, enqueue kembali
+            if (task.remainingTime > 0) {
+                console.log(`⏸️  Pausing: ${task.name}, re-queueing...`);
+                this.queue.push(task);
+            } else {
+                console.log(`✅ Completed: ${task.name}`);
+            }
+
+            // Small delay untuk visualisasi
+            await this.sleep(50);
+        }
+
+        console.log("\n🎉 All tasks completed!\n");
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    showQueue() {
+        console.log("\n=== Task Queue ===");
+        this.queue.forEach((task, index) => {
+            const progress = ((task.totalTime - task.remainingTime) / task.totalTime * 100).toFixed(0);
+            console.log(`${index + 1}. ${task.name} - ${progress}% complete`);
+        });
+        console.log("==================\n");
+    }
+}
+
+// Contoh Penggunaan:
+const scheduler = new TaskScheduler(200);
+
+scheduler.addTask("Download", 500);
+scheduler.addTask("Install", 400);
+scheduler.addTask("Configure", 300);
+
+// scheduler.run();  // Uncomment untuk menjalankan
+```
+
+---
+
+#### ⚔️ Latihan Bertahap: Stack & Queue
+
+| Level | Tantangan | Deskripsi | Difficulty |
+|-------|-----------|-----------|------------|
+| 1 | Validasi Parentheses | Cek keseimbangan `()`, `{}`, `[]` | ⭐⭐ |
+| 2 | Reverse String dengan Stack | Balik string menggunakan stack | ⭐⭐ |
+| 3 | Implementasi Stack dengan Queue | Buat stack menggunakan 2 queues | ⭐⭐⭐ |
+| 4 | Queue dengan 2 Stack | Buat queue menggunakan 2 stacks | ⭐⭐⭐ |
+| 5 | LRU Cache | Least Recently Used cache | ⭐⭐⭐⭐⭐ |
+
+---
+
+**Latihan 1: Validasi Parentheses**
+
+```javascript
+// 🎯 TUJUAN: Mengecek keseimbangan brackets
+// ⏱️ WAKTU: 15 menit
+// 💪 KESULITAN: ⭐⭐
+
+// SOAL:
+// Buat fungsi yang mengecek apakah string memiliki parentheses yang seimbang
+// (), {}, [] harus buka dan tutup dengan benar
+
+// CONTOH:
+// isValidParentheses("()") → true
+// isValidParentheses("()[]{}") → true
+// isValidParentheses("(]") → false
+// isValidParentheses("([)]") → false
+// isValidParentheses("{[]}") → true
+
+// ✍️ TULIS KODE ANDA DI SINI
+function isValidParentheses(str) {
+    // Langkah 1: Buat stack untuk tracking opening brackets
+    // Langkah 2: Buat map untuk matching pairs
+    // Langkah 3: Loop setiap character
+    //   - Jika opening bracket, push ke stack
+    //   - Jika closing bracket:
+    //     * Cek apakah stack kosong → false
+    //     * Pop dari stack dan cek apakah match → jika tidak, false
+    // Langkah 4: Setelah loop, cek apakah stack kosong
+    //   - Jika ya → true (semua match)
+    //   - Jika tidak → false (ada yang tidak match)
+    
+    const stack = [];
+    const map = {
+        ')': '(',
+        '}': '{',
+        ']': '['
+    };
+    
+    for (const char of str) {
+        // TODO: Implementasi
+    }
+    
+    return stack.length === 0;
+}
+
+// ✅ TEST CASE
+console.log(isValidParentheses("()"));           // true
+console.log(isValidParentheses("()[]{}"));       // true
+console.log(isValidParentheses("(]"));           // false
+console.log(isValidParentheses("([)]"));         // false
+console.log(isValidParentheses("{[]}"));         // true
+console.log(isValidParentheses(""));             // true
+console.log(isValidParentheses("(("));           // false
+```
+
+---
+
+**Latihan 2: Queue dengan 2 Stack**
+
+```javascript
+// 🎯 TUJUAN: Implementasi Queue menggunakan 2 Stack
+// ⏱️ WAKTU: 20 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐
+
+// SOAL:
+// Buat class Queue yang menggunakan 2 stack internal
+// untuk mensimulasikan behavior FIFO menggunakan LIFO
+
+// HINT:
+// - Stack 1 untuk enqueue
+// - Stack 2 untuk dequeue
+// - Saat dequeue, jika stack 2 kosong, pop semua dari stack 1 ke stack 2
+
+// ✍️ TULIS KODE ANDA DI SINI
+class QueueWithStacks {
+    constructor() {
+        this.stack1 = [];  // Untuk enqueue
+        this.stack2 = [];  // Untuk dequeue
+    }
+
+    enqueue(item) {
+        // TODO: Push ke stack1
+    }
+
+    dequeue() {
+        // TODO: 
+        // 1. Jika stack2 kosong, pop semua dari stack1 dan push ke stack2
+        // 2. Pop dari stack2
+        // 3. Jika keduanya kosong, return null
+    }
+
+    peek() {
+        // TODO: Lihat item pertama tanpa menghapus
+    }
+
+    isEmpty() {
+        // TODO: Cek apakah kedua stack kosong
+    }
+}
+
+// ✅ TEST CASE
+const queue = new QueueWithStacks();
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+
+console.log(queue.dequeue());  // 1 (FIFO!)
+console.log(queue.dequeue());  // 2
+queue.enqueue(4);
+console.log(queue.dequeue());  // 3
+console.log(queue.dequeue());  // 4
+console.log(queue.dequeue());  // null
+```
+
+---
+
+### 🔴 2. Linked List Fundamentals
+
+#### 📖 Konsep Dasar: Apa itu Linked List?
+
+**Linked List** adalah struktur data linear yang terdiri dari **node-node** yang terhubung melalui **pointer**. Berbeda dengan array yang contiguous di memory, linked list tersebar di memory dan dihubungkan dengan reference.
+
+**Analogi:** **Treasure Hunt** (Mencari Harta Karun)
+- Setiap clue mengarah ke lokasi berikutnya
+- Anda tidak bisa langsung ke clue ke-5 tanpa melalui clue 1-4
+- Setiap clue berisi: **harta** (data) + **petunjuk lokasi berikutnya** (pointer)
+
+**Jenis-Jenis Linked List:**
+1. **Singly Linked List:** Setiap node punya 1 pointer ke node berikutnya
+2. **Doubly Linked List:** Setiap node punya 2 pointer (ke depan dan ke belakang)
+3. **Circular Linked List:** Node terakhir pointing ke node pertama
+
+---
+
+#### 🔬 Struktur Node
+
+```javascript
+// Struktur Node untuk Singly Linked List
+class Node {
+    constructor(data) {
+        this.data = data;      // Data/Value
+        this.next = null;      // Pointer ke node berikutnya
+    }
+}
+
+// Struktur Node untuk Doubly Linked List
+class DoublyNode {
+    constructor(data) {
+        this.data = data;      // Data/Value
+        this.next = null;      // Pointer ke node berikutnya
+        this.prev = null;      // Pointer ke node sebelumnya
+    }
+}
+
+// Visualisasi:
+// Singly: [Data|Next] → [Data|Next] → [Data|Next] → null
+// Doubly: null ← [Prev|Data|Next] ↔ [Prev|Data|Next] ↔ [Prev|Data|Next] → null
+```
+
+---
+
+#### 🔬 Algoritma Internal Singly Linked List
+
+**1. APPEND (Menambah di Akhir)**
+
+```javascript
+// Algoritma Append:
+// 1. Buat node baru dengan data
+// 2. Jika list kosong, set head = node baru
+// 3. Jika tidak kosong:
+//    - Traverse dari head hingga node terakhir (node.next === null)
+//    - Set node terakhir.next = node baru
+// 4. Increment length
+
+class SinglyLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+
+    append(data) {
+        // Langkah 1: Buat node baru
+        const newNode = new Node(data);
+
+        // Langkah 2: Cek edge case - list kosong
+        if (this.head === null) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            // Langkah 3: Tambahkan di akhir
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
+
+        // Langkah 4: Increment length
+        this.length++;
+
+        return this;
+    }
+}
+
+// Contoh Penggunaan:
+const list = new SinglyLinkedList();
+list.append(10);  // [10]
+list.append(20);  // [10] → [20]
+list.append(30);  // [10] → [20] → [30]
+```
+
+**2. PREPEND (Menambah di Awal)**
+
+```javascript
+// Algoritma Prepend:
+// 1. Buat node baru dengan data
+// 2. Set node baru.next = head
+// 3. Set head = node baru
+// 4. Jika list kosong, set tail juga = node baru
+// 5. Increment length
+
+class SinglyLinkedList {
+    // ... constructor dan append ...
+
+    prepend(data) {
+        // Langkah 1: Buat node baru
+        const newNode = new Node(data);
+
+        // Langkah 2: Set pointer node baru ke head
+        newNode.next = this.head;
+
+        // Langkah 3: Update head
+        this.head = newNode;
+
+        // Langkah 4: Jika list tadi kosong, set tail juga
+        if (this.tail === null) {
+            this.tail = newNode;
+        }
+
+        // Langkah 5: Increment length
+        this.length++;
+
+        return this;
+    }
+}
+
+// Contoh Penggunaan:
+const list = new SinglyLinkedList();
+list.append(20);      // [20]
+list.prepend(10);     // [10] → [20]
+list.prepend(5);      // [5] → [10] → [20]
+```
+
+**3. INSERT AT (Menyisipkan di Posisi Tertentu)**
+
+```javascript
+// Algoritma Insert At:
+// 1. Validasi index (0 <= index <= length)
+// 2. Jika index = 0, gunakan prepend
+// 3. Jika index = length, gunakan append
+// 4. Jika di tengah:
+//    - Traverse ke node sebelum index (index - 1)
+//    - Buat node baru
+//    - Set node baru.next = previousNode.next
+//    - Set previousNode.next = node baru
+// 5. Increment length
+
+class SinglyLinkedList {
+    // ... methods sebelumnya ...
+
+    insertAt(index, data) {
+        // Langkah 1: Validasi index
+        if (index < 0 || index > this.length) {
+            throw new Error("Index out of bounds");
+        }
+
+        // Langkah 2: Edge case - insert di awal
+        if (index === 0) {
+            return this.prepend(data);
+        }
+
+        // Langkah 3: Edge case - insert di akhir
+        if (index === this.length) {
+            return this.append(data);
+        }
+
+        // Langkah 4: Insert di tengah
+        // 4a. Traverse ke node sebelum index
+        const previousNode = this.getNodeAt(index - 1);
+
+        // 4b. Buat node baru
+        const newNode = new Node(data);
+
+        // 4c. Set pointer node baru
+        newNode.next = previousNode.next;
+
+        // 4d. Update pointer previous node
+        previousNode.next = newNode;
+
+        // Langkah 5: Increment length
+        this.length++;
+
+        return this;
+    }
+
+    getNodeAt(index) {
+        if (index < 0 || index >= this.length) {
+            return null;
+        }
+
+        let currentNode = this.head;
+        for (let i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
+    }
+}
+
+// Contoh Penggunaan:
+const list = new SinglyLinkedList();
+list.append(10);      // [10]
+list.append(20);      // [10] → [20]
+list.append(30);      // [10] → [20] → [30]
+list.insertAt(1, 15); // [10] → [15] → [20] → [30]
+```
+
+**4. DELETE AT (Menghapus di Posisi Tertentu)**
+
+```javascript
+// Algoritma Delete At:
+// 1. Validasi index (0 <= index < length)
+// 2. Jika index = 0:
+//    - Set head = head.next
+//    - Jika length = 1, set tail = null
+// 3. Jika di tengah/akhir:
+//    - Traverse ke node sebelum index
+//    - Set previousNode.next = nodeToDelete.next
+//    - Jika nodeToDelete adalah tail, update tail
+// 4. Decrement length
+
+class SinglyLinkedList {
+    // ... methods sebelumnya ...
+
+    deleteAt(index) {
+        // Langkah 1: Validasi index
+        if (index < 0 || index >= this.length) {
+            return null;
+        }
+
+        let deletedNode;
+
+        // Langkah 2: Edge case - delete di awal
+        if (index === 0) {
+            deletedNode = this.head;
+            this.head = this.head.next;
+
+            // Jika hanya ada 1 node, update tail juga
+            if (this.length === 1) {
+                this.tail = null;
+            }
+        } else {
+            // Langkah 3: Delete di tengah/akhir
+            const previousNode = this.getNodeAt(index - 1);
+            deletedNode = previousNode.next;
+
+            // Update pointer
+            previousNode.next = deletedNode.next;
+
+            // Jika delete node terakhir, update tail
+            if (deletedNode === this.tail) {
+                this.tail = previousNode;
+            }
+        }
+
+        // Langkah 4: Decrement length
+        this.length--;
+
+        return deletedNode;
+    }
+}
+
+// Contoh Penggunaan:
+const list = new SinglyLinkedList();
+list.append(10);
+list.append(20);
+list.append(30);
+list.append(40);  // [10] → [20] → [30] → [40]
+
+list.deleteAt(0); // [20] → [30] → [40]
+list.deleteAt(1); // [20] → [40]
+list.deleteAt(1); // [20]
+```
+
+**5. SEARCH & GET**
+
+```javascript
+class SinglyLinkedList {
+    // ... methods sebelumnya ...
+
+    // Search berdasarkan value
+    search(value) {
+        let currentNode = this.head;
+        let index = 0;
+
+        while (currentNode !== null) {
+            if (currentNode.data === value) {
+                return index;  // Found!
+            }
+            currentNode = currentNode.next;
+            index++;
+        }
+
+        return -1;  // Not found
+    }
+
+    // Get node di index tertentu
+    get(index) {
+        return this.getNodeAt(index);
+    }
+
+    // Get semua data sebagai array
+    toArray() {
+        const result = [];
+        let currentNode = this.head;
+
+        while (currentNode !== null) {
+            result.push(currentNode.data);
+            currentNode = currentNode.next;
+        }
+
+        return result;
+    }
+
+    // Print list untuk debugging
+    print() {
+        const elements = [];
+        let currentNode = this.head;
+
+        while (currentNode !== null) {
+            elements.push(String(currentNode.data));
+            currentNode = currentNode.next;
+        }
+
+        console.log(elements.join(" → "));
+    }
+}
+
+// Contoh Penggunaan:
+const list = new SinglyLinkedList();
+list.append(10);
+list.append(20);
+list.append(30);
+
+console.log(list.search(20));  // 1 (index)
+console.log(list.search(99));  // -1 (not found)
+
+console.log(list.get(1)?.data);  // 20
+
+console.log(list.toArray());  // [10, 20, 30]
+
+list.print();  // "10 → 20 → 30"
+```
+
+---
+
+#### 💡 Aplikasi Dunia Nyata: Linked List
+
+**1. Music Playlist**
+
+```javascript
+// Algoritma Music Playlist:
+// 1. Setiap song adalah node
+// 2. Next pointer = lagu berikutnya
+// 3. Support: next(), previous(), add(), remove()
+
+class Song {
+    constructor(title, artist, duration) {
+        this.title = title;
+        this.artist = artist;
+        this.duration = duration;
+        this.next = null;
+    }
+}
+
+class MusicPlaylist {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.current = null;
+        this.length = 0;
+    }
+
+    addSong(title, artist, duration) {
+        const song = new Song(title, artist, duration);
+
+        if (!this.head) {
+            this.head = song;
+            this.tail = song;
+            this.current = song;
+        } else {
+            this.tail.next = song;
+            this.tail = song;
+        }
+
+        this.length++;
+        console.log(`Added: ${title} - ${artist}`);
+    }
+
+    playNext() {
+        if (!this.current) return null;
+
+        this.current = this.current.next;
+        if (!this.current) {
+            // Loop back to start (circular)
+            this.current = this.head;
+        }
+
+        this.printCurrent();
+        return this.current;
+    }
+
+    playPrevious() {
+        if (!this.current || this.current === this.head) {
+            this.current = this.head;
+            return null;
+        }
+
+        // Find previous node
+        let previous = this.head;
+        while (previous && previous.next !== this.current) {
+            previous = previous.next;
+        }
+
+        this.current = previous;
+        this.printCurrent();
+        return this.current;
+    }
+
+    printCurrent() {
+        if (this.current) {
+            console.log(`🎵 Now Playing: ${this.current.title} - ${this.current.artist}`);
+        }
+    }
+
+    showPlaylist() {
+        console.log("\n=== Playlist ===");
+        let current = this.head;
+        let index = 1;
+
+        while (current) {
+            const marker = current === this.current ? "▶ " : "  ";
+            console.log(`${marker}${index}. ${current.title} - ${current.artist} (${current.duration})`);
+            current = current.next;
+            index++;
+        }
+        console.log("================\n");
+    }
+}
+
+// Contoh Penggunaan:
+const playlist = new MusicPlaylist();
+playlist.addSong("Bohemian Rhapsody", "Queen", "5:55");
+playlist.addSong("Hotel California", "Eagles", "6:30");
+playlist.addSong("Stairway to Heaven", "Led Zeppelin", "8:02");
+
+playlist.showPlaylist();
+playlist.playNext();
+playlist.playNext();
+playlist.playPrevious();
+```
+
+---
+
+#### ⚔️ Latihan Bertahap: Linked List
+
+| Level | Tantangan | Deskripsi | Difficulty |
+|-------|-----------|-----------|------------|
+| 1 | Reverse Linked List | Balik arah pointer linked list | ⭐⭐⭐ |
+| 2 | Detect Cycle | Deteksi apakah ada cycle | ⭐⭐⭐ |
+| 3 | Find Middle | Cari node tengah | ⭐⭐ |
+| 4 | Remove Duplicates | Hapus duplicate values | ⭐⭐⭐ |
+| 5 | Merge Two Lists | Merge 2 sorted linked lists | ⭐⭐⭐⭐ |
+
+---
+
+**Latihan 1: Reverse Linked List**
+
+```javascript
+// 🎯 TUJUAN: Membalik arah pointer linked list
+// ⏱️ WAKTU: 20 menit
+// 💪 KESULITAN: ⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang membalik linked list
+// Input: 1 → 2 → 3 → 4 → null
+// Output: 4 → 3 → 2 → 1 → null
+
+// ✍️ TULIS KODE ANDA DI SINI
+function reverseList(head) {
+    // ALGORITMA:
+    // 1. Init 3 pointers: prev = null, current = head, next = null
+    // 2. Loop selama current !== null:
+    //    - Simpan next node: next = current.next
+    //    - Balik pointer: current.next = prev
+    //    - Move pointers: prev = current, current = next
+    // 3. Return prev (yang sekarang jadi head baru)
+    
+    let prev = null;
+    let current = head;
+    let next = null;
+    
+    while (current !== null) {
+        // TODO: Implementasi
+    }
+    
+    return prev;
+}
+```
+
+---
+
+**Latihan 2: Detect Cycle**
+
+```javascript
+// 🎯 TUJUAN: Mendeteksi apakah linked list memiliki cycle
+// ⏱️ WAKTU: 20 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐
+
+// SOAL:
+// Buat fungsi yang mendeteksi cycle dalam linked list
+// Cycle terjadi jika node terakhir pointing ke node di tengah
+
+// HINT: Gunakan Floyd's Cycle Detection (Tortoise and Hare)
+// - Slow pointer: move 1 step
+// - Fast pointer: move 2 steps
+// - Jika ada cycle, fast akan catch up slow
+
+// ✍️ TULIS KODE ANDA DI SINI
+function hasCycle(head) {
+    // ALGORITMA:
+    // 1. Init slow = head, fast = head
+    // 2. Loop selama fast !== null && fast.next !== null:
+    //    - slow = slow.next (1 step)
+    //    - fast = fast.next.next (2 steps)
+    //    - Jika slow === fast, ada cycle!
+    // 3. Jika loop selesai tanpa match, tidak ada cycle
+    
+    let slow = head;
+    let fast = head;
+    
+    while (fast !== null && fast.next !== null) {
+        // TODO: Implementasi
+    }
+    
+    return false;
+}
+```
+
+---
+
+### 📊 Kompleksitas Waktu: Data Structures
+
+| Operation | Array | Stack | Queue | Linked List |
+|-----------|-------|-------|-------|-------------|
+| Access | O(1) | O(n) | O(n) | O(n) |
+| Search | O(n) | O(n) | O(n) | O(n) |
+| Insert | O(n) | O(1) | O(1) | O(1)* |
+| Delete | O(n) | O(1) | O(1) | O(1)* |
+| Push/Enqueue | O(1)* | O(1) | O(1) | O(1) |
+| Pop/Dequeue | O(1) | O(1) | O(1) | O(1) |
+
+*\*Amortized atau dengan pointer yang tepat*
+
+---
+
+## 📚 Bab 20: Algorithm Complexity & Big O Notation {#-bab-20-algorithm-complexity-big-o}
+
+> **🎯 Misi Bab 20:** Memahami cara menganalisis performa algoritma dan memilih solusi yang optimal. Ini adalah **skill wajib** untuk technical interview dan writing efficient code.
+
+### 🔴 1. Big O Notation Fundamentals
+
+#### 📖 Konsep Dasar: Apa itu Big O?
+
+**Big O Notation** adalah cara untuk mengukur **seberapa cepat algoritma kamu** seiring dengan bertambahnya input. Bukan mengukur waktu dalam detik, tapi mengukur **berapa banyak operasi** yang dilakukan.
+
+**Analogi:** **Mengirim Paket**
+- **O(1):** Kirim 1 paket atau 1000 paket, waktu sama (email)
+- **O(n):** Kirim paket, waktu proporsional dengan jumlah paket (kurir)
+- **O(n²):** Kirim paket ke setiap orang yang saling kenal (meetup group)
+- **O(log n):** Cari nama di telepon (binary search)
+
+**Mengapa Big O Penting?**
+1. **Predict Performance:** Tahu bagaimana code scale
+2. **Compare Solutions:** Pilih algoritma terbaik
+3. **Identify Bottlenecks:** Tahu bagian mana yang lambat
+4. **Technical Interviews:** Topik wajib interview
+
+---
+
+#### 🔬 Hierarki Big O (Tercepat ke Ter lambat)
+
+```
+O(1)        < O(log n)    < O(n)        < O(n log n)    < O(n²)       < O(2^n)
+Constant    Logarithmic   Linear        Linearithmic    Quadratic     Exponential
+   ↓            ↓             ↓               ↓               ↓             ↓
+SANGAT       SANGAT        BAIK          OKAY            BURUK       SANGAT
+CEPAT        CEPAT                                    (hindari!)     BURUK
+```
+
+---
+
+#### 🔍 Analisis Setiap Big O
+
+**1. O(1) - Constant Time** ⭐⭐⭐⭐⭐
+
+```javascript
+// KARAKTERISTIK:
+// - Waktu eksekusi TIDAK tergantung ukuran input
+// - Secepat apapun input, waktu tetap
+
+// CONTOH 1: Access Array Element
+function getElement(arr, index) {
+    return arr[index];  // 1 operasi, tidak peduli arr panjangnya 10 atau 10 juta
+}
+
+// CONTOH 2: Push/Pop (Array)
+function pushExample(arr, item) {
+    arr.push(item);  // O(1) amortized
+}
+
+// CONTOH 3: Object Property Access
+const user = { name: "Budi", age: 25 };
+function getName(obj) {
+    return obj.name;  // O(1)
+}
+
+// VISUALISASI:
+// Input: 10    → 100 ops
+// Input: 1000  → 100 ops
+// Input: 1M    → 100 ops
+// (Tetap sama!)
+```
+
+**2. O(log n) - Logarithmic Time** ⭐⭐⭐⭐⭐
+
+```javascript
+// KARAKTERISTIK:
+// - Waktu bertambah sangat lambat saat input membesar
+// - Setiap step mengurangi masalah menjadi setengah
+// - SANGAT efisien untuk data besar
+
+// CONTOH: Binary Search
+function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+
+        if (arr[mid] === target) {
+            return mid;  // Found!
+        }
+
+        if (arr[mid] < target) {
+            left = mid + 1;  // Search right half
+        } else {
+            right = mid - 1;  // Search left half
+        }
+    }
+
+    return -1;  // Not found
+}
+
+// MENGAPA O(log n)?
+// Input: 1024 elements
+// Step 1: 1024 → 512
+// Step 2: 512 → 256
+// Step 3: 256 → 128
+// ...
+// Step 10: 2 → 1
+// Total: 10 steps = log₂(1024)
+
+// VISUALISASI:
+// Input: 10       → ~3 ops
+// Input: 100      → ~7 ops
+// Input: 1000     → ~10 ops
+// Input: 1,000,000 → ~20 ops
+// (Bertambah sangat lambat!)
+```
+
+**3. O(n) - Linear Time** ⭐⭐⭐⭐
+
+```javascript
+// KARAKTERISTIK:
+// - Waktu bertambah proporsional dengan input
+// - 2x input = 2x waktu
+// - Paling umum, biasanya acceptable
+
+// CONTOH 1: Find Maximum
+function findMax(arr) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;  // Loop n kali
+}
+
+// CONTOH 2: Linear Search
+function linearSearch(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === target) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// CONTOH 3: Print All Elements
+function printAll(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);  // n kali print
+    }
+}
+
+// VISUALISASI:
+// Input: 10       → 10 ops
+// Input: 100      → 100 ops
+// Input: 1000     → 1000 ops
+// Input: 1,000,000 → 1,000,000 ops
+// (Proporsional!)
+```
+
+**4. O(n log n) - Linearithmic Time** ⭐⭐⭐
+
+```javascript
+// KARAKTERISTIK:
+// - Sedikit lebih lambat dari linear
+// - Masih acceptable untuk data besar
+// - Optimal untuk sorting algorithms
+
+// CONTOH: Merge Sort
+function mergeSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    const mid = Math.floor(arr.length / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+
+    // Recursive: T(n) = 2T(n/2) + O(n)
+    return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right) {
+    const result = [];
+    let i = 0, j = 0;
+
+    while (i < left.length && j < right.length) {
+        if (left[i] < right[j]) {
+            result.push(left[i++]);
+        } else {
+            result.push(right[j++]);
+        }
+    }
+
+    return [...result, ...left.slice(i), ...right.slice(j)];
+}
+
+// MENGAPA O(n log n)?
+// - Divide: log n levels (membagi 2 terus)
+// - Conquer: n work di setiap level
+// - Total: n × log n
+
+// VISUALISASI:
+// Input: 10       → ~33 ops
+// Input: 100      → ~664 ops
+// Input: 1000     → ~9965 ops
+// Input: 1,000,000 → ~19,931,568 ops
+```
+
+**5. O(n²) - Quadratic Time** ⭐⭐
+
+```javascript
+// KARAKTERISTIK:
+// - Waktu bertambah kuadrat dengan input
+// - 2x input = 4x waktu
+// - BURUK untuk data besar, hindari!
+
+// CONTOH 1: Bubble Sort
+function bubbleSort(arr) {
+    const n = arr.length;
+
+    for (let i = 0; i < n; i++) {           // n iterations
+        for (let j = 0; j < n - i - 1; j++) { // n iterations
+            if (arr[j] > arr[j + 1]) {
+                // Swap
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+
+    return arr;  // Total: n × n = n² operations
+}
+
+// CONTOH 2: Print All Pairs
+function printPairs(arr) {
+    for (let i = 0; i < arr.length; i++) {      // n
+        for (let j = 0; j < arr.length; j++) {  // n
+            console.log(arr[i], arr[j]);        // n × n = n²
+        }
+    }
+}
+
+// CONTOH 3: Contains Duplicates
+function hasDuplicates(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] === arr[j]) {
+                return true;
+            }
+        }
+    }
+    return false;  // n × (n-1)/2 ≈ n²/2 = O(n²)
+}
+
+// VISUALISASI:
+// Input: 10       → 100 ops
+// Input: 100      → 10,000 ops
+// Input: 1000     → 1,000,000 ops
+// Input: 10,000   → 100,000,000 ops
+// (Meledak!)
+```
+
+**6. O(2^n) - Exponential Time** ⭐
+
+```javascript
+// KARAKTERISTIK:
+// - Waktu bertambah eksponensial
+// - 1x input tambahan = 2x waktu
+// - SANGAT BURUK, hindari sebisa mungkin!
+
+// CONTOH: Recursive Fibonacci
+function fibonacci(n) {
+    if (n <= 1) {
+        return n;
+    }
+
+    return fibonacci(n - 1) + fibonacci(n - 2);
+    //         ↙️              ↘️
+    //    fibonacci(n-1)    fibonacci(n-2)
+    //   /        \         /         \
+    // ...        ...     ...         ...
+    // Total calls: 2^n
+}
+
+// VISUALISASI:
+// Input: 10   → 1,024 ops
+// Input: 20   → 1,048,576 ops
+// Input: 30   → 1,073,741,824 ops
+// Input: 40   → 1,099,511,627,776 ops
+// (Kiamat!)
+
+// SOLUSI: Gunakan Dynamic Programming (O(n))
+function fibonacciDP(n) {
+    if (n <= 1) return n;
+
+    const dp = [0, 1];
+    for (let i = 2; i <= n; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+
+    return dp[n];  // O(n) - JAUH lebih baik!
+}
+```
+
+---
+
+#### ⚔️ Latihan Bertahap: Big O Analysis
+
+**Latihan 1: Analyze Time Complexity**
+
+```javascript
+// 🎯 TUJUAN: Menganalisis Big O dari berbagai fungsi
+// ⏱️ WAKTU: 15 menit
+// 💪 KESULITAN: ⭐⭐⭐
+
+// SOAL: Tentukan Big O dari setiap fungsi berikut:
+
+// FUNGSI 1
+function func1(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+// JAWABAN: _____
+
+// FUNGSI 2
+function func2(arr) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            result.push(arr[i] + arr[j]);
+        }
+    }
+    return result;
+}
+// JAWABAN: _____
+
+// FUNGSI 3
+function func3(arr) {
+    let first = arr[0];
+    let last = arr[arr.length - 1];
+    return first + last;
+}
+// JAWABAN: _____
+
+// FUNGSI 4
+function func4(arr) {
+    let i = 0;
+    while (i < arr.length) {
+        console.log(arr[i]);
+        i *= 2;
+    }
+}
+// JAWABAN: _____
+
+// FUNGSI 5
+function func5(n) {
+    if (n <= 1) return 1;
+    return func5(n - 1) + func5(n - 1);
+}
+// JAWABAN: _____
+```
+
+---
+
+### 🔴 2. Space Complexity
+
+#### 📖 Konsep Dasar: Space Complexity
+
+**Space Complexity** mengukur **berapa banyak memory** yang digunakan algoritma relatif terhadap input size.
+
+**Jenis Memory Usage:**
+1. **Fixed Space:** Variable, constant (O(1))
+2. **Variable Space:** Array, recursion stack (O(n))
+
+---
+
+#### 🔍 Analisis Space Complexity
+
+**1. O(1) - Constant Space**
+
+```javascript
+// CONTOH 1: Sum Array
+function sumArray(arr) {
+    let sum = 0;      // 1 variable
+    let i = 0;        // 1 variable
+    for (i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;       // Total: 2 variables = O(1)
+}
+
+// CONTOH 2: Find Max
+function findMax(arr) {
+    let max = arr[0];  // 1 variable
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;        // Total: 2 variables = O(1)
+}
+```
+
+**2. O(n) - Linear Space**
+
+```javascript
+// CONTOH 1: Create New Array
+function doubleArray(arr) {
+    const result = [];      // n elements
+    for (let i = 0; i < arr.length; i++) {
+        result.push(arr[i] * 2);
+    }
+    return result;          // Total: n elements = O(n)
+}
+
+// CONTOH 2: Recursion (Call Stack)
+function factorial(n) {
+    if (n === 0) return 1;
+    return n * factorial(n - 1);  // n stack frames = O(n)
+}
+// factorial(5):
+// factorial(5)
+// └─ factorial(4)
+//    └─ factorial(3)
+//       └─ factorial(2)
+//          └─ factorial(1)
+//             └─ factorial(0)
+// Total: 6 stack frames
+```
+
+**3. O(n²) - Quadratic Space**
+
+```javascript
+// CONTOH: 2D Array
+function createMatrix(n) {
+    const matrix = [];
+    for (let i = 0; i < n; i++) {
+        matrix[i] = [];
+        for (let j = 0; j < n; j++) {
+            matrix[i][j] = i + j;
+        }
+    }
+    return matrix;  // n × n = n² elements = O(n²)
+}
+```
+
+---
+
+#### ⚖️ Time vs Space Trade-off
+
+**Seringkali:**
+- **Faster algorithm** = **More memory**
+- **Less memory** = **Slower algorithm**
+
+**CONTOH: Memoization**
+
+```javascript
+// TANPA Memoization: O(2^n) time, O(n) space
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// DENGAN Memoization: O(n) time, O(n) space
+function fibonacciMemo(n, memo = {}) {
+    if (n in memo) return memo[n];
+    if (n <= 1) return n;
+
+    memo[n] = fibonacciMemo(n - 1, memo) + fibonacciMemo(n - 2, memo);
+    return memo[n];
+}
+
+// TRADE-OFF:
+// - Tukar space (memo object) untuk dapat speed
+// - Worth it untuk n besar!
+```
+
+---
+
+## 📚 Bab 21: TypeScript Fundamentals {#-bab-21-typescript-fundamentals}
+
+> **🎯 Misi Bab 21:** Menguasai TypeScript, superset typed dari JavaScript yang menjadi **industry standard** untuk development modern. TypeScript membantu catch errors sebelum runtime dan membuat code lebih maintainable.
+
+### 🔴 1. TypeScript Basics
+
+#### 📖 Konsep Dasar: Apa itu TypeScript?
+
+**TypeScript** adalah **JavaScript dengan superpower**: **Type System**. Jika JavaScript adalah **mobil manual**, TypeScript adalah **mobil otomatis** dengan safety features.
+
+**Keuntungan TypeScript:**
+1. **Type Safety:** Catch errors saat compile, bukan runtime
+2. **Better IDE Support:** Autocomplete, refactoring, navigation
+3. **Documentation:** Type annotations sebagai documentation
+4. **Confidence:** Refactor dengan percaya diri
+5. **Industry Standard:** Dipakai Google, Microsoft, Airbnb, dll
+
+---
+
+#### 🔬 Basic Types
+
+**1. Primitive Types**
+
+```typescript
+// STRING
+let name: string = "Budi";
+let message: string = `Hello, ${name}`;
+
+// NUMBER (integer & float)
+let age: number = 25;
+let price: number = 99.99;
+let hex: number = 0xf00d;  // Hexadecimal
+let binary: number = 0b1010;  // Binary
+
+// BOOLEAN
+let isActive: boolean = true;
+let isDone: boolean = false;
+
+// NULL & UNDEFINED
+let nothing: null = null;
+let notDefined: undefined = undefined;
+
+// ANY (hindari sebisa mungkin!)
+let flexible: any = 4;
+flexible = "now string";
+flexible = true;
+
+// UNKNOWN (type-safe version of any)
+let unknownValue: unknown = 4;
+// flexible = unknownValue;  // Error! Harus type guard dulu
+if (typeof unknownValue === 'number') {
+    flexible = unknownValue;  // OK
+}
+
+// VOID (untuk function yang tidak return)
+function logMessage(message: string): void {
+    console.log(message);
+    // Tidak ada return
+}
+
+// NEVER (function yang tidak pernah return)
+function throwError(message: string): never {
+    throw new Error(message);
+}
+
+function infiniteLoop(): never {
+    while (true) {}
+}
+```
+
+**2. Array Types**
+
+```typescript
+// ARRAY SYNTAX 1
+let numbers: number[] = [1, 2, 3];
+let names: string[] = ["Budi", "Siti", "Andi"];
+
+// ARRAY SYNTAX 2 (Generic)
+let ages: Array<number> = [25, 30, 35];
+
+// READONLY ARRAY
+let readonlyArray: readonly number[] = [1, 2, 3];
+// readonlyArray.push(4);  // Error! Cannot modify
+
+// TUPLE (fixed-length array dengan types)
+let person: [string, number, boolean] = ["Budi", 25, true];
+let name: string = person[0];  // "Budi"
+let age: number = person[1];   // 25
+
+// Tuple dengan labels (TypeScript 4+)
+let namedPerson: [name: string, age: number] = ["Budi", 25];
+```
+
+**3. Object Types**
+
+```typescript
+// OBJECT TYPE ANNOTATION
+let user: {
+    name: string;
+    age: number;
+    isActive: boolean;
+} = {
+    name: "Budi",
+    age: 25,
+    isActive: true
+};
+
+// OPTIONAL PROPERTIES
+let product: {
+    id: number;
+    name: string;
+    description?: string;  // Optional
+} = {
+    id: 1,
+    name: "Laptop"
+    // description tidak wajib
+};
+
+// READONLY PROPERTIES
+let config: {
+    readonly apiKey: string;
+    baseUrl: string;
+} = {
+    apiKey: "secret123",
+    baseUrl: "https://api.example.com"
+};
+// config.apiKey = "new";  // Error! Readonly
+```
+
+---
+
+#### 🔬 Type Aliases & Interfaces
+
+**1. Type Aliases**
+
+```typescript
+// BASIC TYPE ALIAS
+type UserID = string;
+type Age = number;
+type IsActive = boolean;
+
+let userId: UserID = "user123";
+let age: Age = 25;
+
+// OBJECT TYPE ALIAS
+type User = {
+    id: number;
+    name: string;
+    email: string;
+    age?: number;  // Optional
+};
+
+let user1: User = {
+    id: 1,
+    name: "Budi",
+    email: "budi@example.com"
+};
+
+// UNION TYPES
+type Status = "pending" | "success" | "error";
+let orderStatus: Status = "pending";
+
+type ID = string | number;
+let userId1: ID = "abc123";
+let userId2: ID = 123;
+
+// INTERSECTION TYPES
+type A = { a: number };
+type B = { b: string };
+type C = A & B;  // { a: number, b: string }
+
+let c: C = { a: 1, b: "hello" };
+
+// TYPE ALIAS DENGAN FUNCTIONS
+type MathOperation = (a: number, b: number) => number;
+
+const add: MathOperation = (a, b) => a + b;
+const multiply: MathOperation = (a, b) => a * b;
+```
+
+**2. Interfaces**
+
+```typescript
+// BASIC INTERFACE
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+    description?: string;  // Optional
+    readonly createdAt: Date;  // Readonly
+}
+
+let laptop: Product = {
+    id: 1,
+    name: "Laptop",
+    price: 5000000,
+    createdAt: new Date()
+};
+
+// INTERFACE EXTENSION
+interface ElectronicProduct extends Product {
+    brand: string;
+    warranty: number;  // months
+}
+
+let phone: ElectronicProduct = {
+    id: 2,
+    name: "Smartphone",
+    price: 3000000,
+    createdAt: new Date(),
+    brand: "Samsung",
+    warranty: 12
+};
+
+// INTERFACE DENGAN METHODS
+interface Calculator {
+    add(a: number, b: number): number;
+    subtract(a: number, b: number): number;
+    multiply(a: number, b: number): number;
+    divide?(a: number, b: number): number;  // Optional
+}
+
+class BasicCalculator implements Calculator {
+    add(a: number, b: number): number {
+        return a + b;
+    }
+
+    subtract(a: number, b: number): number {
+        return a - b;
+    }
+
+    multiply(a: number, b: number): number {
+        return a * b;
+    }
+}
+
+// INTERFACE MERGING (Declaration Merging)
+interface User {
+    id: number;
+    name: string;
+}
+
+interface User {
+    email: string;
+    age?: number;
+}
+
+// Result: { id: number, name: string, email: string, age?: number }
+let user: User = {
+    id: 1,
+    name: "Budi",
+    email: "budi@example.com"
+};
+```
+
+---
+
+### 🔴 2. Functions in TypeScript
+
+#### 🔬 Function Types
+
+```typescript
+// FUNCTION DENGAN TYPE ANNOTATIONS
+function greet(name: string, greeting?: string): string {
+    if (greeting) {
+        return `${greeting}, ${name}!`;
+    }
+    return `Hello, ${name}!`;
+}
+
+// DEFAULT PARAMETERS
+function greetDefault(name: string, greeting: string = "Hello"): string {
+    return `${greeting}, ${name}!`;
+}
+
+// REST PARAMETERS
+function sum(...numbers: number[]): number {
+    return numbers.reduce((acc, num) => acc + num, 0);
+}
+
+sum(1, 2, 3, 4, 5);  // 15
+
+// FUNCTION TYPE
+type BinaryOperation = (a: number, b: number) => number;
+
+const add: BinaryOperation = (a, b) => a + b;
+const subtract: BinaryOperation = (a, b) => a - b;
+
+// VOID FUNCTIONS
+function log(message: string): void {
+    console.log(message);
+    // Implicit return undefined
+}
+
+// NEVER FUNCTIONS
+function throwError(message: string): never {
+    throw new Error(message);
+}
+
+// FUNCTION OVERLOADS
+function formatDate(date: Date): string;
+function formatDate(timestamp: number): string;
+function formatDate(input: Date | number): string {
+    if (input instanceof Date) {
+        return input.toISOString();
+    }
+    return new Date(input).toISOString();
+}
+
+formatDate(new Date());      // OK
+formatDate(1234567890);      // OK
+formatDate("2024-01-01");    // Error!
+```
+
+---
+
+### 🔴 3. Generics
+
+#### 📖 Konsep Dasar: Apa itu Generics?
+
+**Generics** adalah **parameter untuk types**. Seperti function parameters, tapi untuk types. Memungkinkan kita membuat **reusable components** yang bekerja dengan berbagai types.
+
+**Analogi:** **Container Serbaguna**
+- Tanpa generics: Kotak khusus buku, kotak khusus baju
+- Dengan generics: Kotak<T> bisa isi apa saja
+
+---
+
+#### 🔬 Generic Functions
+
+```typescript
+// TANPA GENERICS (kurang flexible)
+function identity(arg: number): number {
+    return arg;
+}
+// Hanya works untuk number!
+
+// DENGAN GENERICS
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+// Usage:
+let output1 = identity<string>("Hello");  // type: string
+let output2 = identity<number>(42);       // type: number
+let output3 = identity("Hello");          // type inference: string
+
+// MULTIPLE TYPE PARAMETERS
+function merge<T, U>(obj1: T, obj2: U): T & U {
+    return { ...obj1, ...obj2 };
+}
+
+const result = merge({ name: "Budi" }, { age: 25 });
+// type: { name: string } & { age: number }
+
+// GENERIC CONSTRAINTS
+interface Lengthwise {
+    length: number;
+}
+
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+    console.log(arg.length);  // OK karena T extends Lengthwise
+    return arg;
+}
+
+loggingIdentity("Hello");     // OK, string punya length
+loggingIdentity([1, 2, 3]);   // OK, array punya length
+loggingIdentity(42);          // Error, number tidak punya length
+
+// GENERIC DENGAN DEFAULT
+function createArray<T = string>(length: number, value: T): T[] {
+    return Array(length).fill(value);
+}
+
+let strings = createArray(3, "Hello");  // string[]
+let numbers = createArray<number>(3, 5); // number[]
+let defaults = createArray(3, "Test");   // string[] (default)
+```
+
+---
+
+#### 🔬 Generic Classes & Interfaces
+
+```typescript
+// GENERIC CLASS
+class Box<T> {
+    constructor(public content: T) {}
+
+    getContent(): T {
+        return this.content;
+    }
+
+    setContent(newContent: T): void {
+        this.content = newContent;
+    }
+}
+
+const stringBox = new Box<string>("Hello");
+stringBox.getContent();  // "Hello"
+
+const numberBox = new Box<number>(42);
+numberBox.getContent();  // 42
+
+// GENERIC INTERFACE
+interface KeyValuePair<K, V> {
+    key: K;
+    value: V;
+}
+
+let pair1: KeyValuePair<string, number> = {
+    key: "age",
+    value: 25
+};
+
+let pair2: KeyValuePair<number, string> = {
+    key: 1,
+    value: "One"
+};
+
+// GENERIC TYPE ALIAS
+type Callback<T> = (data: T) => void;
+
+const logCallback: Callback<string> = (data) => {
+    console.log(data);
+};
+
+// GENERIC UTILITY TYPES
+type Nullable<T> = T | null;
+type Maybe<T> = T | undefined;
+
+let nullableString: Nullable<string> = "Hello";
+nullableString = null;  // OK
+
+let maybeNumber: Maybe<number> = 42;
+maybeNumber = undefined;  // OK
+```
+
+---
+
+### 🔴 4. Advanced Types
+
+#### 🔬 Utility Types
+
+```typescript
+// PARTIAL<T> - Semua properties jadi optional
+interface Todo {
+    title: string;
+    description: string;
+    completed: boolean;
+}
+
+const todoUpdate: Partial<Todo> = {
+    title: "Learn TypeScript"
+    // description dan completed optional
+};
+
+// REQUIRED<T> - Semua properties jadi required
+const requiredTodo: Required<Todo> = {
+    title: "Learn TS",
+    description: "Complete guide",
+    completed: false
+};
+
+// READONLY<T> - Semua properties jadi readonly
+const readonlyTodo: Readonly<Todo> = {
+    title: "Learn TS",
+    description: "Complete guide",
+    completed: true
+};
+// readonlyTodo.title = "New";  // Error!
+
+// PICK<T, K> - Pick beberapa properties
+type TodoPreview = Pick<Todo, "title" | "completed">;
+const preview: TodoPreview = {
+    title: "Learn TS",
+    completed: true
+};
+
+// OMIT<T, K> - Omit beberapa properties
+type TodoCreate = Omit<Todo, "completed">;
+const newTodo: TodoCreate = {
+    title: "Learn TS",
+    description: "Complete guide"
+};
+
+// RECORD<K, T> - Object dengan key type K dan value type T
+type UserRoles = Record<string, "admin" | "user" | "guest">;
+const roles: UserRoles = {
+    user1: "admin",
+    user2: "user",
+    user3: "guest"
+};
+
+// EXCLUDE<T, U> - Exclude types
+type NonNullable<T> = Exclude<T, null | undefined>;
+type Valid = NonNullable<string | number | null | undefined>;  // string | number
+
+// EXTRACT<T, U> - Extract types
+type OnlyStrings = Extract<string | number | boolean, string>;  // string
+```
+
+---
+
+#### 🔬 Type Guards & Type Predicates
+
+```typescript
+// TYPEOF TYPE GUARD
+function printId(id: number | string) {
+    if (typeof id === "string") {
+        // id: string
+        console.log(id.toUpperCase());
+    } else {
+        // id: number
+        console.log(id.toFixed(2));
+    }
+}
+
+// INSTANCEOF TYPE GUARD
+class Dog {
+    bark() { console.log("Woof!"); }
+}
+class Cat {
+    meow() { console.log("Meow!"); }
+}
+
+function makeSound(animal: Dog | Cat) {
+    if (animal instanceof Dog) {
+        animal.bark();
+    } else {
+        animal.meow();
+    }
+}
+
+// TYPE PREDICATES
+function isFish(pet: Fish | Bird): pet is Fish {
+    return "swim" in pet;
+}
+
+function move(pet: Fish | Bird) {
+    if (isFish(pet)) {
+        // pet: Fish
+        pet.swim();
+    } else {
+        // pet: Bird
+        pet.fly();
+    }
+}
+
+// DISCRIMINATED UNIONS
+interface Circle {
+    kind: "circle";
+    radius: number;
+}
+
+interface Square {
+    kind: "square";
+    side: number;
+}
+
+type Shape = Circle | Square;
+
+function getArea(shape: Shape): number {
+    switch (shape.kind) {
+        case "circle":
+            return Math.PI * shape.radius ** 2;
+        case "square":
+            return shape.side ** 2;
+        default:
+            const _exhaustiveCheck: never = shape;
+            return _exhaustiveCheck;
+    }
+}
+```
+
+---
+
+### ⚔️ Latihan Bertahap: TypeScript
+
+**Latihan 1: Basic Types**
+
+```typescript
+// 🎯 TUJUAN: Memahami basic types
+// ⏱️ WAKTU: 10 menit
+// 💪 KESULITAN: ⭐⭐
+
+// SOAL: Lengkapi type annotations
+
+let userName: _____ = "Budi";
+let userAge: _____ = 25;
+let isActive: _____ = true;
+let scores: _____ _____ = [90, 85, 95];
+let user: { _____: _____, _____: _____ } = { name: "Budi", age: 25 };
+```
+
+**Latihan 2: Function Types**
+
+```typescript
+// 🎯 TUJUAN: Function dengan types
+// ⏱️ WAKTU: 15 menit
+// 💪 KESULITAN: ⭐⭐⭐
+
+// SOAL: Buat function dengan proper type annotations
+
+// 1. Function yang menerima 2 numbers dan return number
+function add(_____, _____): _____ {
+    return a + b;
+}
+
+// 2. Function yang menerima string dan return void
+function logMessage(_____): _____ {
+    console.log(message);
+}
+
+// 3. Function dengan optional parameter
+function greet(name: string, _____): string {
+    if (greeting) {
+        return `${greeting}, ${name}!`;
+    }
+    return `Hello, ${name}!`;
+}
+```
+
+**Latihan 3: Generics**
+
+```typescript
+// 🎯 TUJUAN: Memahami generics
+// ⏱️ WAKTU: 20 menit
+// 💪 KESULITAN: ⭐⭐⭐⭐
+
+// SOAL: Implementasi generic functions
+
+// 1. Generic function yang return first element
+function getFirst<T>(arr: T[]): _____ {
+    return arr[0];
+}
+
+// 2. Generic function dengan constraint
+function logLength<T extends { length: number }>(arg: T): void {
+    console.log(_____.length);
+}
+
+// 3. Generic class
+class Stack<T> {
+    private items: T[] = [];
+
+    push(item: _____): void {
+        this.items.push(item);
+    }
+
+    pop(): _____ {
+        return this.items.pop() || null;
+    }
+}
+```
+
+---
+
+## 📚 Bab 22: Node.js Fundamentals {#-bab-22-nodejs-fundamentals}
+
+> **🎯 Misi Bab 22:** Menguasai Node.js untuk backend development. Ini adalah **gateway** untuk menjadi full-stack developer dengan JavaScript.
+
+### 🔴 1. Node.js Runtime Concepts
+
+#### 📖 Konsep Dasar: Apa itu Node.js?
+
+**Node.js** adalah **JavaScript runtime** yang memungkinkan kita menjalankan JavaScript di **server** (bukan hanya di browser). Jika browser JavaScript adalah **pilot**, Node.js adalah **kapten kapal** yang mengendalikan server.
+
+**Keunggulan Node.js:**
+1. **Non-blocking I/O:** Handle ribuan concurrent connections
+2. **Event-driven:** Efficient untuk real-time apps
+3. **NPM Ecosystem:** 2+ million packages
+4. **JavaScript Everywhere:** Same language for frontend & backend
+5. **Fast Execution:** V8 engine (same as Chrome)
+
+---
+
+#### 🔬 Event Loop di Node.js
+
+```javascript
+// EVENT LOOP PHASES:
+// 1. Timers: setTimeout, setInterval
+// 2. Pending Callbacks: I/O callbacks
+// 3. Idle, Prepare: Internal use
+// 4. Poll: Retrieve new I/O events
+// 5. Check: setImmediate()
+// 6. Close Callbacks: socket.on('close')
+
+// CONTOH: Event Loop Order
+console.log("1. Start");  // Sync
+
+setTimeout(() => {
+    console.log("2. setTimeout");  // Timer phase
+}, 0);
+
+setImmediate(() => {
+    console.log("3. setImmediate");  // Check phase
+});
+
+Promise.resolve().then(() => {
+    console.log("4. Promise");  // Microtask queue
+});
+
+console.log("5. End");  // Sync
+
+// OUTPUT (biasanya):
+// 1. Start
+// 5. End
+// 4. Promise
+// 2. setTimeout
+// 3. setImmediate
+// (atau 3 sebelum 2, tergantung timing)
+```
+
+---
+
+#### 🔬 Global Objects
+
+```javascript
+// __dirname & __filename
+console.log(__dirname);   // /path/to/directory
+console.log(__filename);  // /path/to/file.js
+
+// process object
+console.log(process.version);      // Node version
+console.log(process.pid);          // Process ID
+console.log(process.argv);         // Command line arguments
+console.log(process.env);          // Environment variables
+console.log(process.cwd());        // Current working directory
+
+// process methods
+process.exit(0);                   // Exit process
+process.nextTick(() => {});        // Next tick queue
+process.memoryUsage();             // Memory info
+
+// global object (window di browser)
+global.myGlobal = "I'm global!";
+```
+
+---
+
+### 🔴 2. File System (fs module)
+
+#### 🔬 Reading Files
+
+```javascript
+const fs = require('fs').promises;
+const path = require('path');
+
+// ASYNC (Promise-based)
+async function readFileAsync() {
+    try {
+        // Read file
+        const content = await fs.readFile(
+            path.join(__dirname, 'file.txt'),
+            'utf-8'
+        );
+        console.log(content);
+
+        // Read with options
+        const buffer = await fs.readFile('image.png');
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// CALLBACK (old style)
+fs.readFile('file.txt', 'utf-8', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(data);
+});
+
+// SYNC (blocking - hindari di production!)
+try {
+    const content = fs.readFileSync('file.txt', 'utf-8');
+    console.log(content);
+} catch (error) {
+    console.error(error);
+}
+```
+
+#### 🔬 Writing Files
+
+```javascript
+// WRITE FILE
+async function writeFileAsync() {
+    try {
+        // Write string
+        await fs.writeFile(
+            'output.txt',
+            'Hello, Node.js!',
+            'utf-8'
+        );
+
+        // Append to file
+        await fs.appendFile('output.txt', '\nMore content...');
+
+        // Write with options
+        await fs.writeFile('data.json', JSON.stringify({ name: "Budi" }), {
+            encoding: 'utf-8',
+            flag: 'w'  // 'w' = write, 'a' = append
+        });
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+```
+
+#### 🔬 File Operations
+
+```javascript
+// FILE INFO
+async function fileInfo() {
+    try {
+        const stats = await fs.stat('file.txt');
+        
+        console.log('Size:', stats.size, 'bytes');
+        console.log('Created:', stats.birthtime);
+        console.log('Modified:', stats.mtime);
+        console.log('Is file:', stats.isFile());
+        console.log('Is directory:', stats.isDirectory());
+        
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// DELETE FILE
+async function deleteFile() {
+    try {
+        await fs.unlink('file.txt');
+        console.log('File deleted!');
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// RENAME/MOVE FILE
+async function renameFile() {
+    try {
+        await fs.rename('old.txt', 'new.txt');
+        console.log('File renamed!');
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// CREATE DIRECTORY
+async function createDirectory() {
+    try {
+        await fs.mkdir('newFolder');
+        await fs.mkdir('a/b/c', { recursive: true });
+        console.log('Directories created!');
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// READ DIRECTORY
+async function readDirectory() {
+    try {
+        const files = await fs.readdir(__dirname);
+        console.log('Files in directory:', files);
+        
+        const filesWithStats = await fs.readdir(__dirname, { withFileTypes: true });
+        filesWithStats.forEach(file => {
+            console.log(`${file.name} - ${file.isDirectory() ? 'DIR' : 'FILE'}`);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+```
+
+---
+
+#### 🔬 Streams
+
+```javascript
+// STREAMS: Process data chunk by chunk (memory efficient)
+
+// READ STREAM
+const readStream = fs.createReadStream('large-file.txt', {
+    highWaterMark: 64 * 1024,  // 64KB chunks
+    encoding: 'utf-8'
+});
+
+readStream.on('data', (chunk) => {
+    console.log('Received chunk:', chunk);
+});
+
+readStream.on('end', () => {
+    console.log('File fully read');
+});
+
+// WRITE STREAM
+const writeStream = fs.createWriteStream('output.txt');
+
+for (let i = 1; i <= 5; i++) {
+    writeStream.write(`Line ${i}\n`);
+}
+
+writeStream.end();
+
+// PIPE
+const read = fs.createReadStream('input.txt');
+const write = fs.createWriteStream('output.txt');
+
+read.pipe(write);
+```
+
+---
+
+### 🔴 3. HTTP Module
+
+```javascript
+const http = require('http');
+
+// BASIC SERVER
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, World!');
+});
+
+server.listen(3000, () => {
+    console.log('Server running at http://localhost:3000');
+});
+
+// ROUTING
+const server2 = http.createServer((req, res) => {
+    if (req.url === '/' && req.method === 'GET') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end('<h1>Home</h1>');
+    } else if (req.url === '/api/users' && req.method === 'GET') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify([{ id: 1, name: 'Budi' }]));
+    } else {
+        res.writeHead(404);
+        res.end('Not Found');
+    }
+});
+```
+
+---
+
+### 🔴 4. NPM & Package Management
+
+```json
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
+```
+
+**Semantic Versioning:**
+- `^1.0.0` → Minor & Patch updates
+- `~1.0.0` → Patch updates only
+- `1.0.0` → Exact version
+
+---
+
+### 🔴 5. Express.js Basics
+
+```javascript
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+// GET
+app.get('/', (req, res) => {
+    res.send('Hello!');
+});
+
+// POST
+app.post('/api/users', (req, res) => {
+    const { name, email } = req.body;
+    res.status(201).json({ id: Date.now(), name, email });
+});
+
+// ERROR HANDLING
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Something went wrong!' });
+});
+
+app.listen(3000);
+```
+
+---
+
+## ⚔️ Latihan Bertahap: Node.js & TypeScript
+
+### LEVEL 1: File Operations
+
+```javascript
+// 🎯 TUJUAN: Memahami File System
+// ⏱️ WAKTU: 20 menit
+
+const fs = require('fs').promises;
+
+// 1. Read file
+async function readFile(filePath) {
+    return await fs.readFile(filePath, 'utf-8');
+}
+
+// 2. Write file
+async function writeFile(filePath, content) {
+    await fs.writeFile(filePath, content, 'utf-8');
+}
+
+// 3. Get file size
+async function getFileSize(filePath) {
+    const stats = await fs.stat(filePath);
+    return stats.size;
+}
+```
+
+### LEVEL 2: Express REST API
+
+```javascript
+// 🎯 TUJUAN: Membuat CRUD API
+// ⏱️ WAKTU: 30 menit
+
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+let users = [
+    { id: 1, name: 'Budi' },
+    { id: 2, name: 'Siti' }
+];
+
+// GET all users
+app.get('/api/users', (req, res) => {
+    res.json(users);
+});
+
+// GET user by ID
+app.get('/api/users/:id', (req, res) => {
+    const user = users.find(u => u.id === parseInt(req.params.id));
+    if (!user) return res.status(404).json({ error: 'Not found' });
+    res.json(user);
+});
+
+// POST create user
+app.post('/api/users', (req, res) => {
+    const { name } = req.body;
+    const newUser = { id: Date.now(), name };
+    users.push(newUser);
+    res.status(201).json(newUser);
+});
+
+app.listen(3000);
+```
+
+---
+
+> **🎉 SELAMAT!** Anda telah menyelesaikan panduan lengkap JavaScript, TypeScript, dan Node.js!
+
+---
+
+## 🧪 BONUS SECTION: Latihan Komprehensif
 
 > **📖 Konsep:** Seorang developer handal bukan hanya bisa menulis code, tapi juga bisa **mencari dan memperbaiki bug**. Latihlah kemampuan debugging Anda!
 
@@ -16313,6 +20442,30 @@ class GitSimulation {
 > - ✅ Security Basics
 > - ✅ Testing Fundamentals
 > - ✅ Git & Version Control
+>
+> ### 🆕 Advanced Topics (NEW!)
+> - ✅ **Bab 19: Data Structures & Algorithms**
+>   - Stack (LIFO) & Queue (FIFO)
+>   - Linked List (Singly & Doubly)
+>   - Real-world applications
+> 
+> - ✅ **Bab 20: Algorithm Complexity & Big O**
+>   - O(1), O(log n), O(n), O(n log n), O(n²), O(2^n)
+>   - Time & Space Complexity
+>   - Trade-off analysis
+> 
+> - ✅ **Bab 21: TypeScript Fundamentals**
+>   - Basic Types & Type Annotations
+>   - Interfaces & Type Aliases
+>   - Generics & Utility Types
+>   - Advanced Types (Type Guards, Discriminated Unions)
+> 
+> - ✅ **Bab 22: Node.js Fundamentals**
+>   - Event Loop & Runtime Concepts
+>   - File System (fs module)
+>   - Streams & HTTP Module
+>   - NPM & Package Management
+>   - Express.js Basics
 
 ---
 
@@ -16324,12 +20477,12 @@ class GitSimulation {
 >
 > **PREMIUM EDITION v2.0 - 2024**
 
-**📖 Total Materi: 18 Bab Lengkap**
-**📝 Total Baris: 16,000+ baris**
-**💻 Total Code Examples: 700+ examples**
-**🎯 Total Latihan: 200+ exercises**
+**📖 Total Materi: 23 Bab Lengkap**
+**📝 Total Baris: 20,500+ baris**
+**💻 Total Code Examples: 1000+ examples**
+**🎯 Total Latihan: 250+ exercises**
 **🐛 Total Debugging Challenges: 5 bugs**
-**🎯 Total Mini Projects: 5 projects**
+**🎯 Total Mini Projects: 8 projects**
 
 ---
 
@@ -16353,10 +20506,14 @@ class GitSimulation {
 | 16 | Security | 10+ | 1-5 |
 | 17 | Testing | 10+ | 1-5 |
 | 18 | Git | 10+ | 1-5 |
+| **19** | **Data Structures & Algorithms** | **10+** | **1-5** |
+| **20** | **Big O Notation** | **5+** | **1-5** |
+| **21** | **TypeScript** | **10+** | **1-5** |
+| **22** | **Node.js** | **10+** | **1-5** |
 | **Bonus** | **Debugging Exercises** | **5 bugs** | **-** |
-| **Bonus** | **Mini Projects** | **5 projects** | **-** |
+| **Bonus** | **Mini Projects** | **8 projects** | **-** |
 
-**🎯 TOTAL: 200+ Latihan + 5 Debugging Challenges + 5 Mini Projects!**
+**🎯 TOTAL: 250+ Latihan + 5 Debugging Challenges + 8 Mini Projects!**
 
 ---
 

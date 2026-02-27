@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ EDISI PREMIUM v2.0 - Menjadi Penyihir Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDFBF7;
+            --cream-dark: #F5F0E6;
+            --ink: #2D2D2D;
+            --ink-light: #5A5A5A;
+            --gold: #D4AF37;
+            --gold-light: #E8C547;
+            --burgundy: #8B1538;
+            --navy: #1A2238;
+            --accent-blue: #4A90D9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .ebook-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ebook-header {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .ebook-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .ebook-header p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .progress-container {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            height: 4px;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+            transition: width 0.4s ease;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .book-container {
+            display: flex;
+            justify-content: center;
+            perspective: 2000px;
+            flex-grow: 1;
+            width: 100%;
+            align-items: center;
+        }
+
+        .book {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            height: 100%;
+            max-height: 650px;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .book-spine {
+            width: 50px;
+            background: linear-gradient(90deg, 
+                #1a1a2e 0%, 
+                #2D1810 20%, 
+                #3D2317 50%, 
+                #2D1810 80%, 
+                #1a1a2e 100%);
+            border-radius: 8px 0 0 8px;
+            position: relative;
+            box-shadow: inset -5px 0 15px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+        }
+
+        .book-spine::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(180deg, 
+                transparent, 
+                rgba(212, 175, 55, 0.3), 
+                transparent);
+        }
+
+        .page {
+            flex: 1;
+            background: var(--cream);
+            padding: 20px 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page.left {
+            background: linear-gradient(to right, #F5F0E6 0%, #FDFBF7 10%, #FDFBF7 100%);
+            border-radius: 8px 0 0 8px;
+            box-shadow: inset -3px 0 20px rgba(0,0,0,0.08);
+        }
+
+        .page.right {
+            background: linear-gradient(to left, #F5F0E6 0%, #FDFBF7 10%, #FDFBF7 100%);
+            border-radius: 0 8px 8px 0;
+            box-shadow: inset 3px 0 20px rgba(0,0,0,0.08);
+        }
+
+        .page-content {
+            flex: 1;
+            overflow-y: auto;
+            line-height: 1.5;
+            padding-right: 10px;
+        }
+
+        .page-content::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .page-content::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+        }
+
+        .page-content::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .page-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .page-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--burgundy);
+            margin: 14px 0 8px;
+        }
+
+        .page-content h3 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin: 12px 0 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .page-content h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 10px 0 5px;
+        }
+
+        .page-content p {
+            font-size: 12px;
+            color: var(--ink-light);
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+
+        .page-content strong {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .page-content code {
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            background: rgba(74, 144, 217, 0.1);
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #c7254e;
+        }
+
+        .page-content pre {
+            background: linear-gradient(135deg, #1e1e2e, #2d2d44);
+            color: #e0e0e0;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 8px 0;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 10px;
+            line-height: 1.4;
+            border-left: 2px solid var(--gold);
+        }
+
+        .page-content pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
+
+        .page-content blockquote {
+            border-left: 3px solid var(--burgundy);
+            padding: 8px 12px;
+            margin: 8px 0;
+            color: var(--ink-light);
+            background: linear-gradient(90deg, rgba(139, 21, 56, 0.05), transparent);
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        .page-content ul, .page-content ol {
+            margin: 8px 0;
+            padding-left: 18px;
+        }
+
+        .page-content li {
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: var(--ink-light);
+        }
+
+        .page-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 11px;
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .page-content th {
+            background: linear-gradient(135deg, var(--burgundy), #6B1028);
+            color: #fff;
+            font-weight: 600;
+            text-align: left;
+            padding: 6px 8px;
+            text-transform: uppercase;
+            font-size: 9px;
+            letter-spacing: 0.5px;
+        }
+
+        .page-content td {
+            padding: 6px 8px;
+            border-bottom: 1px solid #eee;
+            color: var(--ink-light);
+        }
+
+        .page-content tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .chapter-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, rgba(52, 211, 153, 0.1), rgba(52, 211, 153, 0.05));
+            border-left: 3px solid #34d399;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 11px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(248, 113, 113, 0.1), rgba(248, 113, 113, 0.05));
+            border-left: 3px solid #f87171;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 11px;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            width: 100%;
+            max-width: 800px;
+            flex-shrink: 0;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(129, 140, 248, 0.2));
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(129, 140, 248, 0.3));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .page-indicator {
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            color: #fbbf24;
+        }
+
+        .keyboard-hint {
+            font-family: 'Fira Code', monospace;
+            font-size: 10px;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            margin-top: 10px;
+            flex-shrink: 0;
+        }
+
+        .keyboard-hint kbd {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin: 0 3px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(139, 21, 56, 0.05));
+        }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 10px;
+            color: #fff;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .cover-subtitle {
+            font-size: 12px;
+            color: var(--ink-light);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .cover-emoji {
+            font-size: 70px;
+            margin: 15px 0;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .toc-item {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(139, 21, 56, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toc-item:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(139, 21, 56, 0.08));
+            border-color: var(--gold);
+            transform: translateX(3px);
+        }
+
+        .toc-item-icon {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .toc-item-title {
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 11px;
+        }
+
+        .toc-item-page {
+            font-size: 9px;
+            color: var(--ink-light);
+            font-family: 'Fira Code', monospace;
+            margin-top: 3px;
+        }
+
+        .ornament {
+            text-align: center;
+            font-size: 16px;
+            color: var(--gold);
+            margin: 10px 0;
+            opacity: 0.6;
+        }
+
+        @media (max-height: 700px) {
+            .book {
+                max-height: 500px;
+            }
+            
+            .ebook-header h1 {
+                font-size: 22px;
+            }
+            
+            .cover-title {
+                font-size: 28px;
+            }
+            
+            .page-content h1 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ebook-wrapper">
+        <div class="ebook-header">
+            <h1>✨ EDISI PREMIUM v2.0</h1>
+            <p>Menjadi Penyihir Data - Mastering JavaScript dengan Metode Memori Super</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="book-container">
+            <div class="book">
+                <div class="book-spine"></div>
+                <div class="page left" id="pageLeft"></div>
+                <div class="page right" id="pageRight"></div>
+            </div>
+        </div>
+
+        <div class="nav-container">
+            <button class="nav-btn" id="prevBtn" onclick="prevPage()">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Sebelumnya
+            </button>
+            
+            <div class="page-indicator">
+                <span id="currentPage">1</span> / <span id="totalPages">--</span>
+            </div>
+            
+            <button class="nav-btn" id="nextBtn" onclick="nextPage()">
+                Berikutnya
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="keyboard-hint">
+            <kbd>←</kbd> Sebelumnya &nbsp;|&nbsp; <kbd>→</kbd> Berikutnya &nbsp;|&nbsp; <kbd>Home</kbd> Awal &nbsp;|&nbsp; <kbd>End</kbd> Akhir
+        </div>
+    </div>
+
+    <script>
+        const pages = [
+            {
+                left: `<div class="page-content cover-page">
+                    <div class="cover-badge"><span>🎯</span> EDISI PREMIUM v2.0</div>
+                    <h1 class="cover-title">Menjadi Penyihir Data</h1>
+                    <p class="cover-subtitle">Mastering JavaScript & Apps Script dengan Metode Memori Super</p>
+                    <div class="cover-emoji">🧙‍♂️</div>
+                    <blockquote style="max-width:350px;">
+                        🎉 Selamat datang, Calon Penyihir Data!<br><br>
+                        Panduan ini dirancang untuk membangun <strong>pola pikir algoritma</strong> dan <strong>penguasaan sintaks</strong>.
+                    </blockquote>
+                    <div class="ornament">❖ ❖ ❖</div>
+                </div><div class="page-number">1</div>`,
+                right: `<div class="page-content">
+                    <span class="chapter-badge">Navigasi</span>
+                    <h1>📚 Daftar Isi</h1>
+                    <div class="toc-grid">
+                        <div class="toc-item" onclick="goToPage(2)"><div class="toc-item-icon">📝</div><div class="toc-item-title">String</div></div>
+                        <div class="toc-item" onclick="goToPage(8)"><div class="toc-item-icon">🧮</div><div class="toc-item-title">Number</div></div>
+                        <div class="toc-item" onclick="goToPage(11)"><div class="toc-item-icon">📦</div><div class="toc-item-title">Array</div></div>
+                        <div class="toc-item" onclick="goToPage(16)"><div class="toc-item-icon">🗂️</div><div class="toc-item-title">Object</div></div>
+                        <div class="toc-item" onclick="goToPage(19)"><div class="toc-item-icon">📜</div><div class="toc-item-title">JSON</div></div>
+                        <div class="toc-item" onclick="goToPage(21)"><div class="toc-item-icon">⏱️</div><div class="toc-item-title">Control Flow</div></div>
+                        <div class="toc-item" onclick="goToPage(24)"><div class="toc-item-icon">🔮</div><div class="toc-item-title">Map/Filter/Reduce</div></div>
+                        <div class="toc-item" onclick="goToPage(27)"><div class="toc-item-icon">🔴</div><div class="toc-item-title">Closures</div></div>
+                    </div>
+                    <div class="ornament">❖</div>
+                    <h3>⌨️ Shortcuts</h3>
+                    <table><tr><th>Shortcut</th><th>Fungsi</th></tr><tr><td>← / →</td><td>Navigasi</td></tr><tr><td>Home</td><td>Awal</td></tr><tr><td>End</td><td>Akhir</td></tr></table>
+                </div><div class="page-number">2</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <span class="chapter-badge">Bab 0</span>
+                    <h1>📝 1. String Manipulation</h1>
+                    <blockquote><strong>⚔️ Persenjataan Dasar:</strong> Kuasai perkakas dasar terlebih dahulu.</blockquote>
+                    <h2>🔧 toLowerCase() / toUpperCase()</h2>
+                    <p><strong>MANTRA PENYERAGAM</strong> - Perbandingan case-insensitive.</p>
+                    <pre><code>"Admin".toLowerCase() === "admin"\n// → true\n\n"hello".toUpperCase()\n// → "HELLO"</code></pre>
+                    <h3>🧬 Unicode & Case Sensitivity</h3>
+                    <p>Dalam komputer, setiap karakter diwakili oleh kode <strong>Unicode</strong>. 'A' kapital ≠ 'a' kecil.</p>
+                    <h3>🔬 Algoritma toLowerCase()</h3>
+                    <ol><li>Iterasi setiap karakter</li><li>Cek Unicode range (A-Z)</li><li>Jika kapital, +32 ke Unicode</li><li>Build string baru</li><li>Return hasil</li></ol>
+                </div><div class="page-number">3</div>`,
+                right: `<div class="page-content">
+                    <div class="warning-box"><strong>⚠️ Edge Cases:</strong><ul><li>String Immutable - tidak mengubah asli!</li><li>Karakter non-huruf tidak terpengaruh</li><li>Locale: untuk Turki, gunakan toLocaleLowerCase('tr')</li></ul></div>
+                    <h3>💡 Aplikasi</h3>
+                    <h4>1. Validasi Email:</h4>
+                    <pre><code>const email = "  User@Example.COM  ";\nconst normalized = email.trim().toLowerCase();\n// "user@example.com"</code></pre>
+                    <h4>2. Case-Insensitive Search:</h4>
+                    <pre><code>const products = ["Laptop", "MOUSE"];\nconst search = "mouse";\nconst found = products.filter(p => \n    p.toLowerCase().includes(search)\n);</code></pre>
+                    <h4>3. Normalisasi:</h4>
+                    <pre><code>function equal(s1, s2) {\n    return s1.toLowerCase() === s2.toLowerCase();\n}\nequal("Hello", "HELLO"); // true</code></pre>
+                </div><div class="page-number">4</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h2>✂️ trim() - MANTRA PEMANGKAS</h2>
+                    <p>Hapus spasi di awal/akhir.</p>
+                    <pre><code>"  user123  ".trim()\n// → "user123"</code></pre>
+                    <h2>🔍 includes()</h2>
+                    <p>Cek apakah mengandung teks.</p>
+                    <pre><code>"Saya suka kopi".includes("kopi")\n// → true\n\n"JavaScript".includes("python")\n// → false</code></pre>
+                    <h2>🔗 split()</h2>
+                    <p>String → Array</p>
+                    <pre><code>"Apel,Jeruk,Mangga".split(",")\n// → ["Apel", "Jeruk", "Mangga"]\n\n"Hello World".split(" ")\n// → ["Hello", "World"]</code></pre>
+                </div><div class="page-number">5</div>`,
+                right: `<div class="page-content">
+                    <h2>🔄 replace() / replaceAll()</h2>
+                    <p>Mengganti teks.</p>
+                    <pre><code>"Rp 5.000".replace(".", "")\n// → "Rp 5000"\n\n"Halo".replaceAll("l", "r")\n// → "Haror"\n\n"bla bla".replace("bla", "x")\n// → "x bla"\n\n"bla bla".replaceAll("bla", "x")\n// → "x x"</code></pre>
+                    <h2>📏 padStart() / padEnd()</h2>
+                    <pre><code>"7".padStart(3, "0")\n// → "007"\n\n"42".padEnd(5, "*")\n// → "42***"\n\nfunction formatInvoice(num) {\n    return "INV-" + num.toString()\n        .padStart(6, '0');\n}\nformatInvoice(123); // "INV-000123"</code></pre>
+                    <h2>💬 Template Literals</h2>
+                    <pre><code>const nama = "Budi";\nconst skor = 95;\n\n// Cara baru\nconst greeting = \`Halo \${nama}, \nskor: \${skor}\`;\n// "Halo Budi, skor: 95"</code></pre>
+                </div><div class="page-number">6</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h2>🧠 Latihan: Pembersih Data</h2>
+                    <blockquote><strong>🎯 Skenario:</strong> Input user berantakan dengan spasi dan case tidak konsisten.</blockquote>
+                    <h3>Langkah:</h3>
+                    <ol><li><strong>Trim:</strong> <code>trim()</code></li><li><strong>Lowercase:</strong> <code>toLowerCase()</code></li><li><strong>Pecah:</strong> <code>split(" ")[0]</code></li></ol>
+                    <pre><code>const input = "  BUDI SANTOSO  ";\n\nconst namaDepan = input\n    .trim()\n    .toLowerCase()\n    .split(" ")[0];\n\nconsole.log(namaDepan); // "budi"</code></pre>
+                    <div class="tip-box"><strong>💡 Tips:</strong> Method chaining membuat kode lebih clean!</div>
+                    <h2>⚔️ Latihan</h2>
+                    <table><tr><th>Level</th><th>Tantangan</th></tr><tr><td>1</td><td>Sensor Kata</td></tr><tr><td>2</td><td>Inisial Nama</td></tr><tr><td>3</td><td>Slugify</td></tr></table>
+                </div><div class="page-number">7</div>`,
+                right: `<div class="page-content">
+                    <h3>✅ Solusi</h3>
+                    <h4>LEVEL 1: Sensor Kata</h4>
+                    <pre><code>function sensor(kalimat, kata) {\n    const s = "*".repeat(kata.length);\n    return kalimat.replaceAll(kata, s);\n}\n\nsensor("Anjing galak", "Anjing");\n// → "****** galak"</code></pre>
+                    <h4>LEVEL 2: Inisial Nama</h4>
+                    <pre><code>function inisial(nama) {\n    return nama\n        .split(" ")\n        .map(k => k[0].toUpperCase() + ".")\n        .join(" ");\n}\n\ninisial("Budi Santoso");\n// → "B. S."</code></pre>
+                    <h4>LEVEL 3: Slugify</h4>
+                    <pre><code>function slugify(teks) {\n    return teks\n        .toLowerCase()\n        .trim()\n        .split(" ")\n        .join("-");\n}\n\nslugify("Belajar JS");\n// → "belajar-js"</code></pre>
+                </div><div class="page-number">8</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h2>🧬 String Deep Dive</h2>
+                    <h3>📖 Apa itu String?</h3>
+                    <p>String adalah urutan karakter. Jika Object adalah <strong>kamus</strong> dan Array adalah <strong>daftar belanja</strong>, maka String adalah <strong>kalimat</strong>.</p>
+                    <pre><code>const nama = "Budi";\n// ["B", "u", "d", "i"]\n\nnama[0] // → "B"\nnama[1] // → "u"\nnama.length // → 4</code></pre>
+                    <h3>🎯 Mengapa Penting?</h3>
+                    <ol><li>Input Processing</li><li>Data Parsing</li><li>Template Generation</li><li>URL/Slug Creation</li><li>Data Cleaning</li></ol>
+                    <h3>📚 Framework Algoritmik</h3>
+                    <pre><code>┌──────────────────────────────┐\n│  1. ANALISIS INPUT/OUTPUT    │\n│     - Input: String seperti? │\n│     - Output: apa?           │\n│     - Transformasi: apa?     │\n└──────────────────────────────┘\n           ↓\n┌──────────────────────────────┐\n│  2. OPERASI DASAR            │\n│     - Akses: str[index]      │\n│     - Slice: slice()         │\n│     - Search: includes()     │\n│     - Replace: replace()     │\n│     - Split/Join             │\n└──────────────────────────────┘</code></pre>
+                </div><div class="page-number">9</div>`,
+                right: `<div class="page-content">
+                    <h3>🔬 Step-by-Step Guide</h3>
+                    <h4>1. MENGAKSES KARAKTER</h4>
+                    <pre><code>const teks = "Hello World";\n\n// Bracket notation\nteks[0]  // "H"\nteks[4]  // "o"\n\n// charAt()\nteks.charAt(5);  // " "\n\n// Loop\nfor (let i = 0; i < teks.length; i++) {\n    console.log(teks[i]);\n}\n\n// for...of\nfor (const c of teks) {\n    console.log(c);\n}</code></pre>
+                    <h4>2. SLICING</h4>
+                    <pre><code>const kalimat = "JavaScript";\n\nkalimat.slice(0, 4);\n// → "Java"\n\nkalimat.slice(4);\n// → "Script"\n\nkalimat.slice(-3);\n// → "ipt"\n\n// Extract nama depan\n"Budi Santoso".split(" ")[0];\n// → "Budi"</code></pre>
+                </div><div class="page-number">10</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h4>3. MENCARI SUBSTRING</h4>
+                    <pre><code>const email = "budi@example.com";\n\n// includes()\nemail.includes("@");  // true\nemail.includes("gmail");  // false\n\n// indexOf()\nemail.indexOf("@");  // 4\nemail.indexOf("z");  // -1\n\n// Validasi email\nfunction isValidEmail(email) {\n    if (!email.includes("@")) return false;\n    if (email.indexOf("@") === 0) return false;\n    const at = email.indexOf("@");\n    const after = email.slice(at);\n    if (!after.includes(".")) return false;\n    return true;\n}</code></pre>
+                    <h4>4. REPLACE</h4>
+                    <pre><code>const kalimat = "Saya suka kopi";\n\nkalimat.replace("suka", "cinta");\n// "Saya cinta kopi"\n\nkalimat.replaceAll("a", "o");\n// "Soyo suko kopi"\n\n// Sensor kata\nfunction sensor(kalimat, kata) {\n    return kalimat.replaceAll(\n        kata, \n        "*".repeat(kata.length)\n    );\n}</code></pre>
+                </div><div class="page-number">11</div>`,
+                right: `<div class="page-content">
+                    <h4>5. SPLIT & JOIN</h4>
+                    <pre><code>// SPLIT\nconst csv = "a,b,c";\ncsv.split(",");  // ["a","b","c"]\n\n"Hello World".split(" ");\n// ["Hello", "World"]\n\n// JOIN\nconst arr = ["a", "b", "c"];\narr.join(", ");  // "a, b, c"\narr.join("-");   // "a-b-c"\narr.join("");    // "abc"\n\n// Slugify\nfunction slugify(teks) {\n    return teks\n        .toLowerCase()\n        .trim()\n        .split(" ")\n        .join("-");\n}</code></pre>
+                    <h4>6. PADDING</h4>
+                    <pre><code>"7".padStart(3, "0");\n// → "007"\n\n"42".padEnd(5, "*");\n// → "42***"\n\n// Format invoice\nfunction formatInv(num, year) {\n    const n = num.toString()\n        .padStart(6, "0");\n    return \`INV/\${year}/\${n}\`;\n}\n\nformatInv(123, 2024);\n// "INV/2024/000123"</code></pre>
+                </div><div class="page-number">12</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h4>7. TEMPLATE LITERALS</h4>
+                    <pre><code>const nama = "Budi";\nconst umur = 25;\n\n// Cara lama\nconst s1 = "Halo, " + nama;\n\n// Cara baru\nconst s2 = \`Halo, \${nama}\`;\n\n// Expression\nconst harga = 100000;\nconst diskon = 0.1;\n\nconst invoice = \`
+================================
+Harga: Rp \${harga.toLocaleString()}\nDiskon: \${(diskon*100).toFixed(0)}%\n================================
+\`;</code></pre>
+                    <h4>8. STRING BUILDING</h4>
+                    <pre><code>// Reverse string\nfunction reverse(str) {\n    let result = "";\n    for (let i = str.length-1; i >= 0; i--) {\n        result += str[i];\n    }\n    return result;\n}\nreverse("Hello"); // "olleH"\n\n// Hapus spasi\nfunction noSpace(str) {\n    let r = "";\n    for (const c of str) {\n        if (c !== " ") r += c;\n    }\n    return r;\n}</code></pre>
+                </div><div class="page-number">13</div>`,
+                right: `<div class="page-content">
+                    <h3>⚠️ Edge Cases</h3>
+                    <table><tr><th>Jebakan</th><th>Solusi</th></tr><tr><td>Immutable</td><td>Assign ke variabel baru</td></tr><tr><td>IndexOutOfBounds</td><td>Cek length</td></tr><tr><td>CaseSensitive</td><td>toLowerCase()</td></tr><tr><td>Null/Undefined</td><td>Cek existence</td></tr></table>
+                    <h3>💡 Sanitizer</h3>
+                    <pre><code>function sanitize(input) {\n    return input\n        .trim()\n        .toLowerCase()\n        .replace(/[^a-z0-9 ]/g, "")\n        .replace(/\\s+/g, " ");\n}\n\nsanitize("  User@123!  ");\n// → "user123"</code></pre>
+                    <h3>📊 Kompleksitas</h3>
+                    <table><tr><th>Operasi</th><th>Time</th></tr><tr><td>Access</td><td>O(1)</td></tr><tr><td>Length</td><td>O(1)</td></tr><tr><td>Slice</td><td>O(k)</td></tr><tr><td>Concat</td><td>O(n)</td></tr><tr><td>Search</td><td>O(n)</td></tr><tr><td>Replace</td><td>O(n)</td></tr><tr><td>Split</td><td>O(n)</td></tr></table>
+                </div><div class="page-number">14</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <span class="chapter-badge">Bab 0</span>
+                    <h1>🧮 2. Number & Math</h1>
+                    <blockquote>Jangan biarkan angka merusak perhitungan.</blockquote>
+                    <h2>🔢 toFixed(n)</h2>
+                    <p><strong>MANTRA MATA UANG</strong> - Format desimal.</p>
+                    <div class="warning-box"><strong>⚠️ Jebakan:</strong> Return STRING!</div>
+                    <pre><code>123.4567.toFixed(2)\n// → "123.46"\n\n(10/3).toFixed(3)\n// → "3.333"\n\ntypeof (123.456).toFixed(2)\n// → "string"\n\n// Back to number:\nparseFloat("123.46")\n// → 123.46</code></pre>
+                    <h3>🔬 Algoritma toFixed()</h3>
+                    <ol><li>Terima n (0-100)</li><li>Round half up</li><li>Padding nol jika perlu</li><li>Return string</li></ol>
+                </div><div class="page-number">15</div>`,
+                right: `<div class="page-content">
+                    <h2>🔄 parseInt / parseFloat</h2>
+                    <pre><code>// parseInt\nparseInt("100px")  // → 100\nparseInt("10.5")   // → 10\nparseInt("010", 10) // → 10 (selalu radix!)\n\n// parseFloat\nparseFloat("10.5kg")  // → 10.5\nparseFloat("3.14")    // → 3.14\n\n// Number()\nNumber("123")    // → 123\nNumber("abc")    // → NaN</code></pre>
+                    <h2>🎲 Math.random()</h2>
+                    <pre><code>// Random 0-1\nMath.random()\n// → 0.123456...\n\n// Random range\nfunction random(min, max) {\n    return Math.floor(\n        Math.random() * (max - min + 1)\n    ) + min;\n}\n\nrandom(1, 6);  // Dadu\nrandom(1, 100); // 1-100</code></pre>
+                    <div class="warning-box"><strong>⚠️ Floating Point:</strong> 0.1 + 0.2 = 0.30000000000000004. Solusi: toFixed()</div>
+                </div><div class="page-number">16</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h3>🧬 IEEE 754</h3>
+                    <p>JavaScript menggunakan <strong>64-bit floating point</strong>. Semua angka adalah float.</p>
+                    <h3>💡 Aplikasi</h3>
+                    <h4>1. Format Rupiah:</h4>
+                    <pre><code>const price = 1234.567;\n\n// Basic\nprice.toFixed(2);  // "1234.57"\n\n// Indonesia format\nnew Intl.NumberFormat('id-ID', {\n    style: 'currency',\n    currency: 'IDR'\n}).format(price);\n// → "Rp 1.234,57"</code></pre>
+                    <h4>2. Random ID:</h4>
+                    <pre><code>function genId() {\n    return 'ID-' + Math.floor(\n        Math.random() * 1000000\n    ).toString().padStart(6, '0');\n}\n\ngenId(); // "ID-047382"</code></pre>
+                    <h3>📊 MAX_SAFE_INTEGER</h3>
+                    <pre><code>Number.MAX_SAFE_INTEGER\n// → 9007199254740991\n\n// Di atas ini tidak akurat!</code></pre>
+                </div><div class="page-number">17</div>`,
+                right: `<div class="page-content">
+                    <span class="chapter-badge">Bab 0</span>
+                    <h1>📦 3. Array Utilities</h1>
+                    <blockquote>Array adalah <strong>daftar belanja</strong>.</blockquote>
+                    <h3>📖 Apa itu Array?</h3>
+                    <pre><code>const buah = ["Apel", "Jeruk"];\nconst angka = [1, 2, 3, 4, 5];\n\n// Akses\nbuah[0]  // "Apel"\nbuah[1]  // "Jeruk"\n\n// Length\nbuah.length  // 2\n\n// Update\nbuah[1] = "Pisang";</code></pre>
+                    <h2>push() / pop()</h2>
+                    <pre><code>const arr = [1, 2, 3];\n\narr.push(4);\n// [1, 2, 3, 4]\n\nconst removed = arr.pop();\n// arr = [1, 2, 3]\n// removed = 4</code></pre>
+                    <h2>slice() - TIDAK MUTASI</h2>
+                    <pre><code>const arr = [1, 2, 3, 4, 5];\n\narr.slice(1, 3);   // [2, 3]\narr.slice(2);      // [3, 4, 5]\narr.slice(-2);     // [4, 5]\narr.slice();       // Copy</code></pre>
+                </div><div class="page-number">18</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h2>splice() - MUTASI!</h2>
+                    <pre><code>const arr = [1, 2, 3, 4, 5];\n\n// Hapus 2 dari index 1\narr.splice(1, 2);\n// arr = [1, 4, 5]\n\n// Tambah di index 1\narr.splice(1, 0, 'a', 'b');\n// arr = [1, 'a', 'b', 4, 5]\n\n// Replace\narr.splice(1, 2, 'x');\n// arr = [1, 'x', 4, 5]</code></pre>
+                    <h2>join()</h2>
+                    <pre><code>const arr = ['a', 'b', 'c'];\n\narr.join(', ');  // "a, b, c"\narr.join('-');   // "a-b-c"\narr.join('');    // "abc"</code></pre>
+                    <h2>includes() / find() / findIndex()</h2>
+                    <pre><code>[1,2,3].includes(2);  // true\n\nusers.find(u => u.id === 2);\n\narr.findIndex(x => x > 5);</code></pre>
+                    <h2>sort()</h2>
+                    <pre><code>// Ascending\nnumbers.sort((a,b) => a - b);\n\n// Descending\nnumbers.sort((a,b) => b - a);\n\n// String\nusers.sort((a,b) => \n    a.name.localeCompare(b.name)\n);</code></pre>
+                </div><div class="page-number">19</div>`,
+                right: `<div class="page-content">
+                    <h2>📊 map() - Transformasi</h2>
+                    <pre><code>const angka = [1, 2, 3, 4];\n\nconst kuadrat = angka.map(x => x * x);\n// [1, 4, 9, 16]\n\nconst produk = [\n    { nama: "Laptop", harga: 5000000 }\n];\n\nconst nama = produk.map(p => p.nama);\n// ["Laptop"]</code></pre>
+                    <h2>🔍 filter() - Seleksi</h2>
+                    <pre><code>const angka = [1, 2, 3, 4, 5, 6];\n\nconst genap = angka.filter(x => x % 2 === 0);\n// [2, 4, 6]\n\nconst mahal = produk.filter(\n    p => p.harga > 1000000\n);</code></pre>
+                    <h2>➕ reduce() - Akumulasi</h2>
+                    <pre><code>const angka = [1, 2, 3, 4];\n\nconst total = angka.reduce(\n    (acc, x) => acc + x, \n    0\n);\n// → 10</code></pre>
+                    <div class="tip-box"><strong>💡 Tips:</strong> map/filter/reduce TIDAK mengubah array asli!</div>
+                </div><div class="page-number">20</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h2>🔥 Method Chaining</h2>
+                    <pre><code>const products = [\n    { name: "Laptop", price: 5000000, stock: 10 },\n    { name: "Mouse", price: 100000, stock: 0 }\n];\n\n// Filter tersedia, sort desc, ambil nama\nconst result = products\n    .filter(p => p.stock > 0)\n    .sort((a, b) => b.price - a.price)\n    .map(p => p.name);\n\n// → ["Laptop"]</code></pre>
+                    <h3>📊 Kompleksitas Array</h3>
+                    <table><tr><th>Operasi</th><th>Time</th></tr><tr><td>Access</td><td>O(1)</td></tr><tr><td>push/pop</td><td>O(1)</td></tr><tr><td>shift/unshift</td><td>O(n)</td></tr><tr><td>splice</td><td>O(n)</td></tr><tr><td>map/filter</td><td>O(n)</td></tr><tr><td>reduce</td><td>O(n)</td></tr><tr><td>find</td><td>O(n)</td></tr><tr><td>sort</td><td>O(n log n)</td></tr></table>
+                </div><div class="page-number">21</div>`,
+                right: `<div class="page-content">
+                    <span class="chapter-badge">Bab 0</span>
+                    <h1>🗂️ 4. Object Utilities</h1>
+                    <blockquote>Object adalah <strong>kamus</strong> key-value.</blockquote>
+                    <h2>📋 Object.keys/values/entries</h2>
+                    <pre><code>const user = {\n    name: "Budi",\n    age: 25,\n    city: "Jakarta"\n};\n\nObject.keys(user);\n// ["name", "age", "city"]\n\nObject.values(user);\n// ["Budi", 25, "Jakarta"]\n\nObject.entries(user);\n// [["name","Budi"], ["age",25], ...]</code></pre>
+                    <h2>🔄 Spread Operator</h2>
+                    <pre><code>const defaults = { theme: "dark" };\nconst prefs = { lang: "id" };\n\nconst config = { ...defaults, ...prefs };\n// { theme: "dark", lang: "id" }</code></pre>
+                    <h2>🔐 Object.freeze()</h2>
+                    <pre><code>const obj = { name: "Budi" };\nObject.freeze(obj);\n\nobj.name = "Ani"; // ❌ Gagal!</code></pre>
+                </div><div class="page-number">22</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <span class="chapter-badge">Bab 0</span>
+                    <h1>📜 5. JSON</h1>
+                    <blockquote>JSON adalah format standar pertukaran data.</blockquote>
+                    <h2>📤 JSON.stringify()</h2>
+                    <pre><code>const user = { name: "Budi", age: 25 };\n\nconst json = JSON.stringify(user);\n// '{"name":"Budi","age":25}'\n\n// Pretty print\nJSON.stringify(user, null, 2);\n/*\n{\n  "name": "Budi",\n  "age": 25\n}\n*/</code></pre>
+                    <h2>📥 JSON.parse()</h2>
+                    <pre><code>const json = '{"name":"Budi","age":25}';\nconst obj = JSON.parse(json);\n\nconsole.log(obj.name); // "Budi"</code></pre>
+                    <div class="warning-box"><strong>⚠️ JSON Limitations:</strong> Tidak bisa function, undefined, Symbol, atau Date (jadi string)!</div>
+                </div><div class="page-number">23</div>`,
+                right: `<div class="page-content">
+                    <span class="chapter-badge">Bab 0</span>
+                    <h1>⏱️ 6. Control Flow</h1>
+                    <h2>if / else - PERSIMPANGAN</h2>
+                    <pre><code>const nilai = 85;\n\nif (nilai >= 90) {\n    console.log("A");\n} else if (nilai >= 80) {\n    console.log("B");\n} else {\n    console.log("C");\n}</code></pre>
+                    <h2>for Loop - LANGKAH TERHITUNG</h2>
+                    <pre><code>// Basic for\nfor (let i = 0; i < 5; i++) {\n    console.log(i);\n}\n// 0, 1, 2, 3, 4\n\n// Loop array\nconst arr = [1, 2, 3];\nfor (let i = 0; i < arr.length; i++) {\n    console.log(arr[i]);\n}</code></pre>
+                    <h2>while Loop - PENJAGAAN</h2>
+                    <pre><code>let i = 0;\nwhile (i < 5) {\n    console.log(i);\n    i++;\n}\n// 0, 1, 2, 3, 4</code></pre>
+                </div><div class="page-number">24</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h2>break / continue / return</h2>
+                    <pre><code>// break - keluar dari loop\nfor (let i = 0; i < 10; i++) {\n    if (i === 5) break;\n    console.log(i);\n}\n// 0, 1, 2, 3, 4\n\n// continue - skip iteration\nfor (let i = 0; i < 5; i++) {\n    if (i === 2) continue;\n    console.log(i);\n}\n// 0, 1, 3, 4\n\n// return - keluar dari function\nfunction findEven(arr) {\n    for (const x of arr) {\n        if (x % 2 === 0) return x;\n    }\n    return null;\n}</code></pre>
+                    <h2>for...of & for...in</h2>
+                    <pre><code>// for...of (arrays)\nconst arr = [1, 2, 3];\nfor (const x of arr) {\n    console.log(x);\n}\n\n// for...in (objects)\nconst obj = { a: 1, b: 2 };\nfor (const key in obj) {\n    console.log(key, obj[key]);\n}</code></pre>
+                </div><div class="page-number">25</div>`,
+                right: `<div class="page-content">
+                    <span class="chapter-badge">Bab 1</span>
+                    <h1>🔮 7. Map, Filter, Reduce</h1>
+                    <h2>📊 .map() - Transformasi</h2>
+                    <blockquote><strong>Model Mental:</strong> Pabrik ajaib yang mengubah setiap item.</blockquote>
+                    <pre><code>// Model Mental:\n// [1, 2, 3] → [map x2] → [2, 4, 6]\n\nconst angka = [1, 2, 3, 4];\nconst double = angka.map(x => x * 2);\n// [2, 4, 6, 8]\n\n// Real world: Rupiah → Dolar\nconst rupiah = [10000, 20000, 30000];\nconst kurs = 0.000067;\nconst dolar = rupiah.map(r => \n    (r * kurs).toFixed(2)\n);\n// ["0.67", "1.34", "2.01"]</code></pre>
+                    <h3>🔬 Algoritma Internal map()</h3>
+                    <pre><code>// Implementasi manual\nfunction manualMap(arr, fn) {\n    const result = [];\n    for (let i = 0; i < arr.length; i++) {\n        result.push(fn(arr[i], i, arr));\n    }\n    return result;\n}\n\nmanualMap([1,2,3], x => x*2);\n// [2, 4, 6]</code></pre>
+                </div><div class="page-number">26</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <h2>🔍 .filter() - Seleksi</h2>
+                    <blockquote><strong>Model Mental:</strong> Gerbang penjaga yang hanya loloskan item tertentu.</blockquote>
+                    <pre><code>// Model Mental:\n// [1, 2, 3, 4] → [filter genap] → [2, 4]\n\nconst angka = [1, 2, 3, 4, 5, 6];\nconst genap = angka.filter(x => x % 2 === 0);\n// [2, 4, 6]\n\n// Real world: Produk > $100\nconst products = [\n    { name: "Laptop", price: 1000 },\n    { name: "Mouse", price: 50 },\n    { name: "Keyboard", price: 150 }\n];\n\nconst mahal = products.filter(\n    p => p.price > 100\n);</code></pre>
+                    <h3>🔬 Algoritma Internal filter()</h3>
+                    <pre><code>function manualFilter(arr, predicate) {\n    const result = [];\n    for (const item of arr) {\n        if (predicate(item)) {\n            result.push(item);\n        }\n    }\n    return result;\n}</code></pre>
+                </div><div class="page-number">27</div>`,
+                right: `<div class="page-content">
+                    <h2>➕ .reduce() - Pemadatan</h2>
+                    <blockquote><strong>Model Mental:</strong> Kuali alkemis yang menggabungkan semua item jadi satu.</blockquote>
+                    <pre><code>// Model Mental:\n// [1, 2, 3, 4] → [reduce +] → 10\n\nconst angka = [1, 2, 3, 4];\nconst total = angka.reduce(\n    (acc, x) => acc + x, \n    0\n);\n// 10\n\n// Step by step:\n// acc=0, x=1 → 1\n// acc=1, x=2 → 3\n// acc=3, x=3 → 6\n// acc=6, x=4 → 10</code></pre>
+                    <h3>💡 Aplikasi reduce()</h3>
+                    <pre><code>// Total harga\nconst total = products.reduce(\n    (acc, p) => acc + p.price, \n    0\n);\n\n// Grouping\nconst grouped = items.reduce(\n    (acc, item) => {\n        const key = item.category;\n        if (!acc[key]) acc[key] = [];\n        acc[key].push(item);\n        return acc;\n    }, \n    {}\n);</code></pre>
+                </div><div class="page-number">28</div>`
+            },
+            {
+                left: `<div class="page-content">
+                    <span class="chapter-badge">Advanced</span>
+                    <h1>🔴 8. Closures & Scope</h1>
+                    <blockquote>Scope = siapa yang boleh tahu rahasia.</blockquote>
+                    <h2>📖 Scope Chain</h2>
+                    <pre><code>let globalVar = "global";\n\nfunction outer() {\n    let outerVar = "outer";\n    \n    function inner() {\n        let innerVar = "inner";\n        console.log(globalVar); // ✅\n        console.log(outerVar);  // ✅\n        console.log(innerVar);  // ✅\n    }\n    \n    console.log(innerVar); // ❌ Error!\n}</code></pre>
+                    <h2>🧬 Closure</h2>
+                    <pre><code>function createCounter() {\n    let count = 0; // Private!\n    \n    return function() {\n        count++;\n        return count;\n    };\n}\n\nconst counter = createCounter();\ncounter(); // → 1\ncounter(); // → 2\ncounter(); // → 3</code></pre>
+                    <div class="tip-box"><strong>💡 Closure:</strong> Function mengingat environment-nya!</div>
+                </div><div class="page-number">29</div>`,
+                right: `<div class="page-content">
+                    <h2>⚠️ Closure dalam Loop</h2>
+                    <div class="warning-box"><pre><code>// ❌ MASALAH\nfor (var i = 0; i < 3; i++) {\n    setTimeout(() => console.log(i), 100);\n}\n// → 3, 3, 3\n\n// ✅ SOLUSI: let\nfor (let i = 0; i < 3; i++) {\n    setTimeout(() => console.log(i), 100);\n}\n// → 0, 1, 2</code></pre></div>
+                    <h2>💡 Aplikasi</h2>
+                    <h3>Data Privacy:</h3>
+                    <pre><code>function createAccount(balance) {\n    let _balance = balance;\n    return {\n        deposit: (amt) => {\n            _balance += amt;\n            return _balance;\n        },\n        getBalance: () => _balance\n    };\n}</code></pre>
+                    <h3>Memoization:</h3>
+                    <pre><code>function memoize(fn) {\n    const cache = {};\n    return function(...args) {\n        const key = JSON.stringify(args);\n        if (cache[key]) return cache[key];\n        return cache[key] = fn(...args);\n    };\n}</code></pre>
+                </div><div class="page-number">30</div>`
+            }
+        ];
+
+        let currentPage = 0;
+        const totalPages = pages.length;
+
+        function renderPage(index) {
+            document.getElementById('pageLeft').innerHTML = pages[index].left;
+            document.getElementById('pageRight').innerHTML = pages[index].right;
+            document.getElementById('currentPage').textContent = index * 2 + 1;
+            document.getElementById('totalPages').textContent = totalPages * 2;
+            document.getElementById('progressBar').style.width = ((index + 1) / totalPages * 100) + '%';
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === totalPages - 1;
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                renderPage(currentPage);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                renderPage(currentPage);
+            }
+        }
+
+        function goToPage(pageNum) {
+            const spreadIndex = Math.floor((pageNum - 1) / 2);
+            if (spreadIndex >= 0 && spreadIndex < totalPages) {
+                currentPage = spreadIndex;
+                renderPage(currentPage);
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextPage();
+            if (e.key === 'ArrowLeft') prevPage();
+            if (e.key === 'Home') { currentPage = 0; renderPage(currentPage); }
+            if (e.key === 'End') { currentPage = totalPages - 1; renderPage(currentPage); }
+        });
+
+        renderPage(currentPage);
+    </script>
+</body>
+</html>
