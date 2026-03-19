@@ -43,4 +43,30 @@ function getRandomNumber(min, max) {
     let random = Math.random() * (max - min + 1) + min;
     return Math.floor(random);
 }
-console.log(getRandomNumber(5, 10));
+
+// Cek Bilangan Genap
+function isEven(num) {
+    if (typeof (num) !== 'number') return 'Input Harus berupa angka';
+    if (num % 2 === 0) {
+        return 'Genap';
+    } else {
+        return 'Ganjil';
+    }
+}
+
+// Validasi Email Sederhana
+function validasiEmail(email) {
+    if (!email.includes("@")) return false;
+    if (email.length < 5) return false;
+    return true;
+}
+
+// NOTE: String & Manipulation
+const kata = 'Santo-Kalingga-Erlangga';
+const gantiKata = kata.replace('Santo', 'Susanto');
+console.log(gantiKata);
+const kataSplit = kata.split('-');
+kataSplit.forEach(kata => {
+    console.log(`Nama : ${kata}`);
+});
+const santo = kata.includes('Santo');
