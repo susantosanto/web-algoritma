@@ -104,18 +104,29 @@ Ini adalah kutipan yang sering muncul di berbagai sumber industry. Intinya: Anda
 
 > Berikut adalah ringkasan channel YouTube yang direkomendasikan untuk belajar AI Engineering, Prompt Engineering, dan Agentic Engineering. Channel-channel ini dalam Bahasa Indonesia dan English.
 
-## Channel YouTube Bahasa Indonesia yang Wajib Diubscribe
+## Channel YouTube Bahasa Indonesia yang TERVERIFIKASI
 
-| Channel | Subscriber | Fokus Utama | Link |
-|---------|------------|-------------|------|
-| **WPU (Web Programming UNPAS)** | ~979K | Python, JavaScript, Web Dev, AI basics | [Subscribe](https://youtube.com/@sandhikagalihWPU) |
-| **Kelas Terbuka** | ~467K | Python, Java, C, Algoritma - sangat untuk pemula | [Subscribe](https://youtube.com/@KelasTerbuka) |
-| **CODEPOLITAN** | ~39K | AI, ML, coding tips, trending tech | [Subscribe](https://youtube.com/@codepolitan) |
-| **Dicoding Indonesia** | ~100K+ | AI Engineering learning path, structured courses | [Subscribe](https://youtube.com/@dicoding) |
-| **Indonesia AI Community** | Growing | AI Agents, RAG, GenAI community | [Subscribe](https://youtube.com/@IndonesiaAICOMMUNITY) |
-| **Sekolah AI Indonesia** | Growing | PyTorch, NLP, Deep Learning | [Subscribe](https://youtube.com/@rubythalib33) |
-| **Programmer Zaman Now** | ~200K | Java, Spring Boot, Backend Dev | [Subscribe](https://youtube.com/@ProgrammerZamanNow) |
-| **Inixindo Indonesia** | Growing | AI Agents workshop, enterprise training | [Subscribe](https://youtube.com/@InixindoIndonesia) |
+> **Catatan Penting:** Konten AI Agentic, RAG, LangChain spesifik dalam Bahasa Indonesia di YouTube sangat terbatas. Untuk topik advanced, hampir wajib beralih ke resource English. Berikut adalah channel yang benar-benar aktif dan terverifikasi.
+
+| Channel | Fokus Utama | Catatan | Link |
+|---------|-------------|---------|------|
+| **WPU (Web Programming UNPAS)** | Python, JavaScript, Web Dev, AI basics | ~979K subscriber, paling lengkap untuk fondasi | [Subscribe](https://youtube.com/@sandhikagalihWPU) |
+| **Kelas Terbuka** | Python, Java, C, Algoritma | ~467K subscriber, cocok untuk pemula absolut | [Subscribe](https://youtube.com/@KelasTerbuka) |
+| **Dicoding Indonesia** | AI Engineering, ML, Python | ~100K+ subscriber, learning path terstruktur & bersertifikat | [Subscribe](https://youtube.com/@dicoding) |
+| **Programmer Zaman Now** | Python, Java, Spring Boot, Backend | ~200K subscriber, tutorial Python terbaru 2025 | [Subscribe](https://youtube.com/@ProgrammerZamanNow) |
+| **CODEPOLITAN** | AI, ML, coding tips, trending tech | ~39K subscriber, konten pendek dan padat | [Subscribe](https://youtube.com/@codepolitan) |
+| **Halovina** | LangChain, Gemini, FastAPI, GenAI | Tutorial LangChain & Gemini paling lengkap di ID, aktif 2025 | [halovina.com](https://halovina.com) |
+| **Inixindo Indonesia** | RAG, AI Agents, enterprise AI | Workshop & pelatihan enterprise (bukan channel YouTube reguler) | [youtube.com/@InixindoIndonesia](https://youtube.com/@InixindoIndonesia) |
+| **Data Science Indonesia** | ML, Data Science, community events | Webinar dan workshop komunitas data science ID | [youtube.com/@DataScienceIndonesia](https://youtube.com/@DataScienceIndonesia) |
+| **Indonesia AI Society (IAIS)** | AI, LLM, AI governance, events | Webinar AI events, talks dari praktisi | [youtube.com/c/IndonesiaAISociety](https://youtube.com/c/IndonesiaAISociety) |
+| **BISA AI Academy** | AI, Data Science, Python, GenAI | Kursus AI terstruktur, terdaftar di Kemenaker | [youtube.com/@bisaai](https://youtube.com/@bisaai) |
+| **Indonesia AI** | AI general, industry updates | Community channel AI untuk Indonesia | [Subscribe](https://youtube.com/channel/UCoa9KMJAPd4YPppZf2LFKgw) |
+
+### Channel yang DIHAPUS / TIDAK DITEMUKAN
+- ~~Indonesia AI Community (@IndonesiaAICOMMUNITY)~~ - tidak ditemukan sebagai channel aktif
+- ~~Sekolah AI Indonesia (@rubythalib33)~~ - repo GitHub terakhir di-update 2022, channel tidak aktif
+- ~~TensorCourse Indonesia~~ - tidak ditemukan
+- ~~Indonesia AI Course (@IndonesiaAICourse)~~ - tidak ditemukan
 
 ## Channel YouTube English yang Direkomendasikan
 
@@ -141,11 +152,11 @@ Ini adalah kutipan yang sering muncul di berbagai sumber industry. Intinya: Anda
 │  PYTHON FUNDAMENTALS                                                   │
 │  ├── WPU (sandhikagalihWPU)                                           │
 │  ├── Kelas Terbuka                                                      │
-│  └── Corey Schafer (EN)                                                │
+│  └── Programmer Zaman Now (ID)                                        │
 │                                                                         │
 │  AI/ML FUNDAMENTALS                                                     │
-│  ├── Sekolah AI Indonesia (rubythalib33)                              │
 │  ├── Dicoding Indonesia                                                 │
+│  ├── BISA AI Academy (ID)                                              │
 │  └── HuggingFace (EN)                                                   │
 │                                                                         │
 │  PROMPT ENGINEERING                                                      │
@@ -157,19 +168,23 @@ Ini adalah kutipan yang sering muncul di berbagai sumber industry. Intinya: Anda
 │  RAG & LANGCHAIN                                                        │
 │  ├── LangChain Channel (EN)                                             │
 │  ├── Greg lima (EN)                                                     │
-│  ├── Halovina (ID)                                                      │
-│  └── Indonesia AI Community (ID)                                       │
+│  ├── Halovina (ID) - LangChain + Gemini                                 │
+│  └── Inixindo Indonesia (ID) - workshop RAG                            │
 │                                                                         │
 │  AI AGENTS                                                              │
 │  ├── Greg lima - ReAct patterns (EN)                                    │
 │  ├── LangChain - Multi-agent (EN)                                        │
-│  ├── Indonesia AI Community (ID)                                        │
-│  └── Inixindo Indonesia (ID)                                           │
+│  ├── Inixindo Indonesia (ID) - workshop agents                         │
+│  └── Halovina (ID) - MCP Server, FastAPI integration                    │
 │                                                                         │
 │  PRODUCTION & DEPLOYMENT                                                 │
-│  ├── Inixindo Indonesia (ID)                                           │
+│  ├── Inixindo Indonesia (ID) - enterprise                              │
 │  ├── IBM Technology (EN)                                                │
 │  └── Dicoding Indonesia (ID)                                            │
+│                                                                         │
+│  AI EVENTS & COMMUNITY (ID)                                             │
+│  ├── Indonesia AI Society (IAIS)                                        │
+│  └── Data Science Indonesia                                              │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
@@ -182,24 +197,27 @@ PEMULA (Belum pernah programming):
 ❌ Hindari: Channel advanced dulu
 
 SUDAH BISA PROGRAMMING:
-✅ Mulai dengan: Python basics di WPU/Kelas Terbuka
-✅ Lanjut: AI basics di Dicoding/Sekolah AI
+✅ Mulai dengan: Python basics di WPU/Kelas Terbuka/Programmer Zaman Now
+✅ Lanjut: AI basics di Dicoding/BISA AI Academy
 
 INGIN FOKUS PROMPT ENGINEERING:
 ✅ Mulai dengan: Learn Prompting, Anthropic Education
 ✅ Praktik: CODEPOLITAN, WPU
 
-INGIN FOKUS AI AGENTS:
-✅ Mulai dengan: LangChain channel, Greg lima
-✅ Praktik: Indonesia AI Community
+INGIN FOKUS AI AGENTS / RAG / LANGCHAIN:
+⚠️ PERHATIAN: Channel ID untuk topik ini SANGAT TERBATAS
+✅ Mulai dengan: LangChain channel, Greg lima (Wajib English)
+✅ Tambahan ID: Halovina (LangChain + Gemini), Inixindo (workshop)
 
 PREFER BAHASA INDONESIA:
-✅ Semua channel ID yang listed di atas
-✅ Komunitas aktif untuk diskusi
+✅ Fondasi: WPU, Kelas Terbuka, Dicoding, CODEPOLITAN
+✅ AI lanjutan: Halovina, Inixindo, Indonesia AI Society
+❌ Untuk RAG, LangChain, AI Agents: Beralih ke English channel
 
 PREFER ENGLISH (lebih lengkap):
 ✅ LangChain, Greg lima, HuggingFace
 ✅ Yannic Kilcher, Andrej Karpathy
+✅WAJIB untuk: RAG advanced, AI Agents, LangGraph, multi-agent
 ```
 
 ---
@@ -332,6 +350,106 @@ except ZeroDivisionError:
     print("Tidak bisa dibagi dengan nol")
 ```
 
+##### Breakdown Detail: Python Fundamentals
+
+**Yang harus dikuasai secara mendalam:**
+
+**Variabel & Tipe Data:**
+- [ ] Memahami primitive types: `int`, `float`, `str`, `bool`
+- [ ] Memahami type conversion: `int("10")`, `str(100)`, `float("3.14")`
+- [ ] Memahami `None` sebagai null value
+- [ ] Memahami mutability: `list` vs `tuple` vs `string`
+
+**Collections (Wajib Hapal):**
+- [ ] `list`: ordered, mutable, duplicate allowed
+- [ ] `tuple`: ordered, immutable, duplicate allowed
+- [ ] `set`: unordered, unique, no duplicates
+- [ ] `dict`: key-value pairs, mutable
+
+**Control Flow:**
+- [ ] `if/elif/else`: conditional logic
+- [ ] `for` loop: iteration dengan `range()`, `enumerate()`, `zip()`
+- [ ] `while` loop: indefinite iteration
+- [ ] `break`, `continue`, `pass`
+- [ ] Ternary operator: `x = "adult" if age >= 18 else "child"`
+
+**Functions:**
+- [ ] Parameter types: positional, keyword, default, `*args`, `**kwargs`
+- [ ] Return values: single, multiple (tuple unpacking)
+- [ ] Scope: `global`, `nonlocal`
+- [ ] Lambda functions: anonymous functions untuk operasi singkat
+- [ ] Function annotations (type hints)
+
+**List Comprehension:**
+- [ ] Basic: `[x for x in list]`
+- [ ] Dengan kondisi: `[x for x in list if x > 0]`
+- [ ] Nested: `[[x for x in row] for row in matrix]`
+- [ ] Dictionary comprehension: `{k: v for k, v in items}`
+
+**Error Handling:**
+- [ ] `try/except/else/finally` structure
+- [ ] Exception types: `ValueError`, `TypeError`, `KeyError`, `IndexError`
+- [ ] Raising exceptions: `raise ValueError("message")`
+- [ ] Custom exception classes
+
+**Object-Oriented Programming:**
+- [ ] Classes & instances
+- [ ] `__init__`, `__str__`, `__repr__`
+- [ ] Inheritance & polymorphism
+- [ ] Instance vs class vs static methods
+- [ ] Data classes (`@dataclass`) untuk data objects
+- [ ] Properties (`@property`) untuk encapsulation
+
+**Modules & Packages:**
+- [ ] `import`, `from ... import`
+- [ ] `__init__.py` untuk package
+- [ ] Virtual environments: `venv`, `conda`
+- [ ] Package management: `pip`, `requirements.txt`, `pyproject.toml`
+
+**File Operations:**
+- [ ] Read: `open()`, `read()`, `readlines()`, `with` statement
+- [ ] Write: `write()`, `writelines()`
+- [ ] Path manipulation: `pathlib.Path`
+- [ ] JSON: `json.load()`, `json.dump()`
+- [ ] CSV: `csv.reader`, `csv.DictReader`
+
+**Common Python Idioms:**
+- [ ] Swapping variables: `a, b = b, a`
+- [ ] Multiple assignment: `x, y, z = 1, 2, 3`
+- [ ] Underscore convention: `_` untuk unused, `__` untuk name mangling
+- [ ] Context managers: `with open() as f:`
+- [ ] Walrus operator `:=` (Python 3.8+)
+
+**Tools & Libraries Wajib untuk AI Engineering:**
+- [ ] `pip` / `uv` package manager
+- [ ] `numpy` untuk komputasi numerik
+- [ ] `pandas` untuk data manipulation
+- [ ] `jupyter` / `ipython` untuk interactive coding
+- [ ] `requests` untuk HTTP calls
+- [ ] `dotenv` untuk environment variables
+- [ ] `logging` untuk application logging
+
+**Best Practices:**
+- [ ] PEP 8 style guide (indentasi, naming conventions)
+- [ ] Gunakan `if __name__ == "__main__":` untuk entry point
+- [ ] Type hints untuk readability dan error detection
+- [ ] Virtual environment untuk isolate dependencies
+- [ ] Docstrings untuk dokumentasi fungsi
+
+**Pitfalls yang Harus Dihindari:**
+- [ ] Jangan gunakan mutable default arguments: `def foo(items=[])` ❌
+- [ ] Gunakan `==` untuk value comparison, `is` hanya untuk identity
+- [ ] List comprehension lebih cepat dari loop biasa
+- [ ] String concatenation dengan `+` lambat untuk banyak operasi, gunakan f-string
+- [ ] `append()` lebih efisien dari `+` untuk list
+
+**Indikator Proficiency:**
+- [ ] Bisa membaca dan menulis file processing script
+- [ ] Bisa membuat class dengan inheritance
+- [ ] Bisa menggunakan list/dict comprehension fluently
+- [ ] Bisa handle errors dengan proper exception handling
+- [ ] Bisa membuat dan menggunakan virtual environment
+
 **1.2 Git & GitHub**
 
 Git adalah sistem versioning yang Wajib dikuasai. Bayangkan Anda sedang bekerja dalam tim yang terdiri dari 10 orang. Bagaimana Anda melacak perubahan kode dari setiap orang? Bagaimana jika ada yang merusak kode yang sudah berjalan? Git menjawab semua masalah ini.
@@ -375,6 +493,120 @@ git push origin main
 git pull origin main
 ```
 
+##### Breakdown Detail: Git & GitHub
+
+**Basic Commands (Wajib Hapal):**
+- [ ] `git init` - Initialize repository baru
+- [ ] `git clone <url>` - Clone repository existente
+- [ ] `git status` - Cek status working directory
+- [ ] `git add <file>` - Stage perubahan
+- [ ] `git commit -m "message"` - Commit dengan pesan
+- [ ] `git log` - Lihat history commit
+- [ ] `git diff` - Lihat perubahan sebelum commit
+- [ ] `git push` - Push ke remote
+- [ ] `git pull` - Pull dari remote
+- [ ] `git fetch` - Fetch tanpa merge
+
+**Branching:**
+- [ ] `git branch` - List semua branch
+- [ ] `git branch <nama>` - Buat branch baru
+- [ ] `git checkout <branch>` - Pindah ke branch
+- [ ] `git switch <branch>` - Cara modern pindah branch
+- [ ] `git checkout -b <branch>` - Buat dan pindah sekaligus
+- [ ] `git branch -d <branch>` - Hapus branch
+- [ ] `git merge <branch>` - Merge branch ke current
+- [ ] `git rebase <branch>` - Rebase current branch ke branch lain
+
+**Remote Operations:**
+- [ ] `git remote -v` - List remote repositories
+- [ ] `git remote add origin <url>` - Tambah remote
+- [ ] `git push -u origin <branch>` - Push dengan upstream tracking
+- [ ] `git push origin --delete <branch>` - Hapus remote branch
+- [ ] `git pull --rebase` - Pull dengan rebase strategy
+
+**Advanced Git:**
+- [ ] `git stash` - Simpan perubahan sementara
+- [ ] `git stash pop` - Kembalikan perubahan stash
+- [ ] `git cherry-pick <commit>` - Apply commit tertentu
+- [ ] `git reset --soft/mixed/hard` - Reset commits
+- [ ] `git revert <commit>` - Revert commit tertentu
+- [ ] `git tag <version>` - Buat release tag
+- [ ] `git reflog` - Recovery dari mistakes
+
+**Merge Conflicts:**
+- [ ] Identifikasi conflict: `git status` akan show `both modified`
+- [ ] Buka file dan cari `<<<<<<< HEAD`, `=======`, `>>>>>>>`
+- [ ] Resolve manually dengan memilih perubahan yang benar
+- [ ] `git add <file>` setelah resolve
+- [ ] `git commit` untuk complete merge
+
+**GitHub Specific:**
+- [ ] Pull Requests (PR) - Request untuk merge perubahan
+- [ ] Code Reviews - Review perubahan sebelum merge
+- [ ] Fork - Copy repository orang lain ke akun sendiri
+- [ ] Issues - Track bugs, features, tasks
+- [ ] Actions - CI/CD pipelines
+- [ ] Pages - Host static websites gratis
+- [ ] Protected branches - Prevent direct push ke main
+- [ ] GitHub Desktop - GUI alternative untuk Git
+
+**Git Workflows:**
+- [ ] **Centralized**: Semua orang push ke satu branch utama
+- [ ] **Feature Branch**: Setiap fitur di branch terpisah
+- [ ] **GitFlow**: Feature, develop, release, hotfix branches
+- [ ] **Trunk-Based**: Branch sangat pendek (1-2 commits)
+
+**Best Practices:**
+- [ ] Commit little and often
+- [ ] Setiap commit harus atomic (satu logical change)
+- [ ] Pesan commit yang descriptive: "Add user authentication"
+- [ ] Jangan commit sensitive data (API keys, passwords)
+- [ ] Gunakan `.gitignore` untuk exclude files
+- [ ] Pull sebelum push untuk avoid conflicts
+- [ ] Review sendiri sebelum push: `git diff --staged`
+
+**Common .gitignore Patterns:**
+```
+__pycache__/
+*.pyc
+.env
+node_modules/
+.DS_Store
+*.log
+dist/
+build/
+```
+
+**Git in AI/ML Projects:**
+- [ ] Jangan commit trained models (gunakan Git LFS atau cloud storage)
+- [ ] Commit only code, configs, dan small data files
+- [ ] Gunakan `.gitattributes` untuk file size limits
+- [ ] Consider DVC (Data Version Control) untuk dataset versioning
+
+**Collaboration Workflow:**
+1. Clone repository
+2. Buat branch baru: `git checkout -b feature/my-feature`
+3. Make changes dan commit
+4. Push branch: `git push origin feature/my-feature`
+5. Buat Pull Request di GitHub
+6. Code review dan discuss
+7. Merge setelah approval
+8. Delete branch setelah merge
+
+**Troubleshooting:**
+- [ ] "detached HEAD" → checkout ke branch untuk bisa commit
+- [ ] Amankan perubahan: `git stash` sebelum checkout
+- [ ] Undo last commit: `git reset --soft HEAD~1`
+- [ ] Discard local changes: `git checkout -- <file>`
+- [ ] Lihat who changed what: `git blame <file>`
+
+**Indikator Proficiency:**
+- [ ] Bisa setup repository baru dan push ke GitHub
+- [ ] Bisa resolve merge conflicts tanpa kehilangan code
+- [ ] Paham branching strategy dan bisa collaborate via PR
+- [ ] Menggunakan `.gitignore` dengan benar
+- [ ] Paham perbedaan antara merge dan rebase
+
 **1.3 Data Structures & Algorithms**
 
 Ini adalah fondasi computational thinking. Anda tidak perlu jadi expert algoritma seperti di competitive programming, tapi Anda harus memahami:
@@ -398,6 +630,146 @@ Data Structures yang harus dipahami:
     ├── Stack: like pile of plates
     └── Queue: like waiting line
 ```
+
+##### Breakdown Detail: Data Structures & Algorithms
+
+**Arrays/Lists:**
+- [ ] Definition: Ordered, indexed collection
+- [ ] Time Complexity:
+  - Access by index: O(1)
+  - Search: O(n)
+  - Append: O(1) amortized
+  - Insert at index: O(n)
+  - Delete at index: O(n)
+- [ ] Python: `list` adalah dynamic array
+- [ ] Common Operations:
+  - `append()`, `pop()` - O(1)
+  - `insert()`, `remove()` - O(n)
+  - `index()`, `count()` - O(n)
+  - `sort()`, `reverse()` - O(n log n)
+- [ ] Use cases: Sequential data, ordered collections, stack/queue implementation
+
+**Linked Lists:**
+- [ ] Definition: Nodes with data + pointer to next node
+- [ ] Time Complexity:
+  - Access: O(n)
+  - Insert at head: O(1)
+  - Insert at tail: O(1) with tail pointer
+  - Delete: O(1) if node reference given
+- [ ] Types: Singly linked, Doubly linked, Circular
+- [ ] Python: Not built-in, but can implement manually
+- [ ] Use cases: Frequent insert/delete at ends, memory efficiency
+
+**Stacks:**
+- [ ] Definition: LIFO (Last In, First Out)
+- [ ] Operations: `push()` (top), `pop()` (top), `peek()` (top)
+- [ ] Time Complexity: All O(1)
+- [ ] Python: Use `list` with `append()` and `pop()`
+- [ ] Use cases: Undo mechanisms, expression evaluation, DFS, function calls
+
+**Queues:**
+- [ ] Definition: FIFO (First In, First Out)
+- [ ] Operations: `enqueue()` (rear), `dequeue()` (front)
+- [ ] Time Complexity: All O(1) with linked list implementation
+- [ ] Python: `collections.deque` for efficiency
+- [ ] Types: Simple queue, Circular queue, Priority queue
+- [ ] Use cases: BFS, task scheduling, print queue
+
+**HashMaps/Dictionaries:**
+- [ ] Definition: Key-value pairs dengan hash function
+- [ ] Time Complexity:
+  - Lookup/Insert/Delete: O(1) average, O(n) worst case
+  - Collision handling: Chaining atau Open addressing
+- [ ] Python: `dict` dengan open addressing
+- [ ] Requirements: Keys must be hashable (immutable)
+- [ ] Use cases: Caching, lookups, counting frequencies
+
+**Sets:**
+- [ ] Definition: Unordered collection of unique elements
+- [ ] Operations: `add()`, `remove()`, `union()`, `intersection()`
+- [ ] Time Complexity: O(1) average for add/remove/lookup
+- [ ] Python: `set` dan `frozenset`
+- [ ] Use cases: Deduplication, membership testing, set operations
+
+**Trees:**
+- [ ] Definition: Hierarchical structure dengan parent-child relationships
+- [ ] Types:
+  - Binary Tree: Max 2 children per node
+  - Binary Search Tree (BST): Left < Root < Right
+  - Balanced Trees: AVL, Red-Black Tree
+  - N-ary Tree, Trie (prefix tree)
+- [ ] Tree Traversals:
+  - Inorder: Left → Root → Right
+  - Preorder: Root → Left → Right
+  - Postorder: Left → Right → Root
+  - Level order: BFS by level
+- [ ] Use cases: File systems, DOM, database indexes, expression trees
+
+**Graphs:**
+- [ ] Definition: Nodes (vertices) connected by edges
+- [ ] Types:
+  - Directed vs Undirected
+  - Weighted vs Unweighted
+  - Cyclic vs Acyclic
+- [ ] Representations: Adjacency Matrix, Adjacency List
+- [ ] Common Algorithms:
+  - BFS: Shortest path unweighted
+  - DFS: Path finding, cycle detection
+  - Dijkstra: Shortest path weighted
+  - Topological Sort: DAG ordering
+- [ ] Use cases: Social networks, routing, dependencies
+
+**Big O Notation (Wajib Hafal):**
+```
+O(1)       - Constant     - Array access
+O(log n)   - Logarithmic  - Binary search
+O(n)       - Linear       - Array search
+O(n log n) - Linearithmic - Efficient sorting
+O(n²)      - Quadratic    - Nested loops
+O(2ⁿ)      - Exponential  - Recursive fibonacci
+O(n!)      - Factorial    - Permutations
+```
+
+**Sorting Algorithms:**
+- [ ] Bubble Sort: O(n²) - Simple but slow
+- [ ] Selection Sort: O(n²) - Simple, minimal swaps
+- [ ] Insertion Sort: O(n²) - Good for small/nearly sorted
+- [ ] Merge Sort: O(n log n) - Stable, recursive
+- [ ] Quick Sort: O(n log n) avg - Fast in practice
+- [ ] Python: `sorted()` menggunakan Timsort O(n log n)
+
+**Search Algorithms:**
+- [ ] Linear Search: O(n) - Check each element
+- [ ] Binary Search: O(log n) - Sorted arrays only
+- [ ] Hash Search: O(1) - Using hash maps
+- [ ] Tree Search: O(log n) for balanced trees
+
+**Recursion:**
+- [ ] Base case: When to stop
+- [ ] Recursive case: Call itself
+- [ ] Stack overflow risk for deep recursion
+- [ ] Tail recursion optimization (not in Python)
+- [ ] Can always convert to iteration
+
+**Practical Algorithms for AI Engineer:**
+- [ ] Hashing: Count frequencies, detect duplicates
+- [ ] Two pointers: Pair finding, palindrome check
+- [ ] Sliding window: Subarray problems, longest substring
+- [ ] Divide and conquer: Merge sort, binary search variations
+- [ ] Dynamic programming: Memoization, tabulation
+
+**Indikator Proficiency:**
+- [ ] Bisa implement basic data structures dari scratch
+- [ ] Paham Big O dan bisa analyze complexity
+- [ ] Tau kapan pakai data structure yang mana
+- [ ] Bisa implement sorting dan searching algorithms
+- [ ] Paham recursion dan iteration alternatives
+
+**Common Pitfalls:**
+- [ ] Jangan pakai list untuk frequent insert/delete di tengah
+- [ ] Use set untuk membership testing, bukan list
+- [ ] Balanced tree penting untuk guarantee O(log n)
+- [ ] Graph representation affects algorithm choice
 
 **1.4 REST APIs**
 
@@ -434,6 +806,143 @@ params = {
 }
 response = requests.get("https://api.example.com/users", params=params)
 ```
+
+##### Breakdown Detail: REST APIs
+
+**HTTP Methods (Wajib Hafal):**
+- [ ] **GET** - Retrieve data (read-only, idempotent)
+- [ ] **POST** - Create new resource (not idempotent)
+- [ ] **PUT** - Replace entire resource (idempotent)
+- [ ] **PATCH** - Partial update (not always idempotent)
+- [ ] **DELETE** - Remove resource (idempotent)
+
+**HTTP Status Codes (Paling Umum):**
+```
+2xx Success:
+- 200 OK - Request successful
+- 201 Created - Resource created
+- 204 No Content - Success, no response body
+
+4xx Client Error:
+- 400 Bad Request - Invalid syntax
+- 401 Unauthorized - Not authenticated
+- 403 Forbidden - Authenticated but not authorized
+- 404 Not Found - Resource doesn't exist
+- 422 Unprocessable Entity - Validation error
+- 429 Too Many Requests - Rate limited
+
+5xx Server Error:
+- 500 Internal Server Error
+- 502 Bad Gateway
+- 503 Service Unavailable
+- 504 Gateway Timeout
+```
+
+**API Authentication Methods:**
+- [ ] **API Keys**: Simple, passed in header. `X-API-Key: your-key`
+- [ ] **Bearer Token (JWT)**: Stateless, `Authorization: Bearer <token>`
+- [ ] **OAuth 2.0**: Delegated access, tokens with scopes
+- [ ] **Basic Auth**: Username/password encoded, `Authorization: Basic base64(user:pass)`
+- [ ] **API Key + Secret**: HMAC signature based
+
+**REST API Best Practices:**
+- [ ] Use nouns, not verbs: `/users` not `/getUsers`
+- [ ] Use plural nouns: `/users` not `/user`
+- [ ] Nest resources logically: `/users/{id}/orders`
+- [ ] Version your API: `/v1/users`, `/v2/users`
+- [ ] Use query params for filtering/pagination: `/users?page=1&limit=10`
+- [ ] Return appropriate status codes
+- [ ] Provide meaningful error messages
+- [ ] Support both JSON request and response
+
+**Building APIs with Python:**
+- [ ] **Flask**: Lightweight, simple for small projects
+  ```python
+  from flask import Flask, jsonify, request
+  app = Flask(__name__)
+  
+  @app.route('/users', methods=['GET'])
+  def get_users():
+      return jsonify({"users": []})
+  
+  @app.route('/users', methods=['POST'])
+  def create_user():
+      data = request.json
+      return jsonify(data), 201
+  ```
+- [ ] **FastAPI**: Modern, async, auto-documentation (REKOMENDASI UNTUK AI)
+  ```python
+  from fastapi import FastAPI, HTTPException
+  from pydantic import BaseModel
+  
+  app = FastAPI()
+  
+  class User(BaseModel):
+      name: str
+      email: str
+  
+  @app.post("/users/")
+  async def create_user(user: User):
+      return user
+  ```
+- [ ] **FastAPI advantages untuk AI**: Auto-generated OpenAPI docs, Pydantic validation, async support, dependency injection
+
+**Query Parameters vs Path Parameters:**
+- [ ] **Path params**: Required, part of URL path. `/users/{id}`
+- [ ] **Query params**: Optional, filters. `/users?role=admin&active=true`
+- [ ] **Request body**: Complex data, POST/PUT. JSON payload
+
+**Pagination:**
+- [ ] **Offset-based**: `?page=1&limit=10`
+- [ ] **Cursor-based**: `?cursor=abc123` (lebih efficient untuk large datasets)
+- [ ] **Page-based**: `?page=1` with total pages info
+
+**Rate Limiting:**
+- [ ] Implement dengan headers: `X-RateLimit-Limit`, `X-RateLimit-Remaining`
+- [ ] Return 429 when exceeded
+- [ ] Use Redis untuk distributed rate limiting
+- [ ] Exponential backoff untuk retry
+
+**API Error Handling:**
+```python
+# Standard error response format
+{
+    "error": {
+        "code": "VALIDATION_ERROR",
+        "message": "Invalid email format",
+        "details": [
+            {"field": "email", "issue": "Must contain @"}
+        ]
+    }
+}
+```
+
+**Tools untuk Testing APIs:**
+- [ ] **Postman** - GUI untuk API testing
+- [ ] **curl** - Command line HTTP tool
+- [ ] **Bruno** - Open source alternative to Postman
+- [ ] **Insomnia** - Another GUI option
+- [ ] **httpx** - Python async HTTP client
+
+**AI Engineering Specific:**
+- [ ] Rate limiting penting untuk LLM API calls ($$$)
+- [ ] Caching responses untuk reduce API costs
+- [ ] Async/await untuk parallel API calls
+- [ ] Retry logic dengan exponential backoff
+- [ ] Circuit breaker pattern untuk external APIs
+
+**Indikator Proficiency:**
+- [ ] Bisa membuat REST API dengan Flask atau FastAPI
+- [ ] Paham semua HTTP methods dan kapan pakai
+- [ ] Bisa implement authentication (JWT preferred)
+- [ ] Paham error handling dan status codes
+- [ ] Bisa consume third-party APIs
+
+**Common Patterns:**
+- [ ] **CRUD endpoints**: GET/POST/PUT/DELETE untuk resources
+- [ ] **Search/filter**: GET dengan query params
+- [ ] **Bulk operations**: POST /batch untuk multiple items
+- [ ] **File uploads**: Multipart form data atau presigned URLs
 
 #### Resource Belajar untuk Fondasi Programming
 
@@ -495,9 +1004,142 @@ Apa yang terjadi di dalam ML:
 4. TRANSFER LEARNING
    Menggunakan pengetahuan dari model yang sudah dilatih untuk tugas baru
    
-   Ini adalah fondasi dari LLM - model-model seperti GPT sudah dilatih
-   dengan huge amount of data, lalu di-fine-tune untuk tugas spesifik
+Ini adalah fondasi dari LLM - model-model seperti GPT sudah dilatih
+dengan huge amount of data, lalu di-fine-tune untuk tugas spesifik
 ```
+
+##### Breakdown Detail: Machine Learning Fundamentals
+
+**Supervised Learning:**
+- [ ] **Definition**: Learn from labeled data (input-output pairs)
+- [ ] **Types**:
+  - **Classification**: Predict discrete labels (spam/not spam, cat/dog)
+  - **Regression**: Predict continuous values (price, temperature)
+- [ ] **Workflow**:
+  1. Collect and label data
+  2. Split into train/validation/test
+  3. Choose model (Linear Regression, Decision Tree, Neural Network)
+  4. Train (fit model to data)
+  5. Evaluate (accuracy, precision, recall, F1)
+  6. Tune hyperparameters
+  7. Deploy
+- [ ] **Common Algorithms**:
+  - Linear/Logistic Regression
+  - Decision Trees, Random Forests
+  - Support Vector Machines (SVM)
+  - k-Nearest Neighbors (kNN)
+  - Gradient Boosting (XGBoost, LightGBM)
+- [ ] **Evaluation Metrics**:
+  - Classification: Accuracy, Precision, Recall, F1-Score, AUC-ROC
+  - Regression: MAE, MSE, RMSE, R²
+
+**Unsupervised Learning:**
+- [ ] **Definition**: Find patterns in data without labels
+- [ ] **Types**:
+  - **Clustering**: Group similar data points (K-Means, DBSCAN, Hierarchical)
+  - **Dimensionality Reduction**: Reduce features (PCA, t-SNE, UMAP)
+  - **Association Rules**: Find frequent patterns (Apriori, FP-Growth)
+  - **Anomaly Detection**: Find outliers (Isolation Forest, LOF)
+- [ ] **Clustering Algorithms**:
+  - K-Means: Centroid-based, requires k
+  - DBSCAN: Density-based, finds arbitrary shapes
+  - Hierarchical: Tree of clusters
+  - Gaussian Mixture Models: Probabilistic
+- [ ] **Evaluation**: Silhouette score, Davies-Bouldin index
+
+**Deep Learning:**
+- [ ] **Neural Network Basics**:
+  - Neurons: weighted sum + activation
+  - Layers: Input → Hidden → Output
+  - Weights: learned parameters
+  - Activation functions: ReLU, Sigmoid, Tanh, Softmax
+- [ ] **Training Process**:
+  1. Forward pass: compute prediction
+  2. Loss function: measure error
+  3. Backpropagation: compute gradients
+  4. Optimizer: update weights (SGD, Adam, RMSprop)
+- [ ] **Key Architectures**:
+  - **CNN**: Image recognition, spatial data
+  - **RNN/LSTM/GRU**: Sequential data, time series
+  - **Transformer**: Attention mechanism (basis LLM)
+- [ ] **Regularization**:
+  - Dropout: randomly disable neurons
+  - L1/L2: weight penalties
+  - Batch normalization: stable training
+  - Early stopping: prevent overfitting
+
+**Transfer Learning:**
+- [ ] **Definition**: Use knowledge from one task for another
+- [ ] **Approaches**:
+  - **Feature Extraction**: Use pre-trained model as feature extractor
+  - **Fine-tuning**: Train last layers of pre-trained model
+  - **Full Fine-tuning**: Train entire model
+- [ ] **Pre-trained Models for NLP**:
+  - BERT, RoBERTa, DistilBERT
+  - GPT-2, GPT-3, GPT-4
+  - T5, BART
+- [ ] **Pre-trained Models for Vision**:
+  - ResNet, VGG, EfficientNet
+  - CLIP, DALL-E
+- [ ] **Fine-tuning Best Practices**:
+  - Lower learning rate for pre-trained layers
+  - Gradual unfreezing (last to first)
+  - Use smaller dataset for fine-tuning
+  - Consider LoRA for efficiency
+
+**ML vs LLM for AI Engineer:**
+| Aspek | Traditional ML | LLM |
+|-------|---------------|-----|
+| Data | Labeled required | Minimal labels (RLHF) |
+| Training | Hours to days | Days to weeks |
+| Compute | Moderate | Very High |
+| Use Case | Specific tasks | General purpose |
+| Customization | Feature engineering | Fine-tuning, RAG |
+
+**ML Frameworks:**
+- [ ] **scikit-learn**: Traditional ML, easy to use
+- [ ] **TensorFlow**: Production, mobile deployment
+- [ ] **PyTorch**: Research, flexibility (REKOMENDASI)
+- [ ] **JAX**: High performance, Google ecosystem
+- [ ] **HuggingFace**: NLP transformers
+
+**Data Preparation:**
+- [ ] **Cleaning**: Handle missing values, outliers
+- [ ] **Normalization**: Scale features to same range
+- [ ] **Encoding**: Convert categorical to numerical
+- [ ] **Splitting**: Train/validation/test (e.g., 80/10/10)
+- [ ] **Augmentation**: Increase data diversity
+
+**ML Pipelines:**
+```python
+# Example with scikit-learn
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import cross_val_score
+
+pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('classifier', RandomForestClassifier())
+])
+
+# Cross-validation
+scores = cross_val_score(pipeline, X_train, y_train, cv=5)
+```
+
+**Indikator Proficiency:**
+- [ ] Paham perbedaan supervised vs unsupervised
+- [ ] Bisa implement basic ML pipeline (clean → train → evaluate)
+- [ ] Tau kapan pakai algorithm yang mana
+- [ ] Paham overfitting vs underfitting
+- [ ] Bisa interpret evaluation metrics
+
+**Common ML Mistakes:**
+- [ ] Data leakage (test data in training)
+- [ ] Not handling class imbalance
+- [ ] Ignoring data quality
+- [ ] Overfitting to training data
+- [ ] Wrong metric for problem
 
 #### 2.2 LLM Intuition - Bagaimana LLM Bekerja
 
@@ -599,6 +1241,121 @@ Mengapa hallucination terjadi? Karena LLM adalah **next-token predictor**. Merek
 3. Gunakan evaluation untuk mendeteksi hallucination
 4. Minta model untuk cite sources
 
+##### Breakdown Detail: LLM Intuition
+
+**Tokenization (Wajib Pahami):**
+- [ ] Text → Tokens: LLM tidak baca kata, tapi token
+- [ ] 1 token ≈ 4 karakter bahasa Inggris, 1-2 kata
+- [ ] Bahasa Indonesia: Token lebih banyak karena banyak partikel
+- [ ] API pricing: Per token, bukan per request
+- [ ] Tools: OpenAI tokenizer, tiktoken library
+- [ ] Max tokens: Context window limit
+
+**Context Window (Wajib Hafal):**
+- [ ] Maximum tokens yang bisa diproses dalam satu request
+- [ ] Includes: prompt + output + system message
+- [ ] Model populer 2026:
+  - GPT-4o: 128K tokens
+  - Claude 3.5/3.7: 200K tokens
+  - Gemini 2.0: 1M tokens
+  - Local models: Usually 4K-32K
+- [ ] Strategies untuk context panjang:
+  - Truncation (potong)
+  - Summarization (ringkas)
+  - Chunking (pecah)
+  - RAG (retrieve)
+
+**Temperature:**
+- [ ] 0.0: Almost deterministic, sama setiap kali
+- [ ] 0.3: Low creativity, focused
+- [ ] 0.5-0.7: Balanced (recommended untuk general use)
+- [ ] 0.8-1.0: Creative, varied output
+- [ ] >1.0: Chaotic, unreliable
+- [ ] Tips: Fakta/coding = 0-0.3, brainstorming = 0.7-0.9
+
+**Top-K & Top-P Sampling:**
+- [ ] Top-K: Pilih dari K token teratas
+- [ ] Top-P (Nucleus): Pilih token sampai probabilitas kumulatif = P
+- [ ] Top-P lebih flexible dari Top-K
+- [ ] Typical values: top_p=0.9, top_k=40
+
+**Model Types & Providers:**
+- [ ] **GPT Series**: OpenAI, ChatGPT, API
+  - GPT-4o: Latest, multimodal
+  - GPT-4 Turbo: Faster, cheaper
+  - GPT-3.5 Turbo: Budget option
+- [ ] **Claude**: Anthropic
+  - Claude 3.5 Sonnet: Best for coding
+  - Claude 3 Haiku: Fast, cheap
+- [ ] **Gemini**: Google
+  - Gemini 2.0 Flash: 1M context, fast
+  - Gemini Pro: Balanced
+- [ ] **Open Source**: Ollama, LM Studio, HuggingFace
+  - Llama 3, Mistral, Qwen
+  - Bisa running lokal (privacy, offline)
+
+**How LLMs Actually Work (High Level):**
+1. **Input Processing**: Text → Tokens (tokenizer)
+2. **Embedding**: Tokens → Vectors (embeddings)
+3. **Processing**: Vectors → Through Transformer layers
+4. **Output**: Probability distribution over next token
+5. **Sampling**: Pick token based on temperature/distribution
+6. **Repeat**: Until EOS token atau max tokens
+
+**Key LLM Concepts:**
+- [ ] **Attention Mechanism**: How tokens relate to each other
+- [ ] **Transformers**: Architecture berbasis attention
+- [ ] **Pre-training**: Learn language from massive text
+- [ ] **Fine-tuning**: Adapt ke specific tasks
+- [ ] **RLHF**: Reinforcement Learning from Human Feedback
+- [ ] **Alignment**: Make model helpful, harmless, honest
+
+**Hallucination - Deep Dive:**
+- [ ] **Why**: LLM = next-token predictor, bukan fact retriever
+- [ ] **Types**: Factual, logical, statistical
+- [ ] **Mitigation**:
+  - RAG (ground with real data)
+  - Chain-of-thought (reason step by step)
+  - Self-consistency (multiple paths)
+  - Cite sources (force attribution)
+  - Lower temperature (less creative)
+  - Confidence calibration
+
+**Function Calling / Tool Use:**
+- [ ] LLM bisa call external tools/APIs
+- [ ] Define functions dalam schema
+- [ ] Model decide kapan call tool
+- [ ] Results fed back ke model
+- [ ] Used untuk: web search, calculator, database queries
+
+**Context Management:**
+- [ ] System message: Global instructions
+- [ ] User message: Current request
+- [ ] Assistant message: Previous responses
+- [ ] Few-shot examples: Show, don't just tell
+- [ ] Remember: Everything dalam context window
+
+**Practical Tips:**
+- [ ] Put important info di akhir prompt
+- [ ] Use clear delimiters untuk different sections
+- [ ] Be explicit tentang format output
+- [ ] Chain-of-thought untuk complex reasoning
+- [ ] Test dengan edge cases
+
+**Indikator Proficiency:**
+- [ ] Paham token concept dan cost implications
+- [ ] Tau kapan pakai temperature yang mana
+- [ ] Bisa mitigate hallucination dengan strategies
+- [ ] Paham perbedaan model providers
+- [ ] Bisa design effective prompts berdasarkan LLM behavior
+
+**Common Mistakes:**
+- [ ] Exceed context window
+- [ ] Temperature terlalu tinggi untuk factual tasks
+- [ ] Rely on LLM untuk facts tanpa verification
+- [ ] Ignore rate limits dan pricing
+- [ ] Not handling API errors
+
 #### 2.3 Prompt Engineering Basics
 
 Detail lengkap ada di Bagian III. Untuk sementara, pahami bahwa prompt engineering adalah **daily skill** yang akan digunakan di semua aspek AI engineering.
@@ -666,6 +1423,159 @@ for chunk in response:
         print(chunk.choices[0].delta.content, end="", flush=True)
 ```
 
+##### Breakdown Detail: API Integration
+
+**OpenAI API:**
+- [ ] Install: `pip install openai`
+- [ ] Initialize: `client = OpenAI(api_key="...")`
+- [ ] Chat completions: `client.chat.completions.create()`
+- [ ] Models: `gpt-4o`, `gpt-4-turbo`, `gpt-3.5-turbo`
+- [ ] Embeddings: `client.embeddings.create()`
+- [ ] Image generation: `client.images.generate()`
+- [ ] Audio: `client.audio.transcriptions.create()`
+
+**Anthropic Claude API:**
+- [ ] Install: `pip install anthropic`
+- [ ] Initialize: `client = anthropic.Anthropic(api_key="...")`
+- [ ] Messages API: `client.messages.create()`
+- [ ] Models: `claude-3-5-sonnet`, `claude-3-haiku`
+- [ ] Streaming: `stream=True`
+- [ ] Max tokens: Required parameter
+
+**Google Gemini API:**
+- [ ] Install: `pip install google-genai`
+- [ ] Initialize: `client = genai.Client(api_key="...")`
+- [ ] Generate: `client.models.generate_content()`
+- [ ] Models: `gemini-2.0-flash`, `gemini-pro`
+- [ ] Multimodal: Text, image, audio support
+
+**API Client Patterns:**
+```python
+# Pattern 1: Simple function wrapper
+def ask_llm(prompt, model="gpt-4o"):
+    response = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+# Pattern 2: Class-based client
+class LLMClient:
+    def __init__(self, provider="openai"):
+        self.provider = provider
+        if provider == "openai":
+            self.client = OpenAI()
+        elif provider == "anthropic":
+            self.client = anthropic.Anthropic()
+    
+    def chat(self, message, **kwargs):
+        # Unified interface
+        pass
+```
+
+**Error Handling:**
+- [ ] `RateLimitError`: Retry dengan exponential backoff
+- [ ] `AuthenticationError`: Check API key
+- [ ] `APIError`: General API errors
+- [ ] `Timeout`: Increase timeout atau retry
+- [ ] Implement circuit breaker pattern
+
+**Cost Optimization:**
+- [ ] Use cheaper models untuk simple tasks
+- [ ] Cache responses untuk repeated queries
+- [ ] Minimize tokens: Shorten prompts, use compression
+- [ ] Batch requests when possible
+- [ ] Monitor usage dengan dashboards
+- [ ] Set budget alerts
+
+**Streaming:**
+```python
+# OpenAI streaming
+stream = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Write a story..."}],
+    stream=True
+)
+
+for chunk in stream:
+    if chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="", flush=True)
+```
+
+**Async Integration:**
+```python
+import asyncio
+from openai import AsyncOpenAI
+
+async def main():
+    client = AsyncOpenAI()
+    response = await client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{"role": "user", "content": "Hello!"}]
+    )
+    print(response.choices[0].message.content)
+
+asyncio.run(main())
+```
+
+**Best Practices:**
+- [ ] Store API keys di environment variables atau .env
+- [ ] Never commit API keys to git
+- [ ] Use dotenv: `load_dotenv()`
+- [ ] Implement retry logic
+- [ ] Log API calls untuk debugging
+- [ ] Handle rate limits gracefully
+- [ ] Monitor costs regularly
+
+**API Key Management:**
+```python
+# Option 1: Environment variable
+import os
+api_key = os.environ.get("OPENAI_API_KEY")
+
+# Option 2: .env file
+from dotenv import load_dotenv
+load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
+
+# Option 3: config file (NEVER commit!)
+# api_config.json
+```
+
+**Rate Limiting:**
+- [ ] OpenAI: 500 requests/min (varies by tier)
+- [ ] Implement exponential backoff
+```python
+import time
+import random
+
+def retry_with_backoff(func, max_retries=3):
+    for i in range(max_retries):
+        try:
+            return func()
+        except RateLimitError:
+            wait = (2 ** i) + random.uniform(0, 1)
+            time.sleep(wait)
+    raise Exception("Max retries exceeded")
+```
+
+**Indikator Proficiency:**
+- [ ] Bisa connect ke minimal 2 LLM providers
+- [ ] Implement error handling dan retry logic
+- [ ] Paham streaming vs non-streaming
+- [ ] Manage API costs effectively
+- [ ] Use environment variables untuk secrets
+
+**Common API Parameters:**
+- [ ] `model`: Which model to use
+- [ ] `messages`: Conversation history
+- [ ] `temperature`: Creativity level
+- [ ] `max_tokens`: Maximum response length
+- [ ] `top_p`: Nucleus sampling
+- [ ] `frequency_penalty`: Reduce repetition
+- [ ] `presence_penalty`: Encourage topic diversity
+- [ ] `stop`: Stop sequences
+
 #### Projekt Milestone untuk Tahap 2
 
 Setelah menyelesaikan fondasi AI & LLM, Anda harus bisa:
@@ -680,11 +1590,13 @@ Setelah menyelesaikan fondasi AI & LLM, Anda harus bisa:
 
 | Channel | Deskripsi | Link |
 |---------|-----------|------|
-| **Sekolah AI Indonesia** | Channel Ruby Thalia - Kursus PyTorch, HuggingFace, dan NLP tasks dalam Bahasa Indonesia. Cocok untuk belajar ML/DL fundamentals | [youtube.com/@rubythalib33](https://youtube.com/@rubythalib33) |
-| **Dicoding Indonesia** | Channel resmi Dicoding - Tutorial AI, ML, dan Python. Learning path terstruktur dari beginner hingga advanced | [youtube.com/@dicoding](https://youtube.com/@dicoding) |
-| **Dea Afrizal** | Tutorial AI dan data science dalam Bahasa Indonesia dengan penjelasan yang clear dan practical | [youtube.com/@DeaAfrizal](https://youtube.com/@DeaAfrizal) |
-| **TensorCourse Indonesia** | Tutorial TensorFlow dan deep learning dalam Bahasa Indonesia | [youtube.com/@TensorCourseIndonesia](https://youtube.com/@TensorCourseIndonesia) |
-| **Indonesia AI Course** | Kumpulan tutorial AI dan machine learning berbahasa Indonesia untuk pemula | [youtube.com/@IndonesiaAICourse](https://youtube.com/@IndonesiaAICourse) |
+| **Dicoding Indonesia** | Channel resmi Dicoding - Tutorial AI, ML, dan Python. Learning path terstruktur dari beginner hingga advanced. Paling direkomendasikan | [youtube.com/@dicoding](https://youtube.com/@dicoding) |
+| **BISA AI Academy** | Kursus AI, Data Science, Python, GenAI. Platform kursus resmi terdaftar Kemenaker. YouTube berisi tutorial dan webinar | [youtube.com/@bisaai](https://youtube.com/@bisaai) |
+| **Indonesia AI Society (IAIS)** | Webinar AI, LLM, AI governance dari praktisi dan akademisi Indonesia. Event reguler dan talk series | [youtube.com/c/IndonesiaAISociety](https://youtube.com/c/IndonesiaAISociety) |
+| **Data Science Indonesia** | Community channel dengan tutorial ML, data science, dan event workshop. Diskusi dari praktisi industri | [youtube.com/@DataScienceIndonesia](https://youtube.com/@DataScienceIndonesia) |
+| **Halovina** | Tutorial Python, FastAPI, Gemini, dan AI application development. Aktif upload konten AI praktis 2025 | [halovina.com](https://halovina.com) |
+
+> **Catatan:** Channel ~~Sekolah AI Indonesia~~, ~~TensorCourse Indonesia~~, dan ~~Indonesia AI Course~~ dihapus karena tidak ditemukan atau tidak aktif.
 
 #### Resource Tambahan untuk LLM & Prompt Engineering
 
@@ -825,6 +1737,152 @@ for doc in result["source_documents"]:
     print(f"- {doc.metadata.get('source', 'Unknown')}")
 ```
 
+##### Breakdown Detail: RAG Architecture
+
+**RAG Pipeline Stages:**
+
+**Stage 1: Document Loading**
+- [ ] Load documents dari various sources
+- [ ] Supported formats: PDF, DOCX, TXT, HTML, Markdown, CSV
+- [ ] Use LangChain document loaders:
+  - `PyPDFLoader` untuk PDF
+  - `UnstructuredURLLoader` untuk web pages
+  - `Docx2txtLoader` untuk Word docs
+  - `CSVLoader` untuk CSV files
+- [ ] Preserve metadata (source, page number, etc.)
+
+**Stage 2: Text Chunking**
+- [ ] Split documents jadi smaller pieces
+- [ ] **Chunk size**: Typically 500-1500 characters
+- [ ] **Overlap**: 100-300 characters antar chunks
+- [ ] **Strategies**:
+  - `RecursiveCharacterTextSplitter`: Recursive splitting
+  - `CharacterTextSplitter`: Split by character count
+  - `TokenTextSplitter`: Split by token count (better for LLMs)
+- [ ] Considerations:
+  - Too small: Lost context
+  - Too large: Exceed context window, poor retrieval
+  - Maintain semantic coherence
+
+**Stage 3: Embedding Generation**
+- [ ] Convert text chunks → numerical vectors
+- [ ] Embedding models:
+  - **OpenAI**: `text-embedding-3-small`, `text-embedding-3-large`
+  - **Google**: `embedding-001`, `text-embedding-preview`
+  - **Open source**: `sentence-transformers` (all-MiniLM-L6-v2)
+- [ ] Embedding dimensions: 384, 768, 1536, 3072
+- [ ] Cost: Charged per 1K tokens
+
+**Stage 4: Vector Storage**
+- [ ] Store embeddings in vector database
+- [ ] Each vector linked to original chunk
+- [ ] Metadata indexing untuk filtering
+- [ ] Persist untuk reuse
+
+**Stage 5: Query Processing**
+- [ ] User query → Embedding vector
+- [ ] Same embedding model untuk consistency
+
+**Stage 6: Retrieval**
+- [ ] Similarity search antara query dan stored vectors
+- [ ] **Similarity metrics**:
+  - Cosine similarity: Most common
+  - Euclidean distance: Direct distance
+  - Dot product: Fast, good for normalized vectors
+- [ ] Return top-K most similar chunks
+- [ ] **K value**: Typically 3-10
+
+**Stage 7: Augmentation**
+- [ ] Combine retrieved context + user query
+- [ ] Prompt template:
+```
+Context: {retrieved_chunks}
+Question: {user_question}
+Answer based on the context provided.
+```
+- [ ] Include source references
+
+**Stage 8: Generation**
+- [ ] Send augmented prompt ke LLM
+- [ ] LLM generates answer based on context
+- [ ] Optional: Force citation
+
+**Advanced RAG Patterns:**
+
+**1. Query Expansion:**
+- [ ] HyDE (Hypothetical Document Embeddings)
+- [ ] Multi-query retrieval
+- [ ] Query decomposition
+
+**2. Retrieval Enhancement:**
+- [ ] Sentence window retrieval
+- [ ] Parent document retriever
+- [ ] Auto-merging retrieval
+- [ ] Ensemble retrieval (multiple retrievers)
+
+**3. Re-ranking:**
+- [ ] Apply ML model untuk re-rank results
+- [ ] Tools: Cohere Rerank, BGE-Reranker
+- [ ] Cross-encoder vs bi-encoder
+
+**4. Hybrid Search:**
+- [ ] Combine dense (embedding) + sparse (BM25) retrieval
+- [ ] Better than either alone
+- [ ] Tools: Weaviate, Qdrant support hybrid
+
+**5. Iterative RAG:**
+- [ ] Generate, critique, refine
+- [ ] Multi-step reasoning
+- [ ] Self-correction loops
+
+**6. Graph RAG:**
+- [ ] Extract entities dan relationships
+- [ ] Build knowledge graph
+- [ ] Query graph untuk context
+
+**7. Reranking & Filtering:**
+- [ ] Remove irrelevant chunks
+- [ ] Diversify retrieved results
+- [ ] Max marginal relevance
+
+**Evaluation Metrics:**
+- [ ] **Retrieval Quality**:
+  - Context Precision: Relevant docs ranked high
+  - Context Recall: All relevant docs retrieved
+- [ ] **Generation Quality**:
+  - Faithfulness: Answer matches context
+  - Answer Relevancy: Answer addresses question
+  - Hallucination Rate: Facts from context
+
+**Common RAG Pitfalls:**
+- [ ] Poor chunking strategy
+- [ ] Wrong embedding model
+- [ ] Insufficient retrieval (K terlalu kecil)
+- [ ] Irrelevant context included
+- [ ] Not handling duplicates
+- [ ] Ignoring metadata filtering
+
+**RAG Optimization Tips:**
+- [ ] Experiment dengan chunk sizes
+- [ ] Use specialized embeddings (e.g., CODE-berta untuk code)
+- [ ] Implement query expansion
+- [ ] Add re-ranking step
+- [ ] Use hybrid search
+- [ ] Implement self-query for metadata filtering
+
+**Tools Ecosystem:**
+- [ ] **LangChain**: Integrations dengan 50+ vector DBs
+- [ ] **LlamaIndex**: More RAG-focused abstractions
+- [ ] **Haystack**: Open source, by deepset
+- [ ] **Embedchain**: Simplified RAG framework
+
+**Indikator Proficiency:**
+- [ ] Bisa build basic RAG pipeline from scratch
+- [ ] Paham semua stages dari loading ke generation
+- [ ] Tau kapan dan bagaimana optimize
+- [ ] Bisa evaluate retrieval quality
+- [ ] Implement advanced patterns (hybrid, rerank)
+
 #### 3.2 Vector Databases
 
 Vector database adalah "database khusus" untuk menyimpan embeddings. Berikut perbandingannya:
@@ -856,6 +1914,159 @@ Managed Service?        Chroma atau
 Pinecone atau
 Weaviate Cloud
 ```
+
+##### Breakdown Detail: Vector Databases
+
+**What is a Vector Database?**
+- [ ] Special database optimized untuk similarity search
+- [ ] Stores high-dimensional vectors (embeddings)
+- [ ] Enables fast nearest neighbor search
+- [ ] Used for semantic search, recommendations, RAG
+
+**Core Concepts:**
+
+**1. Embeddings:**
+- [ ] Text → Numbers via embedding model
+- [ ] Similar text → Similar vectors
+- [ ] Distance measures similarity
+- [ ] Dimensionality: 256 to 3072+
+
+**2. Indexing:**
+- [ ] HNSW (Hierarchical Navigable Small World)
+- [ ] IVF (Inverted File Index)
+- [ ] PQ (Product Quantization)
+- [ ] ANNOY (Approximate Nearest Neighbors Oh Yeah)
+
+**3. Similarity Metrics:**
+- [ ] **Cosine Similarity**: Angle between vectors (0 to 1)
+- [ ] **Dot Product**: Raw similarity (-inf to +inf)
+- [ ] **Euclidean Distance**: Straight-line distance
+- [ ] Cosine most common untuk text embeddings
+
+**Popular Vector Databases:**
+
+**1. Pinecone:**
+- [ ] Managed cloud service
+- [ ] Serverless option available
+- [ ] Easy setup, minimal ops
+- [ ] Good for production
+- [ ] Pricing: Based on storage + queries
+
+**2. Weaviate:**
+- [ ] Open source (self-hosted)
+- [ ] Cloud or local
+- [ ] Built-in modules (vectorizer, qna)
+- [ ] Hybrid search support
+- [ ] GraphQL API
+
+**3. Chroma:**
+- [ ] Open source, local-first
+- [ ] Built for prototyping
+- [ ] Python native
+- [ ] Simple API
+- [ ] Good untuk belajar
+
+**4. Qdrant:**
+- [ ] Rust-based, high performance
+- [ ] Open source
+- [ ] Cloud or self-hosted
+- [ ] Good filtering capabilities
+- [ ] Named vectors support
+
+**5. FAISS (Facebook AI Similarity Search):**
+- [ ] Library, not database
+- [ ] Very fast, memory efficient
+- [ ] CPU and GPU support
+- [ ] No server/client
+- [ ] Best for large-scale experiments
+
+**6. Milvus:**
+- [ ] Open source
+- [ ] Cloud or local
+- [ ] Scalable to billions
+- [ ] Strong in production
+- [ ] Good ecosystem
+
+**Operations:**
+
+**Adding Data:**
+```python
+# Pinecone
+pc_index.upsert([
+    {"id": "vec1", "values": [0.1, 0.2, ...], "metadata": {"text": "..."}},
+    {"id": "vec2", "values": [0.3, 0.4, ...], "metadata": {"text": "..."}}
+])
+
+# Chroma
+chroma_collection.add(
+    ids=["id1", "id2"],
+    embeddings=[[0.1, 0.2, ...], [0.3, 0.4, ...]],
+    documents=["text1", "text2"]
+)
+```
+
+**Querying:**
+```python
+# Similarity search
+results = index.query(
+    vector=[0.1, 0.2, ...],
+    top_k=5,
+    filter={"category": "news"}
+)
+```
+
+**Filtering:**
+- [ ] Pre-filter: Filter sebelum similarity search
+- [ ] Post-filter: Filter results setelah search
+- [ ] Metadata indexing for efficiency
+- [ ] Supported operators: $eq, $ne, $gt, $lt, $in, $and, $or
+
+**Management:**
+
+**Indexing Strategies:**
+- [ ] Batch inserts for efficiency
+- [ ] Index optimization periodically
+- [ ] Monitor index size dan performance
+- [ ] Backup and restore procedures
+
+**Performance Tuning:**
+- [ ] Adjust HNSW parameters (efConstruction, M)
+- [ ] Quantization untuk reduce memory
+- [ ] Partition data by namespace/tenant
+- [ ] Use approximate search (speed) vs exact (accuracy)
+
+**Scaling:**
+- [ ] Horizontal: Sharding
+- [ ] Vertical: Larger instances
+- [ ] Replication for HA
+- [ ] Consider serverless untuk variable load
+
+**When to Use Each:**
+
+| Use Case | Recommended |
+|----------|-------------|
+| Quick prototype | Chroma |
+| Learning/experiment | Chroma, FAISS |
+| Production small-medium | Pinecone, Qdrant |
+| Production large scale | Weaviate, Milvus, Pinecone |
+| Need filtering | Qdrant, Weaviate |
+| Budget constrained | Chroma, FAISS, self-hosted |
+| Enterprise managed | Pinecone, Azure AI Search |
+
+**Best Practices:**
+- [ ] Use same embedding model untuk index dan query
+- [ ] Normalize vectors for cosine similarity
+- [ ] Index dalam batches, not one by one
+- [ ] Monitor query latency dan throughput
+- [ ] Implement proper error handling
+- [ ] Set up alerts untuk anomalies
+
+**Indikator Proficiency:**
+- [ ] Paham difference antara vector DB dan relational DB
+- [ ] Bisa setup dan use minimal 2 vector DBs
+- [ ] Tau kapan pakai managed vs self-hosted
+- [ ] Paham indexing strategies
+- [ ] Bisa optimize query performance
 
 #### 3.3 LangChain & LlamaIndex
 
@@ -902,6 +2113,214 @@ result = agent("Siapa presiden Indonesia saat ini dan apa Ibu kotanya?")
 print(result)
 ```
 
+##### Breakdown Detail: LangChain & LlamaIndex
+
+**LangChain Core Components:**
+
+**1. Models (LLM Wrappers):**
+- [ ] Unified interface untuk berbagai LLM providers
+- [ ] OpenAI, Anthropic, Google, Azure, Cohere, HuggingFace
+- [ ] Chat models vs LLM models
+- [ ] Streaming support
+```python
+from langchain_openai import ChatOpenAI
+llm = ChatOpenAI(model="gpt-4o", temperature=0)
+```
+
+**2. Prompts:**
+- [ ] PromptTemplate: Dynamic prompt construction
+- [ ] ChatPromptTemplate: Multi-turn conversations
+- [ ] Few-shot prompts dengan Example Selectors
+```python
+from langchain.prompts import PromptTemplate
+template = PromptTemplate.from_template(
+    "Summarize this: {text}"
+)
+```
+
+**3. Chains:**
+- [ ] LLMChain: Simple chain (prompt → LLM → output)
+- [ ] SequentialChain: Chain of chains
+- [ ] Custom chains untuk complex workflows
+```python
+chain = LLMChain(llm=llm, prompt=template)
+result = chain.invoke({"text": "Hello world"})
+```
+
+**4. Agents:**
+- [ ] Agent: LLM + Tools decision making
+- [ ] Tool: Functions agent can use
+- [ ] AgentExecutor: Runs agent loop
+- [ ] Various agent types (ReAct, OpenAI Functions, etc.)
+
+**5. Memory:**
+- [ ] ChatMessageHistory
+- [ ] BufferMemory, ConversationBufferWindowMemory
+- [ ] VectorStore-backed memory
+- [ ] Entity memory
+```python
+from langchain.memory import ChatMessageHistory
+memory = ChatMessageHistory()
+memory.add_user_message("Hi!")
+memory.add_ai_message("Hello!")
+```
+
+**6. Document Loaders:**
+- [ ] 50+ integrations (PDF, CSV, JSON, web, etc.)
+- [ ] Unified interface
+```python
+from langchain.document_loaders import PyPDFLoader
+loader = PyPDFLoader("document.pdf")
+docs = loader.load()
+```
+
+**7. Embeddings:**
+- [ ] OpenAI, HuggingFace, Cohere embeddings
+- [ ] Cache embeddings untuk performance
+```python
+from langchain.embeddings import OpenAIEmbeddings
+embeddings = OpenAIEmbeddings()
+```
+
+**8. VectorStores:**
+- [ ] 40+ integrations (Pinecone, Chroma, FAISS, etc.)
+- [ ] Similarity search abstraction
+```python
+from langchain.vectorstores import Chroma
+vectorstore = Chroma.from_documents(docs, embeddings)
+```
+
+**LangChain Expression Language (LCEL):**
+- [ ] Chain components dengan `|` operator
+- [ ] Runnable interface untuk semua components
+- [ ] Async support
+```python
+chain = prompt | llm | output_parser
+
+# With RAG
+rag_chain = (
+    {"context": retriever, "question": RunnablePassthrough()}
+    | prompt
+    | llm
+    | StrOutputParser()
+)
+```
+
+**LangChain for RAG:**
+```python
+# Full RAG pipeline
+from langchain.chains import RetrievalQA
+
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    chain_type="stuff",  # or "map_reduce", "refine"
+    retriever=vectorstore.as_retriever(),
+    return_source_documents=True
+)
+```
+
+**LangChain for Agents:**
+```python
+from langchain.agents import AgentType, initialize_agent, Tool
+
+# Define tools
+tools = [
+    Tool(
+        name="Calculator",
+        func=calculate_func,
+        description="Use for math calculations"
+    ),
+    Tool(
+        name="Search",
+        func=search_func,
+        description="Use for web search"
+    )
+]
+
+# Create agent
+agent = initialize_agent(
+    tools, llm,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True
+)
+```
+
+**LlamaIndex vs LangChain:**
+
+| Feature | LangChain | LlamaIndex |
+|---------|-----------|------------|
+| Philosophy | Composable, flexible | Query-optimized |
+| Learning Curve | Steeper | Gentler |
+| Documentation | More fragmented | More centralized |
+| RAG Focus | General purpose | RAG-first |
+| Agent Framework | More mature | Growing |
+| Best For | Complex multi-step apps | Document Q&A |
+
+**When to Use Each:**
+- [ ] **LangChain**: Complex agents, custom chains, general LLM apps
+- [ ] **LlamaIndex**: Document-heavy apps, RAG, querying
+- [ ] **Both**: Can use together (LangChain + LlamaIndex)
+
+**LangChain Best Practices:**
+- [ ] Use LCEL untuk clean chain definitions
+- [ ] Implement proper error handling
+- [ ] Add callback handlers untuk logging
+- [ ] Use async untuk performance
+- [ ] Stream responses untuk better UX
+- [ ] Implement retries for reliability
+
+**LangChain Callbacks:**
+```python
+from langchain.callbacks import StdOutCallbackHandler
+from langchain.chains import LLMChain
+
+handler = StdOutCallbackHandler()
+chain = LLMChain(llm=llm, prompt=prompt, callbacks=[handler])
+```
+
+**Common LangChain Patterns:**
+
+**1. Router:**
+```python
+from langchain.chains import RouterChain
+from langchain.prompts import PromptTemplate
+
+router_chain = RouterChain(
+    default_chain=general_chain,
+    route_chains={
+        "math": math_chain,
+        "code": code_chain
+    }
+)
+```
+
+**2. Summarization:**
+```python
+from langchain.chains.summarize import load_summarize_chain
+chain = load_summarize_chain(llm, chain_type="map_reduce")
+```
+
+**3. Question Answering:**
+```python
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    retriever=vectorstore.as_retriever()
+)
+```
+
+**Debugging LangChain:**
+- [ ] Set `verbose=True` untuk trace execution
+- [ ] Use LangSmith untuk cloud tracing
+- [ ] Check intermediate outputs
+- [ ] Validate prompt inputs
+
+**Indikator Proficiency:**
+- [ ] Build basic chain dengan LangChain
+- [ ] Create simple agent dengan tools
+- [ ] Implement RAG dengan retrievers
+- [ ] Use LCEL untuk chain composition
+- [ ] Debug dan trace chain execution
+
 #### 3.4 AI Agents Fundamentals
 
 Detail lengkap ada di Bagian IV. Untuk sekarang, pahami bahwa agents adalah step evolution dari RAG - mereka bisa **mengambil tindakan** bukan hanya retrieve information.
@@ -945,6 +2364,201 @@ agent = initialize_agent(
 agent("Berapa suhu rata-rata di Jakarta hari ini dalam Fahrenheit?")
 ```
 
+##### Breakdown Detail: AI Agents Fundamentals
+
+**What are AI Agents?**
+- [ ] System that uses LLM to decide action sequence
+- [ ] Autonomous: Operates without human intervention
+- [ ] Tool-using: Can call external functions/APIs
+- [ ] Goal-oriented: Works towards objectives
+- [ ] Iterative: Loop of think → act → observe
+
+**Agent Architecture:**
+
+**1. Agent Core:**
+- [ ] LLM sebagai "brain"
+- [ ] Decision making engine
+- [ ] Receives: Task + Tools + Context
+- [ ] Outputs: Action(s) to take
+
+**2. Tools:**
+- [ ] Functions agent can call
+- [ ] Each tool: name, description, implementation
+- [ ] Tool descriptions help LLM decide
+- [ ] Types: Search, Calculator, API calls, File ops
+
+**3. Memory:**
+- [ ] Short-term: Conversation history
+- [ ] Long-term: Persistent storage
+- [ ] Session state
+- [ ] Entity memory
+
+**4. Planning:**
+- [ ] Goal decomposition
+- [ ] Task prioritization
+- [ ] Step-by-step reasoning
+- [ ] Reflection and self-correction
+
+**Agent Loop (ReAct Pattern):**
+```
+1. INPUT: Task dari user
+2. THINK: LLM decides action
+3. ACT: Execute action (call tool)
+4. OBSERVE: Get result
+5. REPEAT: Until task complete
+```
+
+**Agent Types:**
+
+**1. ReAct (Reason + Act):**
+- [ ] Explicit reasoning trace
+- [ ] Action based on reasoning
+- [ ] Verbose, shows thought process
+```python
+agent = initialize_agent(
+    tools, llm,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+)
+```
+
+**2. OpenAI Functions Agent:**
+- [ ] Uses function calling
+- [ ] More structured
+- [ ] Better for structured outputs
+```python
+agent = initialize_agent(
+    tools, llm,
+    agent=AgentType.OPENAI_FUNCTIONS
+)
+```
+
+**3. Conversational Agent:**
+- [ ] Maintains conversation history
+- [ ] Memory integrated
+- [ ] Good for chatbots
+```python
+from langchain.agents import ConversationalChatAgent
+```
+
+**4. Plan-and-Execute Agent:**
+- [ ] Plans entire sequence first
+- [ ] Then executes
+- [ ] Better for complex multi-step
+```python
+# LangChain implementation
+from langchain_experimental.plan_and_execute import PlanAndExecute
+```
+
+**5. BabyAGI / AutoGPT-style:**
+- [ ] Autonomous task creation
+- [ ] Task prioritization
+- [ ] Self-improvement loop
+- [ ] Experimental, not production-ready
+
+**Tool Definition Best Practices:**
+- [ ] Clear, descriptive tool names
+- [ ] Comprehensive descriptions
+- [ ] Input/output schemas
+- [ ] Error handling
+- [ ] Timeout handling
+```python
+Tool(
+    name="search_web",
+    func=search_function,
+    description="""Search the web for information.
+    Use when: User asks about current events,
+    real-time data, or information not in documents.
+    Input: Search query string
+    Output: List of relevant results"""
+)
+```
+
+**Multi-Agent Systems:**
+
+**1. Supervisor Pattern:**
+```
+User → Supervisor Agent → Sub-Agent 1
+                        → Sub-Agent 2
+                        → Sub-Agent 3
+```
+
+**2. Sequential Pattern:**
+```
+Agent A → Output → Agent B → Output → Agent C
+```
+
+**3. Parallel Pattern:**
+```
+           → Agent A → Result A
+User ──────→ Agent B → Result B
+           → Agent C → Result C
+```
+
+**4. Hierarchical Pattern:**
+```
+Manager
+├── Worker 1
+│   ├── Specialist A
+│   └── Specialist B
+└── Worker 2
+```
+
+**Agent Safety & Guardrails:**
+- [ ] Tool permission systems
+- [ ] Output validation
+- [ ] Rate limiting
+- [ ] Cost controls
+- [ ] Sandbox execution
+- [ ] Human-in-the-loop untuk critical actions
+
+**Common Agent Pitfalls:**
+- [ ] Infinite loops (agent stuck repeating)
+- [ ] Tool hallucination (invalid tool calls)
+- [ ] Context overflow
+- [ ] Unclear tool descriptions
+- [ ] Too many tools (confusion)
+- [ ] Not handling errors gracefully
+
+**Agent Evaluation:**
+- [ ] Task completion rate
+- [ ] Number of steps to complete
+- [ ] Tool usage accuracy
+- [ ] Error recovery rate
+- [ ] Cost per task
+
+**Production Considerations:**
+- [ ] Timeout for each step
+- [ ] Maximum iterations
+- [ ] Fallback strategies
+- [ ] Logging and tracing
+- [ ] Cost monitoring
+- [ ] Human oversight
+
+**LangGraph (State-based Agents):**
+- [ ] Graph-based workflow
+- [ ] Nodes = states or actions
+- [ ] Edges = transitions
+- [ ] Better than LangChain Chains for complex agents
+```python
+from langgraph.graph import StateGraph
+
+# Define state
+class AgentState(TypedDict):
+    messages: list
+    
+# Build graph
+graph = StateGraph(AgentState)
+graph.add_node("agent", agent_node)
+graph.add_edge("agent", END)
+```
+
+**Indikator Proficiency:**
+- [ ] Build simple agent dengan tools
+- [ ] Implement ReAct pattern
+- [ ] Design effective tool descriptions
+- [ ] Handle agent errors dan loops
+- [ ] Use memory dalam agent
+
 #### Projekt Milestone untuk Tahap 3
 
 Setelah menyelesaikan building AI systems, Anda harus bisa:
@@ -957,21 +2571,26 @@ Setelah menyelesaikan building AI systems, Anda harus bisa:
 
 #### Channel YouTube Bahasa Indonesia - RAG, LangChain & AI Systems
 
+> **PERHATIAN KRUSIAL:** Channel YouTube Indonesia yang secara khusus membahas **RAG, LangChain, AI Agents, dan LangGraph dalam Bahasa Indonesia sangat sangat terbatas**. Hampir **tidak ada** channel ID yang konsisten membuat konten topik ini. Berikut yang terbaik yang tersedia, tapi untuk pembelajaran mendalam **WAJIB menggunakan channel English**.
+
 | Channel | Deskripsi | Link |
 |---------|-----------|------|
-| **Indonesia AI Community** | Tutorial RAG, LangChain, dan implementasi AI systems. komunitas aktif untuk diskusi | [youtube.com/@IndonesiaAICOMMUNITY](https://youtube.com/@IndonesiaAICOMMUNITY) |
-| **Halovina** | Tutorial LangChain dan Gemini dalam Bahasa Indonesia. Langkah demi langkah untuk pemula | [halovina.com](https://halovina.com) |
-| **Inixindo Indonesia** | Workshop dan tutorial AI agents dan RAG applications untuk enterprise | [youtube.com/@InixindoIndonesia](https://youtube.com/@InixindoIndonesia) |
-| **Sekolah AI Indonesia** | Playlist lengkap PyTorch, HuggingFace, dan NLP tasks | [youtube.com/@rubythalib33](https://youtube.com/@rubythalib33) |
-| **Data Science Indonesia** | Community channel dengan tutorial vector databases, embedding, dan RAG implementation | [youtube.com/@DataScienceIndonesia](https://youtube.com/@DataScienceIndonesia) |
+| **Halovina** | Channel terbaik ID untuk LangChain & Gemini. Tutorial FastAPI + Gemini, MCP Server, LangChain hands-on. Aktif 2025 | [halovina.com](https://halovina.com) |
+| **Inixindo Indonesia** | Workshop enterprise RAG dan AI Agents. Pelatihan formal, bukan konten YouTube reguler. Untuk yang serius dan siap bayar | [inixindo.id/courses](https://www.inixindo.id/courses/building-intelligent-applications-with-rag-and-ai-agents/) |
+| **Indonesia AI Society (IAIS)** | Webinar occasion tentang AI Agents dan LLM topics dari praktisi Indonesia. Tidak rutin tapi berkualitas | [youtube.com/c/IndonesiaAISociety](https://youtube.com/c/IndonesiaAISociety) |
+| **Data Science Indonesia** | Occasional tutorial vector databases dan embedding dari komunitas | [youtube.com/@DataScienceIndonesia](https://youtube.com/@DataScienceIndonesia) |
+
+> **Rekomendasi untuk RAG/LangChain/AI Agents:** Lihat section "Resource Tambahan - RAG & LangChain (English)" di bawah. Channel English seperti **LangChain**, **Greg lima**, dan **NeuralNine** jauh lebih lengkap dan up-to-date.
 
 #### Resource Tambahan - RAG & LangChain (English)
 
 | Channel | Deskripsi | Link |
 |---------|-----------|------|
-| **LangChain** | Channel resmi LangChain - Tutorial terbaru tentang agents, RAG, dan chains | [youtube.com/@langchain](https://youtube.com/@langchain) |
-| **Greg lima** | Tutorial praktis LangChain dan RAG implementation step-by-step | [youtube.com/@greglima](https://youtube.com/@greglima) |
-| **ChatGPT** | Tips dan tricks untuk maximize hasil dari AI models | [youtube.com/@chatgpt](https://youtube.com/@chatgpt) |
+| **LangChain** | Channel resmi LangChain - Tutorial terbaru tentang agents, RAG, LangGraph, dan MCP | [youtube.com/@langchain](https://youtube.com/@langchain) |
+| **Greg lima** | Tutorial praktis LangChain dan RAG implementation step-by-step. Paling direkomendasikan untuk pemula | [youtube.com/@greglima](https://youtube.com/@greglima) |
+| **NeuralNine** | LangChain crash course, AI agents, Python AI tutorials. Konten sangat up-to-date untuk 2025-2026 | [youtube.com/@NeuralNine](https://youtube.com/@NeuralNine) |
+| **Learn Prompting** | Prompt engineering techniques dari beginner hingga advanced. Fondasi wajib | [youtube.com/@learnprompting](https://youtube.com/@learnprompting) |
+| **HuggingFace** | Transformers, fine-tuning, ML. Channel resmi HuggingFace | [youtube.com/@HuggingFace](https://youtube.com/@HuggingFace) |
 
 ---
 
@@ -1005,6 +2624,193 @@ MLOps Lifecycle:
                   └──────────────┘
 ```
 
+##### Breakdown Detail: MLOps
+
+**MLOps vs DevOps:**
+- [ ] DevOps: Software deployment
+- [ ] MLOps: ML system lifecycle
+- [ ] Additional challenges: Data versioning, model versioning, retraining
+
+**MLOps Lifecycle:**
+
+**1. Development:**
+- [ ] Experiment tracking
+- [ ] Data validation
+- [ ] Feature engineering
+- [ ] Model training
+- [ ] Hyperparameter tuning
+
+**2. Deployment:**
+- [ ] Model serialization
+- [ ] Containerization
+- [ ] API serving
+- [ ] Batch vs online inference
+
+**3. Monitoring:**
+- [ ] Model performance
+- [ ] Data drift detection
+- [ ] Concept drift
+- [ ] System metrics
+
+**4. Retraining:**
+- [ ] Trigger conditions
+- [ ] Automated retraining
+- [ ] Model validation
+- [ ] Rollback procedures
+
+**Experiment Tracking:**
+
+**Tools:**
+- [ ] **MLflow**: Open source, popular
+- [ ] **Weights & Biases**: Cloud, great UI
+- [ ] **Neptune**: Cloud, lightweight
+- [ ] **TensorBoard**: For TensorFlow/PyTorch
+- [ ] **DVC**: Git-like for data/models
+
+**What to Track:**
+- [ ] Parameters (hyperparameters)
+- [ ] Metrics (accuracy, loss, etc.)
+- [ ] Artifacts (models, datasets)
+- [ ] Code versions
+- [ ] Environment details
+
+**MLflow Example:**
+```python
+import mlflow
+
+mlflow.start_run():
+    # Log parameters
+    mlflow.log_param("learning_rate", 0.01)
+    mlflow.log_param("epochs", 100)
+    
+    # Training
+    model = train_model(...)
+    
+    # Log metrics
+    mlflow.log_metric("accuracy", 0.95)
+    mlflow.log_metric("f1", 0.92)
+    
+    # Log model
+    mlflow.sklearn.log_model(model, "model")
+```
+
+**Model Versioning:**
+
+**Approaches:**
+- [ ] File-based: model_v1.pkl, model_v2.pkl
+- [ ] Model registry: Central catalog
+- [ ] DVC: Git for data/models
+- [ ] Cloud storage: S3, GCS with versioning
+
+**Model Registry (MLflow):**
+```python
+# Register model
+mlflow.register_model("runs:/xxx/model", "MyModel")
+
+# Load specific version
+model = mlflow.pyfunc.load_model("models:/MyModel/1")
+```
+
+**Data Versioning:**
+
+**DVC (Data Version Control):**
+```bash
+# Initialize
+dvc init
+
+# Add data
+dvc add data/raw/
+
+# Commit with git
+git add data/raw.dvc
+git commit -m "Add raw data v1"
+
+# Track changes
+dvc repro
+dvc push
+dvc pull
+```
+
+**Feature Store:**
+- [ ] Centralized feature definitions
+- [ ] Reuse features across models
+- [ ] Feature versioning
+- [ ] Tools: Feast, Tecton, Hopsworks
+
+**Model Training Pipeline:**
+
+**Components:**
+1. Data extraction
+2. Data validation
+3. Data transformation
+4. Model training
+5. Model evaluation
+6. Model registration
+
+**Orchestration:**
+- [ ] **Airflow**: Full-featured, popular
+- [ ] **Prefect**: Modern, Pythonic
+- [ ] **Dagster**: Strong data focus
+- [ ] **Kubeflow Pipelines**: For Kubernetes
+
+**Deployment Patterns:**
+
+**1. Batch Inference:**
+- [ ] Process large datasets offline
+- [ ] Save results to database
+- [ ] Schedule dengan cron/airflow
+- [ ] Good for non-time-sensitive tasks
+
+**2. Online Inference (Real-time):**
+- [ ] API endpoint
+- [ ] Low latency
+- [ ] Scalable
+- [ ] Options: Flask, FastAPI, TorchServe
+
+**3. Streaming Inference:**
+- [ ] Real-time with message queue
+- [ ] Kafka, Kinesis integration
+- [ ] Async processing
+
+**CI/CD for ML:**
+
+**Pipeline:**
+1. Code commit → Unit tests
+2. Data validation
+3. Model training
+4. Model evaluation (gate)
+5. Model registration
+6. Deployment
+7. Smoke tests
+8. Monitoring
+
+**Testing ML Systems:**
+- [ ] Unit tests: Functions, transformations
+- [ ] Integration tests: Pipeline end-to-end
+- [ ] Model tests: Output validation
+- [ ] Regression tests: Model quality over time
+
+**Model Validation:**
+- [ ] Performance metrics meet threshold
+- [ ] No data leakage
+- [ ] Fairness metrics
+- [ ] Slae tests
+
+**A/B Testing:**
+- [ ] Traffic splitting
+- [ ] Statistical significance
+- [ ] Rollout strategies:
+  - Canary: Small % first
+  - Blue-green: Parallel deployment
+  - Feature flags
+
+**Indikator Proficiency:**
+- [ ] Setup experiment tracking
+- [ ] Version data and models
+- [ ] Build training pipeline
+- [ ] Deploy model as API
+- [ ] Implement monitoring
+
 #### 4.2 Docker - Containerization
 
 Docker memungkinkan Anda mengemas aplikasi beserta semua dependensinya sehingga bisa running di environment manapun.
@@ -1029,6 +2835,204 @@ EXPOSE 8000
 # Run application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
+
+##### Breakdown Detail: Docker
+
+**Docker Concepts:**
+
+**1. Images:**
+- [ ] Read-only template
+- [ ] Layered filesystem
+- [ ] Base image + customizations
+- [ ] Tagged: name:version
+
+**2. Containers:**
+- [ ] Running instance of image
+- [ ] Isolated environment
+- [ ] Ephemeral by default
+- [ ] Can persist with volumes
+
+**3. Registries:**
+- [ ] Store and distribute images
+- [ ] Docker Hub (public)
+- [ ] ECR, GCR, ACR (cloud private)
+- [ ] Self-hosted: Harbor, Nexus
+
+**Dockerfile Instructions:**
+```dockerfile
+FROM python:3.11-slim          # Base image
+WORKDIR /app                   # Set working directory
+COPY requirements.txt .        # Copy file
+RUN pip install -r requirements.txt  # Run command
+COPY . .                        # Copy files
+ENV VAR=value                   # Environment variable
+EXPOSE 8000                     # Port
+USER nobody                     # Run as user
+CMD ["python", "app.py"]        # Entry point
+```
+
+**Common Docker Commands:**
+- [ ] `docker build -t myapp:latest .` - Build image
+- [ ] `docker run -p 8000:8000 myapp` - Run container
+- [ ] `docker ps` - List running containers
+- [ ] `docker images` - List images
+- [ ] `docker logs -f <container>` - View logs
+- [ ] `docker exec -it <container> bash` - Shell into container
+- [ ] `docker stop <container>` - Stop container
+- [ ] `docker rm <container>` - Remove container
+- [ ] `docker push <image>` - Push to registry
+
+**Docker Compose:**
+```yaml
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgres://...
+    depends_on:
+      - db
+  db:
+    image: postgres:15
+    volumes:
+      - pgdata:/data
+volumes:
+  pgdata:
+```
+
+**Docker for AI Apps:**
+
+**Best Practices:**
+- [ ] Use slim/alpine images untuk smaller size
+- [ ] Multi-stage builds untuk reduce size
+- [ ] Don't run as root
+- [ ] Use `.dockerignore`
+- [ ] Order instructions by change frequency
+- [ ] Pin versions (python:3.11.4)
+
+**Multi-stage Build:**
+```dockerfile
+# Stage 1: Build
+FROM python:3.11 AS builder
+COPY requirements.txt .
+RUN pip install --target=/app -r requirements.txt
+
+# Stage 2: Production
+FROM python:3.11-slim
+WORKDIR /app
+COPY --from=builder /app /app
+COPY . .
+CMD ["python", "app.py"]
+```
+
+**GPU Support:**
+```dockerfile
+FROM nvidia/cuda:11.8-runtime-ubuntu22.04
+# or
+FROM tensorflow/tensorflow:latest-gpu
+```
+
+**Health Checks:**
+```dockerfile
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD curl -f http://localhost:8000/health || exit 1
+```
+
+**Resource Limits:**
+```yaml
+services:
+  app:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+```
+
+**Common Issues:**
+
+**1. Image too large:**
+- Use slim/alpine base
+- Multi-stage builds
+- Remove cache
+
+**2. Port conflicts:**
+- Check: `docker ps`
+- Change host port mapping
+
+**3. Out of memory:**
+- Increase Docker resources
+- Set memory limits
+
+**4. Permission denied:**
+- Use `USER` instruction
+- Check volume permissions
+
+**Docker with FastAPI:**
+```dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy app
+COPY app/ ./app/
+
+# Run
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+**Docker with LangChain:**
+```dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# LangChain specific
+RUN pip install langchain openai chromadb
+
+# App
+COPY . .
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0"]
+```
+
+**Orchestration:**
+
+**Docker Swarm:**
+- [ ] Built-in to Docker
+- [ ] Simple setup
+- [ ] Good for small scale
+
+**Kubernetes:**
+- [ ] Industry standard
+- [ ] Steeper learning curve
+- [ ] Scalable
+- [ ] Managed: EKS, GKE, AKS
+
+**Deployment Options:**
+- [ ] **Docker Compose**: Local dev
+- [ ] **Docker Swarm**: Small production
+- [ ] **Kubernetes**: Large scale production
+- [ ] **Cloud services**: ECS, Cloud Run, App Runner
+
+**Indikator Proficiency:**
+- [ ] Write efficient Dockerfile
+- [ ] Use Docker Compose untuk dev
+- [ ] Debug container issues
+- [ ] Optimize image size
+- [ ] Setup basic orchestration
 
 #### 4.3 Monitoring & Observability
 
@@ -1069,6 +3073,220 @@ chain = LLMChain(llm=llm, prompt=prompt)
 result = chain.invoke({"text": "Hello, how are you?"})
 # Ini akan muncul di LangSmith dashboard
 ```
+
+##### Breakdown Detail: Monitoring & Observability
+
+**Why Monitoring Matters:**
+- [ ] Detect issues before users notice
+- [ ] Understand system behavior
+- [ ] Optimize costs and performance
+- [ ] Ensure quality consistency
+- [ ] Meet SLAs
+
+**Key Metrics:**
+
+**1. System Metrics:**
+- [ ] Request latency (p50, p95, p99)
+- [ ] Throughput (requests/second)
+- [ ] Error rate
+- [ ] Availability (uptime)
+- [ ] Resource usage (CPU, memory, GPU)
+
+**2. LLM-Specific Metrics:**
+- [ ] Token usage (input/output)
+- [ ] Cost per request
+- [ ] Time to first token
+- [ ] Response latency
+- [ ] Model-specific errors
+
+**3. Business Metrics:**
+- [ ] User satisfaction
+- [ ] Task completion rate
+- [ ] Escalation rate
+- [ ] Response quality scores
+
+**Monitoring Tools:**
+
+**1. LangSmith:**
+- [ ] Tracing for LangChain
+- [ ] Cost tracking
+- [ ] Latency analysis
+- [ ] Feedback collection
+- [ ] Dataset management
+```python
+import os
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_API_KEY"] = "your-key"
+```
+
+**2. LangFuse:**
+- [ ] Open source alternative
+- [ ] Self-hosted or cloud
+- [ ] Similar features to LangSmith
+```python
+from langfuse import Langfuse
+langfuse = Langfuse()
+langfuse.trace(name="my-query")
+```
+
+**3. Phoenix (Arize):**
+- [ ] LLM observability
+- [ ] Tracing and evaluation
+- [ ] Drift detection
+
+**4. Weights & Biases (W&B):**
+- [ ] Experiment tracking
+- [ ] Can track LLM calls
+
+**Logging:**
+
+**What to Log:**
+- [ ] Request ID
+- [ ] Timestamp
+- [ ] Input parameters
+- [ ] Output
+- [ ] Latency
+- [ ] Token usage
+- [ ] Errors
+
+**Logging Best Practices:**
+- [ ] Structured logging (JSON)
+- [ ] Log levels (DEBUG, INFO, WARN, ERROR)
+- [ ] Include correlation IDs
+- [ ] Don't log sensitive data
+- [ ] Log sampling for high volume
+
+**Implementation:**
+```python
+import logging
+import json
+from datetime import datetime
+
+logger = logging.getLogger(__name__)
+
+def log_request(request_id, input_data, output, latency, tokens):
+    logger.info(json.dumps({
+        "request_id": request_id,
+        "timestamp": datetime.utcnow().isoformat(),
+        "input_length": len(str(input_data)),
+        "output_length": len(str(output)),
+        "latency_ms": latency,
+        "tokens": tokens
+    }))
+```
+
+**Tracing:**
+
+**LangChain Callbacks:**
+```python
+from langchain.callbacks import CallbackManager
+from langchain.schema import HumanMessage
+
+class CustomCallbackHandler(BaseCallbackHandler):
+    def on_chain_start(self, serialized, inputs):
+        print("Chain starting")
+    
+    def on_chain_end(self, outputs):
+        print("Chain ended")
+    
+    def on_llm_error(self, error):
+        logger.error(f"LLM Error: {error}")
+
+chain = LLMChain(
+    llm=llm,
+    prompt=prompt,
+    callbacks=[CustomCallbackHandler()]
+)
+```
+
+**Alerting:**
+
+**Alert Conditions:**
+- [ ] Error rate > 5%
+- [ ] Latency p99 > 10s
+- [ ] Cost spike > 2x normal
+- [ ] Service down
+
+**Alerting Tools:**
+- [ ] PagerDuty
+- [ ] Slack notifications
+- [ ] Email
+- [ ] CloudWatch alerts
+- [ ] Grafana alerts
+
+**Cost Monitoring:**
+
+**What to Track:**
+- [ ] Daily/weekly/monthly spend
+- [ ] Cost per endpoint
+- [ ] Cost per user
+- [ ] Token consumption
+- [ ] Model costs
+
+**Cost Optimization:**
+- [ ] Implement caching
+- [ ] Use cheaper models for simple tasks
+- [ ] Batch requests
+- [ ] Set budget alerts
+- [ ] Optimize prompts (shorter)
+
+**Dashboard Setup:**
+
+**Recommended Dashboards:**
+1. **Overview**: Requests, errors, latency
+2. **Cost**: Spend over time, by model
+3. **Quality**: User feedback, task completion
+4. **System**: CPU, memory, GPU
+
+**Grafana Stack:**
+- [ ] Prometheus: Metrics collection
+- [ ] Grafana: Visualization
+- [ ] Loki: Log aggregation
+
+**Health Checks:**
+
+**Endpoints:**
+```python
+from fastapi import FastAPI
+app = FastAPI()
+
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
+
+@app.get("/ready")
+def ready():
+    # Check dependencies
+    if db_connected and llm_available:
+        return {"status": "ready"}
+    return {"status": "not ready"}, 503
+```
+
+**Data Drift Detection:**
+
+**Types:**
+- [ ] **Data Drift**: Input distribution changes
+- [ ] **Concept Drift**: Relationship between input/output changes
+- [ ] **Prediction Drift**: Output distribution changes
+
+**Detection Methods:**
+- [ ] Statistical tests (PSI, KL divergence)
+- [ ] Monitor input/output distributions
+- [ ] Track model performance over time
+- [ ] Automated alerts
+
+**RAG-Specific Monitoring:**
+- [ ] Retrieval quality (relevance scores)
+- [ ] Context utilization
+- [ ] Citation accuracy
+- [ ] Response groundedness
+
+**Indikator Proficiency:**
+- [ ] Setup logging infrastructure
+- [ ] Create monitoring dashboards
+- [ ] Implement cost tracking
+- [ ] Setup alerting rules
+- [ ] Detect and respond to issues
 
 #### 4.4 Evaluation - Mengukur Kualitas
 
@@ -1122,6 +3340,223 @@ result = evaluate(
 print(result)
 ```
 
+##### Breakdown Detail: Evaluation
+
+**Why Evaluation Matters:**
+- [ ] Verify AI system quality
+- [ ] Detect regressions
+- [ ] Compare versions
+- [ ] Ensure user satisfaction
+- [ ] Validate against requirements
+
+**Evaluation Types:**
+
+**1. Unit Testing:**
+- [ ] Test individual functions
+- [ ] Test prompt templates
+- [ ] Test transformations
+- [ ] Edge case handling
+
+**2. Integration Testing:**
+- [ ] Test full pipelines
+- [ ] Test API endpoints
+- [ ] Test with real data
+- [ ] End-to-end workflows
+
+**3. Model Evaluation:**
+- [ ] Task-specific metrics
+- [ ] Human evaluation
+- [ ] Automated benchmarks
+- [ ] Comparative evaluation
+
+**RAG Evaluation Metrics:**
+
+**Retrieval Metrics:**
+- [ ] **Context Precision**: Relevant docs ranked highly
+- [ ] **Context Recall**: All relevant docs retrieved
+- [ ] **Hit Rate**: Top-K includes relevant docs
+- [ ] **MRR**: Mean Reciprocal Rank
+
+**Generation Metrics:**
+- [ ] **Faithfulness**: Answer matches retrieved context
+- [ ] **Answer Relevancy**: Answer addresses question
+- [ ] **Context Utilization**: Uses relevant context
+- [ ] **Hallucination Rate**: False information in answer
+
+**Implementation with RAGAS:**
+```python
+from ragas import EvaluationDataset
+from ragas.metrics import (
+    faithfulness,
+    answer_relevancy,
+    context_precision,
+    context_recall
+)
+
+# Create evaluation dataset
+eval_data = EvaluationDataset.from_dict({
+    "user_input": [...],
+    "retrieved_contexts": [...],
+    "response": [...],
+    "reference": [...]
+})
+
+# Evaluate
+from ragas import evaluate
+result = evaluate(
+    eval_data,
+    metrics=[faithfulness, answer_relevancy]
+)
+```
+
+**LLM-as-Judge:**
+- [ ] Use powerful LLM to evaluate outputs
+- [ ] Good for subjective quality
+- [ ] Costly, use sparingly
+```python
+from ragas.metrics import LLMJudge
+
+llm_judge = LLMJudge(llm=gpt4)
+
+# Score response quality
+score = llm_judge.evaluate(
+    question="What is X?",
+    answer="X is...",
+    criteria=["accuracy", "completeness", "clarity"]
+)
+```
+
+**Benchmarking:**
+
+**LLM Benchmarks:**
+- [ ] **MMLU**: Multi-task language understanding
+- [ ] **HellaSwag**: Commonsense reasoning
+- [ ] **TruthfulQA**: Truthfulness
+- [ ] **GSM8K**: Math word problems
+- [ ] **HumanEval**: Code generation
+
+**RAG Benchmarks:**
+- [ ] **RAGAS**: RAG-specific metrics
+- [ ] **BERGEN**: Benchmarking RAG
+- [ ] **RGB**: Reading Benchmarks for RAG
+
+**Evaluation Frameworks:**
+
+**1. RAGAS:**
+- [ ] Designed for RAG
+- [ ] LLM-based evaluation
+- [ ] Cloud or local
+
+**2. Trulens:**
+- [ ] Python library
+- [ ] Feedback functions
+- [ ] Tracing integrated
+
+**3. Phoenix (Arize):**
+- [ ] Production evaluation
+- [ ] Drift detection
+- [ ] A/B testing support
+
+**Human Evaluation:**
+
+**When to Use:**
+- [ ] Complex reasoning
+- [ ] Subjective quality
+- [ ] Safety-critical applications
+- [ ] Final validation
+
+**Methods:**
+- [ ] Direct scoring (1-5)
+- [ ] Comparative evaluation (A vs B)
+- [ ] Error annotation
+- [ ] User studies
+
+**Best Practices:**
+- [ ] Define clear rubrics
+- [ ] Use multiple evaluators
+- [ ] Blind evaluation
+- [ ] Track inter-rater reliability
+
+**A/B Testing:**
+
+**Setup:**
+```python
+# Randomly split traffic
+if random.random() < 0.5:
+    response = model_a.generate(prompt)
+else:
+    response = model_b.generate(prompt)
+```
+
+**Metrics to Compare:**
+- [ ] Task completion rate
+- [ ] User satisfaction
+- [ ] Error rate
+- [ ] Latency
+- [ ] Cost
+
+**Statistical Significance:**
+- [ ] Minimum sample size
+- [ ] Confidence intervals
+- [ ] P-values
+- [ ] Use appropriate tests
+
+**Regression Testing:**
+
+**What to Test:**
+- [ ] Critical user paths
+- [ ] Known edge cases
+- [ ] Previous failures
+- [ ] Performance benchmarks
+
+**Continuous Evaluation:**
+- [ ] Automated runs
+- [ ] Daily/weekly schedules
+- [ ] Alert on degradation
+- [ ] Track over time
+
+**Evaluation Dataset:**
+
+**Curating Test Sets:**
+- [ ] Cover diverse scenarios
+- [ ] Include edge cases
+- [ ] Balance difficulty
+- [ ] Update regularly
+
+**Golden Datasets:**
+- [ ] Known correct answers
+- [ ] Human annotations
+- [ ] Trusted sources
+- [ ] Version controlled
+
+**LangSmith for Evaluation:**
+```python
+# Create dataset
+dataset = client.datasets.create(name="qa-test-set")
+
+# Add examples
+client.datasets.add_examples(
+    inputs=[{"question": "What is X?"}],
+    outputs=[{"answer": "X is..."}],
+    dataset_name="qa-test-set"
+)
+
+# Run evaluation
+experiment = client.evaluate(
+    model,
+    dataset_name="qa-test-set",
+    evaluation_config=eval_config
+)
+```
+
+**Indikator Proficiency:**
+- [ ] Define evaluation metrics
+- [ ] Build evaluation datasets
+- [ ] Implement automated evaluation
+- [ ] Conduct human evaluation
+- [ ] Setup A/B testing
+- [ ] Analyze evaluation results
+
 #### Projekt Milestone untuk Tahap 4
 
 Setelah menyelesaikan production & operations, Anda harus bisa:
@@ -1168,6 +3603,160 @@ Specialization Options:
    - Business logic
 ```
 
+##### Breakdown Detail: Specialization Options
+
+**1. RAG Specialist:**
+
+**Core Skills:**
+- [ ] Deep understanding of retrieval systems
+- [ ] Embedding model selection and fine-tuning
+- [ ] Vector database optimization
+- [ ] Query optimization
+- [ ] Reranking strategies
+
+**Advanced Topics:**
+- [ ] **Knowledge Graphs**: Entity extraction, relationships, GraphRAG
+- [ ] **Advanced Chunking**: Semantic, recursive, agentic chunking
+- [ ] **Hybrid Search**: Combine dense + sparse retrieval
+- [ ] **Query Expansion**: HyDE, multi-query, decomposition
+- [ ] **Evaluation**: RAG-specific metrics, benchmark creation
+
+**Tools & Technologies:**
+- [ ] Weaviate, Pinecone, Qdrant
+- [ ] Custom embedding models
+- [ ] Reranking models (Cohere, BGE)
+- [ ] Knowledge graph databases (Neo4j, NebulaGraph)
+
+**Career Path:**
+- [ ] Search engineer
+- [ ] Retrieval specialist
+- [ ] Knowledge engineer
+- [ ] Semantic search architect
+
+---
+
+**2. Agentic Engineer:**
+
+**Core Skills:**
+- [ ] Agent architecture design
+- [ ] Tool integration
+- [ ] Multi-agent orchestration
+- [ ] Safety and guardrails
+- [ ] Planning and reasoning systems
+
+**Advanced Topics:**
+- [ ] **Multi-Agent Systems**: Supervisor, hierarchical, collaborative
+- [ ] **Tool Design**: Tool schemas, error handling, composability
+- [ ] **Memory Systems**: Short-term, long-term, episodic
+- [ ] **Planning**: Goal decomposition, task prioritization
+- [ ] **Safety**: Permission systems, output validation, human oversight
+- [ ] **Evaluation**: Agent-specific benchmarks
+
+**Tools & Technologies:**
+- [ ] LangChain, LangGraph
+- [ ] AutoGen, CrewAI
+- [ ] Custom agent frameworks
+- [ ] Monitoring: LangSmith, LangFuse
+
+**Career Path:**
+- [ ] Agent engineer
+- [ ] Autonomous systems developer
+- [ ] AI orchestrator
+- [ ] Agentic AI architect
+
+---
+
+**3. MLOps Engineer:**
+
+**Core Skills:**
+- [ ] Model deployment
+- [ ] Pipeline orchestration
+- [ ] Monitoring and observability
+- [ ] CI/CD for ML
+- [ ] Infrastructure as Code
+
+**Advanced Topics:**
+- [ ] **Inference Optimization**: Quantization, distillation, batching
+- [ ] **Distributed Training**: Multi-GPU, multi-node
+- [ ] **Model Registry**: Versioning, lineage tracking
+- [ ] **Feature Stores**: Feature engineering, reuse
+- [ ] **Cost Optimization**: Auto-scaling, spot instances
+- [ ] **GPU Management**: Scheduling, allocation
+
+**Tools & Technologies:**
+- [ ] Kubernetes, Docker, Helm
+- [ ] MLflow, Kubeflow
+- [ ] Terraform, Pulumi
+- [ ] AWS SageMaker, Vertex AI, Azure ML
+
+**Career Path:**
+- [ ] MLOps engineer
+- [ ] ML infrastructure engineer
+- [ ] Platform engineer (ML)
+- [ ] ML engineering manager
+
+---
+
+**4. AI Product Engineer:**
+
+**Core Skills:**
+- [ ] Full-stack AI development
+- [ ] User experience design
+- [ ] API design
+- [ ] Product thinking
+- [ ] Business logic implementation
+
+**Advanced Topics:**
+- [ ] **UX for AI**: Streaming responses, progressive disclosure
+- [ ] **Human-AI Interaction**: Appropriate trust, feedback mechanisms
+- [ ] **Product Analytics**: User behavior, engagement metrics
+- [ ] **A/B Testing**: Experiment design, statistical analysis
+- [ ] **Compliance**: Data privacy, AI regulations
+
+**Tools & Technologies:**
+- [ ] FastAPI, Streamlit, Gradio
+- [ ] React, Next.js
+- [ ] Analytics: Mixpanel, Amplitude
+- [ ] Customer feedback tools
+
+**Career Path:**
+- [ ] AI product engineer
+- [ ] AI full-stack developer
+- [ ] AI product manager (technical)
+- [ ] AI solutions architect
+
+---
+
+**Specialization Comparison:**
+
+| Aspek | RAG Specialist | Agentic Engineer | MLOps | AI Product |
+|-------|---------------|-----------------|-------|------------|
+| Fokus | Retrieval quality | Autonomy | Reliability | User value |
+| Skill Utama | Search, embeddings | Orchestration | Infrastructure | Full-stack |
+| Complexity | Medium | High | Medium | Medium |
+| Demand | High | Very High | High | High |
+| Salary | High | Very High | High | High |
+
+**Choosing Your Specialization:**
+
+**Consider:**
+- [ ] Interests: What excites you most?
+- [ ] Strengths: What are you naturally good at?
+- [ ] Market: What skills are in demand?
+- [ ] Growth: Where can you grow?
+
+**Starting Point:**
+- [ ] Learn fundamentals of all
+- [ ] Try small projects in each
+- [ ] Identify what you enjoy most
+- [ ] Deep dive into chosen specialization
+
+**Recommended Timeline:**
+- [ ] Month 1-3: Explore all areas
+- [ ] Month 4-6: Pick primary specialization
+- [ ] Month 7-14: Deep dive and portfolio
+- [ ] Ongoing: Stay updated, adapt
+
 #### Portfolio Projects
 
 Portfolio adalah **pintu gerbang** ke dunia kerja. Setiap project harus menunjukkan:
@@ -1193,6 +3782,123 @@ my-project/
 ├── Dockerfile
 └── screenshots/         # Screenshot demo
 ```
+
+##### Breakdown Detail: Portfolio Projects
+
+**Why Portfolio Matters:**
+- [ ] Demonstrates practical skills
+- [ ] Shows problem-solving ability
+- [ ] Proof of work for hiring
+- [ ] Learning through building
+- [ ] Document your journey
+
+**Project Categories:**
+
+**1. RAG Projects:**
+- [ ] Document Q&A system (legal, medical, technical docs)
+- [ ] Company knowledge base chatbot
+- [ ] Research paper analyzer
+- [ ] Code documentation search
+- [ ] Multi-modal RAG (PDF + images)
+
+**2. Agent Projects:**
+- [ ] Research assistant agent
+- [ ] Meeting scheduler agent
+- [ ] Data analysis agent
+- [ ] Code review agent
+- [ ] Customer service agent
+
+**3. End-to-End AI Applications:**
+- [ ] AI-powered search engine
+- [ ] Intelligent chatbot with memory
+- [ ] Automated report generator
+- [ ] AI writing assistant
+- [ ] Image + text analysis app
+
+**Project Structure Best Practices:**
+
+**README.md:**
+- [ ] Clear project title
+- [ ] Problem statement
+- [ ] Solution approach
+- [ ] Tech stack
+- [ ] Setup instructions
+- [ ] Demo link
+- [ ] Screenshots/videos
+- [ ] Challenges faced
+- [ ] Future improvements
+
+**Code Quality:**
+- [ ] Clean, readable code
+- [ ] Proper error handling
+- [ ] Type hints
+- [ ] Docstrings
+- [ ] Configuration management
+- [ ] Environment variables
+
+**Testing:**
+- [ ] Unit tests
+- [ ] Integration tests
+- [ ] Example usage
+- [ ] Edge cases
+
+**Deployment:**
+- [ ] Docker configuration
+- [ ] Deployment instructions
+- [ ] Live demo (optional)
+- [ ] API documentation
+
+**Project Ideas by Difficulty:**
+
+**Beginner (Month 1-4):**
+- [ ] Chatbot with basic prompts
+- [ ] Text summarizer
+- [ ] Simple Q&A bot
+- [ ] Language translator
+- [ ] Sentiment analyzer
+
+**Intermediate (Month 5-8):**
+- [ ] RAG with document search
+- [ ] Multi-turn conversation bot
+- [ ] Custom chatbot with memory
+- [ ] AI-powered content generator
+- [ ] Code assistant
+
+**Advanced (Month 9-14):**
+- [ ] Multi-agent system
+- [ ] Autonomous research assistant
+- [ ] Production RAG with evaluation
+- [ ] AI agent with tool use
+- [ ] Full-stack AI application
+
+**Presentation Tips:**
+- [ ] Create demo videos
+- [ ] Document architecture
+- [ ] Show metrics and results
+- [ ] Explain trade-offs made
+- [ ] Highlight challenges solved
+
+**Where to Showcase:**
+- [ ] GitHub profile
+- [ ] Personal website
+- [ ] LinkedIn
+- [ ] Portfolio sites (Behance, Dribbble)
+- [ ] Hacker News "Show HN"
+- [ ] AI community forums
+
+**Minimum Viable Portfolio:**
+- [ ] 3-5 substantial projects
+- [ ] Each shows different skill
+- [ ] Clear documentation
+- [ ] Working code
+- [ ] Deployed demo (optional)
+
+**Interview Ready:**
+- [ ] Can explain any line of code
+- [ ] Know trade-offs and alternatives
+- [ ] Discuss challenges and learnings
+- [ ] Compare to production systems
+- [ ] Suggest improvements
 
 ---
 
