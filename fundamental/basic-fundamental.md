@@ -23,6 +23,19 @@ Fondasi Python yang kuat adalah **prasyarat mutlak** untuk menjadi AI Engineer y
 3. **Sulit mengintegrasikan tools** - AI Engineering melibatkan banyak library dan API integration
 4. **Produktivitas rendah** - Penulisan kode yang tidak efisien akan memperlambat development
 
+### Referensi Dokumentasi Official Python
+
+Untuk mempelajari lebih detail, dokumentasi resmi Python adalah sumber terbaik:
+
+| Topik | URL | Keterangan |
+|-------|-----|------------|
+| **Dokumentasi Python 3** | [docs.python.org/3/](https://docs.python.org/3/) | Dokumentasi resmi lengkap |
+| **Tutorial Python** | [docs.python.org/3/tutorial/](https://docs.python.org/3/tutorial/) | Tutorial resmi untuk pemula |
+| **Tutorial Bagian Data Structures** | [docs.python.org/3/tutorial/datastructures.html](https://docs.python.org/3/tutorial/datastructures.html) | Penjelasan detail list, dict, set, tuple |
+| **Tutorial Bagian Functions** | [docs.python.org/3/tutorial/controlflow.html](https://docs.python.org/3/tutorial/controlflow.html) | Fungsi, arguments, scope |
+| **PEP 8 - Style Guide** | [pep8.org/](https://pep8.org/) | Standar penulisan kode Python |
+| **The Zen of Python** | [peps.python.org/pep-0020/](https://peps.python.org/pep-0020/) | Filosofi desain Python |
+
 ---
 
 ## 1. Variabel dan Tipe Data
@@ -44,6 +57,69 @@ print(f"Umur: {umur}")
 print(f"Tinggi: {tinggi}")
 print(f"Mahasiswa: {is_mahasiswa}")
 ```
+
+**Penjelasan Detail:**
+
+- `nama = "Budi Santoso"` - Python secara otomatis mendeteksi bahwa ini adalah string karena nilainya diapit tanda kutip
+- `umur = 25` - Integer karena nilainya adalah bilangan bulat tanpa desimal
+- `tinggi = 170.5` - Float karena mengandung titik desimal
+- `is_mahasiswa = True` - Boolean karena nilainya hanya bisa True atau False
+
+**Penting: Variabel adalah Reference**
+
+Dalam Python, variabel tidak menyimpan nilai secara langsung, melainkan menyimpan **reference (alamat)** ke objek di memory:
+
+```python
+# id() - melihat alamat memory objek
+x = 5
+y = x
+
+print(f"x = {x}, id(x) = {id(x)}")
+print(f"y = {y}, id(y) = {id(y)}")
+print(f"id(x) == id(y): {id(x) == id(y)}")  # True - pointing ke objek yang sama
+
+# Ketika kita ubah x, y TIDAK berubah (karena int adalah immutable)
+x = 10
+print(f"x = {x}, y = {y}")  # x=10, y=5
+```
+
+**type() - Mengecek Tipe Data**
+
+```python
+# type() mengembalikan kelas dari objek
+print(type(5))              # <class 'int'>
+print(type(5.5))           # <class 'float'>
+print(type("hello"))      # <class 'str'>
+print(type(True))          # <class 'bool'>
+
+# Sangat berguna untuk debugging
+data = "42"
+print(type(data))          # <class 'str'>
+```
+
+### 1.2 Aturan Penamaan Variabel
+
+Python memiliki aturan ketat untuk penamaan variabel:
+
+```python
+# ✅ VALID - Penamaan yang benar
+nama_lengkap = "Budi"              # snake_case (recommended untuk variabel)
+UmurMax = 100                      # PascalCase
+_konstanta = 3.14                  # Dimulai dengan underscore
+nilai1, nilai2 = 85, 90            # Multiple assignment
+
+# ❌ INVALID - Penamaan yang salah
+# 2nama = "Budi"                    # Tidak boleh dimulai dengan angka
+# nama-lengkapan = "Budi"           # Tidak boleh menggunakan hyphen (-)
+# nama lengkap = "Budi"             # Tidak boleh menggunakan spasi
+# class = "Matematika"             # Tidak boleh menggunakan keyword Python
+```
+
+**Aturan Lengkap:**
+1. Variabel harus dimulai dengan huruf (a-z, A-Z) atau underscore (_)
+2. Karakter berikutnya bisa huruf, angka (0-9), atau underscore
+3. Python bersifat case-sensitive (nama, Nama, NAMA adalah berbeda)
+4. Tidak boleh menggunakan keyword Python (class, def, if, for, dll)
 
 **Penjelasan Detail:**
 
@@ -100,6 +176,51 @@ is_active = True
 is_empty = False
 ```
 
+**String Formatting - 3 Cara dalam Python:**
+
+```python
+# CARA 1: % formatting (OLD - Python 2 style)
+nama = "Budi"
+umur = 25
+print("Nama: %s, Umur: %d" % (nama, umur))  # Nama: Budi, Umur: 25
+
+# CARA 2: .format() (Python 3.0-3.5)
+print("Nama: {}, Umur: {}".format(nama, umur))  # Nama: Budi, Umur: 25
+print("Nama: {0}, Umur: {1}, Nama lagi: {0}".format(nama, umur))
+
+# CARA 3: f-string (RECOMMENDED - Python 3.6+)
+print(f"Nama: {nama}, Umur: {umur}")  # Nama: Budi, Umur: 25
+print(f"Nama: {nama.upper()}, Umur: {umur * 12} bulan")
+
+# f-string bisa berisi expression!
+x = 10
+y = 5
+print(f"{x} + {y} = {x + y}")  # 10 + 5 = 15
+print(f"Max: {max(x, y)}")      # Max: 10
+
+# f-string dengan format numbers
+harga = 1234567.89
+print(f"Rp{harga:,.2f}")         # Rp1,234,567.89
+print(f"Persen: {0.125:.1%}")    # Persen: 12.5%
+```
+
+**Penjelasan Detail Tipe Data:**
+
+| Tipe | Contoh | Penjelasan |
+|------|--------|------------|
+| `int` | `42`, `-17`, `0xFF` | Bilangan bulat (positif/negatif), supports hexadecimal (0x), binary (0b), octal (0o) |
+| `float` | `3.14`, `1.5e10` | Bilangan desimal, scientific notation (e10 = ×10^10) |
+| `str` | `"hello"`, `'test'` | Teks, bisa single/double/triple quote |
+| `bool` | `True`, `False` | Nilai logika (huruf pertama kapital!) |
+
+**Penting: Boolean adalah Subclass dari int**
+
+```python
+# Boolean SEBENARNYA adalah subclass dari int!
+print(isinstance(True, int))    # True
+print(True + 1)                 # 2 (True = 1)
+print(False + 1)                # 1 (False = 0)
+
 ### 1.4 Type Conversion (Konversi Tipe Data)
 
 Python memungkinkan konversi antar tipe data. Ini sangat penting untuk AI Engineering karena Anda sering menerima input dalam format string dan perlu mengonversinya ke angka:
@@ -131,9 +252,16 @@ bool_zero = bool(0)          # False
 bool_num = bool(42)           # True (angka non-zero)
 ```
 
+**Penjelasan Detail:**
+
+- `int("42")` - Gagal jika string tidak berupa angka valid
+- `int(3.9)` - SELALU dibulatkan ke BAWAH (floor), bukan round
+- `bool("False")` - Jadi True karena string non-empty! Perlu `.lower()` dulu
+- `bool(0)` - Hanya 0 yang False, semua angka lain True
+
 ### 1.5 None - Nilai Kosong
 
-`None` adalah tipe data khusus yang merepresentasikan "tidak ada nilai" atau "null":
+`None` adalah tipe data khusus yang merepresentasikan "tidak ada nilai" atau "null" dalam Python:
 
 ```python
 # None digunakan untuk:
@@ -151,16 +279,89 @@ def greet(name=None):
 def proses_data():
     # Melakukan sesuatu
     return None
+```
+
+**Penjelasan Detail tentang None:**
+
+```python
+# NOTE: None adalah Objek Tunggal (Singleton)
+# Semua variabel yang bernilai None pointing ke Objek yang SAMA
+a = None
+b = None
+print(a is b)           # True - karena singleton
+print(id(a) == id(b))   # True - alamat sama
 
 # ⚠️ PERBEDAAN PENTING: None vs string kosong vs 0
 print(None is None)           # True
 print("" == None)            # False (string kosong berbeda dari None)
 print(0 == None)             # False (0 berbeda dari None)
+print([] == None)            # False (list kosong berbeda dari None)
 
-# ✅ CARA BENAR cek None
+# ✅ CARA BENAR cek None - SELALU gunakan 'is'
 if data is None:
     print("Data belum ada")
+
+# ❌ CARA SALAH - bekerja tapi tidak pythonic
+if data == None:
+    print("Data belum ada")
+
+# Kenapa harus 'is'? Karena == membandingkan nilai, is membandingkan identity
+# Untuk None, gunakan 'is None' adalah best practice dari PEP 8
 ```
+
+**Kapan Menggunakan None:**
+
+| Penggunaan | Contoh |
+|------------|--------|
+| Variabelbelum ada nilai | `data = None` |
+| Default parameter | `def func(x=None):` |
+| Optional return | `return None` |
+| Missing data di dict | `dict.get('key')` -> None jika tidak ada |
+
+### 1.5b Type Checking - isinstance() dan type()
+
+Python menyediakan fungsi untuk mengecek tipe data:
+
+```python
+# type() - cek tipe data langsung
+print(type(42))           # <class 'int'>
+print(type("hello"))      # <class 'str'>
+print(type([1, 2, 3]))    # <class 'list'>
+
+# isinstance() - cek apakah objek instance dari tipe/kelas tertentu
+# REKOMENDASI: Gunakan isinstance() karena lebih fleksibel
+print(isinstance(42, int))           # True
+print(isinstance(42.0, float))      # True
+print(isinstance("hello", str))      # True
+print(isinstance([1, 2], list))      # True
+print(isinstance((1, 2), tuple))     # True
+
+# isinstance() dengan multiple types
+print(isinstance(42, (int, float)))  # True - int atau float
+print(isinstance("hello", (int, str)))  # True - string
+
+# Praktis untuk validasi input
+def process_input(data):
+    if isinstance(data, int):
+        return data * 2
+    elif isinstance(data, float):
+        return data ** 2
+    elif isinstance(data, str):
+        return data.upper()
+    else:
+        raise TypeError(f"Tipe data {type(data)} tidak didukung")
+
+print(process_input(5))       # 10
+print(process_input(3.14))    # 9.8596
+print(process_input("hello")) # HELLO
+```
+
+**Perbedaan type() vs isinstance():**
+
+| Fungsi | Penggunaan | Keterangan |
+|--------|-----------|------------|
+| `type(x)` | `type(42) == int` | Cek tipe exact (tidak check subclass) |
+| `isinstance(x, int)` | `isinstance(42, int)` | Cek tipe + subclass (direkomendasikan) |
 
 ### 1.6 Mutability - Konsep Kunci
 
@@ -174,45 +375,171 @@ if data is None:
 
 a = 5
 b = a
+print(f"SEBELUM: a={a}, b={b}, id(a)={id(a)}, id(b)={id(b)}")
 a = 10
-print(b)              # Output: 5 (tidak berubah!)
+print(f"SESUDAH: a={a}, b={b}")  # Output: 5 (tidak berubah!)
+# Penjelasan: saat a = 10, Python membuat objek baru, b masih pointing ke objek lama
 
 nama = "Budi"
 nama_upper = nama.upper()  # Membuat string baru
-print(nama)           # "Budi" (aslinya tidak berubah)
+print(f"nama: {nama}")           # "Budi" (aslinya tidak berubah)
+print(f"nama_upper: {nama_upper}")  # "BUDI"
 
-# ⚠️ Tuple yang berisi list - tuple-nya tetap immutable!
-tuple_dengan_list = ([1, 2], [3, 4])
-# tuple_dengan_list[0] = [5, 6]  # ERROR! Tidak bisa replace
-tuple_dengan_list[0][0] = 99     # ✅ Ini BISA (list di dalam bisa diubah)
-print(tuple_dengan_list)         # ([99, 2], [3, 4])
+# NOTE: Tuple dengan list di dalamnya - konsep ADVANCED (dijelaskan DI SINI untuk pemahaman)
+# tuple_dengan_list = ([1, 2], [3, 4])
+# tuple_dengan_list[0] = [5, 6]  # ERROR! Tidak bisa replace elemen tuple
+# tuple_dengan_list[0][0] = 99     # ✅ Ini BISA (list di dalam bisa diubah)
+# print(tuple_dengan_list)         # ([99, 2], [3, 4])
+# ^ Penjelasan: Tuple TIDAK bisa di-assign ulang, tapi ISI (list) bisa dimodifikasi
+```
 
+**Penjelasan Detail Immutability:**
+
+```python
+# Kenapa int immutable?
+# Karena integers adalah objects dengan fixed memory size
+# Bayangkan: jika int bisa diubah, semua variabel yang pointing ke 5 bisa berubah tiba-tiba
+
+x = 5
+y = x
+# Di memory: ada objek Foley Jr. di alamat 0x1001, x dan y pointing ke sana
+# x = 10: Python membuat objek baru (10) di 0x1002, x sekarang pointing ke sana
+# y tetap pointing ke objek lama (5)
+
+# Dictionary (mutable) - BEWARE!
 # ============================================
 # MUTABLE - Bisa diubah setelah dibuat
 # ============================================
 # list, dict, set
 
-# List - contoh masalah umum
+# List - contoh masalah umum (ERROR YANG SANGAT SERING TERJADI)
 list1 = [1, 2, 3]
-list2 = list1          # Tidak membuat copy!
+list2 = list1          # ❌ TIDAK membuat copy! Hanya reference!
 list2.append(4)
 print(list1)           # Output: [1, 2, 3, 4] (list1 juga berubah!)
 
 # ✅ CARA BENAR untuk copy list
 list1 = [1, 2, 3]
-list2 = list1.copy()   # Shallow copy
+list2 = list1.copy()   # Shallow copy - membuat objek baru
 # Atau
-list2 = list1[:]       # Slice copy
+list2 = list1[:]       # Slice copy - cara lain
 # Atau
 list2 = list(list1)    # Konstruktor copy
 list2.append(4)
 print(list1)           # Output: [1, 2, 3] (list1 tetap aman)
+print(list2)           # Output: [1, 2, 3, 4]
 
-# Dictionary juga mutable
-dict1 = {"nama": "Budi", "umur": 25}
-dict2 = dict1
-dict2["kota"] = "Jakarta"
-print(dict1)           # dict1 juga berubah!
+# ⚠️ DEEP COPY - Jika list berisi list/objek lain
+# copy adalah module standar Python untuk membuat copy objek
+# Dokumentasi resmi: https://docs.python.org/3/library/copy.html
+
+import copy
+list_nested = [[1, 2], [3, 4]]
+list_shallow = list_nested.copy()
+list_deep = copy.deepcopy(list_nested)
+
+list_nested[0][0] = 99
+print(f"Original: {list_nested}")      # [[99, 2], [3, 4]]
+print(f"Shallow:  {list_shallow}")     # [[99, 2], [3, 4]] - BERUBAH!
+print(f"Deep:     {list_deep}")        # [[1, 2], [3, 4]] - TIDAK berubah
+```
+
+**Tabel Referensi Mutability:**
+
+| Tipe Data | Mutable? | Gunakan Untuk |
+|-----------|----------|--------------|
+| `int` | ❌ Tidak | Nilai tunggal, counter |
+| `float` | ❌ Tidak | Pengukuran desimal |
+| `str` | ❌ Tidak | Text, immutable strings |
+| `tuple` | ❌ Tidak | Koordinat, fixed data |
+| `list` | ✅ Ya | Koleksi yang berubah |
+| `dict` | ✅ Ya | Key-value pairs |
+| `set` | ✅ Ya | Unik values, membership |
+| `frozenset` | ❌ Tidak | Set yang tidak berubah |
+
+---
+
+## 2. Persiapan: Built-in Functions yang Sering Digunakan
+
+Sebelum masuk ke Collections, kita perlu memahami built-in functions yang sering digunakan untuk membuat dan memanipulasi data:
+
+### 2.0 range() - Menghasilkan Sequenced Numbers
+
+`range()` menghasilkan sequence of numbers, sangat sering digunakan untuk looping dan membuat list:
+
+```python
+# range(stop) - dari 0 sampai stop-1
+for i in range(5):
+    print(i)  # 0, 1, 2, 3, 4
+
+# range(start, stop) - dari start sampai stop-1
+for i in range(2, 6):
+    print(i)  # 2, 3, 4, 5
+
+# range(start, stop, step) - dengan increment
+for i in range(0, 10, 2):
+    print(i)  # 0, 2, 4, 6, 8
+
+# range dengan step negatif (mundur)
+for i in range(5, 0, -1):
+    print(i)  # 5, 4, 3, 2, 1
+
+# Konversi range ke list
+numbers = list(range(10))
+print(numbers)  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Menggunakan range untuk indexing
+nilai = [85, 90, 78, 92, 88]
+for i in range(len(nilai)):
+    print(f"Index {i}: {nilai[i]}")
+```
+
+**Penting: range() itu LAZY (efisien memory)**
+
+```python
+# ❌ SALAH: Membuat list dengan range
+numbers = list(range(1000000))  # Boros memory!
+
+# ✅ BENAR: Gunakan range langsung
+for i in range(1000000):  # Efisien, tidak buat list di memory
+    if i == 10:
+        break
+```
+
+### 2.0b len() - Mengetahui Jumlah Elemen
+
+`len()` mengembalikan jumlah elemen dalam iterable:
+
+```python
+# len dengan berbagai tipe data
+print(len([1, 2, 3]))        # 3 (list)
+print(len("hello"))          # 5 (string)
+print(len({"a": 1, "b": 2})) # 2 (dict)
+print(len((1, 2, 3)))        # 3 (tuple)
+print(len({1, 2, 3}))        # 3 (set)
+
+# Kombinasi dengan range
+for i in range(len(nilai)):
+    print(f"Elemen ke-{i+1} dari {len(nilai)}")
+```
+
+### 2.0c sorted() dan reversed() - Mengurutkan
+
+```python
+# sorted() - return list baru yang terurut
+numbers = [3, 1, 4, 1, 5, 9, 2, 6]
+print(sorted(numbers))         # [1, 1, 2, 3, 4, 5, 6, 9]
+print(sorted(numbers, reverse=True))  # [9, 6, 5, 4, 3, 2, 1, 1]
+
+# sorted() dengan key function
+nama = ["Charlie", "Alice", "Bob"]
+print(sorted(nama))  # ["Alice", "Bob", "Charlie"]
+print(sorted(nama, key=len))  # ["Bob", "Alice", "Charlie"] (by length)
+
+# reversed() - return iterator, bukan list
+numbers = [1, 2, 3]
+reversed_nums = reversed(numbers)
+print(list(reversed_nums))  # [3, 2, 1]
 ```
 
 ---
@@ -220,6 +547,37 @@ print(dict1)           # dict1 juga berubah!
 ## 2. Collections - Struktur Data Koleksi
 
 Python menyediakan 4 struktur data koleksi utama. Memahami kapan menggunakan yang mana adalah skill fundamental.
+
+### 2.0 Module collections - Struktur Data Khusus
+
+> **NOTE:** `collections` adalah module standar Python yang menyediakan struktur data khusus. Dokumentasi resmi: https://docs.python.org/3/library/collections.html
+
+```python
+# collections menyediakan:
+# - namedtuple: Tuple dengan nama field
+# - deque: Double-ended queue (list yang efisien untuk append/pop)
+# - Counter: Dictionary untuk menghitung elemen
+# - OrderedDict: Dictionary yang mengingat urutan
+# - defaultdict: Dictionary dengan default value
+# - ChainMap: Multiple dictionaries sebagai satu view
+
+# Contoh: Counter - menghitung kemunculan
+from collections import Counter
+
+votes = ['A', 'B', 'A', 'C', 'B', 'A']
+counter = Counter(votes)
+print(counter)  # Counter({'A': 3, 'B': 2, 'C': 1})
+print(counter.most_common(2))  # [('A', 3), ('B', 2)]
+
+# Contoh: deque - queue yang efisien
+from collections import deque
+dq = deque()
+dq.append(1)      # Tambah di kanan: [1]
+dq.appendleft(0)  # Tambah di kiri: [0, 1]
+dq.append(2)      # [0, 1, 2]
+print(dq.pop())   # 2, return dan hapus kanan
+print(dq.popleft())  # 0, return dan hapus kiri
+```
 
 ### 2.1 List - Daftar Terurut dan Mutable
 
@@ -307,19 +665,85 @@ nilai.count(88)              # 1 - hitung kemunculan nilai
 # ============================================
 nilai = [85, 90, 78, 92]
 
-# For loop basic
+# For loop basic - iterasi sederhana
 for n in nilai:
     print(n)
 
-# For loop dengan enumerate (dapat indeks)
-for i, n in enumerate(nilai):
-    print(f"Index {i}: {n}")
+# ============================================
+# ENUMERATE - UNTUK MENDAPATKAN INDEKS DAN NILAI
+# ============================================
+# enumerate() mengembalikan tuple (index, value) untuk setiap elemen
+# Ini SANGAT BERGUNA saat kita butuh indeks dalam loop
 
-# For loop dengan zip (iterasi 2 list sekaligus)
-nama = ["Alice", "Bob"]
-scores = [85, 90]
+nilai = ["apel", "mangga", "jeruk"]
+
+# Dasar enumerate
+for index, buah in enumerate(nilai):
+    print(f"Index {index}: {buah}")
+# Output:
+# Index 0: apel
+# Index 1: mangga
+# Index 2: jeruk
+
+# Mulai dari angka tertentu
+for i, buah in enumerate(nilai, start=1):
+    print(f"{i}. {buah}")
+# Output:
+# 1. apel
+# 2. mangga
+# 3. jeruk
+
+# Convert ke list
+indices = list(enumerate(nilai))
+# [(0, 'apel'), (1, 'mangga'), (2, 'jeruk')]
+
+# ============================================
+# ZIP - UNTUK ITERASI BEBERAPA LIST SEKALIGUS
+# ============================================
+# zip() menggabungkan beberapa iterables menjadi tuple
+# Berguna saat kita punya data parallel (misal: nama dan nilai)
+
+nama = ["Alice", "Bob", "Charlie"]
+scores = [85, 90, 78]
+
+# Iterasi bersamaan
 for n, s in zip(nama, scores):
     print(f"{n}: {s}")
+# Output:
+# Alice: 85
+# Bob: 90
+# Charlie: 78
+
+# List dari hasil zip
+gabungan = list(zip(nama, scores))
+# [('Alice', 85), ('Bob', 90), ('Charlie', 78)]
+
+# Multiple lists
+warna = ["merah", "hijau", "biru"]
+for n, s, w in zip(nama, scores, warna):
+    print(f"{n}: {s} ({w})")
+# Alice: 85 (merah)
+# Bob: 90 (hijau)
+# Charlie: 78 (biru)
+
+# ⚠️ Perhatikan: zip() berhenti di list terpendek
+list1 = [1, 2, 3, 4, 5]
+list2 = ['a', 'b']
+for x, y in zip(list1, list2):
+    print(x, y)
+# Output: 1 a, 2 b (hanya 2 iterasi)
+
+# ============================================
+# PRACTICAL: GABUNGAN ENUMERATE DAN ZIP
+# ============================================
+# Kadang kita butuh keduanya - indeks DAN multiple data
+
+mahasiswa = ["Budi", "Alice", "Charlie"]
+nilai = [85, 90, 78]
+kota = ["Jakarta", "Bandung", "Surabaya"]
+
+for i, (mhs, nil, kt) in enumerate(zip(mahasiswa, nilai, kota)):
+    print(f"{i+1}. {mhs} dari {kt} mendapat nilai {nil}")
 
 # List comprehension (akan dijelaskan lebih detail)
 kuadrat = [x**2 for x in nilai]
@@ -338,11 +762,15 @@ single = (42,)                    # Tuple dengan 1 elemen (perlu koma!)
 tidak_beraturan = 1, 2, 3        # Tanpa parentheses juga valid
 kosong = ()                       # Tuple kosong
 
-# Named tuple - lebih readable
+# Named tuple - lebih readable (ADVANCED: dari collections module)
+# NOTE: namedtuple dijelaskan lebih detail di Section 2.4 (Dictionary Advanced)
+# collections module adalah topik lanjutan
 from collections import namedtuple
 Point = namedtuple('Point', ['x', 'y'])
 p = Point(10, 20)
 print(p.x, p.y)                   # 10, 20
+# Kelebihan: bisa akses dengan .x dan .y, juga bisa sebagai tuple biasa
+print(f"Is tuple: {isinstance(p, tuple)}")  # True
 
 # ============================================
 # MENGAPA GUNAKAN TUPLE?
@@ -555,8 +983,13 @@ print(universitas["FTI"]["mahasiswa"])      # 500
 print(universitas["FTI"]["jurusan"][0])     # "Informatika"
 
 # ============================================
-# DEFAULTDICT - Jika key tidak ada, buat otomatis
+# DEFAULTDICT - Jika key tidak ada, buat otomatis (ADVANCED)
 # ============================================
+# NOTE: defaultdict adalah advanced topic dari collections module
+# collections module dijelaskan lebih lanjut di dokumentasi resmi:
+# https://docs.python.org/3/library/collections.html
+# Untuk pemahaman dasar dictionary, fokus ke section sebelumnya terlebih dahulu
+
 from collections import defaultdict
 
 pencntung = defaultdict(int)
@@ -1003,53 +1436,164 @@ def is_positive(x):
 
 ### 4.4 Scope - Lingkup Variabel
 
+**Scope** menentukan di mana variabel bisa diakses dalam kode. Python menggunakan aturan **LEGB** (Local, Enclosing, Global, Built-in) untuk mencari variabel:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    PYTHON SCOPE - LEGB RULE                         │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │                    BUILT-IN SCOPE                          │    │
+│  │  (Fungsi bawaan Python: print, len, range, dll)          │    │
+│  │                                                             │    │
+│  │  ┌───────────────────────────────────────────────────┐    │    │
+│  │  │                  GLOBAL SCOPE                     │    │    │
+│  │  │  (Variabel di level module/file)                 │    │    │
+│  │  │                                                    │    │    │
+│  │  │  ┌──────────────────────────────────────────┐    │    │    │
+│  │  │  │           ENCLOSING SCOPE              │    │    │    │
+│  │  │  │   (Scope dari fungsi luar, jika nested)  │    │    │    │
+│  │  │  │                                          │    │    │    │
+│  │  │  │  ┌────────────────────────────┐        │    │    │    │
+│  │  │  │  │     LOCAL SCOPE           │        │    │    │    │
+│  │  │  │  │  (Variabel di dalam fungsi) │        │    │    │    │
+│  │  │  │  └────────────────────────────┘        │    │    │    │
+│  │  │  └──────────────────────────────────────────┘    │    │    │
+│  │  └───────────────────────────────────────────────────┘    │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+Python mencari variabel dalam urutan: LOCAL → ENCLOSING → GLOBAL → BUILT-IN
+```
+
+**Contoh Detail Setiap Scope:**
+
 ```python
 # ============================================
-# LOCAL, ENCLOSING, GLOBAL, BUILT-IN (LEGB)
+# 1. BUILT-IN SCOPE - Fungsi bawaan Python
 # ============================================
+# print(), len(), range(), int(), str(), dll
 
-# BUILT-IN - Fungsi bawaan Python
-print(len([1, 2, 3]))    # len adalah built-in
+print(len([1, 2, 3]))    # 3 - len() dari built-in
+print(range(5))          # range(0,5) - range() dari built-in
 
-# GLOBAL - Variabel di level module
-counter = 10
+# Kita bisa lihat semua built-ins
+import builtins
+# print([x for x in dir(builtins) if not x.startswith('_')])
+
+# ============================================
+# 2. GLOBAL SCOPE - Variabel di level module
+# ============================================
+counter = 10  # Global variable
 
 def increment():
-    global counter       # Mengakses variabel global
+    global counter       # WAJAH gunakan 'global' untuk modify
     counter += 1
-    print(f"Inside: {counter}")
+    print(f"Inside function: counter = {counter}")
 
+print(f"Before: counter = {counter}")  # 10
 increment()
-print(f"Outside: {counter}")  # 11
+print(f"After: counter = {counter}")  # 11
+
+# ⚠️ Tanpa 'global', kita bisa BACA tapi TIDAK BISA MODIFY
+total = 100
+
+def read_only():
+    print(f"Can read: {total}")  # ✅ Bisa dibaca
+
+def try_modify():
+    total = 200          # ❌ Ini membuat LOCAL variable, BUKAN modify global
+    print(f"Local: {total}")  # 200
+
+try_modify()
+print(f"Global still: {total}")  # 100 - TIDAK berubah!
 
 # ============================================
-# ENCLOSING - Nested function
+# 3. LOCAL SCOPE - Variabel di dalam fungsi
 # ============================================
+def fungsi_lokal():
+    local_var = "Saya lokal"
+    print(local_var)  # ✅ Bisa diakses di sini
+
+# print(local_var)  # ❌ ERROR! Tidak bisa diakses di luar
+
+# ============================================
+# 4. ENCLOSING SCOPE - Nested functions
+# ============================================
+# Terjadi ketika kita punya fungsi di dalam fungsi
+
 def outer():
-    x = "local"
+    x = "dari outer"  # Enclosing variable untuk inner()
     
     def inner():
-        nonlocal x       # Mengakses variabel dari outer
-        x = "enclosing"
+        x = "dari inner"  # Local variable untuk inner()
+        print(f"Inner melihat: {x}")  # Local优先
+    
+    inner()
+    print(f"Outer melihat: {x}")  # x masih "dari outer"
+
+# Penjelasan: Saat inner() dijalankan:
+# 1. Cek LOCAL scope inner() → x = "dari inner" ditemukan
+# 2. Jika tidak ada, cek ENCLOSING (outer) scope → x = "dari outer"
+# 3. Jika tidak ada, cek GLOBAL scope
+
+def outer_correct():
+    x = "dari outer"
+    
+    def inner():
+        nonlocal x  # Modify variabel dari enclosing scope
+        x = "diubah oleh inner"
         print(f"Inner: {x}")
     
     inner()
-    print(f"Outer: {x}")
+    print(f"Outer: {x}")  # Sekarang x = "diubah oleh inner"
+
+# ============================================
+# CLOSURE - Enclosing scope yang "tercapture"
+# ============================================
+# Closure terjadi ketika inner function "mengingat" variabel dari outer
+
+def outer_closure():
+    multiplier = 2
+    
+    def inner(number):
+        return number * multiplier  # multiplier "diingat" oleh inner
+    
+    return inner  # Kembalikan fungsinya, BUKAN hasilnya
+
+doubler = outer_closure()
+print(doubler(5))   # 10 (5 * 2)
+print(doubler(10))  # 20 (10 * 2)
+
+# multiplier tetap "hidup" meskipun outer() sudah selesai
+print(f"Closure remembers: multiplier = {doubler.__closure__[0].cell_contents}")
 
 # ============================================
 # BEST PRACTICE - Parameter vs Global
 # ============================================
-# ✅ GOOD: Gunakan parameter
+# ✅ GOOD: Gunakan parameter (recommended)
 def hitung_total(items):
     total = 0
     for item in items:
         total += item
     return total
 
+result = hitung_total([1, 2, 3, 4, 5])
+print(f"Total: {result}")  # 15
+
 # ❌ AVOID: Jangan gunakan global dalam fungsi
-# def hitung():        # ❌ Menggunakan global
+# Ini membuat kode sulit di-trace dan di-test
+#
+# total = 0  # ❌ Jangan lakukan ini
+# def add_to_total(x):
 #     global total
-#     total = 100
+#     total += x
+
+# ✅ ALTERNATIVE: Return nilai baru
+def add_to_total(current_total, x):
+    return current_total + x
 ```
 
 ### 4.5 Lambda Functions - Fungsi Anonim
@@ -1182,8 +1726,14 @@ def transform(matrix: Matrix) -> Matrix:
     return matrix
 
 # ============================================
-# PYDANTIC BASEMODEL (LEBIH POWERFUL)
+# PYDANTIC BASEMODEL (LEBIH POWERFUL) - EXTERNAL LIBRARY
 # ============================================
+# NOTE: Pydantic adalah external library
+# Install dengan: pip install pydantic
+# Dokumentasi: https://docs.pydantic.dev/
+# Pydantic adalah library untuk data validation dan settings management
+# Sangat populer di API development (FastAPI, dll)
+
 from pydantic import BaseModel
 
 class User(BaseModel):
@@ -1200,6 +1750,8 @@ user = User(name="Budi", age=25, email="budi@example.com")
 ```
 
 ### 4.7 Generators dan Iterators - PENTING untuk ML Data Pipeline
+
+> **Catatan:** Bagian ini membahas generators dengan contoh ML. NumPy dijelaskan di Section 11. Jika Anda belum familiar dengan NumPy, Anda bisa melewati contoh yang menggunakan `np.array()` dan kembali setelah mempelajari NumPy.
 
 Generators sangat penting untuk memory-efficient processing data besar (seperti dataset gambar/video):
 
@@ -1241,22 +1793,115 @@ print(next(squares_gen))  # 1
 
 # Practical ML use case: batch generator
 def batch_generator(data, batch_size):
-    """Generate batches untuk training ML"""
+    """Generate batches untuk training ML
+    NOTE: Contoh ini menggunakan list, untuk NumPy lihat Section 11
+    """
     for i in range(0, len(data), batch_size):
         yield data[i:i + batch_size]
 
-import numpy as np
-data = np.random.randn(1000, 10)  # 1000 samples, 10 features
-for batch in batch_generator(data, 32):
-    print(batch.shape)  # (32, 10)
-    # Proses batch di sini
+# Contoh dengan list sederhana
+data_list = list(range(100))  # [0, 1, 2, ..., 99]
+for i, batch in enumerate(batch_generator(data_list, 10)):
+    print(f"Batch {i}: {batch[:3]}... (total {len(batch)} items)")
+
+# NOTE: Untuk contoh dengan numpy.array dan ML, lihat Section 11.2.7
+# Di section tersebut dijelaskan lebih detail tentang batch processing
 
 # ============================================
 # ITERTOOLS - TOOLS UNTUK DATA PROCESSING
 # ============================================
+# itertools adalah module standar Python untuk iterator utilities
+# Dokumentasi resmi: https://docs.python.org/3/library/itertools.html
+# Semua fungsi di itertools menghasilkan iterator (memory efficient)
+
 import itertools
 
-# cycle -循环
+# itertools terbagi dalam 3 kategori:
+# 1. Infinite iterators: count(), cycle(), repeat()
+# 2. Finite iterators: chain(), islice(), takewhile(), dropwhile()
+# 3. Combinatoric iterators: product(), permutations(), combinations()
+
+# ============================================
+# 1. INFINITE ITERATORS (butuh break!)
+# ============================================
+
+# count(start, step) - hitung tanpa batas
+for i, num in enumerate(itertools.count(10, 5)):
+    if i >= 5:
+        break
+    print(num)  # 10, 15, 20, 25, 30
+
+# cycle() -循环 tanpa batas
+counter = 0
+for item in itertools.cycle(['A', 'B', 'C']):
+    print(item)
+    counter += 1
+    if counter >= 6:
+        break  # A, B, C, A, B, C
+
+# repeat() - ulangi nilai tanpa batas
+for i, item in enumerate(itertools.repeat(10, 3)):
+    print(item)  # 10, 10, 10
+
+# ============================================
+# 2. FINITE ITERATORS
+# ============================================
+
+# chain() - gabungkan iterables
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+combined = list(itertools.chain(list1, list2))
+print(combined)  # [1, 2, 3, 4, 5, 6]
+
+# chain.from_iterable() - untuk nested iterables
+nested = [[1, 2], [3, 4], [5, 6]]
+flattened = list(itertools.chain.from_iterable(nested))
+print(flattened)  # [1, 2, 3, 4, 5, 6]
+
+# islice() - slice iterator tanpa buat list (start, stop, step)
+data = range(100)
+sliced = list(itertools.islice(data, 0, 10, 2))
+print(sliced)  # [0, 2, 4, 6, 8]
+
+# takewhile() - ambil elemen selama kondisi True
+data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+taken = list(itertools.takewhile(lambda x: x < 5, data))
+print(taken)  # [1, 2, 3, 4]
+
+# dropwhile() - drop elemen selama kondisi True, lalu ambil sisanya
+dropped = list(itertools.dropwhile(lambda x: x < 5, data))
+print(dropped)  # [5, 6, 7, 8, 9, 10]
+
+# ============================================
+# 3. COMBINATORIC ITERATORS (PENTING!)
+# ============================================
+
+# product() - Cartesian product (penting untuk ML hyperparameter tuning!)
+params = {
+    'learning_rate': [0.001, 0.01, 0.1],
+    'batch_size': [16, 32, 64],
+    'epochs': [10, 20]
+}
+keys = list(params.keys())
+values = list(params.values())
+
+for combo in itertools.product(*values):
+    config = dict(zip(keys, combo))
+    print(config)
+    # {'learning_rate': 0.001, 'batch_size': 16, 'epochs': 10}
+    # dst...
+
+# permutations() - semua kemungkinan urutan
+print(list(itertools.permutations([1, 2, 3])))
+# [(1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), (3,2,1)]
+
+# combinations() - kombinasi tanpa urutan
+print(list(itertools.combinations([1, 2, 3], 2)))
+# [(1,2), (1,3), (2,3)]
+
+# combinations_with_replacement() - kombinasi dengan pengulangan
+print(list(itertools.combinations_with_replacement([1, 2, 3], 2)))
+# [(1,1), (1,2), (1,3), (2,2), (2,3), (3,3)]
 counter = 0
 for item in itertools.cycle(['A', 'B', 'C']):
     print(item)
@@ -1291,11 +1936,88 @@ for combo in itertools.product(*values):
     # dst...
 
 # ============================================
-# FUNCTOOLS - MEMOIZATION UNTUK ML
+# FUNCTOOLS - FUNGSI UNTUK MEMANIPULASI FUNGSI
 # ============================================
-from functools import lru_cache, partial
+# functools menyediakan fungsi higher-order dan utilities untuk fungsi
+# Dokumentasi resmi: https://docs.python.org/3/library/functools.html
 
-# lru_cache - cache hasil fungsi (penting untuk DP & memoization)
+from functools import lru_cache, partial, reduce
+
+# ============================================
+# lru_cache - MEMOIZATION (PENTING UNTUK ML/DP!)
+# ============================================
+# lru_cache menyimpan hasil fungsi berdasarkan argumentnya
+# Jika fungsi dipanggil dengan argumen yang sama, hasil di-return dari cache
+# Sangat penting untuk Dynamic Programming dan menghindari komputasi berulang
+
+# Contoh: Fibonacci TANPA cache - sangat lambat!
+import time
+
+def fib_slow(n):
+    if n < 2:
+        return n
+    return fib_slow(n-1) + fib_slow(n-2)
+
+# print(f"Without cache: {time.time()}")
+# fib_slow(35)  # Butuh waktu lama!
+# print(f"After: {time.time()}")
+
+# Contoh: Fibonacci DENGAN lru_cache - sangat cepat!
+@lru_cache(maxsize=128)  # maxsize menentukan berapa banyak hasil yang di-cache
+def fib_fast(n):
+    """Fibonacci dengan memoization - sangat cepat!"""
+    if n < 2:
+        return n
+    return fib_fast(n-1) + fib_fast(n-2)
+
+# print(f"With cache: {time.time()}")
+# fib_fast(100)  # Instant! (hasil di-cache)
+# print(f"After: {time.time()}")
+# print(fib_fast.cache_info())  # CacheInfo(hits=98, misses=101, ...)
+
+# ============================================
+# partial - BIKIN FUNGSI BARU DENGAN PARAMETER TETAP
+# ============================================
+# partial membuat fungsi baru dengan sebagian parameter sudah ditentukan
+# Berguna untuk callback functions dan function factories
+
+def power(base, exponent):
+    return base ** exponent
+
+# Buat fungsi baru dengan exponent=2 (kuadrat)
+square = partial(power, exponent=2)
+
+# Buat fungsi baru dengan exponent=3 (kubik)
+cube = partial(power, exponent=3)
+
+print(square(5))  # 25 (5^2)
+print(cube(5))    # 125 (5^3)
+
+# Contoh praktis: callback dengan parameter tetap
+from functools import partial
+
+def send_email(to, subject, body):
+    return f"To: {to}, Subject: {subject}, Body: {body}"
+
+# Buat template email
+send_reminder = partial(send_email, subject="Reminder", body="Don't forget!")
+print(send_reminder("budi@example.com"))
+# To: budi@example.com, Subject: Reminder, Body: Don't forget!
+
+# ============================================
+# reduce - MENERAPKAN FUNGSI SECARA AKUMULATIF
+# ============================================
+# reduce(funksi, iterable) menerapkan fungsi ke setiap elemen secara berurutan
+# Hasil akumulasi dari semua pemanggilan fungsi
+
+# Contoh: Hitung hasil kali semua angka
+numbers = [1, 2, 3, 4, 5]
+result = reduce(lambda x, y: x * y, numbers)
+print(result)  # 1*2*3*4*5 = 120
+
+# Contoh: Hitung factorial
+factorial_5 = reduce(lambda x, y: x * y, range(1, 6))
+print(factorial_5)  # 120
 @lru_cache(maxsize=128)
 def fibonacci(n):
     """Fibonacci dengan memoization - sangat cepat!"""
@@ -1873,7 +2595,8 @@ class Product:
     name: str
     price: float
     quantity: int = 0  # Default value
-    
+     
+    # @property penjelasan ada di Section 7.5
     @property
     def total_value(self):
         return self.price * self.quantity
@@ -1998,13 +2721,17 @@ class BaseModel(ABC):
         return f"Model: {self.name}, Trained: {self.is_trained}"
 
 # Linear Regression implementation
+# NOTE: NumPy dijelaskan di Section 11.2 - diperlukan untuk linear algebra
+# Untuk menjalankan kode ini, perlu: import numpy as np
 class LinearRegression(BaseModel):
     def __init__(self):
         super().__init__("Linear Regression")
         self.weights = None
     
     def fit(self, X, y):
-        # Simplified: y = X @ w
+        # Simplified linear regression: y = X @ w
+        # np.linalg.lstsq = least squares solution
+        # Assuming: import numpy as np (see Section 11.2)
         self.weights = np.linalg.lstsq(X, y, rcond=None)[0]
         self.is_trained = True
     
@@ -2575,6 +3302,142 @@ def calculate():
 data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 result = [y for x in data if (y := x ** 2) > 10]
 print(result)  # [16, 25, 36, 49, 64, 81, 100]
+```
+
+---
+
+## 11. Python Standard Library Modules (Modules yang Sudah Kita Pakai)
+
+Sebelum masuk ke tools external, mari kita recap module-module standar Python yang sudah kita pakai:
+
+### 11.0 Ringkasan Module Standar yang Sudah Dipakai
+
+> **Catatan:** Python memiliki banyak module standar yang sudah tersedia tanpa perlu install. Dokumentasi lengkap: https://docs.python.org/3/library/
+
+| Module | Fungsi | Sudah Dipakai di Section |
+|--------|--------|--------------------------|
+| `collections` | Struktur data khusus (Counter, deque, defaultdict) | Section 2.0, 2.2, 2.4 |
+| `itertools` | Iterator utilities (cycle, chain, product) | Section 4.7 |
+| `functools` | Higher-order functions (lru_cache, partial, reduce) | Section 4.7 |
+| `typing` | Type hints (Optional, List, Dict, Union) | Section 4.6 |
+| `datetime` | Manipulasi tanggal dan waktu | Section 7.4 |
+| `json` | Encode/decode JSON | Section 9.3 |
+| `pathlib` | Object-oriented file paths | Section 9 |
+| `abc` | Abstract Base Classes | Section 7.6 |
+| `copy` | Deep/shallow copy objects | Section 1.6 |
+| `math` | Fungsi matematika | Section 11.0 |
+| `time` | Waktu dan timing | Section 11.0 |
+| `random` | Random number generation | Section 11.0 |
+
+```python
+# ============================================
+# MODULE STANDAR YANG SERING DIPAKAI
+# ============================================
+
+# collections - Struktur data khusus
+from collections import Counter, deque, defaultdict, namedtuple, OrderedDict
+
+# itertools - Iterator utilities
+import itertools
+
+# functools - Function utilities
+import functools
+
+# datetime - Tanggal dan waktu
+from datetime import datetime, timedelta, date
+
+# json - JSON manipulation
+import json
+
+# pathlib - File path (modern way)
+from pathlib import Path
+
+# os - Operating system interface
+import os
+
+# re - Regular expressions
+import re
+
+# math - Mathematical functions (CRITICAL untuk ML!)
+import math
+
+# time - Waktu dan timing
+import time
+
+# random - Random number generation
+import random
+
+# statistics - Statistical functions
+import statistics
+
+# copy - Deep/shallow copy
+import copy
+```
+
+### 11.0b Module math - Fungsi Matematika (PENTING untuk ML!)
+
+```python
+import math
+
+# Konstanta
+print(math.pi)   # 3.141592653589793
+print(math.e)    # 2.718281828459045
+
+# Fungsi dasar
+print(math.sqrt(16))     # 4.0 - akar kuadrat
+print(math.pow(2, 3))    # 8.0 - pangkat
+print(math.log(100))     # 4.605170185988092 - log natural
+print(math.log(100, 10)) # 2.0 - log base 10
+print(math.exp(2))       # 7.38905609893065 - e^2
+
+# Trigonometri
+print(math.sin(math.pi/2))  # 1.0
+print(math.cos(0))          # 1.0
+print(math.tan(math.pi/4))  # 1.0
+
+# Pembulatan
+print(math.floor(3.7))  # 3 - bulat ke bawah
+print(math.ceil(3.2))   # 4 - bulat ke atas
+print(math.round(3.5))  # 4 - bulat ke terdekat
+
+# Faktorial
+print(math.factorial(5))  # 120
+
+# Kombinasi dan permutasi
+print(math.comb(5, 2))     # 10 - C(5,2)
+print(math.perm(5, 2))     # 20 - P(5,2)
+```
+
+### 11.0c Module time - Waktu dan Timing
+
+```python
+import time
+
+# time() - waktu saat ini dalam seconds
+start = time.time()
+time.sleep(1)  # Tunda 1 detik
+end = time.time()
+print(f"Elapsed: {end - start:.2f} seconds")
+
+# strftime - format waktu ke string
+now = time.localtime()
+print(time.strftime("%Y-%m-%d %H:%M:%S", now))
+# Output: 2024-01-15 10:30:45
+
+# time.strptime - parse string ke time
+parsed = time.strptime("2024-01-15", "%Y-%m-%d")
+print(parsed)  # time.struct_time
+
+# perf_counter - high precision timer (untuk benchmarking)
+start = time.perf_counter()
+# ... kode yang diukur ...
+end = time.perf_counter()
+print(f"Duration: {(end-start)*1000:.3f} ms")
+
+# monotonic - timer yang tidak bisa mundur
+start = time.monotonic()
+# ... some processing ...
+print(f"Processing took: {time.monotonic() - start:.2f}s")
 ```
 
 ---
@@ -3502,9 +4365,14 @@ arr_float32 = arr.astype(np.float32)  # Setengah memory dari float64
 arr_int8 = arr.astype(np.int8)       # Sangat hemat untuk binary data
 
 # ============================================
-# NUMPY + PYTORCH INTEROPERABILITY
 # ============================================
-# PyTorch tensors bisa dikonversi dari/ke NumPy
+# NUMPY + PYTORCH INTEROPERABILITY (PREVIEW)
+# ============================================
+# NOTE: PyTorch dijelaskan secara detail di Section Fondasi Deep Learning
+# Section ini hanya preview singkat untuk menunjukkan hubungan NumPy-Torch
+# Jika belum familiar dengan torch, Anda bisalewati bagian ini dan kembali
+# setelah mempelajari PyTorch
+
 import torch
 
 # NumPy -> PyTorch
@@ -6770,30 +7638,69 @@ def analyze_sales_data(csv_file):
 ## 15. Resource Belajar Tambahan
 
 ### 15.1 Dokumentasi Resmi Python
-- [Python Official Documentation](https://docs.python.org/3/) - Dokumentasi resmi Python 3
-- [PEP 8 Style Guide](https://pep8.org/) - Panduan gaya kode Python
-- [Real Python](https://realpython.com/) - Tutorial Python dengan quality tinggi
-- [Python Cheat Sheet](https://www.pythoncheatsheet.org/) - Cheat sheet komprehensif
 
-### 15.2 NumPy Resources (KRITICAL untuk AI/ML)
-- [NumPy Official Documentation](https://numpy.org/doc/stable/) - Dokumentasi resmi NumPy
-- [NumPy Illustrated Guide](https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976b1ed) - Visual guide untuk NumPy
-- [NumPy for ML (MachineLearningMastery)](https://machinelearningmastery.com/a-gentle-introduction-to-numpy/) - NumPy untuk Machine Learning
-- [Stanford CS231n NumPy Tutorial](http://cs231n.github.io/python-numpy-tutorial/) - Tutorial dari Stanford
-- [NumPy: The Absolute Basics](https://numpy.org/devdocs/user/absolute_beginners.html) - Beginners guide dari official
+| Topik | Link | Keterangan |
+|-------|------|------------|
+| **Dokumentasi Resmi** | [docs.python.org/3/](https://docs.python.org/3/) | Dokumentasi lengkap Python 3 |
+| **Tutorial Python** | [docs.python.org/3/tutorial/](https://docs.python.org/3/tutorial/) | Tutorial resmi dari Python |
+| **Library Reference** | [docs.python.org/3/library/](https://docs.python.org/3/library/) | Referensi library standar |
+| **Glossary** | [docs.python.org/3/glossary.html](https://docs.python.org/3/glossary.html) | Istilah Python dijelaskan |
 
-### 15.3 Courses
-- [Python for Everybody (Coursera)](https://www.coursera.org/specializations/python) - Free to audit
-- [Google's Python Class](https://developers.google.com/edu/python) - Free course by Google
-- [W3Schools Python Tutorial](https://www.w3schools.com/python/) - Interactive tutorial
-- [NumPy Udemy Course](https://www.udemy.com/course/numpy-python-tutorial/) - NumPy mendalam
+### 15.2 PEP (Python Enhancement Proposal) - Standar Code
 
-### 15.4 YouTube Channels
-- [Corey Schafer](https://youtube.com/@coreyms) - Tutorial Python sangat lengkap
-- [Sentdex](https://youtube.com/@sentdex) - Python for beginners dan ML
-- [WPU (Web Programming UNPAS)](https://youtube.com/@sandhikagalihWPU) - Tutorial Python Bahasa Indonesia
-- [Kelas Terbuka](https://youtube.com/@KelasTerbuka) - Tutorial Python dan algoritma Bahasa Indonesia
-- [Engnet Defcon](https://youtube.com/@engnetdefcon) - Tutorial NumPy/ML dalam Bahasa Indonesia
+| PEP | Link | Keterangan |
+|-----|------|------------|
+| **PEP 8** | [pep8.org/](https://pep8.org/) | Style guide Python (WAJIB BACA) |
+| **PEP 20** | [peps.python.org/pep-0020/](https://peps.python.org/pep-0020/) | The Zen of Python |
+| **PEP 257** | [peps.python.org/pep-0257/](https://peps.python.org/pep-0257/) | Docstring conventions |
+| **PEP 484** | [peps.python.org/pep-0484/](https://peps.python.org/pep-0484/) | Type hints |
+| **PEP 498** | [peps.python.org/pep-0498/](https://peps.python.org/pep-0498/) | f-strings |
+| **PEP 3107** | [peps.python.org/pep-3107/](https://peps.python.org/pep-3107/) | Function annotations |
+
+### 15.3 Tutorial dan Referensi Populer
+
+| Resource | Link | Keterangan |
+|----------|------|------------|
+| **Real Python** | [realpython.com/](https://realpython.com/) | Tutorial Python berkualitas tinggi |
+| **Python Cheat Sheet** | [pythoncheatsheet.org/](https://www.pythoncheatsheet.org/) | Cheat sheet komprehensif |
+| **W3Schools Python** | [w3schools.com/python/](https://www.w3schools.com/python/) | Tutorial interaktif |
+| **Programiz** | [programiz.com/python-programming](https://www.programiz.com/python-programming) | Tutorial dengan contoh |
+
+### 15.4 NumPy Resources (KRITICAL untuk AI/ML)
+
+| Resource | Link | Keterangan |
+|----------|------|------------|
+| **NumPy Official Docs** | [numpy.org/doc/stable/](https://numpy.org/doc/stable/) | Dokumentasi resmi NumPy |
+| **NumPy Quickstart** | [numpy.org/doc/stable/user/quickstart.html](https://numpy.org/doc/stable/user/quickstart.html) | Quick start guide |
+| **Absolute Beginners** | [numpy.org/devdocs/user/absolute_beginners.html](https://numpy.org/devdocs/user/absolute_beginners.html) | Guide untuk pemula |
+| **Stanford CS231n** | [cs231n.github.io/python-numpy-tutorial/](http://cs231n.github.io/python-numpy-tutorial/) | Tutorial dari Stanford |
+| **NumPy Illustrated** | [betterprogramming.pub/numpy-illustrated](https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976b1ed) | Visual guide NumPy |
+| **NumPy for ML** | [machinelearningmastery.com/a-gentle-introduction-to-numpy/](https://machinelearningmastery.com/a-gentle-introduction-to-numpy/) | NumPy untuk ML |
+
+### 15.5 Pandas Resources
+
+| Resource | Link | Keterangan |
+|----------|------|------------|
+| **Pandas Official** | [pandas.pydata.org/docs/](https://pandas.pydata.org/docs/) | Dokumentasi resmi Pandas |
+| **10 Minutes to Pandas** | [pandas.pydata.org/docs/user_guide/10min.html](https://pandas.pydata.org/docs/user_guide/10min.html) | Quick tutorial |
+
+### 15.6 Courses
+
+| Course | Link | Keterangan |
+|--------|------|------------|
+| **Python for Everybody** | [coursera.org/specializations/python](https://www.coursera.org/specializations/python) | Free to audit, dari University of Michigan |
+| **Google's Python Class** | [developers.google.com/edu/python](https://developers.google.com/edu/python) | Course gratis dari Google |
+| **CS50P Harvard** | [cs50.harvard.edu/python/](https://cs50.harvard.edu/python/) | Course Python dari Harvard |
+
+### 15.7 YouTube Channels
+
+| Channel | Link | Keterangan |
+|---------|------|------------|
+| **Corey Schafer** | [youtube.com/@coreyms](https://youtube.com/@coreyms) | Tutorial Python sangat lengkap |
+| **Sentdex** | [youtube.com/@sentdex](https://youtube.com/@sentdex) | Python for beginners dan ML |
+| **WPU (Web Programming UNPAS)** | [youtube.com/@sandhikagalihWPU](https://youtube.com/@sandhikagalihWPU) | Tutorial Python Bahasa Indonesia |
+| **Kelas Terbuka** | [youtube.com/@KelasTerbuka](https://youtube.com/@KelasTerbuka) | Tutorial Python dan algoritma Bahasa Indonesia |
+| **Engnet Defcon** | [youtube.com/@engnetdefcon](https://youtube.com/@engnetdefcon) | Tutorial NumPy/ML Bahasa Indonesia |
 
 ---
 
