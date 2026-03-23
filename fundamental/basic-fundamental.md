@@ -1139,7 +1139,7 @@ person: dict[str, str] = {"name": "Budi"}
 # ============================================
 # ADVANCED TYPE HINTS
 # ============================================
-from typing import Optional, List, Dict, Union, Callable
+from typing import Optional, List, Dict, Union, Callable, Any
 
 # Optional - bisa None
 def greet(name: Optional[str] = None) -> str:
@@ -1164,6 +1164,10 @@ def apply_function(func: Callable[[int], int], value: int) -> int:
     return func(value)
 
 result = apply_function(lambda x: x * 2, 5)  # 10
+
+# Any - untuk type yang tidak spesifik
+def process_any(data: Any) -> Any:
+    return data
 
 # ============================================
 # TYPE ALIAS - MEMPERMUDAH TYPE HINTS KOMPLEKS
@@ -1193,6 +1197,124 @@ class User(BaseModel):
 # Otomatis validasi dan type conversion
 user = User(name="Budi", age=25, email="budi@example.com")
 # User(name='Budi', age=25, email='budi@example.com')
+```
+
+### 4.7 Generators dan Iterators - PENTING untuk ML Data Pipeline
+
+Generators sangat penting untuk memory-efficient processing data besar (seperti dataset gambar/video):
+
+```python
+# ============================================
+# GENERATOR FUNCTIONS - MEMORY EFFICIENT
+# ============================================
+# Generator menggunakan yield - tidak simpan semua di memory
+# SANGAT PENTING untuk processing dataset besar!
+
+# ❌ LIST - simpan semua di memory (bisa bermasalah untuk dataset besar)
+def get_numbers_list(n):
+    result = []
+    for i in range(n):
+        result.append(i)
+    return result
+
+# ✅ GENERATOR - proses satu per satu (memory efficient)
+def get_numbers_generator(n):
+    for i in range(n):
+        yield i
+
+# Penggunaan
+gen = get_numbers_generator(1000000)
+print(next(gen))  # 0
+print(next(gen))  # 1
+# Hanya simpan satu item di memory, tidak 1 juta!
+
+# ============================================
+# GENERATOR EXPRESSIONS - MIRIP LIST COMPREHENSION
+# ============================================
+# List comprehension - simpan semua
+squares_list = [x**2 for x in range(1000000)]  # Memory heavy!
+
+# Generator expression - proses satu per satu
+squares_gen = (x**2 for x in range(1000000))  # Memory efficient
+print(next(squares_gen))  # 0
+print(next(squares_gen))  # 1
+
+# Practical ML use case: batch generator
+def batch_generator(data, batch_size):
+    """Generate batches untuk training ML"""
+    for i in range(0, len(data), batch_size):
+        yield data[i:i + batch_size]
+
+import numpy as np
+data = np.random.randn(1000, 10)  # 1000 samples, 10 features
+for batch in batch_generator(data, 32):
+    print(batch.shape)  # (32, 10)
+    # Proses batch di sini
+
+# ============================================
+# ITERTOOLS - TOOLS UNTUK DATA PROCESSING
+# ============================================
+import itertools
+
+# cycle -循环
+counter = 0
+for item in itertools.cycle(['A', 'B', 'C']):
+    print(item)
+    counter += 1
+    if counter >= 6:
+        break  # A, B, C, A, B, C
+
+# chain - gabungkan iterables
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+combined = list(itertools.chain(list1, list2))
+print(combined)  # [1, 2, 3, 4, 5, 6]
+
+# islice - slice iterator tanpa buat list
+data = range(100)
+sliced = list(itertools.islice(data, 0, 10, 2))
+print(sliced)  # [0, 2, 4, 6, 8]
+
+# product - Cartesian product (penting untuk hyperparameter tuning)
+params = {
+    'learning_rate': [0.001, 0.01, 0.1],
+    'batch_size': [16, 32, 64],
+    'epochs': [10, 20]
+}
+keys = list(params.keys())
+values = list(params.values())
+for combo in itertools.product(*values):
+    config = dict(zip(keys, combo))
+    print(config)
+    # {'learning_rate': 0.001, 'batch_size': 16, 'epochs': 10}
+    # {'learning_rate': 0.001, 'batch_size': 16, 'epochs': 20}
+    # dst...
+
+# ============================================
+# FUNCTOOLS - MEMOIZATION UNTUK ML
+# ============================================
+from functools import lru_cache, partial
+
+# lru_cache - cache hasil fungsi (penting untuk DP & memoization)
+@lru_cache(maxsize=128)
+def fibonacci(n):
+    """Fibonacci dengan memoization - sangat cepat!"""
+    if n < 2:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(100))  # Instant (cached!)
+
+# partial - buat fungsi baru dengan parameter tetap
+def power(base, exponent):
+    return base ** exponent
+
+# Buat fungsi baru
+square = partial(power, exponent=2)
+cube = partial(power, exponent=3)
+
+print(square(5))  # 25
+print(cube(5))    # 125
 ```
 
 ### 4.7 Docstrings - Dokumentasi Fungsi
@@ -1842,6 +1964,213 @@ temp.celsius = 30      # Using setter
 print(temp.fahrenheit)  # 86.0
 
 # temp.celsius = -300  # ValueError!
+```
+
+### 7.6 Abstract Classes dan Interfaces - Pattern untuk ML Models
+
+Abstract classes sangat penting untuk membuat struktur model ML yang konsisten:
+
+```python
+# ============================================
+# ABSTRACT BASE CLASS - MEMASTIKAN INTERFACE KONSISTEN
+# ============================================
+from abc import ABC, abstractmethod
+
+# ABC = Abstract Base Class
+class BaseModel(ABC):
+    """Base class untuk semua ML models"""
+    
+    def __init__(self, name: str):
+        self.name = name
+        self.is_trained = False
+    
+    @abstractmethod
+    def fit(self, X, y):
+        """Training method - HARUS diimplementasikan subclass"""
+        pass
+    
+    @abstractmethod
+    def predict(self, X):
+        """Prediction method - HARUS diimplementasikan subclass"""
+        pass
+    
+    def get_info(self):
+        return f"Model: {self.name}, Trained: {self.is_trained}"
+
+# Linear Regression implementation
+class LinearRegression(BaseModel):
+    def __init__(self):
+        super().__init__("Linear Regression")
+        self.weights = None
+    
+    def fit(self, X, y):
+        # Simplified: y = X @ w
+        self.weights = np.linalg.lstsq(X, y, rcond=None)[0]
+        self.is_trained = True
+    
+    def predict(self, X):
+        return X @ self.weights
+
+# Neural Network implementation
+class NeuralNetwork(BaseModel):
+    def __init__(self, layers):
+        super().__init__("Neural Network")
+        self.layers = layers
+    
+    def fit(self, X, y):
+        # Training logic
+        self.is_trained = True
+    
+    def predict(self, X):
+        # Prediction logic
+        return X
+
+# Usage - semua model punya interface sama
+models = [LinearRegression(), NeuralNetwork([128, 64, 32])]
+for model in models:
+    print(model.get_info())  # Interface sama
+    # model.fit(X, y)
+    # model.predict(X)
+
+# ============================================
+# ABC UNTUK DATA PREPROCESSING
+# ============================================
+class BasePreprocessor(ABC):
+    @abstractmethod
+    def fit(self, X):
+        """Learn parameters from data"""
+        pass
+    
+    @abstractmethod
+    def transform(self, X):
+        """Apply transformation"""
+        pass
+    
+    def fit_transform(self, X):
+        """Fit then transform in one step"""
+        self.fit(X)
+        return self.transform(X)
+
+class StandardScaler(BasePreprocessor):
+    def __init__(self):
+        self.mean_ = None
+        self.std_ = None
+    
+    def fit(self, X):
+        self.mean_ = X.mean(axis=0)
+        self.std_ = X.std(axis=0)
+    
+    def transform(self, X):
+        return (X - self.mean_) / (self.std_ + 1e-8)
+```
+
+### 7.7 Mixins - Multiple Inheritance untuk Reusable Logic
+
+Mixins berguna untuk menambahkan fungsionalitas ke classes tanpa inheritance kompleks:
+
+```python
+# ============================================
+# MIXINS - REUSABLE FUNCTIONALITY
+# ============================================
+
+# Mixin untuk logging (penting untuk ML pipelines!)
+class LogMixin:
+    def log(self, message):
+        import datetime
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"[{timestamp}] {self.__class__.__name__}: {message}")
+
+# Mixin untuk serialization
+class SerializableMixin:
+    def to_dict(self):
+        return {k: v for k, v in self.__dict__.items()}
+    
+    def to_json(self):
+        import json
+        return json.dumps(self.to_dict())
+
+# Mixin untuk validation
+class ValidatableMixin:
+    def validate(self):
+        for field, value in self.__dict__.items():
+            if value is None:
+                raise ValueError(f"{field} cannot be None")
+
+# Combine mixins dengan classes
+class User(LogMixin, SerializableMixin):
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+class MLModel(LogMixin, SerializableMixin, ValidatableMixin):
+    def __init__(self, name, accuracy=None):
+        self.name = name
+        self.accuracy = accuracy
+    
+    def validate(self):
+        super().validate()
+        if self.accuracy is not None and not (0 <= self.accuracy <= 1):
+            raise ValueError("Accuracy must be between 0 and 1")
+
+# Usage
+user = User("Budi", "budi@example.com")
+user.log("User created")
+print(user.to_json())
+
+model = MLModel("MyModel", 0.95)
+model.log("Model trained")
+print(model.to_json())
+model.validate()  # Success
+```
+
+### 7.8 dataclasses Lanjutan - Field Options
+
+```python
+# ============================================
+# DATACLASSES LEBIH LANJUT
+# ============================================
+from dataclasses import dataclass, field
+from typing import List, Optional
+import uuid
+
+@dataclass
+class TrainingConfig:
+    """Config untuk training ML model"""
+    learning_rate: float = 0.001
+    batch_size: int = 32
+    epochs: int = 10
+    # field dengan factory untuk mutable default
+    callbacks: List[callable] = field(default_factory=list)
+    optimizer: str = "adam"
+    # Field dengan default factory
+    metrics: List[str] = field(default_factory=lambda: ["accuracy", "loss"])
+
+@dataclass
+class Dataset:
+    """Dataset container untuk ML"""
+    name: str
+    path: str
+    features: int
+    labels: int
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    metadata: dict = field(default_factory=dict)
+    
+    def __post_init__(self):
+        # Auto validate
+        if self.features <= 0 or self.labels <= 0:
+            raise ValueError("Features and labels must be positive")
+
+# Usage
+config = TrainingConfig(learning_rate=0.01, batch_size=64)
+print(config)
+
+dataset = Dataset("MNIST", "/data/mnist", 784, 10)
+print(dataset)
+
+# Comparison - dataclass会自动生成 __eq__
+d1 = Dataset("A", "/a", 10, 2)
+d2 = Dataset("A", "/a", 10, 2)
+print(d1 == d2)  # True!
 ```
 
 ---
@@ -3256,50 +3585,354 @@ np.linalg.norm(arr)             # Norm (default L2)
 np.linalg.svd(arr)              # SVD
 
 # CONCATENATION
-np.concatenate([a, b])         # Concatenate
+np.concatenate([a, b])         # Concatenate [DEPRECATED Warning:，一起。]
 np.stack([a, b])               # Stack dengan axis baru
 np.vstack([a, b])              # Vertical stack
 np.hstack([a, b])              # Horizontal stack
 np.split(arr, 3)                # Split into 3 parts
 ```
 
+**Catatan Tambahan:**
+- **np.concatenate vs np.stack**: Gunakan `np.concatenate` untuk menggabungkan sepanjang axis yang ada, dan `np.stack` untuk membuat axis baru
+- Untuk kode kompatibel: gunakan `np.concatenate([a, b], axis=0)` dengan axis yang spesifik
+
 ### 11.3 pandas - Data Manipulation
+
+Pandas adalah library **WAJIB** untuk setiap AI Engineer. Hampir semua data preprocessing menggunakan Pandas:
 
 ```python
 # ============================================
-# PANDAS - DATA MANIPULATION
+# PANDAS - DATA MANIPULATION (WAJIB untuk ML!)
 # ============================================
 import pandas as pd
+import numpy as np
 
-# Series
+# ============================================
+# SERIES - 1D DATA STRUCTURE
+# ============================================
+# Series seperti numpy array tapi dengan index
 s = pd.Series([1, 2, 3, 4, 5], index=['a', 'b', 'c', 'd', 'e'])
+print(s.index)  # Index object
+print(s.values) # NumPy array
 
-# DataFrame
+# Series dengan dictionary
+data = {'a': 1, 'b': 2, 'c': 3}
+s = pd.Series(data)
+print(s['a'])  # 1
+
+# ============================================
+# DATAFRAME - 2D DATA STRUCTURE (Paling Penting!)
+# ============================================
+# Dari dictionary
 data = {
-    'Nama': ['Budi', 'Alice', 'Charlie'],
-    'Umur': [25, 23, 30],
-    'Kota': ['Jakarta', 'Bandung', 'Surabaya']
+    'Nama': ['Budi', 'Alice', 'Charlie', 'Diana'],
+    'Umur': [25, 23, 30, 28],
+    'Kota': ['Jakarta', 'Bandung', 'Surabaya', 'Medan'],
+    'Gaji': [5000000, 6000000, 8000000, 7500000]
 }
 df = pd.DataFrame(data)
+print(df)
 
-# Basic operations
+# Dari numpy array
+arr = np.random.randn(5, 3)
+df = pd.DataFrame(arr, columns=['A', 'B', 'C'])
+print(df)
+
+# ============================================
+# BASIC OPERATIONS
+# ============================================
 print(df.head())        # First 5 rows
 print(df.tail())        # Last 5 rows
 print(df.info())        # DataFrame info
-print(df.describe())    # Statistical summary
+print(df.describe())   # Statistical summary (count, mean, std, min, max, quartiles)
 
+# Shape dan columns
+print(df.shape)        # (rows, columns)
+print(df.columns)      # Column names
+print(df.dtypes)       # Data types
+
+# ============================================
+# SELECTION - PENTING!
+# ============================================
+# Select single column (returns Series)
+print(df['Nama'])
+print(df.Nama)  # Alternative
+
+# Select multiple columns (returns DataFrame)
+print(df[['Nama', 'Gaji']])
+
+# Select by position - iloc [row, col]
+print(df.iloc[0])           # Row pertama
+print(df.iloc[0, 1])        # Row 0, Col 1
+print(df.iloc[0:3, 0:2])   # Rows 0-2, Cols 0-1
+
+# Select by label - loc [row_label, col_label]
+df = pd.DataFrame(data, index=['a', 'b', 'c', 'd'])
+print(df.loc['a'])         # Row 'a'
+print(df.loc['a', 'Nama']) # Row 'a', Col 'Nama'
+print(df.loc['a':'c', ['Nama', 'Umur']])
+
+# ============================================
+# FILTERING - SANGAT PENTING untuk ML!
+# ============================================
+# Boolean indexing
+print(df[df['Umur'] > 25])  # Umur lebih dari 25
+
+# Multiple conditions
+print(df[(df['Umur'] > 25) & (df['Gaji'] > 6000000)])
+
+# isin - untuk multiple values
+print(df[df['Kota'].isin(['Jakarta', 'Bandung'])])
+
+# query method - lebih readable
+print(df.query('Umur > 25 and Gaji > 6000000'))
+
+# ============================================
+# ADDING & MODIFYING COLUMNS
+# ============================================
+# Add new column
+df['Bonus'] = df['Gaji'] * 0.1
+df['Total'] = df['Gaji'] + df['Bonus']
+
+# Modify dengan condition
+df['Kategori'] = np.where(df['Gaji'] > 7000000, 'Tinggi', 'Rendah')
+
+# Apply function ke column
+df['Nama_Upper'] = df['Nama'].str.upper()
+
+# ============================================
+# HANDLING MISSING DATA (SANGAT PENTING!)
+# ============================================
+df = pd.DataFrame({
+    'A': [1, 2, np.nan, 4],
+    'B': [5, np.nan, np.nan, 8],
+    'C': [9, 10, 11, 12]
+})
+
+# Check missing
+print(df.isnull())
+print(df.isnull().sum())  # Count missing per column
+
+# Drop rows/columns dengan missing
+df.dropna()           # Drop row yang ada missing
+df.dropna(axis=1)    # Drop column yang ada missing
+
+# Fill missing values
+df.fillna(0)                   # Fill dengan 0
+df.fillna(df.mean())          # Fill dengan mean
+df.fillna(method='ffill')    # Forward fill
+df.fillna(method='bfill')    # Backward fill
+
+# Interpolate
+df['A'].interpolate()
+
+# ============================================
+# GROUPBY - AGGREGATION (PENTING untuk EDA!)
+# ============================================
+df = pd.DataFrame({
+    'Kategori': ['A', 'B', 'A', 'B', 'A', 'B'],
+    'Nilai': [10, 20, 30, 40, 50, 60]
+})
+
+# Group by
+grouped = df.groupby('Kategori')
+print(grouped.mean())
+print(grouped.sum())
+print(grouped.count())
+
+# Multiple aggregations
+print(grouped.agg(['mean', 'sum', 'count']))
+
+# Different agg per column
+print(grouped.agg({'Nilai': ['mean', 'sum']}))
+
+# ============================================
+# MERGING DATAFRAMES (JOIN di SQL)
+# ============================================
+df1 = pd.DataFrame({'key': ['a', 'b', 'c'], 'val1': [1, 2, 3]})
+df2 = pd.DataFrame({'key': ['a', 'b', 'd'], 'val2': [4, 5, 6]})
+
+# Inner join
+print(pd.merge(df1, df2, on='key', how='inner'))
+
+# Left join
+print(pd.merge(df1, df2, on='key', how='left'))
+
+# Right join
+print(pd.merge(df1, df2, on='key', how='right'))
+
+# Outer join
+print(pd.merge(df1, df2, on='key', how='outer'))
+
+# ============================================
+# CONCATENATION
+# ============================================
+df1 = pd.DataFrame({'A': [1, 2], 'B': [3, 4]})
+df2 = pd.DataFrame({'A': [5, 6], 'B': [7, 8]})
+
+# Concatenate rows
+print(pd.concat([df1, df2]))
+
+# Concatenate columns
+print(pd.concat([df1, df2], axis=1))
+
+# ============================================
+# PIVOT TABLE - SANGAT PENTING untuk ANALISIS
+# ============================================
+df = pd.DataFrame({
+    'Date': ['2024-01-01', '2024-01-01', '2024-01-02', '2024-01-02'],
+    'Product': ['A', 'B', 'A', 'B'],
+    'Sales': [100, 200, 150, 250]
+})
+
+pivot = df.pivot_table(values='Sales', index='Product', columns='Date', aggfunc='sum')
+print(pivot)
+
+# Multiple agg
+pivot = df.pivot_table(values='Sales', index='Product', columns='Date', 
+                       aggfunc=['sum', 'mean'])
+
+# ============================================
+# STRING OPERATIONS
+# ============================================
+df = pd.DataFrame({'Nama': ['budi  ', 'ALICE', 'charlie']})
+
+df['Nama'] = df['Nama'].str.strip()      # Remove whitespace
+df['Nama'] = df['Nama'].str.upper()      # Uppercase
+df['Nama'] = df['Nama'].str.lower()      # Lowercase
+df['Nama'] = df['Nama'].str.title()     # Title case
+
+# Split string
+df = pd.DataFrame({'Nama': ['Budi Santoso', 'Alice Wijaya']})
+df[['First', 'Last']] = df['Nama'].str.split(' ', expand=True)
+
+# Contains
+df = pd.DataFrame({'Text': ['hello world', 'goodbye world', 'hello python']})
+print(df[df['Text'].str.contains('hello')])
+
+# ============================================
+# DATETIME OPERATIONS (PENTING untuk Time Series ML)
+# ============================================
+df = pd.DataFrame({'Date': ['2024-01-01', '2024-01-02', '2024-01-03']})
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Extract components
+df['Year'] = df['Date'].dt.year
+df['Month'] = df['Date'].dt.month
+df['Day'] = df['Date'].dt.day
+df['DayOfWeek'] = df['Date'].dt.dayofweek
+
+# Resample (for time series)
+df.set_index('Date').resample('M').sum()
+
+# ============================================
+# APPLY - CUSTOM FUNCTION (SANGAT FLEXIBLE)
+# ============================================
+df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
+
+# Apply ke setiap element
+print(df.apply(lambda x: x * 2))
+
+# Apply ke setiap row
+print(df.apply(lambda row: row.sum(), axis=1))
+
+# Apply ke setiap column
+print(df.apply(lambda col: col.max()))
+
+# ============================================
+# READ/WRITE FILES
+# ============================================
+# CSV
+df.to_csv('data.csv', index=False)
+df = pd.read_csv('data.csv')
+
+# Excel
+df.to_excel('data.xlsx', index=False)
+df = pd.read_excel('data.xlsx')
+
+# JSON
+df.to_json('data.json', orient='records')
+df = pd.read_json('data.json')
+
+# Parquet (paling efficient untuk ML!)
+df.to_parquet('data.parquet')
+df = pd.read_parquet('data.parquet')
+
+# ============================================
+# PANDAS CHEAT SHEET
+# ============================================
 # Selection
-df['Nama']              # Single column
-df[['Nama', 'Umur']]    # Multiple columns
-df.iloc[0]              # By index
-df.loc[0]               # By label
+df['col']              # Single column
+df[['c1', 'c2']]      # Multiple columns
+df.iloc[0]             # Row by position
+df.loc['idx']          # Row by label
 
 # Filtering
-df[df['Umur'] > 24]
+df[df['col'] > 5]     # Boolean mask
+df.query('col > 5')  # Query string
 
-# Write/Read CSV
-df.to_csv('output.csv', index=False)
-df = pd.read_csv('data.csv')
+# Aggregation
+df.groupby('col').agg({'val': ['mean', 'sum']})
+
+# Missing data
+df.dropna()           # Drop missing
+df.fillna(0)          # Fill missing
+
+# Merge
+pd.merge(df1, df2, on='key', how='left')
+```
+
+### 11.4 Matplotlib - Visualization untuk ML
+
+Visualisasi penting untuk EDA (Exploratory Data Analysis):
+
+```python
+# ============================================
+# MATPLOTLIB - VISUALIZATION
+# ============================================
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Basic plot
+plt.figure(figsize=(10, 6))
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+plt.plot(x, y)
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Sin Wave')
+plt.show()
+
+# Subplots
+fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+axes[0, 0].plot(x, np.sin(x))
+axes[0, 1].plot(x, np.cos(x))
+axes[1, 0].plot(x, np.tan(x))
+axes[1, 1].plot(x, x**2)
+plt.tight_layout()
+plt.show()
+
+# Scatter plot
+plt.scatter(x, y, c=y, cmap='viridis')
+plt.colorbar()
+plt.show()
+
+# Histogram
+data = np.random.randn(1000)
+plt.hist(data, bins=50, edgecolor='black')
+plt.show()
+
+# Bar chart
+categories = ['A', 'B', 'C', 'D']
+values = [10, 20, 15, 25]
+plt.bar(categories, values)
+plt.show()
+
+# Heatmap (penting untuk korelasi ML!)
+import seaborn as sns
+data = np.random.rand(10, 10)
+sns.heatmap(data, annot=True, cmap='coolwarm')
+plt.show()
 ```
 
 ### 11.4 Jupyter/IPython - Interactive Computing
