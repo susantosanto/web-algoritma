@@ -4,31 +4,21 @@
  * ============================================
  * 
  * MASALAH:
- * Membuat aplikasi kuis yang bisa:
- * 1. Menampilkan pertanyaan satu per satu
+ * Aplikasi kuis dengan fitur:
+ * 1. Tampilkan pertanyaan satu per satu
  * 2. Pilihan jawaban (multiple choice)
- * 3. Cek jawaban benar/salah
+ * 3. Cek benar/salah
  * 4. Hitung skor
- * 5. Timer untuk setiap pertanyaan
+ * 5. Timer
  * 6. Progress bar
  * 7. Hasil akhir dengan review
  * 
- * KONSEP YANG DIPAKAI:
- * - State Management (mengelola banyak status)
+ * KONSEP:
+ * - State Management (banyak status)
  * - Timer (setInterval, clearInterval)
- * - Array of Objects (menyimpan pertanyaan)
+ * - Array of Objects (pertanyaan)
  * - Conditional Logic (benar/salah)
- * - DOM Manipulation (update tampilan)
- * - Template Literal (membuat HTML dinamis)
- * 
- * CARA BERPIKIR:
- * Quiz adalah "mesin keadaan" (state machine):
- * - Ada keadaan AWAL (belum mulai)
- * - Ada keadaan BERLANGSUNG (sedang quiz)
- * - Ada keadaan SELESAI (lihat hasil)
- * 
- * Setiap keadaan punya aturan sendiri.
- * Kita perlu mengelola transisi antar keadaan.
+ * - Screen Management (ganti tampilan)
  */
 
 
@@ -37,33 +27,31 @@
 // ============================================
 
 /**
- * MASALAH: Menyimpan pertanyaan dan jawaban.
+ * KONSEP: Array of Objects untuk pertanyaan
  * 
- * STRUKTUR DATA:
- * Setiap pertanyaan punya:
- * - id: nomor urut
- * - question: teks pertanyaan
- * - options: array 4 pilihan jawaban
- * - correctAnswer: index jawaban yang benar
- * - explanation: penjelasan mengapa jawaban itu benar
+ * CONTOH KONSEP (bukan jawaban):
  * 
- * PERTANYAAN:
- * - Mengapa jawaban disimpan sebagai index?
- *   → Karena array lebih mudah diakses daripada string
- * - Mengapa perlu explanation?
- *   → Untuk review setelah quiz selesai
+ * const pertanyaan = [
+ *     {
+ *         id: 1,
+ *         question: 'Pertanyaan di sini?',
+ *         options: ['A. Jawaban 1', 'B. Jawaban 2', 'C. Jawaban 3', 'D. Jawaban 4'],
+ *         correctAnswer: 1, // index jawaban benar (B)
+ *         explanation: 'Penjelasan di sini'
+ *     },
+ * ];
+ * 
+ * --- Mengakses data ---
+ * pertanyaan[0].question; // teks pertanyaan
+ * pertanyaan[0].options[1]; // opsi B
+ * pertanyaan[0].correctAnswer; // index jawaban benar
+ * 
+ * --- Panjang array ---
+ * pertanyaan.length; // jumlah pertanyaan
  * 
  * TULIS KODEMU DI SINI:
  * Buat array "questions" dengan minimal 5 pertanyaan
- * 
- * CONTOH STRUKTUR (bukan kode):
- * {
- *     id: 1,
- *     question: "Apa kepanjangan dari HTML?",
- *     options: ["A. ...", "B. ...", "C. ...", "D. ..."],
- *     correctAnswer: 1,  // index dari jawaban benar (B)
- *     explanation: "HTML adalah HyperText Markup Language"
- * }
+ * Topik: HTML, CSS, JavaScript (atau topik lain)
  */
 
 
@@ -72,302 +60,284 @@
 // ============================================
 
 /**
- * MASALAH: Menyimpan status quiz.
+ * KONSEP: State Management = mengelola status aplikasi
  * 
- * STATE YANG PERLU DISIMPAN:
- * - currentQuestion: index pertanyaan saat ini
- * - score: skor yang didapat
- * - answers: array jawaban user
- * - selectedAnswer: jawaban yang dipilih
- * - isAnswered: sudah dijawab atau belum
- * - timeLeft: waktu tersisa (detik)
- * - timerInterval: referensi timer
+ * Status yang perlu diingat:
+ * - Pertanyaan ke berapa sekarang?
+ * - Berapa skor?
+ * - Jawaban apa saja yang sudah dipilih?
+ * - Waktu tersisa?
+ * 
+ * CONTOH KONSEP:
+ * let currentQuestion = 0; // index pertanyaan
+ * let score = 0;           // skor
+ * let answers = [];        // array jawaban
+ * let timeLeft = 30;       // waktu (detik)
+ * let isAnswered = false;  // sudah dijawab?
  * 
  * TULIS KODEMU DI SINI:
- * Buat variabel-variabel state di atas
  */
 
 
 // ============================================
-// FUNGSI: START QUIZ
+// SCREEN MANAGEMENT
 // ============================================
 
 /**
- * MASALAH: Memulai quiz dari awal.
+ * KONSEP: Mengganti tampilan screen
  * 
- * ALUR BERPIKIR:
- * 1. Reset semua state
- * 2. Sembunyikan start screen
- * 3. Tampilkan quiz screen
- * 4. Tampilkan pertanyaan pertama
- * 5. Mulai timer
+ * CONTOH KONSEP:
+ * 
+ * --- Menyembunyikan screen ---
+ * document.getElementById('screen-start').classList.add('hidden');
+ * 
+ * --- Menampilkan screen ---
+ * document.getElementById('screen-quiz').classList.remove('hidden');
+ * 
+ * --- Toggle screen ---
+ * function showScreen(screenId) {
+ *     // Sembunyikan semua screen
+ *     document.querySelectorAll('.screen').forEach(s => {
+ *         s.classList.add('hidden');
+ *     });
+ *     // Tampilkan screen yang dipilih
+ *     document.getElementById(screenId).classList.remove('hidden');
+ * }
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "startQuiz"
  */
 function startQuiz() {
-    // PERTANYAAN 1: Apa yang harus direset?
-    // PETUNJUK: Semua state kembali ke nilai awal
+    // PERTANYAAN: Apa yang harus direset saat mulai?
     // KONSEP: currentQuestion = 0, score = 0, answers = []
-    
-    // PERTANYAAN 2: Bagaimana mengganti screen?
-    // PETUNJUK: Sembunyikan start, tampilkan quiz
-    // KONSEP: classList.add/remove('hidden')
-    
-    // PERTANYAAN 3: Bagaimana memulai timer?
-    // PETUNJUK: Panggil fungsi timer
-    // KONSEP: startTimer()
+    //
+    // PERTANYAAN: Screen mana yang ditampilkan?
+    // KONSEP: Sembunyikan start, tampilkan quiz
 }
 
 
 // ============================================
-// FUNGSI: SHOW QUESTION
+// SHOW QUESTION
 // ============================================
 
 /**
- * MASALAH: Menampilkan pertanyaan saat ini.
+ * KONSEP: Dynamic rendering pertanyaan
  * 
- * ALUR BERPIKIR:
- * 1. Ambil data pertanyaan berdasarkan index
- * 2. Update teks pertanyaan
- * 3. Buat tombol opsi
- * 4. Update progress bar
- * 5. Reset state jawaban
+ * CONTOH KONSEP:
+ * 
+ * const q = questions[currentQuestion];
+ * 
+ * // Update pertanyaan
+ * document.getElementById('question').textContent = q.question;
+ * 
+ * // Buat opsi
+ * const optionsHtml = q.options.map((opt, index) => `
+ *     <button onclick="selectAnswer(${index})">${opt}</button>
+ * `).join('');
+ * 
+ * document.getElementById('options').innerHTML = optionsHtml;
+ * 
+ * // Update progress
+ * const progress = ((currentQuestion + 1) / questions.length) * 100;
+ * document.getElementById('progress').style.width = `${progress}%`;
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "showQuestion"
  */
 function showQuestion() {
-    // PERTANYAAN 1: Bagaimana mengambil pertanyaan?
-    // PETUNJUK: Akses array berdasarkan index
+    // PERTANYAAN: Bagaimana mengambil pertanyaan saat ini?
     // KONSEP: questions[currentQuestion]
-    
-    // PERTANYAAN 2: Bagaimana membuat opsi jawaban?
-    // PETUNJUK: Loop array options, buat tombol untuk setiap opsi
-    // KONSEP: .map() atau .forEach() untuk membuat HTML
-    
-    // PERTANYAAN 3: Bagaimana menghubungkan opsi dengan fungsi?
-    // PETUNJUK: Setiap tombol perlu event handler
-    // KONSEP: onclick="selectAnswer(index)" atau addEventListener
-    
-    // PERTNYAAN 4: Bagaimana update progress?
-    // PETUNJUK: Hitung persentase pertanyaan yang sudah dilewati
-    // KONSEP: progress = ((currentQuestion + 1) / questions.length) * 100
+    //
+    // PERTANYAAN: Bagaimana membuat opsi jawaban?
+    // KONSEP: q.options.map((opt, i) => `<button onclick="selectAnswer(${i})">${opt}</button>`).join('')
+    //
+    // PERTANYAAN: Bagaimana update progress bar?
+    // KONSEP: ((currentQuestion + 1) / questions.length) * 100
 }
 
 
 // ============================================
-// FUNGSI: SELECT ANSWER
+// SELECT ANSWER
 // ============================================
 
 /**
- * MASALAH: User memilih jawaban.
+ * KONSEP: Logic benar/salah
  * 
- * ALUR BERPIKIR:
- * 1. Cek apakah sudah dijawab (jika ya, return)
- * 2. Simpan jawaban yang dipilih
- * 3. Cek apakah benar
- * 4. Update skor jika benar
- * 5. Simpan ke array answers
- * 6. Tampilkan feedback
- * 7. Highlight opsi (hijau untuk benar, merah untuk salah)
- * 8. Enable tombol Next
- * 9. Stop timer
+ * CONTOH KONSEP:
+ * 
+ * function selectAnswer(index) {
+ *     if (isAnswered) return; // sudah dijawab
+ *     
+ *     const q = questions[currentQuestion];
+ *     const isCorrect = index === q.correctAnswer;
+ *     
+ *     if (isCorrect) {
+ *         score++;
+ *     }
+ *     
+ *     answers.push({
+ *         questionId: q.id,
+ *         selected: index,
+ *         correct: q.correctAnswer,
+ *         isCorrect: isCorrect
+ *     });
+ *     
+ *     isAnswered = true;
+ *     showFeedback(isCorrect, q);
+ *     highlightOptions(index, q.correctAnswer);
+ * }
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "selectAnswer" yang menerima parameter "index"
  */
 function selectAnswer(index) {
-    // PERTANYAAN 1: Mengapa cek isAnswered?
-    // PETUNJUK: Agar user tidak bisa mengubah jawaban
-    // KONSEP: if (isAnswered) return;
-    
-    // PERTANYAAN 2: Bagaimana cek jawaban benar?
-    // PETUNJUK: Bandingkan index dengan correctAnswer
-    // KONSEP: const isCorrect = index === questions[currentQuestion].correctAnswer
-    
-    // PERTANYAAN 3: Bagaimana update skor?
-    // PETUNJUK: Jika benar, tambah 1
-    // KONSEP: if (isCorrect) score++;
-    
-    // PERTANYAAN 4: Bagaimana highlight opsi?
-    // PETUNJUK: Tambah class warna ke tombol
-    // KONSEP: tombol.classList.add('bg-green-500') untuk benar
-    //         tombol.classList.add('bg-red-500') untuk salah
-    
-    // PERTANYAAN 5: Bagaimana menampilkan feedback?
-    // PETUNJUK: Tampilkan explanation dari pertanyaan
-    // KONSEP: feedbackContainer.innerHTML = '...'+ question.explanation + '...'
+    // PERTANYAAN: Bagaimana cek jawaban benar?
+    // KONSEP: index === questions[currentQuestion].correctAnswer
+    //
+    // PERTANYAAN: Bagaimana update skor?
+    // KONSEP: if (isCorrect) score++
+    //
+    // PERTANYAAN: Bagaimana highlight opsi?
+    // KONSEP: Tambah class 'bg-green-500' untuk benar, 'bg-red-500' untuk salah
 }
 
 
 // ============================================
-// FUNGSI: NEXT QUESTION
+// TIMER
 // ============================================
 
 /**
- * MASALAH: Pindah ke pertanyaan berikutnya atau selesai.
+ * KONSEP: Timer dengan setInterval
  * 
- * ALUR BERPIKIR:
- * 1. Cek apakah ini pertanyaan terakhir
- * 2. Jika ya: tampilkan hasil
- * 3. Jika tidak: increment index, tampilkan pertanyaan baru
+ * CONTOH KONSEP:
+ * 
+ * --- Mulai timer ---
+ * let timer = setInterval(() => {
+ *     timeLeft--;
+ *     updateTimerDisplay();
+ *     if (timeLeft <= 0) {
+ *         clearInterval(timer);
+ *         timeUp();
+ *     }
+ * }, 1000); // setiap 1000ms = 1 detik
+ * 
+ * --- Hentikan timer ---
+ * clearInterval(timer);
+ * 
+ * --- Reset timer ---
+ * function resetTimer() {
+ *     clearInterval(timer);
+ *     timeLeft = 30;
+ *     startTimer();
+ * }
+ * 
+ * --- Format menit:detik ---
+ * const menit = Math.floor(timeLeft / 60);
+ * const detik = timeLeft % 60;
+ * const display = `${menit}:${detik.toString().padStart(2, '0')}`;
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "nextQuestion"
- */
-function nextQuestion() {
-    // PERTANYAAN: Bagaimana cek pertanyaan terakhir?
-    // PETUNJUK: Bandingkan currentQuestion dengan panjang array - 1
-    // KONSEP: if (currentQuestion === questions.length - 1)
-}
-
-
-// ============================================
-// FUNGSI: TIMER
-// ============================================
-
-/**
- * MASALAH: Timer mundur untuk setiap pertanyaan.
- * 
- * KONSEP:
- * - setInterval: menjalankan fungsi berulang setiap X milidetik
- * - clearInterval: menghentikan setInterval
- * - Timer berjalan mundur dari 30 ke 0
- * 
- * TULIS KODEMU DI SINI:
- * Buat fungsi "startTimer", "resetTimer", "updateTimerDisplay", "timeUp"
  */
 function startTimer() {
-    // PERTANYAAN 1: Bagaimana membuat timer mundur?
-    // PETUNJUK: Kurangi timeLeft setiap detik
+    // PERTANYAAN: Bagaimana membuat timer mundur?
     // KONSEP: setInterval(() => { timeLeft--; ... }, 1000)
-    
-    // PERTANYAAN 2: Bagaimana menghentikan timer?
-    // PETUNJUK: Simpan referensi interval, lalu clear
-    // KONSEP: timerInterval = setInterval(...); clearInterval(timerInterval)
-    
-    // PERTANYAAN 3: Apa yang terjadi saat waktu habis?
-    // PETUNJUK: Anggap tidak menjawab (jawaban salah)
-    // KONSEP: timeUp() memanggil selectAnswer(-1) atau handle khusus
+    //
+    // PERTANYAAN: Bagaimana menghentikan timer?
+    // KONSEP: clearInterval(timerInterval)
+}
+
+function resetTimer() {
+    // KONSEP: clearInterval() lalu startTimer() lagi
 }
 
 function updateTimerDisplay() {
-    // PERTANYAAN: Bagaimana menampilkan waktu?
-    // PETUNJUK: Konversi detik ke format menit:detik
-    // KONSEP: minutes = Math.floor(timeLeft / 60)
-    //         seconds = timeLeft % 60
+    // KONSEP: Math.floor(timeLeft / 60) untuk menit, timeLeft % 60 untuk detik
+}
+
+function timeUp() {
+    // KONSEP: Anggap tidak menjawab (jawaban salah)
 }
 
 
 // ============================================
-// FUNGSI: SHOW RESULTS
+// RESULTS
 // ============================================
 
 /**
- * MASALAH: Menampilkan hasil akhir quiz.
+ * KONSEP: Menghitung dan menampilkan hasil
  * 
- * ALUR BERPIKIR:
- * 1. Hitung persentase skor
- * 2. Tentukan grade (A, B, C, D, F)
- * 3. Tampilkan score, percentage, grade
- * 4. Sembunyikan quiz screen
- * 5. Tampilkan result screen
+ * CONTOH KONSEP:
+ * 
+ * --- Hitung persentase ---
+ * const percentage = Math.round((score / total) * 100);
+ * 
+ * --- Tentukan grade ---
+ * let grade;
+ * if (percentage >= 90) grade = 'A';
+ * else if (percentage >= 80) grade = 'B';
+ * else if (percentage >= 70) grade = 'C';
+ * else if (percentage >= 60) grade = 'D';
+ * else grade = 'F';
+ * 
+ * --- Tampilkan hasil ---
+ * document.getElementById('score').textContent = `${score}/${total}`;
+ * document.getElementById('percentage').textContent = `${percentage}%`;
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "showResults"
  */
 function showResults() {
-    // PERTANYAAN 1: Bagaimana menghitung persentase?
-    // PETUNJUK: (skor / total) * 100
+    // PERTANYAAN: Bagaimana menghitung persentase?
     // KONSEP: Math.round((score / questions.length) * 100)
-    
-    // PERTANYAAN 2: Bagaimana menentukan grade?
-    // PETUNJUK: Gunakan if-else if berdasarkan persentase
-    // KONSEP: if (percentage >= 90) grade = 'A'
-    //         else if (percentage >= 80) grade = 'B'
-    //         dst.
-    
-    // PERTANYAAN 3: Bagaimana menampilkan skor?
-    // PETUNJUK: Update textContent dari element
-    // KONSEP: element.textContent = `${score}/${questions.length}`
+    //
+    // PERTANYAAN: Bagaimana menentukan grade?
+    // KONSEP: if-else if berdasarkan persentase
 }
 
 
 // ============================================
-// FUNGSI: REVIEW ANSWERS
+// REVIEW
 // ============================================
 
 /**
- * MASALAH: Menampilkan review semua jawaban.
+ * KONSEP: Menampilkan review semua jawaban
  * 
- * ALUR BERPIKIR:
- * 1. Loop setiap pertanyaan
- * 2. Tampilkan: pertanyaan, jawaban user, jawaban benar, penjelasan
- * 3. Tandai benar/salah dengan warna
+ * CONTOH KONSEP:
+ * 
+ * function showReview() {
+ *     let html = '';
+ *     questions.forEach((q, i) => {
+ *         const answer = answers[i];
+ *         const icon = answer.isCorrect ? '✓' : '✗';
+ *         const color = answer.isCorrect ? 'green' : 'red';
+ *         
+ *         html += `
+ *             <div class="p-4 mb-4 bg-gray-800 rounded">
+ *                 <span class="text-${color}-500">${icon}</span>
+ *                 <p><strong>Pertanyaan ${i + 1}:</strong> ${q.question}</p>
+ *                 <p>Jawaban kamu: ${q.options[answer.selected]}</p>
+ *                 <p>Jawaban benar: ${q.options[q.correctAnswer]}</p>
+ *                 <p class="text-gray-400">${q.explanation}</p>
+ *             </div>
+ *         `;
+ *     });
+ *     document.getElementById('review').innerHTML = html;
+ * }
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "showReview"
  */
 function showReview() {
-    // PERTANYAAN 1: Bagaimana menampilkan semua pertanyaan?
-    // PETUNJUK: Loop array questions
-    // KONSEP: questions.forEach((q, index) => { ... })
-    
-    // PERTANYAAN 2: Bagaimana mendapatkan jawaban user?
-    // PETUNJUK: Akses array answers berdasarkan index
+    // PERTANYAAN: Bagaimana menampilkan semua pertanyaan?
+    // KONSEP: questions.forEach() lalu buat HTML untuk setiap pertanyaan
+    //
+    // PERTANYAAN: Bagaimana mendapatkan jawaban user?
     // KONSEP: answers[index]
-    
-    // PERTANYAAN 3: Bagaimana menandai benar/salah?
-    // PETUNJUK: Cek isCorrect dari answers
-    // KONSEP: const isCorrect = answers[index].isCorrect
-    //         Tambah class warna berdasarkan nilai boolean
 }
 
 
 // ============================================
-// FUNGSI: RETRY QUIZ
+// RETRY
 // ============================================
 
-/**
- * MASALAH: Mengulang quiz dari awal.
- * 
- * TULIS KODEMU DI SINI:
- * Buat fungsi "retryQuiz"
- */
 function retryQuiz() {
-    // PETUNJUK: Sembunyikan result, tampilkan start
-    // KONSEP: classList.add/remove('hidden')
-}
-
-
-// ============================================
-// FUNGSI: UI UPDATES
-// ============================================
-
-/**
- * MASALAH: Update berbagai bagian UI.
- * 
- * TULIS KODEMU DI SINI:
- * Buat fungsi "updateProgress", "highlightOptions", 
- * "showFeedback", "updateNextButton"
- */
-function updateProgress() {
-    // PERTANYAAN: Bagaimana update progress bar?
-    // PETUNJUK: Atur lebar berdasarkan persentase
-    // KONSEP: element.style.width = `${persentase}%`
-}
-
-function highlightOptions(selected, correct) {
-    // PERTANYAAN: Bagaimana menandai opsi?
-    // PETUNJUK: Tambah class ke tombol yang benar dan yang dipilih
-    // KONSEP: Loop semua tombol, tambahkan class berdasarkan kondisi
-}
-
-function showFeedback(isCorrect, question) {
-    // PERTANYAAN: Bagaimana menampilkan feedback?
-    // PETUNJUK: Tampilkan pesan + explanation
-    // KONSEP: isCorrect ? '✓ Benar!' : '✗ Salah!'
+    // KONSEP: Sembunyikan result, tampilkan start
+    // showScreen('screen-start');
 }
 
 
@@ -376,12 +346,9 @@ function showFeedback(isCorrect, question) {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // PERTANYAAN: Event apa saja yang perlu didengar?
-    // PETUNJUK:
+    // Event yang perlu didengar:
     // - Klik tombol "Mulai Quiz"
     // - Klik tombol "Next"
     // - Klik tombol "Coba Lagi"
     // - Klik tombol "Review"
-    // 
-    // Tambahkan event listener untuk semua tombol
 });

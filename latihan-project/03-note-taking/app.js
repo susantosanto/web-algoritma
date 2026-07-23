@@ -4,29 +4,17 @@
  * ============================================
  * 
  * MASALAH:
- * Membuat aplikasi catatan yang bisa:
- * 1. Membuat catatan baru (Create)
- * 2. Melihat daftar catatan (Read)
- * 3. Mengedit catatan (Update)
- * 4. Menghapus catatan (Delete)
- * 5. Mencari catatan
- * 6. Memfilter berdasarkan kategori
- * 7. Menyimpan warna untuk setiap catatan
+ * Membuat aplikasi catatan dengan fitur:
+ * 1. CRUD (Create, Read, Update, Delete)
+ * 2. Search & Filter
+ * 3. Warna catatan
+ * 4. Kategori
  * 
- * KONSEP YANG DIPAKAI:
- * - CRUD Operations (Create, Read, Update, Delete)
- * - Array of Objects (menyimpan banyak data kompleks)
- * - Filter & Search (menyaring data)
- * - Template Literal (membuat HTML dinamis)
- * - Modal (popup untuk form)
- * - LocalStorage (penyimpanan persisten)
- * 
- * CARA BERPIKIR:
- * Sebelum menulis kode, pahami dulu:
- * 1. Data apa yang disimpan? (struktur object)
- * 2. Operasi apa yang dilakukan? (CRUD)
- * 3. Bagaimana menampilkannya? (rendering)
- * 4. Bagaimana menghubungkan dengan user? (events)
+ * KONSEP:
+ * - Array of Objects
+ * - Filter & Search
+ * - Modal (popup)
+ * - Method Chaining
  */
 
 
@@ -35,66 +23,35 @@
 // ============================================
 
 /**
- * MASALAH: Menentukan struktur data dan opsi yang tersedia.
+ * KONSEP: Array of Objects untuk menyimpan banyak data kompleks
  * 
- * PERTANYAAN:
- * - Data apa yang perlu disimpan untuk setiap note?
- * - Kategori apa saja yang tersedia?
- * - Warna apa saja yang bisa dipilih?
+ * CONTOH KONSEP:
+ * const data = [
+ *     { id: 1, nama: 'Budi', nilai: 90 },
+ *     { id: 2, nama: 'Siti', nilai: 85 },
+ * ];
  * 
- * TULIS KODEMU DI SINI:
- * 1. Buat variabel "notes" (array kosong)
- * 2. Buat variabel "editingNoteId" (null)
- * 3. Buat variabel "currentCategory" ('all')
- * 4. Buat variabel "searchQuery" ('')
- * 5. Buat array "categories" dengan beberapa kategori
- * 6. Buat array "colors" dengan beberapa pilihan warna
- */
-
-
-// ============================================
-// FUNGSI: TAMPILKAN NOTES
-// ============================================
-
-/**
- * MASALAH: Menampilkan semua notes yang sudah difilter ke layar.
+ * --- Array biasa ---
+ * let angka = [1, 2, 3];
  * 
- * ALUR BERPIKIR:
- * 1. Dari mana data notes? (array "notes")
- * 2. Apakah ada filter yang aktif? (category, search)
- * 3. Bagaimana menggabungkan filter?
- * 4. Bagaimana membuat card untuk setiap note?
+ * --- Object biasa ---
+ * let orang = { nama: 'Andi', umur: 20 };
  * 
- * PERTANYAAN UNTUK DIRI SENDIRI:
- * - Bagaimana cara mendapatkan notes yang sudah difilter?
- * - Bagaimana cara membuat card note yang menarik?
- * - Bagaimana cara menampilkan tanggal dengan format yang baik?
+ * --- Array of Objects ---
+ * let siswa = [
+ *     { nama: 'Budi', umur: 18 },
+ *     { nama: 'Siti', umur: 19 },
+ * ];
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "renderNotes"
+ * Buat variabel:
+ * - notes (array kosong)
+ * - editingNoteId (null)
+ * - currentCategory ('all')
+ * - searchQuery ('')
+ * - categories (array object kategori)
+ * - colors (array object warna)
  */
-function renderNotes() {
-    // PERTANYAAN 1: Bagaimana mendapatkan notes yang difilter?
-    // PETUNJUK: Panggil fungsi yang menggabungkan semua filter
-    // KONSEP: Pemisahan tanggung jawab - satu fungsi untuk satu tugas
-    
-    // PERTANYAAN 2: Bagaimana mengosongkan container?
-    // PETUNJUK: Seperti di to-do list, kosongkan innerHTML
-    // KONSEP: innerHTML = '' menghapus semua isi
-    
-    // PERTANYAAN 3: Bagaimana membuat card note?
-    // PETUNJUK: Setiap note punya: title, content, category, color, tanggal
-    //           Buat element HTML untuk menampung semua info itu
-    // KONSEP: createElement + appendChild untuk membangun DOM
-    
-    // PERTANYAAN 4: Bagaimana menampilkan isi yang panjang?
-    // PETUNJUK: Jika content terlalu panjang, potong dengan ...
-    // KONSEP: substring() atau slice() untuk memotong string
-    
-    // PERTANYAAN 5: Bagaimana menambahkan tombol edit/hapus?
-    // PETUNJUK: Setiap card butuh tombol yang bisa diklik
-    // KONSEP: onclick attribute atau addEventListener
-}
 
 
 // ============================================
@@ -102,132 +59,150 @@ function renderNotes() {
 // ============================================
 
 /**
- * MASALAH: Mendapatkan notes yang sudah difilter berdasarkan
- *           category DAN search query.
+ * MASALAH: Mendapatkan notes yang sudah difilter.
  * 
- * ALUR BERPIKIR:
- * 1. Mulai dari semua notes
- * 2. Filter berdasarkan category (jika bukan "all")
- * 3. Filter berdasarkan search query (jika ada)
- * 4. Kembalikan hasil gabungan
+ * KONSEP: Method Chaining
  * 
- * PERTANYAAN UNTUK DIRI SENDIRI:
- * - Bagaimana cara menggabungkan dua filter?
- * - Apakah urutan filter penting?
+ * CONTOH KONSEP (bukan jawaban):
+ * 
+ * --- Filter array ---
+ * const arrayBaru = array.filter(item => {
+ *     return kondisi; // true = ambil, false = buang
+ * });
+ * 
+ * --- Filter sederhana ---
+ * const genap = angka.filter(x => x % 2 === 0);
+ * 
+ * --- Filter object ---
+ * const lulus = siswa.filter(s => s.nilai >= 75);
+ * 
+ * --- Method chaining (gabungan) ---
+ * const hasil = array
+ *     .filter(x => kondisi1)
+ *     .filter(x => kondisi2)
+ *     .map(x => ubahan);
+ * 
+ * --- String includes (mencari substring) ---
+ * const ada = string.includes('kata'); // true/false
+ * 
+ * --- Case-insensitive ---
+ * const query = 'javascript';
+ * const text = 'Belajar JavaScript';
+ * text.toLowerCase().includes(query.toLowerCase()); // true
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "getFilteredNotes" yang mengembalikan array
  */
 function getFilteredNotes() {
-    // PERTANYAAN 1: Bagaimana memulai dari semua notes?
-    // PETUNJUK: Buat salinan array agar tidak mengubah asli
-    // KONSEP: Spread operator [...] atau .slice() untuk copy array
-    
-    // PERTANYAAN 2: Bagaimana filter berdasarkan category?
-    // PETUNJUK: Gunakan .filter() dengan kondisi
-    // KONSEP: note.category === currentCategory
-    
-    // PERTANYAAN 3: Bagaimana filter berdasarkan search?
-    // PETUNJUK: Cek apakah title atau content mengandung teks search
-    // KONSEP: .includes() mengecek apakah string mengandung substring
-    //         .toLowerCase() untuk case-insensitive
-    
-    // PERTANYAAN 4: Bagaimana menggabungkan filter?
-    // PETUNJUK: Jalankan filter pertama, lalu filter hasilnya lagi
-    // KONSEP: Method chaining - filter().filter()
+    // PERTANYAAN: Bagaimana membuat salinan array?
+    // KONSEP: [...array] atau array.slice()
+    //
+    // PERTANYAAN: Bagaimana filter berdasarkan category?
+    // KONSEP: notes.filter(n => n.category === currentCategory)
+    //
+    // PERTANYAAN: Bagaimana filter berdasarkan search?
+    // KONSEP: notes.filter(n => 
+    //     n.title.toLowerCase().includes(searchQuery.toLowerCase())
+    // )
+    //
+    // PERTANYAAN: Bagaimana menggabungkan dua filter?
+    // KONSEP: Method chaining: .filter().filter()
 }
 
 
 // ============================================
-// FUNGSI: CREATE NOTE
+// FUNGSI: CRUD OPERATIONS
 // ============================================
 
 /**
- * MASALAH: Membuat note baru dari data form.
+ * KONSEP: CRUD = Create, Read, Update, Delete
  * 
- * ALUR BERPIKIR:
- * 1. Ambil data dari form (title, content, category, color)
- * 2. Buat object note baru dengan ID unik
- * 3. Tambahkan ke array notes
- * 4. Simpan ke LocalStorage
- * 5. Tampilkan ulang
- * 6. Tutup modal
+ * CONTOH KONSEP:
+ * 
+ * --- CREATE (membuat baru) ---
+ * const newItem = { id: Date.now(), ...data };
+ * array.unshift(newItem); // tambah di awal
+ * 
+ * --- READ (membaca) ---
+ * const item = array.find(x => x.id === id); // cari 1
+ * const items = array.filter(x => x.kondisi); // cari banyak
+ * 
+ * --- UPDATE (mengubah) ---
+ * const item = array.find(x => x.id === id);
+ * if (item) {
+ *     item.property = nilaiBaru;
+ * }
+ * 
+ * --- DELETE (menghapus) ---
+ * array = array.filter(x => x.id !== id);
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "createNote" yang menerima parameter "data"
  */
 function createNote(data) {
-    // PERTANYAAN 1: Bagaimana membuat object note baru?
-    // PETUNJUK: Gunakan {} dengan property yang dibutuhkan
-    // KONSEP: Object literal { key: value, key2: value2 }
-    
-    // PERTANYAAN 2: Bagaimana membuat ID unik?
-    // PETUNJUK: Gunakan timestamp atau kombinasi angka unik
-    // KONSEP: Date.now() mengembalikan timestamp dalam milidetik
-    
-    // PERTANYAAN 3: Bagaimana menambah ke array?
-    // PETUNJUK: Gunakan method array untuk menambah item
-    // KONSEP: .push() menambah di akhir, .unshift() menambah di awal
-    
-    // PERTANYAAN 4: Format tanggal seperti apa?
-    // PETUNJUK: Simpan dalam format ISO agar mudah diurutkan
-    // KONSEP: new Date().toISOString() menghasilkan format standar
+    // PERTANYAAN: Bagaimana membuat object note baru?
+    // KONSEP: const note = { id: Date.now(), ...data, createdAt: new Date().toISOString() }
+    //
+    // PERTANYAAN: Bagaimana menambah ke array?
+    // KONSEP: notes.unshift(note) untuk tambah di awal
 }
 
-
-// ============================================
-// FUNGSI: UPDATE NOTE
-// ============================================
-
-/**
- * MASALAH: Mengupdate note yang sudah ada.
- * 
- * ALUR BERPIKIR:
- * 1. Cari note berdasarkan ID
- * 2. Update semua property dengan data baru
- * 3. Update timestamp updatedAt
- * 4. Simpan dan render ulang
- * 
- * TULIS KODEMU DI SINI:
- * Buat fungsi "updateNote" yang menerima parameter "id" dan "data"
- */
 function updateNote(id, data) {
-    // PERTANYAAN 1: Bagaimana mencari note berdasarkan ID?
-    // PETUNJUK: Gunakan .find() seperti di to-do list
+    // PERTANYAAN: Bagaimana mencari note berdasarkan ID?
     // KONSEP: notes.find(n => n.id === id)
-    
-    // PERTANYAAN 2: Bagaimana mengubah property object?
-    // PETUNJUK: Akses property dengan . lalu beri nilai baru
-    // KONSEP: note.title = data.title
-    
-    // PERTANYAAN 3: Bagaimana update timestamp?
-    // PETUNJUK: Setiap kali update, catat waktu saat ini
-    // KONSEP: note.updatedAt = new Date().toISOString()
+    //
+    // PERTANYAAN: Bagaimana mengubah property object?
+    // KONSEP: note.title = data.title; note.content = data.content;
+}
+
+function deleteNote(id) {
+    // PERTANYAAN: Bagaimana konfirmasi ke user?
+    // KONSEP: confirm('Yakin hapus?')
+    //
+    // PERTANYAAN: Bagaimana menghapus dari array?
+    // KONSEP: notes = notes.filter(n => n.id !== id)
 }
 
 
 // ============================================
-// FUNGSI: DELETE NOTE
+// FUNGSI: RENDER
 // ============================================
 
 /**
- * MASALAH: Menghapus note berdasarkan ID.
+ * KONSEP: Rendering = membuat tampilan dari data
+ * 
+ * CONTOH KONSEP:
+ * 
+ * --- Render list ---
+ * container.innerHTML = array.map(item => `
+ *     <div class="card">
+ *         <h3>${item.judul}</h3>
+ *         <p>${item.isi}</p>
+ *     </div>
+ * `).join('');
+ * 
+ * --- Empty state ---
+ * if (array.length === 0) {
+ *     container.innerHTML = '<p>Tidak ada data</p>';
+ *     return;
+ * }
+ * 
+ * --- Truncate text (potong teks panjang) ---
+ * const short = text.substring(0, 50) + '...';
+ * 
+ * --- Format tanggal ---
+ * const date = new Date(isoString);
+ * const formatted = date.toLocaleDateString('id-ID');
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "deleteNote" yang menerima parameter "id"
  */
-function deleteNote(id) {
-    // PERTANYAAN 1: Bagaimana konfirmasi ke user?
-    // PETUNJUK: Gunakan dialog konfirmasi browser
-    // KONSEP: confirm('pesan')
-    
-    // PERTANYAAN 2: Bagaimana menghapus dari array?
-    // PETUNJUK: Gunakan .filter() seperti di to-do list
-    // KONSEP: notes = notes.filter(n => n.id !== id)
-    
-    // PERTANYAAN 3: Apa yang dilakukan setelah hapus?
-    // PETUNJUK: Simpan perubahan dan tampilkan ulang
-    // KONSEP: saveNotes() lalu renderNotes()
+function renderNotes() {
+    // PERTANYAAN: Bagaimana mengosongkan container?
+    // KONSEP: container.innerHTML = ''
+    //
+    // PERTANYAAN: Bagaimana render array ke HTML?
+    // KONSEP: container.innerHTML = array.map(item => `<div>...</div>`).join('')
+    //
+    // PERTANYAAN: Bagaimana handle empty state?
+    // KONSEP: if (filteredNotes.length === 0) { ... }
 }
 
 
@@ -236,35 +211,43 @@ function deleteNote(id) {
 // ============================================
 
 /**
- * MASALAH: Modal (popup) untuk form tambah/edit note.
+ * KONSEP: Modal = popup yang bisa dibuka/ditutup
  * 
- * KONSEP:
- * Modal adalah element yang tersembunyi, lalu ditampilkan saat dibutuhkan.
- * - Untuk menyembunyikan: tambahkan class "hidden"
- * - Untuk menampilkan: hapus class "hidden"
+ * CONTOH KONSEP:
+ * 
+ * --- Menampilkan modal ---
+ * modal.classList.remove('hidden');
+ * 
+ * --- Menyembunyikan modal ---
+ * modal.classList.add('hidden');
+ * 
+ * --- Toggle (bolak-balik) ---
+ * modal.classList.toggle('hidden');
+ * 
+ * --- Mengisi form ---
+ * input.value = 'nilai';
+ * select.value = 'pilihan';
+ * textarea.value = 'teks';
+ * 
+ * --- Reset form ---
+ * form.reset();
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "openModal" dan "closeModal"
  */
 function openModal(noteId = null) {
-    // PERTANYAAN 1: Bagaimana menampilkan modal?
-    // PETUNJUK: Hapus class "hidden" dari modal element
-    // KONSEP: element.classList.remove('hidden')
-    
-    // PERTANYAAN 2: Apa bedanya open untuk tambah vs edit?
-    // PETUNJUK: Jika edit, isi form dengan data note yang ada
-    // KONSEP: Cek parameter, jika ada noteId → mode edit
-    
-    // PERTANYAAN 3: Bagaimana mengisi form dengan data?
-    // PETUNJUK: Akses input element, lalu set value-nya
-    // KONSEP: input.value = data yang akan diisi
+    // PERTANYAAN: Bagaimana menampilkan modal?
+    // KONSEP: modalElement.classList.remove('hidden')
+    //
+    // PERTANYAAN: Bagaimana bedakan mode tambah vs edit?
+    // KONSEP: if (noteId !== null) { mode edit } else { mode tambah }
+    //
+    // PERTANYAAN: Bagaimana mengisi form dengan data lama?
+    // KONSEP: input.value = note.title
 }
 
 function closeModal() {
     // PERTANYAAN: Bagaimana menutup modal?
-    // PETUNJUK: Kebalikan dari openModal
-    // KONSEP: element.classList.add('hidden')
-    //         Reset form agar bersih untuk input berikutnya
+    // KONSEP: modalElement.classList.add('hidden')
 }
 
 
@@ -273,46 +256,70 @@ function closeModal() {
 // ============================================
 
 /**
- * MASALAH: Mencari note dan memfilter berdasarkan kategori.
+ * KONSEP: Search = mencari, Filter = menyaring
+ * 
+ * CONTOH KONSEP:
+ * 
+ * --- Search sederhana ---
+ * function search(query) {
+ *     searchQuery = query;
+ *     renderNotes(); // render ulang dengan filter baru
+ * }
+ * 
+ * --- Filter kategori ---
+ * function filter(category) {
+ *     currentCategory = category;
+ *     renderNotes();
+ *     
+ *     // Update UI tombol aktif
+ *     buttons.forEach(btn => {
+ *         if (btn.dataset.category === category) {
+ *             btn.classList.add('active');
+ *         } else {
+ *             btn.classList.remove('active');
+ *         }
+ *     });
+ * }
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "searchNotes" dan "filterByCategory"
  */
 function searchNotes(query) {
     // PERTANYAAN: Bagaimana search bekerja?
-    // PETUNJUK: Update query, lalu render ulang
-    // KONSEP: searchQuery = query; renderNotes();
+    // KONSEP: Update searchQuery, lalu render ulang
 }
 
 function filterByCategory(category) {
-    // PERTANYAAN 1: Bagaimana filter bekerja?
-    // PETUNJUK: Update currentCategory, lalu render ulang
-    // KONSEP: currentCategory = category; renderNotes();
-    
-    // PERTANYAAN 2: Bagaimana menandai button yang aktif?
-    // PETUNJUK: Hapus class active dari semua, tambah ke yang diklik
-    // KONSEP: Loop semua button, manipulasi class
+    // PERTANYAAN: Bagaimana filter bekerja?
+    // KONSEP: Update currentCategory, lalu render ulang
+    //
+    // PERTANYAAN: Bagaimana menandai tombol aktif?
+    // KONSEP: Loop semua button, tambah/hapus class 'active'
 }
 
 
 // ============================================
-// FUNGSI: LOCALSTORAGE
+// LOCALSTORAGE
 // ============================================
 
 /**
- * MASALAH: Menyimpan dan memuat notes dari LocalStorage.
+ * CONTOH KONSEP:
+ * 
+ * --- Simpan ---
+ * localStorage.setItem('notes', JSON.stringify(notes));
+ * 
+ * --- Ambil ---
+ * const data = localStorage.getItem('notes');
+ * const notes = data ? JSON.parse(data) : [];
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "saveNotes" dan "loadNotes"
  */
 function saveNotes() {
-    // PETUNJUK: Sama seperti to-do list
     // KONSEP: JSON.stringify() lalu localStorage.setItem()
 }
 
 function loadNotes() {
-    // PETUNJUK: Sama seperti to-do list
     // KONSEP: localStorage.getItem() lalu JSON.parse()
+    //         Handle null dengan default array kosong
 }
 
 
@@ -321,14 +328,11 @@ function loadNotes() {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // PERTANYAAN: Event apa saja yang perlu didengar?
-    // PETUNJUK: 
+    // Event yang perlu didengar:
     // - Klik tombol "Tambah Note"
     // - Klik tombol "Simpan" di modal
     // - Klik tombol "Batal" di modal
-    // - Klik di luar modal (overlay) untuk tutup
+    // - Klik di luar modal (overlay)
     // - Input di search field
     // - Klik button kategori
-    // 
-    // KONSEP: Setiap interaksi user = event yang harus ditangani
 });

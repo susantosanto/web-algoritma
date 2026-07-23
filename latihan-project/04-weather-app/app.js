@@ -4,63 +4,48 @@
  * ============================================
  * 
  * MASALAH:
- * Membuat aplikasi cuaca yang bisa:
- * 1. Mencari cuaca berdasarkan nama kota
- * 2. Menampilkan cuaca saat ini
- * 3. Menampilkan forecast 5 hari
- * 4. Menyimpan riwayat pencarian
- * 5. Menangani error dengan baik
+ * Aplikasi cuaca dengan fitur:
+ * 1. Cari cuaca berdasarkan kota
+ * 2. Tampilkan cuaca saat ini
+ * 3. Tampilkan forecast 5 hari
+ * 4. History pencarian
+ * 5. Error handling
  * 
- * KONSEP YANG DIPAKAI:
- * - Fetch API (mengambil data dari internet)
- * - Async/Await (menangani operasi yang butuh waktu)
- * - Promise (janji bahwa data akan datang)
- * - JSON (format pertukaran data)
+ * KONSEP:
+ * - Fetch API (ambil data dari internet)
+ * - Async/Await (tunggu operasi selesai)
+ * - Promise (janji data akan datang)
  * - Error Handling (try-catch)
- * - LocalStorage (menyimpan history)
- * 
- * CARA BERPIKIR:
- * Aplikasi ini bekerja seperti telepon:
- * 1. User memberikan nama kota
- * 2. Kita "menelepon" server cuaca
- * 3. Server memproses dan mengirim data
- * 4. Kita terima dan tampilkan data
- * 
- * Masalahnya: menelepon butuh WAKTU!
- * Solusi: gunakan async/await agar tidak memblokir UI
  * 
  * PENTING:
- * Sebelum bisa pakai API, kamu perlu API KEY.
- * Daftar gratis di: https://openweathermap.org/api
+ * Dapatkan API KEY gratis di: https://openweathermap.org/api
  */
 
 
 // ============================================
-// KONFIGURASI API
+// KONFIGURASI
 // ============================================
 
 /**
- * MASALAH: Menyimpan konfigurasi untuk mengakses API.
+ * KONSEP: API Key = kode rahasia untuk akses API
  * 
- * PERTANYAAN:
- * - Apa itu API KEY?
- *   → Kode rahasia yang membuktikan kamu diizinkan mengakses API
- * - Di mana mendapatkannya?
- *   → Daftar di website API provider (OpenWeatherMap)
- * - Mengapa tidak langsung tulis di kode?
- *   → Untuk keamanan, lebih baik di file terpisah
+ * CONTOH KONSEP:
+ * 
+ * --- Struktur URL API ---
+ * const baseUrl = 'https://api.example.com/data';
+ * const apiKey = 'abc123';
+ * const city = 'Jakarta';
+ * 
+ * const url = `${baseUrl}?q=${city}&key=${apiKey}`;
+ * // Hasil: https://api.example.com/data?q=Jakarta&key=abc123
+ * 
+ * --- Query parameter ---
+ * ?parameter1=value1&parameter2=value2
  * 
  * TULIS KODEMU DI SINI:
- * 1. Buat variabel API_KEY (ganti dengan API key kamu)
- * 2. Buat variabel API_BASE_URL
+ * Buat variabel API_KEY dan API_BASE_URL
+ * Ganti API_KEY dengan API key kamu sendiri
  */
-// PERTANYAAN: Bagaimana cara mendapatkan API key?
-// PETUNJUK: 
-// 1. Buka https://openweathermap.org/api
-// 2. Klik "Sign Up" / buat akun
-// 3. Login → My API Keys
-// 4. Copy API key
-// 5. Tunggu 2-10 jam agar aktif
 
 
 // ============================================
@@ -68,104 +53,107 @@
 // ============================================
 
 /**
- * MASALAH: Menyimpan state aplikasi.
- * 
  * TULIS KODEMU DI SINI:
- * Buat variabel untuk search history
+ * Buat variabel searchHistory (array kosong)
  */
 
 
 // ============================================
-// FUNGSI: FETCH CUACA
+// FUNGSI: FETCH DATA
 // ============================================
 
 /**
- * MASALAH: Mengambil data cuaca dari API.
+ * KONSEP: Fetch API = mengambil data dari internet
  * 
- * KONSEP PENTING:
- * - fetch() mengirim request ke server
- * - Response harus di-parse (diubah dari JSON ke JavaScript object)
- * - Proses ini butuh waktu, sehingga pakai async/await
+ * CONTOH KONSEP (bukan jawaban):
  * 
- * ALUR BERPIKIR:
- * 1. Buat URL dengan nama kota dan API key
- * 2. Kirim request
- * 3. Tunggu response
- * 4. Parse response
- * 5. Kembalikan data
+ * --- Fetch dasar ---
+ * const response = await fetch(url);
+ * const data = await response.json();
  * 
- * PERTANYAAN UNTUK DIRI SENDIRI:
- * - Mengapa pakai async/await?
- * - Apa yang terjadi jika kota tidak ditemukan?
- * - Apa yang terjadi jika tidak ada internet?
+ * --- Async function ---
+ * async function fetchData() {
+ *     const response = await fetch(url);
+ *     const data = await response.json();
+ *     return data;
+ * }
+ * 
+ * --- Try-catch untuk error ---
+ * try {
+ *     const data = await fetchData();
+ *     // proses data
+ * } catch (error) {
+ *     console.error('Error:', error);
+ * }
+ * 
+ * --- Cek response.ok ---
+ * if (!response.ok) {
+ *     throw new Error('HTTP error!');
+ * }
+ * 
+ * --- Cek status code ---
+ * if (data.cod === '404') {
+ *     // kota tidak ditemukan
+ * }
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "fetchCurrentWeather" dan "fetchForecast"
  */
 async function fetchCurrentWeather(city) {
-    // PERTANYAAN 1: Bagaimana membuat URL?
-    // PETUNJUK: Gabungkan base URL, nama kota, dan API key
-    // KONSEP: Template literal `${variabel}` untuk menyisipkan nilai
-    
-    // PERTNYAAN 2: Bagaimana mengirim request?
-    // PETUNJUK: Gunakan fetch() dengan URL
-    // KONSEP: const response = await fetch(url)
-    
-    // PERTANYAAN 3: Bagaimana mengubah response jadi data?
-    // PETUNJUK: Response berformat JSON, harus di-parse
-    // KONSEP: const data = await response.json()
-    
-    // PERTANYAAN 4: Bagaimana handle error?
-    // PETUNJUK: Gunakan try-catch
+    // PERTANYAAN: Bagaimana membuat URL dengan parameter?
+    // KONSEP: `${API_BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`
+    //
+    // PERTANYAAN: Bagaimana fetch data?
+    // KONSEP: const response = await fetch(url); const data = await response.json();
+    //
+    // PERTANYAAN: Bagaimana handle error?
     // KONSEP: try { ... } catch (error) { ... }
 }
 
 async function fetchForecast(city) {
-    // PETUNJUK: Sama seperti fetchCurrentWeather
-    //           Bedanya: endpoint URL-nya berbeda
+    // PERTANYAAN: Apa bedanya dengan fetchCurrentWeather?
+    // KONSEP: Endpoint URL berbeda: /forecast bukan /weather
 }
 
 
 // ============================================
-// FUNGSI: SEARCH WEATHER
+// FUNGSI: SEARCH
 // ============================================
 
 /**
- * MASALAH: Fungsi utama yang dipanggil saat user mencari.
+ * KONSEP: Loading indicator = tanda sedang memuat
  * 
- * ALUR BERPIKIR:
- * 1. Validasi input (tidak kosong)
- * 2. Tampilkan loading
- * 3. Fetch data cuaca
- * 4. Fetch data forecast
- * 5. Tampilkan data
- * 6. Simpan ke history
- * 7. Handle error
- * 8. Sembunyikan loading
+ * CONTOH KONSEP:
  * 
- * PERTANYAAN UNTUK DIRI SENDIRI:
- * - Mengapa perlu loading indicator?
- * - Bagaimana menangani berbagai jenis error?
+ * --- Tampilkan loading ---
+ * document.getElementById('loading').classList.remove('hidden');
+ * 
+ * --- Sembunyikan loading ---
+ * document.getElementById('loading').classList.add('hidden');
+ * 
+ * --- Fungsi async ---
+ * async function search() {
+ *     showLoading();
+ *     try {
+ *         const data = await fetchData();
+ *         displayData(data);
+ *     } catch (error) {
+ *         showError(error.message);
+ *     } finally {
+ *         hideLoading();
+ *     }
+ * }
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "searchWeather"
  */
 async function searchWeather() {
-    // PERTANYAAN 1: Bagaimana mengambil value dari input?
-    // PETUNJUK: Seperti di to-do list
+    // PERTANYAAN: Bagaimana mengambil value dari input?
     // KONSEP: input.value.trim()
-    
-    // PERTANYAAN 2: Bagaimana menampilkan loading?
-    // PETUNJUK: Tampilkan element loading, sembunyikan saat selesai
-    // KONSEP: classList.remove/add('hidden')
-    
-    // PERTANYAAN 3: Bagaimana menangani error "kota tidak ditemukan"?
-    // PETUNJUK: Cek response dari API
-    // KONSEP: if (data.cod === '404') { ... }
-    
-    // PERTANYAAN 4: Bagaimana menangani error jaringan?
-    // PETUNJUK: Error jaringan masuk ke catch block
-    // KONSEP: catch(error) { if (error.message.includes('Failed to fetch')) ... }
+    //
+    // PERTANYAAN: Bagaimana menampilkan loading?
+    // KONSEP: element.classList.remove('hidden')
+    //
+    // PERTANYAAN: Bagaimana menangani error?
+    // KONSEP: try { ... } catch (error) { showError(error.message); }
 }
 
 
@@ -174,99 +162,115 @@ async function searchWeather() {
 // ============================================
 
 /**
- * MASALAH: Menampilkan data cuaca ke layar.
+ * KONSEP: Update DOM dengan data dari API
  * 
- * PERTANYAAN:
- * - Data apa saja yang ditampilkan?
- * - Bagaimana cara mendapatkan ikon cuaca?
- * - Bagaimana membuat card cuaca?
+ * CONTOH KONSEP:
+ * 
+ * --- Update text ---
+ * document.getElementById('id').textContent = value;
+ * 
+ * --- Update image ---
+ * document.getElementById('id').src = imageUrl;
+ * 
+ * --- Update class ---
+ * document.getElementById('id').classList.remove('hidden');
+ * 
+ * --- Nested property ---
+ * const suhu = data.main.temp; // akses property bersarang
+ * const deskripsi = data.weather[0].description; // akses array dalam object
+ * 
+ * --- Math operations ---
+ * const bulat = Math.round(30.7); // 31
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "displayCurrentWeather" dan "displayForecast"
  */
 function displayCurrentWeather(data) {
-    // PERTANYAAN 1: Data apa yang diambil dari response?
-    // PETUNJUK: Lihat struktur response API di dokumentasi
+    // PERTANYAAN: Bagaimana mengakses data dari response?
     // KONSEP: data.name (kota), data.main.temp (suhu), dll
-    
-    // PERTANYAAN 2: Bagaimana mendapatkan ikon?
-    // PETUNJUK: API memberikan kode ikon, bisa di-download
-    // KONSEP: https://openweathermap.org/img/wn/{icon}@2x.png
-    
-    // PERTANYAAN 3: Bagaimana update tampilan?
-    // PETUNJUK: Cari element, ubah text atau src-nya
+    //
+    // PERTANYAAN: Bagaimana mendapatkan URL ikon?
+    // KONSEP: `https://openweathermap.org/img/wn/${iconCode}@2x.png`
+    //
+    // PERTANYAAN: Bagaimana update tampilan?
     // KONSEP: element.textContent = value
-    //         image.src = url
 }
 
 function displayForecast(data) {
-    // PERTANYAAN 1: Data forecast seperti apa?
-    // PETUNJUK: API mengembalikan banyak data (per 3 jam)
-    //           Kita perlu filter untuk 1 data per hari
+    // PERTANYAAN: Data forecast seperti apa?
+    // KONSEP: data.list berisi banyak item (per 3 jam)
+    //
+    // PERTANYAAN: Bagaimana filter 1 data per hari?
     // KONSEP: data.list.filter(item => item.dt_txt.includes('12:00:00'))
-    
-    // PERTANYAAN 2: Bagaimana membuat card forecast?
-    // PETUNJUK: Loop hasil filter, buat card untuk setiap hari
-    // KONSEP: .forEach() atau .map() untuk membuat HTML
 }
 
 
 // ============================================
-// FUNGSI: SEARCH HISTORY
+// FUNGSI: HISTORY
 // ============================================
 
 /**
- * MASALAH: Menyimpan dan menampilkan riwayat pencarian.
+ * KONSEP: Search history dengan timestamp
  * 
- * ALUR BERPIKIR:
- * 1. Saat search berhasil, simpan kota ke history
- * 2. Batasi history (maks 5 item)
- * 3. Tampilkan history ke layar
- * 4. Klik history untuk search lagi
+ * CONTOH KONSEP:
+ * 
+ * --- Simpan dengan timestamp ---
+ * history.unshift({ city: 'Jakarta', timestamp: Date.now() });
+ * 
+ * --- Batasi jumlah ---
+ * if (history.length > 5) history.pop();
+ * 
+ * --- Format waktu relatif ---
+ * const diff = Date.now() - timestamp;
+ * const menit = Math.floor(diff / 60000);
+ * const jam = Math.floor(diff / 3600000);
+ * 
+ * if (menit < 60) return `${menit} menit lalu`;
+ * if (jam < 24) return `${jam} jam lalu`;
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "saveToHistory", "renderHistory", "searchFromHistory"
  */
 function saveToHistory(city) {
-    // PERTANYAAN 1: Bagaimana menyimpan history?
-    // PETUNJUK: Simpan di array, lalu ke localStorage
-    // KONSEP: searchHistory.unshift({ city, timestamp: Date.now() })
-    
-    // PERTANYAAN 2: Bagaimana membatasi history?
-    // PETUNJUK: Ambil hanya 5 item terbaru
-    // KONSEP: searchHistory = searchHistory.slice(0, 5)
+    // PERTANYAAN: Bagaimana cek apakah kota sudah ada?
+    // KONSEP: history.findIndex(h => h.city.toLowerCase() === city.toLowerCase())
+    //
+    // PERTANYAAN: Bagaimana update atau tambah baru?
+    // KONSEP: Jika index !== -1 → update, else → unshift baru
 }
 
 function formatTimeAgo(timestamp) {
-    // PERTANYAAN: Bagaimana mengubah timestamp jadi "2 menit lalu"?
-    // PETUNJUK: Hitung selisih waktu dengan waktu sekarang
-    // KONSEP: const diff = Date.now() - timestamp
-    //         Konversi milidetik ke menit/jam
+    // PERTANYAAN: Bagaimana menghitung waktu relatif?
+    // KONSEP: (Date.now() - timestamp) / 60000 = menit
 }
 
 
 // ============================================
-// FUNGSI: UI HELPERS
+// UI HELPERS
 // ============================================
 
 /**
- * MASALAH: Fungsi bantu untuk UI.
+ * CONTOH KONSEP:
+ * 
+ * function showError(message) {
+ *     const el = document.getElementById('error');
+ *     el.textContent = message;
+ *     el.classList.remove('hidden');
+ * }
+ * 
+ * function hideError() {
+ *     document.getElementById('error').classList.add('hidden');
+ * }
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "showError", "hideError", "showLoading", "hideLoading"
  */
 function showError(message) {
-    // PETUNJUK: Tampilkan pesan error ke element yang tersedia
     // KONSEP: element.textContent = message; element.classList.remove('hidden')
 }
 
 function showLoading() {
-    // PETUNJUK: Tampilkan indicator loading
     // KONSEP: element.classList.remove('hidden')
 }
 
 function hideLoading() {
-    // PETUNJUK: Sembunyikan indicator loading
     // KONSEP: element.classList.add('hidden')
 }
 
@@ -276,11 +280,8 @@ function hideLoading() {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // PERTANYAAN: Event apa yang perlu didengar?
-    // PETUNJUK:
+    // Event yang perlu didengar:
     // - Klik tombol search
     // - Tekan Enter di input
     // - Klik item di history
-    // 
-    // Tambahkan event listener untuk semua event di atas
 });

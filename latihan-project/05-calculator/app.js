@@ -6,28 +6,16 @@
  * MASALAH:
  * Membuat kalkulator yang bisa:
  * 1. Menampilkan angka yang diketik
- * 2. Melakukan operasi: +, -, ×, ÷
+ * 2. Operasi: +, -, ×, ÷
  * 3. Menampilkan hasil
- * 4. Clear (reset), Backspace (hapus satu digit)
- * 5. Persen (%)
- * 6. Menyimpan riwayat perhitungan
+ * 4. Clear, Backspace, Persen
+ * 5. Riwayat perhitungan
  * 
- * KONSEP YANG DIPAKAI:
- * - State Management (menyimpan status aplikasi)
- * - Event Handling (menangkap klik tombol)
- * - Switch/Case (memilih operasi berdasarkan operator)
- * - Template Literal (menampilkan hasil)
- * - Array (menyimpan history)
- * 
- * CARA BERPIKIR:
- * Kalkulator bekerja seperti mesin:
- * 1. User memasukkan angka PERTAMA
- * 2. User memilih OPERATOR
- * 3. User memasukkan angka KEDUA
- * 4. User menekan "=" untuk MENGHITUNG
- * 
- * Kita perlu "mengingat" angka pertama dan operator
- * sampai angka kedua dimasukkan.
+ * KONSEP:
+ * - State Management (mengingat status)
+ * - Event Handling
+ * - Switch/Case (memilih operasi)
+ * - Array (history)
  */
 
 
@@ -36,26 +24,24 @@
 // ============================================
 
 /**
- * MASALAH: Kalkulator perlu "mengingat"一些状态.
+ * KONSEP: State = "ingatan" aplikasi
  * 
- * STATE YANG PERLU DISIMPAN:
- * 1. currentValue: angka yang sedang ditampilkan (sedang diketik)
- * 2. previousValue: angka sebelum operator (sudah diketik)
- * 3. operator: operasi yang dipilih (+, -, ×, ÷)
- * 4. shouldResetDisplay: apakah display harus direset setelah hitung
- * 5. history: daftar riwayat perhitungan
+ * Kalkulator perlu mengingat:
+ * 1. Angka yang sedang diketik (currentValue)
+ * 2. Angka sebelum operator (previousValue)
+ * 3. Operator yang dipilih (+, -, ×, ÷)
+ * 4. Apakah display harus direset
+ * 5. Riwayat perhitungan
  * 
- * PERTANYAAN:
- * - Mengapa perlu previousValue?
- *   → Karena kita harus "mengingat" angka pertama sampai
- *     angka kedua dimasukkan.
- * - Mengapa perlu shouldResetDisplay?
- *   → Saat user menekan "=", display harus menampilkan hasil,
- *     bukan angka yang lama. Tapi saat user ketik angka baru,
- *     display harus direset dulu.
+ * CONTOH KONSEP:
+ * let currentValue = '0';      // awalnya nol
+ * let previousValue = '';       // awalnya kosong
+ * let operator = '';            // awalnya kosong
+ * let shouldResetDisplay = false;
+ * let history = [];
  * 
  * TULIS KODEMU DI SINI:
- * Buat variabel-variabel state di atas
+ * Buat variabel-variabel state
  */
 
 
@@ -64,38 +50,44 @@
 // ============================================
 
 /**
- * MASALAH: User menekan tombol angka (0-9).
- *          Angka harus muncul di display.
+ * MASALAH: User menekan tombol angka.
  * 
- * ALUR BERPIKIR:
- * 1. Cek apakah display harus direset?
- * 2. Jika ya: ganti currentValue dengan angka baru
- * 3. Jika tidak: tambahkan angka ke currentValue
- * 4. Update tampilan
+ * KONSEP YANG DIBUTUHKAN:
+ * 1. Mengecek kondisi
+ * 2. Concatenation string
+ * 3. Update display
  * 
- * PERTANYAAN UNTUK DIRI SENDIRI:
- * - Kapan display harus direset?
- *   → Setelah operator dipilih, atau setelah "=" ditekan
- * - Bagaimana menambah angka ke belakang?
- *   → Ubah angka ke string, tambahkan, lalu ubah kembali
+ * CONTOH KONSEP (bukan jawaban):
+ * 
+ * --- Kondisi if-else ---
+ * if (kondisi) {
+ *     // dilakukan jika true
+ * } else {
+ *     // dilakukan jika false
+ * }
+ * 
+ * --- String concatenation ---
+ * '1' + '2' = '12'  // bukan 13!
+ * currentValue += '3'; // currentValue jadi '123'
+ * 
+ * --- Mengecek karakter ---
+ * string.includes('x'); // true jika ada 'x'
+ * string.length;        // panjang string
+ * 
+ * --- Menghapus karakter terakhir ---
+ * string.slice(0, -1);  // hapus 1 karakter dari belakang
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "inputNumber" yang menerima parameter "number"
  */
 function inputNumber(number) {
-    // PERTANYAAN 1: Kapan harus reset display?
-    // PETUNJUK: Cek flag shouldResetDisplay
-    // KONSEP: if (shouldResetDisplay) { ... } else { ... }
-    
-    // PERTANYAAN 2: Bagaimana menambah angka?
-    // PETUNJUK: Angka disimpan sebagai STRING agar bisa ditambah digit
-    //           "1" + "2" = "12" (string concatenation)
-    // KONSEP: currentValue += number (jika masih string)
-    
-    // PERTANYAAN 3: Bagaimana handle angka 0 di depan?
-    // PETUNJUK: Jika currentValue "0", ganti langsung, jangan tambah
-    // KONSEP: if (currentValue === '0') currentValue = number;
-    //         else currentValue += number;
+    // PERTANYAAN: Kapan display harus direset?
+    // KONSEP: Saat shouldResetDisplay === true
+    //
+    // PERTANYAAN: Bagaimana menambah angka ke display?
+    // KONSEP: currentValue += number (string concatenation)
+    //
+    // PERTANYAAN: Bagaimana handle angka 0 di depan?
+    // KONSEP: Jika currentValue === '0', ganti langsung, jangan tambah
 }
 
 
@@ -104,19 +96,19 @@ function inputNumber(number) {
 // ============================================
 
 /**
- * MASALAH: User menekan tombol titik (.) untuk desimal.
+ * KONSEP: Mengecek apakah karakter sudah ada
  * 
- * PERTANYAAN:
- * - Apa yang terjadi jika sudah ada titik?
- *   → Jangan tambah lagi (agar tidak ada dua titik)
+ * CONTOH KONSEP:
+ * if (string.includes('.')) {
+ *     // sudah ada titik, jangan tambah
+ *     return;
+ * }
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "inputDecimal"
  */
 function inputDecimal() {
     // PERTANYAAN: Bagaimana mengecek apakah sudah ada titik?
-    // PETUNJUK: Gunakan method string untuk mencari karakter
-    // KONSEP: currentValue.includes('.') → true jika ada titik
+    // KONSEP: currentValue.includes('.')
 }
 
 
@@ -125,31 +117,26 @@ function inputDecimal() {
 // ============================================
 
 /**
- * MASALAH: User menekan tombol operator (+, -, ×, ÷).
+ * MASALAH: User menekan operator (+, -, ×, ÷).
  * 
- * ALUR BERPIKIR:
- * 1. Jika sudah ada operator sebelumnya, hitung dulu
- *    (contoh: 5 + 3 + → hitung 5+3 dulu, dapat 8, lalu simpan 8 +)
- * 2. Simpan currentValue sebagai previousValue
- * 3. Simpan operator yang dipilih
- * 4. Tandai bahwa display harus direset
+ * KONSEP: Operator chaining
+ * Contoh: 5 + 3 + 2 =
+ * - User ketik 5, tekan +, ketik 3
+ * - Saat tekan + lagi, hitung 5+3 dulu = 8
+ * - Simpan 8 sebagai previousValue, simpan + sebagai operator
+ * - User ketik 2, tekan =
+ * - Hitung 8+2 = 10
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "inputOperator" yang menerima parameter "op"
  */
 function inputOperator(op) {
-    // PERTANYAAN 1: Mengapa harus hitung dulu jika sudah ada operator?
-    // PETUNJUK: Pikirkan urutan: 5 + 3 + 2 =
-    //           Tanpa hitung dulu: akan salah
-    // KONSEP: Operator chaining - hitung berurutan dari kiri
-    
-    // PERTANYAAN 2: Bagaimana menyimpan operator?
-    // PETUNJUK: Simpan ke variabel state
-    // KONSEP: operator = op
-    
-    // PERTANYAAN 3: Mengapa harus reset display?
-    // PETUNJUK: Setelah operator, user akan ketik angka baru
-    // KONSEP: shouldResetDisplay = true
+    // PERTANYAAN: Mengapa harus hitung dulu jika sudah ada operator?
+    // KONSEP: Operator chaining - urutan dari kiri ke kanan
+    //
+    // PERTANYAAN: Apa yang disimpan saat operator diklik?
+    // KONSEP: previousValue = currentValue
+    //         operator = op
+    //         shouldResetDisplay = true
 }
 
 
@@ -158,40 +145,59 @@ function inputOperator(op) {
 // ============================================
 
 /**
- * MASALAH: User menekan tombol "=". Hitung hasilnya.
+ * MASALAH: User menekan "=", hitung hasilnya.
  * 
- * ALUR BERPIKIR:
- * 1. Pastikan ada operator dan previousValue
- * 2. Konversi string ke angka
- * 3. Hitung berdasarkan operator
- * 4. Handle error (bagi dengan 0)
- * 5. Simpan ke history
- * 6. Update currentValue dengan hasil
+ * KONSEP: Switch-case untuk memilih operasi
  * 
- * PERTANYAAN UNTUK DIRI SENDIRI:
- * - Bagaimana membedakan operator?
- * - Apa yang terjadi jika bagi dengan 0?
- * - Bagaimana menampilkan hasil yang benar?
+ * CONTOH KONSEP:
+ * switch (variable) {
+ *     case 'nilai1':
+ *         // dilakukan jika === 'nilai1'
+ *         break;
+ *     case 'nilai2':
+ *         // dilakukan jika === 'nilai2'
+ *         break;
+ *     default:
+ *         // dilakukan jika tidak ada yang cocok
+ * }
+ * 
+ * ATAU if-else if:
+ * if (operator === '+') {
+ *     hasil = a + b;
+ * } else if (operator === '-') {
+ *     hasil = a - b;
+ * } else if (operator === '×') {
+ *     hasil = a * b;
+ * } else if (operator === '÷') {
+ *     if (b === 0) {
+ *         // error
+ *     } else {
+ *         hasil = a / b;
+ *     }
+ * }
+ * 
+ * --- Mengonversi string ke angka ---
+ * const angka = Number(string);
+ * const angkaLain = parseFloat(string);
+ * 
+ * --- Mengonversi angka ke string ---
+ * const string = angka.toString();
+ * const stringLain = String(angka);
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "calculate"
  */
 function calculate() {
-    // PERTANYAAN 1: Bagaimana mengonversi string ke angka?
-    // PETUNJUK: Ada fungsi untuk mengubah string menjadi number
-    // KONSEP: parseFloat() atau Number()
-    
-    // PERTANYAAN 2: Bagaimana memilih operasi?
-    // PETUNJUK: Gunakan switch-case atau if-else if
-    // KONSEP: switch(operator) { case '+': ... break; }
-    
-    // PERTANYAAN 3: Bagaimana handle bagi 0?
-    // PETUNJUK: Cek dulu sebelum bagi
-    // KONSEP: if (current === 0) { showError(); return; }
-    
-    // PERTANYAAN 4: Bagaimana menampilkan hasil?
-    // PETUNJUK: Hasil harus jadi currentValue
-    // KONSEP: currentValue = result.toString()
+    // PERTANYAAN: Bagaimana mengonversi string ke angka?
+    // KONSEP: Number(string) atau parseFloat(string)
+    //
+    // PERTANYAAN: Bagaimana memilih operasi berdasarkan operator?
+    // KONSEP: switch(operator) { ... } atau if-else if
+    //
+    // PERTANYAAN: Bagaimana handle bagi dengan 0?
+    // KONSEP: if (b === 0) { tampilkan error; return; }
+    //
+    // PERTANYAAN: Bagaimana menampilkan hasil?
+    // KONSEP: currentValue = hasil.toString()
 }
 
 
@@ -200,40 +206,39 @@ function calculate() {
 // ============================================
 
 /**
- * MASALAH: Reset kalkulator atau hapus satu digit.
+ * CONTOH KONSEP:
+ * 
+ * --- Clear (reset semua) ---
+ * currentValue = '0';
+ * previousValue = '';
+ * operator = '';
+ * 
+ * --- Backspace (hapus 1 karakter) ---
+ * if (currentValue.length === 1) {
+ *     currentValue = '0';
+ * } else {
+ *     currentValue = currentValue.slice(0, -1);
+ * }
+ * 
+ * --- Persen ---
+ * currentValue = (Number(currentValue) / 100).toString();
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "clear" dan "backspace"
  */
 function clear() {
     // PERTANYAAN: Apa yang harus direset?
-    // PETUNJUK: Semua state kembali ke nilai awal
-    // KONSEP: currentValue = '0', previousValue = '', operator = ''
+    // KONSEP: Semua state kembali ke nilai awal
 }
 
 function backspace() {
-    // PERTANYAAN: Bagaimana menghapus satu digit?
-    // PETUNJUK: Ambil semua kecuali karakter terakhir
+    // PERTANYAAN: Bagaimana menghapus 1 karakter terakhir?
     // KONSEP: currentValue.slice(0, -1)
-    //         Jika hanya satu digit, kembali ke '0'
+    //         Jika sisa 1 karakter, kembali ke '0'
 }
 
-
-// ============================================
-// FUNGSI: PERSEN
-// ============================================
-
-/**
- * MASALAH: Mengubah angka menjadi persen.
- *          Contoh: 50 → 0.5 (50/100)
- * 
- * TULIS KODEMU DI SINI:
- * Buat fungsi "percentage"
- */
 function percentage() {
     // PERTANYAAN: Bagaimana menghitung persen?
-    // PETUNJUK: Persen = dibagi 100
-    // KONSEP: currentValue = (parseFloat(currentValue) / 100).toString()
+    // KONSEP: dibagi 100
 }
 
 
@@ -242,19 +247,20 @@ function percentage() {
 // ============================================
 
 /**
- * MASALAH: Menampilkan state ke layar.
+ * KONSEP: Update text content element
+ * 
+ * CONTOH KONSEP:
+ * document.getElementById('id').textContent = 'teks baru';
+ * document.getElementById('id').innerHTML = '<b>teks</b>';
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "updateDisplay"
  */
 function updateDisplay() {
-    // PERTANYAAN 1: Apa yang ditampilkan?
-    // PETUNJUK: Ada dua area: previous (operator) dan current (angka)
-    // KONSEP: Update textContent dari dua element berbeda
-    
-    // PERTANYAAN 2: Bagaimana menampilkan operator?
-    // PETUNJUK: Tampilkan previousValue + operator
-    // KONSEP: previousDisplay.textContent = previousValue + ' ' + operator
+    // PERTANYAAN: Bagaimana update tampilan angka?
+    // KONSEP: element.textContent = currentValue
+    //
+    // PERTNYAAN: Bagaimana menampilkan operator?
+    // KONSEP: element.textContent = previousValue + ' ' + operator
 }
 
 
@@ -263,42 +269,30 @@ function updateDisplay() {
 // ============================================
 
 /**
- * MASALAH: Menyimpan dan menampilkan riwayat perhitungan.
+ * KONSEP: Menyimpan riwayat di array
+ * 
+ * CONTOH KONSEP:
+ * array.unshift(item); // tambah di awal (paling baru di atas)
+ * if (array.length > 10) {
+ *     array.pop(); // hapus yang paling lama
+ * }
+ * 
+ * --- Render array ke HTML ---
+ * const html = array.map(item => `<div>${item}</div>`).join('');
  * 
  * TULIS KODEMU DI SINI:
- * Buat fungsi "addToHistory" dan "renderHistory"
  */
 function addToHistory(calculation) {
-    // PERTANYAAN 1: Di mana menyimpan history?
-    // PETUNJUK: Gunakan array
-    // KONSEP: history.unshift(calculation) untuk tambah di awal
-    
-    // PERTANYAAN 2: Berapa banyak history yang disimpan?
-    // PETUNJUK: Batasi agar tidak terlalu banyak
+    // PERTANYAAN: Bagaimana menambah item di awal array?
+    // KONSEP: history.unshift(calculation)
+    //
+    // PERTANYAAN: Bagaimana membatasi jumlah history?
     // KONSEP: if (history.length > 10) history.pop()
 }
 
 function renderHistory() {
-    // PERTANYAAN: Bagaimana menampilkan history?
-    // PETUNJUK: Loop array, buat element untuk setiap item
-    // KONSEP: .map() atau forEach untuk membuat HTML dari array
-}
-
-
-// ============================================
-// FUNGSI: ERROR HANDLING
-// ============================================
-
-/**
- * MASALAH: Menampilkan pesan error (misal: bagi 0).
- * 
- * TULIS KODEMU DI SINI:
- * Buat fungsi "showError"
- */
-function showError(message) {
-    // PERTANYAAN: Bagaimana menampilkan error?
-    // PETUNJUK: Tampilkan pesan di display, lalu reset setelah beberapa detik
-    // KONSEP: setTimeout() untuk menjalankan fungsi setelah jeda waktu
+    // PERTANYAAN: Bagaimana mengubah array jadi HTML?
+    // KONSEP: array.map(item => `<div>${item}</div>`).join('')
 }
 
 
@@ -307,19 +301,36 @@ function showError(message) {
 // ============================================
 
 /**
- * MASALAH: Menghubungkan tombol dengan fungsi.
+ * KONSEP: Menghubungkan banyak tombol dengan fungsi
+ * 
+ * CONTOH KONSEP:
+ * 
+ * --- QuerySelectorAll untuk banyak element ---
+ * const buttons = document.querySelectorAll('.class-tombol');
+ * 
+ * --- Loop untuk menambahkan event listener ---
+ * buttons.forEach(btn => {
+ *     btn.addEventListener('click', () => {
+ *         fungsiYangDipanggil(btn.textContent);
+ *     });
+ * });
+ * 
+ * --- Keyboard event ---
+ * document.addEventListener('keydown', (e) => {
+ *     const key = e.key; // tombol yang ditekan
+ *     if (key >= '0' && key <= '9') { ... }
+ *     if (key === '+') { ... }
+ *     if (key === 'Enter') { ... }
+ *     if (key === 'Backspace') { ... }
+ *     if (key === 'Escape') { ... }
+ * });
  * 
  * TULIS KODEMU DI SINI:
- * Setup event listeners untuk semua tombol
  */
 document.addEventListener('DOMContentLoaded', () => {
-    // PERTANYAAN 1: Bagaimana menghubungkan banyak tombol?
-    // PETUNJUK: Cari semua tombol dengan class tertentu
-    // KONSEP: document.querySelectorAll('.class') mengembalikan NodeList
-    //         Lalu forEach untuk menambahkan event listener ke setiap tombol
-    
-    // PERTANYAAN 2: Bagaimana handle keyboard?
-    // PETUNJUK: Dengarkan event keyboard di document
-    // KONSEP: document.addEventListener('keydown', fungsi)
-    //         e.key mengembalikan tombol yang ditekan
+    // PERTANYAAN: Bagaimana menghubungkan semua tombol angka?
+    // KONSEP: document.querySelectorAll('.btn-number') lalu forEach
+    //
+    // PERTANYAAN: Bagaimana menangkap input keyboard?
+    // KONSEP: document.addEventListener('keydown', (e) => { ... })
 });
