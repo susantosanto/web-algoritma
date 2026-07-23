@@ -3,37 +3,60 @@
  * CALCULATOR APP
  * ============================================
  * 
- * PETUNJUK:
- * - Isi setiap fungsi yang kosong dengan kode JavaScript
- * - Ikuti instruksi di dalam setiap fungsi
- * - Gunakan framework 7 Langkah Universal
+ * MASALAH:
+ * Membuat kalkulator yang bisa:
+ * 1. Menampilkan angka yang diketik
+ * 2. Melakukan operasi: +, -, ×, ÷
+ * 3. Menampilkan hasil
+ * 4. Clear (reset), Backspace (hapus satu digit)
+ * 5. Persen (%)
+ * 6. Menyimpan riwayat perhitungan
  * 
- * FITUR YANG HARUS DIBUAT:
- * 1. Input angka dari tombol
- * 2. Operasi: +, -, ×, ÷
- * 3. Tampilkan hasil
- * 4. Clear (C), Backspace (⌫), Persen (%)
- * 5. History perhitungan
+ * KONSEP YANG DIPAKAI:
+ * - State Management (menyimpan status aplikasi)
+ * - Event Handling (menangkap klik tombol)
+ * - Switch/Case (memilih operasi berdasarkan operator)
+ * - Template Literal (menampilkan hasil)
+ * - Array (menyimpan history)
+ * 
+ * CARA BERPIKIR:
+ * Kalkulator bekerja seperti mesin:
+ * 1. User memasukkan angka PERTAMA
+ * 2. User memilih OPERATOR
+ * 3. User memasukkan angka KEDUA
+ * 4. User menekan "=" untuk MENGHITUNG
+ * 
+ * Kita perlu "mengingat" angka pertama dan operator
+ * sampai angka kedua dimasukkan.
  */
 
+
 // ============================================
-// VARIABEL GLOBAL
+// STATE KALKULATOR
 // ============================================
 
-// Angka yang sedang ditampilkan
-// let currentValue = '0';
-
-// Angka sebelumnya (sebelum operator)
-// let previousValue = '';
-
-// Operator yang dipilih
-// let operator = '';
-
-// Flag untuk reset display setelah hitung
-// let shouldResetDisplay = false;
-
-// Array untuk history
-// let history = [];
+/**
+ * MASALAH: Kalkulator perlu "mengingat"一些状态.
+ * 
+ * STATE YANG PERLU DISIMPAN:
+ * 1. currentValue: angka yang sedang ditampilkan (sedang diketik)
+ * 2. previousValue: angka sebelum operator (sudah diketik)
+ * 3. operator: operasi yang dipilih (+, -, ×, ÷)
+ * 4. shouldResetDisplay: apakah display harus direset setelah hitung
+ * 5. history: daftar riwayat perhitungan
+ * 
+ * PERTANYAAN:
+ * - Mengapa perlu previousValue?
+ *   → Karena kita harus "mengingat" angka pertama sampai
+ *     angka kedua dimasukkan.
+ * - Mengapa perlu shouldResetDisplay?
+ *   → Saat user menekan "=", display harus menampilkan hasil,
+ *     bukan angka yang lama. Tapi saat user ketik angka baru,
+ *     display harus direset dulu.
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat variabel-variabel state di atas
+ */
 
 
 // ============================================
@@ -41,25 +64,38 @@
 // ============================================
 
 /**
- * Fungsi saat tombol angka diklik
- * @param {string} number - Angka yang diklik (0-9)
+ * MASALAH: User menekan tombol angka (0-9).
+ *          Angka harus muncul di display.
+ * 
+ * ALUR BERPIKIR:
+ * 1. Cek apakah display harus direset?
+ * 2. Jika ya: ganti currentValue dengan angka baru
+ * 3. Jika tidak: tambahkan angka ke currentValue
+ * 4. Update tampilan
+ * 
+ * PERTANYAAN UNTUK DIRI SENDIRI:
+ * - Kapan display harus direset?
+ *   → Setelah operator dipilih, atau setelah "=" ditekan
+ * - Bagaimana menambah angka ke belakang?
+ *   → Ubah angka ke string, tambahkan, lalu ubah kembali
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "inputNumber" yang menerima parameter "number"
  */
 function inputNumber(number) {
-    // LANGKAH 1: Jika harus reset display
-    // if (shouldResetDisplay) {
-    //     currentValue = number;
-    //     shouldResetDisplay = false;
-    // } else {
-    //     LANGKAH 2: Handle angka 0 di depan
-    //     if (currentValue === '0' && number !== '.') {
-    //         currentValue = number;
-    //     } else {
-    //         currentValue += number;
-    //     }
-    // }
+    // PERTANYAAN 1: Kapan harus reset display?
+    // PETUNJUK: Cek flag shouldResetDisplay
+    // KONSEP: if (shouldResetDisplay) { ... } else { ... }
     
-    // LANGKAH 3: Update display
-    // updateDisplay();
+    // PERTANYAAN 2: Bagaimana menambah angka?
+    // PETUNJUK: Angka disimpan sebagai STRING agar bisa ditambah digit
+    //           "1" + "2" = "12" (string concatenation)
+    // KONSEP: currentValue += number (jika masih string)
+    
+    // PERTANYAAN 3: Bagaimana handle angka 0 di depan?
+    // PETUNJUK: Jika currentValue "0", ganti langsung, jangan tambah
+    // KONSEP: if (currentValue === '0') currentValue = number;
+    //         else currentValue += number;
 }
 
 
@@ -68,15 +104,19 @@ function inputNumber(number) {
 // ============================================
 
 /**
- * Fungsi saat tombol desimal diklik
+ * MASALAH: User menekan tombol titik (.) untuk desimal.
+ * 
+ * PERTANYAAN:
+ * - Apa yang terjadi jika sudah ada titik?
+ *   → Jangan tambah lagi (agar tidak ada dua titik)
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "inputDecimal"
  */
 function inputDecimal() {
-    // Jika sudah ada titik, return
-    // if (currentValue.includes('.')) return;
-    
-    // Tambah titik
-    // currentValue += '.';
-    // updateDisplay();
+    // PERTANYAAN: Bagaimana mengecek apakah sudah ada titik?
+    // PETUNJUK: Gunakan method string untuk mencari karakter
+    // KONSEP: currentValue.includes('.') → true jika ada titik
 }
 
 
@@ -85,22 +125,31 @@ function inputDecimal() {
 // ============================================
 
 /**
- * Fungsi saat operator diklik (+, -, ×, ÷)
- * @param {string} op - Operator yang diklik
+ * MASALAH: User menekan tombol operator (+, -, ×, ÷).
+ * 
+ * ALUR BERPIKIR:
+ * 1. Jika sudah ada operator sebelumnya, hitung dulu
+ *    (contoh: 5 + 3 + → hitung 5+3 dulu, dapat 8, lalu simpan 8 +)
+ * 2. Simpan currentValue sebagai previousValue
+ * 3. Simpan operator yang dipilih
+ * 4. Tandai bahwa display harus direset
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "inputOperator" yang menerima parameter "op"
  */
 function inputOperator(op) {
-    // LANGKAH 1: Jika sudah ada operator, hitung dulu
-    // if (operator && !shouldResetDisplay) {
-    //     calculate();
-    // }
+    // PERTANYAAN 1: Mengapa harus hitung dulu jika sudah ada operator?
+    // PETUNJUK: Pikirkan urutan: 5 + 3 + 2 =
+    //           Tanpa hitung dulu: akan salah
+    // KONSEP: Operator chaining - hitung berurutan dari kiri
     
-    // LANGKAH 2: Simpan angka dan operator
-    // previousValue = currentValue;
-    // operator = op;
-    // shouldResetDisplay = true;
+    // PERTANYAAN 2: Bagaimana menyimpan operator?
+    // PETUNJUK: Simpan ke variabel state
+    // KONSEP: operator = op
     
-    // LANGKAH 3: Update display
-    // updateDisplay();
+    // PERTANYAAN 3: Mengapa harus reset display?
+    // PETUNJUK: Setelah operator, user akan ketik angka baru
+    // KONSEP: shouldResetDisplay = true
 }
 
 
@@ -109,82 +158,64 @@ function inputOperator(op) {
 // ============================================
 
 /**
- * Fungsi saat tombol = diklik
+ * MASALAH: User menekan tombol "=". Hitung hasilnya.
+ * 
+ * ALUR BERPIKIR:
+ * 1. Pastikan ada operator dan previousValue
+ * 2. Konversi string ke angka
+ * 3. Hitung berdasarkan operator
+ * 4. Handle error (bagi dengan 0)
+ * 5. Simpan ke history
+ * 6. Update currentValue dengan hasil
+ * 
+ * PERTANYAAN UNTUK DIRI SENDIRI:
+ * - Bagaimana membedakan operator?
+ * - Apa yang terjadi jika bagi dengan 0?
+ * - Bagaimana menampilkan hasil yang benar?
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "calculate"
  */
 function calculate() {
-    // LANGKAH 1: Validasi
-    // if (!operator || previousValue === '') return;
+    // PERTANYAAN 1: Bagaimana mengonversi string ke angka?
+    // PETUNJUK: Ada fungsi untuk mengubah string menjadi number
+    // KONSEP: parseFloat() atau Number()
     
-    // LANGKAH 2: Konversi ke angka
-    // const prev = parseFloat(previousValue);
-    // const current = parseFloat(currentValue);
-    // let result;
+    // PERTANYAAN 2: Bagaimana memilih operasi?
+    // PETUNJUK: Gunakan switch-case atau if-else if
+    // KONSEP: switch(operator) { case '+': ... break; }
     
-    // LANGKAH 3: Hitung berdasarkan operator
-    // switch (operator) {
-    //     case '+':
-    //         result = prev + current;
-    //         break;
-    //     case '-':
-    //         result = prev - current;
-    //         break;
-    //     case '×':
-    //         result = prev * current;
-    //         break;
-    //     case '÷':
-    //         if (current === 0) {
-    //             showError('Tidak bisa bagi 0');
-    //             return;
-    //         }
-    //         result = prev / current;
-    //         break;
-    // }
+    // PERTANYAAN 3: Bagaimana handle bagi 0?
+    // PETUNJUK: Cek dulu sebelum bagi
+    // KONSEP: if (current === 0) { showError(); return; }
     
-    // LANGKAH 4: Simpan ke history
-    // addToHistory(`${previousValue} ${operator} ${currentValue} = ${result}`);
-    
-    // LANGKAH 5: Update nilai
-    // currentValue = result.toString();
-    // operator = '';
-    // previousValue = '';
-    // shouldResetDisplay = true;
-    
-    // LANGKAH 6: Update display
-    // updateDisplay();
+    // PERTANYAAN 4: Bagaimana menampilkan hasil?
+    // PETUNJUK: Hasil harus jadi currentValue
+    // KONSEP: currentValue = result.toString()
 }
 
 
 // ============================================
-// FUNGSI: CLEAR
+// FUNGSI: CLEAR & BACKSPACE
 // ============================================
 
 /**
- * Fungsi clear (tombol C)
+ * MASALAH: Reset kalkulator atau hapus satu digit.
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "clear" dan "backspace"
  */
 function clear() {
-    // currentValue = '0';
-    // previousValue = '';
-    // operator = '';
-    // shouldResetDisplay = false;
-    // updateDisplay();
+    // PERTANYAAN: Apa yang harus direset?
+    // PETUNJUK: Semua state kembali ke nilai awal
+    // KONSEP: currentValue = '0', previousValue = '', operator = ''
 }
 
-
-// ============================================
-// FUNGSI: BACKSPACE
-// ============================================
-
-/**
- * Fungsi backspace (tombol ⌫)
- */
 function backspace() {
-    // if (currentValue.length === 1 || 
-    //     (currentValue.length === 2 && currentValue[0] === '-')) {
-    //     currentValue = '0';
-    // } else {
-    //     currentValue = currentValue.slice(0, -1);
-    // }
-    // updateDisplay();
+    // PERTANYAAN: Bagaimana menghapus satu digit?
+    // PETUNJUK: Ambil semua kecuali karakter terakhir
+    // KONSEP: currentValue.slice(0, -1)
+    //         Jika hanya satu digit, kembali ke '0'
 }
 
 
@@ -193,11 +224,16 @@ function backspace() {
 // ============================================
 
 /**
- * Fungsi persen (tombol %)
+ * MASALAH: Mengubah angka menjadi persen.
+ *          Contoh: 50 → 0.5 (50/100)
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "percentage"
  */
 function percentage() {
-    // currentValue = (parseFloat(currentValue) / 100).toString();
-    // updateDisplay();
+    // PERTANYAAN: Bagaimana menghitung persen?
+    // PETUNJUK: Persen = dibagi 100
+    // KONSEP: currentValue = (parseFloat(currentValue) / 100).toString()
 }
 
 
@@ -206,17 +242,19 @@ function percentage() {
 // ============================================
 
 /**
- * Fungsi update tampilan
+ * MASALAH: Menampilkan state ke layar.
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "updateDisplay"
  */
 function updateDisplay() {
-    // document.getElementById('current-display').textContent = currentValue;
-    // 
-    // if (operator) {
-    //     document.getElementById('previous-display').textContent = 
-    //         `${previousValue} ${operator}`;
-    // } else {
-    //     document.getElementById('previous-display').textContent = '';
-    // }
+    // PERTANYAAN 1: Apa yang ditampilkan?
+    // PETUNJUK: Ada dua area: previous (operator) dan current (angka)
+    // KONSEP: Update textContent dari dua element berbeda
+    
+    // PERTANYAAN 2: Bagaimana menampilkan operator?
+    // PETUNJUK: Tampilkan previousValue + operator
+    // KONSEP: previousDisplay.textContent = previousValue + ' ' + operator
 }
 
 
@@ -225,35 +263,42 @@ function updateDisplay() {
 // ============================================
 
 /**
- * Fungsi tambah ke history
+ * MASALAH: Menyimpan dan menampilkan riwayat perhitungan.
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "addToHistory" dan "renderHistory"
  */
 function addToHistory(calculation) {
-    // history.unshift(calculation);
-    // if (history.length > 10) history.pop();
-    // renderHistory();
+    // PERTANYAAN 1: Di mana menyimpan history?
+    // PETUNJUK: Gunakan array
+    // KONSEP: history.unshift(calculation) untuk tambah di awal
+    
+    // PERTANYAAN 2: Berapa banyak history yang disimpan?
+    // PETUNJUK: Batasi agar tidak terlalu banyak
+    // KONSEP: if (history.length > 10) history.pop()
 }
 
-/**
- * Fungsi render history
- */
 function renderHistory() {
-    // const container = document.getElementById('history-list');
-    // container.innerHTML = history.map(item => 
-    //     `<div class="text-gray-400 text-sm py-1">${item}</div>`
-    // ).join('');
+    // PERTANYAAN: Bagaimana menampilkan history?
+    // PETUNJUK: Loop array, buat element untuk setiap item
+    // KONSEP: .map() atau forEach untuk membuat HTML dari array
 }
 
 
 // ============================================
-// FUNGSI: ERROR
+// FUNGSI: ERROR HANDLING
 // ============================================
 
 /**
- * Fungsi tampilkan error
+ * MASALAH: Menampilkan pesan error (misal: bagi 0).
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "showError"
  */
 function showError(message) {
-    // document.getElementById('current-display').textContent = message;
-    // setTimeout(clear, 1500);
+    // PERTANYAAN: Bagaimana menampilkan error?
+    // PETUNJUK: Tampilkan pesan di display, lalu reset setelah beberapa detik
+    // KONSEP: setTimeout() untuk menjalankan fungsi setelah jeda waktu
 }
 
 
@@ -261,45 +306,20 @@ function showError(message) {
 // EVENT LISTENERS
 // ============================================
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Setup tombol angka
-    // document.querySelectorAll('.btn-number').forEach(btn => {
-    //     btn.addEventListener('click', () => inputNumber(btn.textContent));
-    // });
-    
-    // Setup tombol operator
-    // document.querySelectorAll('.btn-operator').forEach(btn => {
-    //     btn.addEventListener('click', () => inputOperator(btn.textContent));
-    // });
-    
-    // Setup tombol fungsi
-    // document.getElementById('btn-clear').addEventListener('click', clear);
-    // document.getElementById('btn-backspace').addEventListener('click', backspace);
-    // document.getElementById('btn-percent').addEventListener('click', percentage);
-    // document.getElementById('btn-decimal').addEventListener('click', inputDecimal);
-    // document.getElementById('btn-equals').addEventListener('click', calculate);
-    
-    // Setup keyboard
-    // document.addEventListener('keydown', handleKeyboard);
-});
-
 /**
- * Handle input dari keyboard
+ * MASALAH: Menghubungkan tombol dengan fungsi.
+ * 
+ * TULIS KODEMU DI SINI:
+ * Setup event listeners untuk semua tombol
  */
-function handleKeyboard(e) {
-    // const key = e.key;
-    // 
-    // if (key >= '0' && key <= '9') inputNumber(key);
-    // if (key === '+') inputOperator('+');
-    // if (key === '-') inputOperator('-');
-    // if (key === '*') inputOperator('×');
-    // if (key === '/') {
-    //     e.preventDefault();
-    //     inputOperator('÷');
-    // }
-    // if (key === 'Enter' || key === '=') calculate();
-    // if (key === 'Backspace') backspace();
-    // if (key === 'Escape') clear();
-    // if (key === '.') inputDecimal();
-    // if (key === '%') percentage();
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // PERTANYAAN 1: Bagaimana menghubungkan banyak tombol?
+    // PETUNJUK: Cari semua tombol dengan class tertentu
+    // KONSEP: document.querySelectorAll('.class') mengembalikan NodeList
+    //         Lalu forEach untuk menambahkan event listener ke setiap tombol
+    
+    // PERTANYAAN 2: Bagaimana handle keyboard?
+    // PETUNJUK: Dengarkan event keyboard di document
+    // KONSEP: document.addEventListener('keydown', fungsi)
+    //         e.key mengembalikan tombol yang ditekan
+});

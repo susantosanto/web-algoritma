@@ -3,26 +3,55 @@
  * TO-DO LIST APP
  * ============================================
  * 
- * PETUNJUK:
- * - Isi setiap fungsi yang kosong dengan kode JavaScript
- * - Ikuti instruksi di dalam setiap fungsi
- * - Gunakan framework 7 Langkah Universal
+ * MASALAH:
+ * Membuat aplikasi to-do list yang bisa:
+ * 1. Menambah todo baru
+ * 2. Menampilkan daftar todos
+ * 3. Menandai todo selesai/belum selesai
+ * 4. Menghapus todo
+ * 5. Menyimpan data agar tetap ada saat refresh
  * 
- * FITUR YANG HARUS DIBUAT:
- * 1. Tambah todo baru
- * 2. Tampilkan daftar todos
- * 3. Toggle selesai/belum selesai
- * 4. Hapus todo
- * 5. Simpan ke LocalStorage
+ * KONSEP YANG DIPAKAI:
+ * - DOM Manipulation (mengakses & mengubah element HTML)
+ * - Event Handling (menangkap aksi user)
+ * - Array (menyimpan banyak data)
+ * - Object (menyimpan data dengan key:value)
+ * - LocalStorage (menyimpan data di browser)
+ * - Template Literal (membuat string dinamis)
+ * 
+ * CARA BERPIKIR:
+ * Sebelum menulis kode, tanyakan pada diri sendiri:
+ * 1. Apa yang harus dilakukan fungsi ini?
+ * 2. Data apa yang dibutuhkan?
+ * 3. Dari mana data itu berasal?
+ * 4. Ke mana data itu disimpan?
+ * 5. Bagaimana menampilkannya?
  */
+
 
 // ============================================
 // VARIABEL GLOBAL
 // ============================================
 
-// Array untuk menyimpan todos
-// Format: { id: number, text: string, completed: boolean }
-let todos = [];
+/**
+ * Apa itu variabel global?
+ * Variabel yang bisa diakses di SEMUA fungsi dalam file ini.
+ * Berguna untuk menyimpan data yang harus "ingat" selama app berjalan.
+ * 
+ * TUGAS: Buat variabel untuk menyimpan todos
+ * PETUNJUK: Todos adalah kumpulan data. Di JavaScript, kumpulan data
+ *           disimpan dalam struktur bernama "Array".
+ *           Setiap item dalam array adalah "Object" yang punya property.
+ * 
+ * Contoh structure (bukan kode, hanya gambaran):
+ * todos = [
+ *   { id: ..., text: ..., completed: ... },
+ *   { id: ..., text: ..., completed: ... },
+ * ]
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat variabel bernama "todos" yang bernilai array kosong []
+ */
 
 
 // ============================================
@@ -30,40 +59,60 @@ let todos = [];
 // ============================================
 
 /**
- * Fungsi untuk menambah todo baru
- * Dipanggil saat user klik tombol "Tambah" atau tekan Enter
+ * MASALAH: User mengetik todo baru, lalu klik tombol atau tekan Enter.
+ *          Todo baru harus muncul di daftar.
+ * 
+ * ALUR BERPIKIR:
+ * 1. Dari mana saya mendapatkan teks todo yang diketik user?
+ * 2. Bagaimana cara mengambil teks dari input field?
+ * 3. Apa yang harus saya lakukan dengan teks itu?
+ * 4. Ke mana saya menyimpan todo baru?
+ * 5. Bagaimana cara menampilkannya?
+ * 
+ * LANGKAH-LANGKAH (dalam bahasa manusia):
+ * 1. Cari element input di HTML
+ * 2. Ambil teks dari input itu
+ * 3. Pastikan teks tidak kosong
+ * 4. Buat data todo baru
+ * 5. Tambahkan ke array todos
+ * 6. Simpan ke LocalStorage
+ * 7. Tampilkan ulang daftar todos
+ * 8. Kosongkan input field
+ * 
+ * PERTANYAAN UNTUK DIRI SENDIRI:
+ * - Bagaimana cara mencari element HTML berdasarkan id-nya?
+ * - Bagaimana cara mengambil teks dari input field?
+ * - Bagaimana cara membuat ID yang unik?
+ * - Bagaimana cara menambah item ke array?
+ * - Bagaimana cara mengosongkan input field?
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi bernama "addTodo"
  */
 function addTodo() {
-    // LANGKAH 1: Ambil element input
-    // const input = ...
+    // PERTANYAAN 1: Bagaimana cara mencari element input?
+    // PETUNJUK: Cari di HTML, ada input dengan id apa?
+    // KONSEP: Setiap element HTML bisa dicari menggunakan id-nya
     
-    // LANGKAH 2: Ambil value dan hapus spasi di awal/akhir
-    // const text = ...
+    // PERTANYAAN 2: Bagaimana cara mengambil teks dari input?
+    // PETUNJUK: Input field punya property untuk menyimpan teks yang diketik
+    // KONSEP: Input element punya property bernama "value"
     
-    // LANGKAH 3: Validasi - jika kosong, jangan tambah
-    // if (!text) {
-    //     alert('Masukkan todo!');
-    //     return;
-    // }
+    // PERTANYAAN 3: Bagaimana memastikan teks tidak kosong?
+    // PETUNJUK: Cek panjang teks atau gunakan kondisi boolean
+    // KONSEP: "if" statement untuk memeriksa kondisi
     
-    // LANGKAH 4: Buat object todo baru
-    // const newTodo = {
-    //     id: ... (gunakan Date.now() untuk ID unik)
-    //     text: ...
-    //     completed: false
-    // };
+    // PERTANYAAN 4: Bagaimana membuat ID unik?
+    // PETUNJUK: Setiap todo butuh ID berbeda. Gunakan sesuatu yang selalu berubah.
+    // KONSEP: Timestamp (waktu saat ini) selalu unik
     
-    // LANGKAH 5: Tambahkan ke array todos
-    // todos.push(...);
+    // PERTANYAAN 5: Bagaimana menambah item ke array?
+    // PETUNJUK: Array punya method untuk menambah item di akhir
+    // KONSEP: Array.push() menambah item di akhir array
     
-    // LANGKAH 6: Simpan ke LocalStorage
-    // saveTodos();
-    
-    // LANGKAH 7: Tampilkan ulang daftar todo
-    // renderTodos();
-    
-    // LANGKAH 8: Kosongkan input field
-    // input.value = '';
+    // PERTANYAAN 6: Bagaimana menampilkan ulang todos?
+    // PETUNJUK: Panggil fungsi yang bertugas menampilkan todos
+    // KONSEP: Modular programming - satu fungsi untuk satu tugas
 }
 
 
@@ -72,49 +121,59 @@ function addTodo() {
 // ============================================
 
 /**
- * Fungsi untuk menampilkan semua todos ke layar
+ * MASALAH: Menampilkan semua todos yang ada di array ke layar.
+ * 
+ * ALUR BERPIKIR:
+ * 1. Di mana saya menyimpan todos? (di array "todos")
+ * 2. Ke mana saya harus menampilkannya? (ke element HTML tertentu)
+ * 3. Bagaimana cara membuat element HTML baru dari data?
+ * 4. Bagaimana urutan dan tampilannya?
+ * 
+ * LANGKAH-LANGKAH:
+ * 1. Cari container di HTML yang akan menampung todos
+ * 2. Kosongkan container (agar tidak tumpang tindih)
+ * 3. Ulangi (loop) setiap todo dalam array
+ * 4. Untuk setiap todo, buat element HTML baru
+ * 5. Isi element dengan data todo
+ * 6. Tambahkan element ke container
+ * 
+ * PERTANYAAN UNTUK DIRI SENDIRI:
+ * - Bagaimana cara mencari element container?
+ * - Bagaimana cara mengosongkan isi element?
+ * - Bagaimana cara membuat element HTML baru?
+ * - Bagaimana cara mengisi element dengan teks?
+ * - Bagaimana cara menambah element ke container?
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi bernama "renderTodos"
  */
 function renderTodos() {
-    // LANGKAH 1: Ambil container element (id="todo-list")
-    // const container = ...
+    // PERTANYAAN 1: Bagaimana mencari container?
+    // PETUNJUK: Cari di HTML, ada element dengan id apa untuk menampung todos?
     
-    // LANGKAH 2: Kosongkan container
-    // container.innerHTML = '';
+    // PERTANYAAN 2: Bagaimana mengosongkan container?
+    // PETUNJUK: Element punya property untuk mengakses isinya
+    // KONSEP: innerHTML adalah isi HTML di dalam element
     
-    // LANGKAH 3: Loop array todos
-    // todos.forEach(todo => {
-        
-        // LANGKAH 3a: Buat element div untuk todo item
-        // const todoItem = document.createElement('div');
-        // todoItem.className = '...'; // tambahkan class styling
-        
-        // LANGKAH 3b: Buat checkbox
-        // const checkbox = document.createElement('input');
-        // checkbox.type = 'checkbox';
-        // checkbox.checked = todo.completed;
-        // checkbox.onchange = () => toggleTodo(todo.id);
-        
-        // LANGKAH 3c: Buat span untuk text todo
-        // const text = document.createElement('span');
-        // text.textContent = todo.text;
-        // Jika completed, tambahkan class: line-through, text-gray-400
-        
-        // LANGKAH 3d: Buat button hapus
-        // const deleteBtn = document.createElement('button');
-        // deleteBtn.textContent = '🗑️';
-        // deleteBtn.onclick = () => deleteTodo(todo.id);
-        
-        // LANGKAH 3e: Append semua ke todoItem
-        // todoItem.appendChild(checkbox);
-        // todoItem.appendChild(text);
-        // todoItem.appendChild(deleteBtn);
-        
-        // LANGKAH 3f: Append todoItem ke container
-        // container.appendChild(todoItem);
-    // });
+    // PERTANYAAN 3: Bagaimana membuat element baru?
+    // PETUNJUK: Ada fungsi untuk membuat element HTML baru
+    // KONSEP: document.createElement() membuat element baru
     
-    // LANGKAH 4: Update counter
-    // updateCounter();
+    // PERTANYAAN 4: Bagaimana mengisi element dengan teks?
+    // PETUNJUK: Element punya property untuk teks
+    // KONSEP: textContent atau innerHTML untuk isi teks
+    
+    // PERTANYAAN 5: Bagaimana menambah class CSS ke element?
+    // PETUNJUK: Element punya cara untuk menambah class
+    // KONSEP: classList.add() untuk menambah class
+    
+    // PERTANYAAN 6: Bagaimana menambah element ke container?
+    // PETUNJUK: Container punya method untuk menambah child
+    // KONSEP: appendChild() menambah element anak
+    
+    // PERTANYAAN 7: Bagaimana menghubungkan checkbox dengan data?
+    // PETUNJUK: Saat checkbox diklik, sesuatu harus terjadi
+    // KONSEP: Event handler - fungsi yang dipanggil saat event terjadi
 }
 
 
@@ -123,23 +182,35 @@ function renderTodos() {
 // ============================================
 
 /**
- * Fungsi untuk mengubah status completed/belum
- * @param {number} id - ID todo yang akan di-toggle
+ * MASALAH: User mencentang checkbox untuk menandai todo selesai.
+ *          Status completed harus berubah (true ↔ false).
+ * 
+ * ALUR BERPIKIR:
+ * 1. Todo mana yang harus diubah? (berdasarkan ID)
+ * 2. Bagaimana mencari todo dalam array berdasarkan ID?
+ * 3. Bagaimana mengubah status completed?
+ * 4. Apa yang harus dilakukan setelah perubahan?
+ * 
+ * PERTANYAAN UNTUK DIRI SENDIRI:
+ * - Bagaimana cara mencari item dalam array berdasarkan property?
+ * - Bagaimana cara membalik nilai boolean (true jadi false, sebaliknya)?
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi bernama "toggleTodo" yang menerima parameter "id"
  */
 function toggleTodo(id) {
-    // LANGKAH 1: Cari todo dengan id yang sesuai
-    // const todo = todos.find(t => t.id === id);
+    // PERTANYAAN 1: Bagaimana mencari todo berdasarkan id?
+    // PETUNJUK: Array punya method untuk mencari item berdasarkan kondisi
+    // KONSEP: .find() mengembalikan item pertama yang cocok
     
-    // LANGKAH 2: Ubah status completed (true ↔ false)
-    // if (todo) {
-    //     todo.completed = !todo.completed;
-    // }
+    // PERTANYAAN 2: Bagaimana membalik boolean?
+    // PETUNJUK: Gunakan operator "not" (!) atau比较 dengan lawannya
+    // KONSEP: !true = false, !false = true
+    // ATAU: selesai = selesai === false ? true : false
     
-    // LANGKAH 3: Simpan ke LocalStorage
-    // saveTodos();
-    
-    // LANGKAH 4: Tampilkan ulang
-    // renderTodos();
+    // PERTANYAAN 3: Apa yang dilakukan setelah mengubah?
+    // PETUNJUK: Perubahan harus disimpan dan ditampilkan
+    // KONSEP: Save ke storage, lalu render ulang
 }
 
 
@@ -148,21 +219,32 @@ function toggleTodo(id) {
 // ============================================
 
 /**
- * Fungsi untuk menghapus todo
- * @param {number} id - ID todo yang akan dihapus
+ * MASALAH: User mengklik tombol hapus untuk menghapus todo.
+ * 
+ * ALUR BERPIKIR:
+ * 1. Todo mana yang harus dihapus? (berdasarkan ID)
+ * 2. Bagaimana menghapus item dari array?
+ * 3. Apa yang harus dilakukan setelah penghapusan?
+ * 
+ * PERTANYAAN UNTUK DIRI SENDIRI:
+ * - Bagaimana cara menghapus item dari array berdasarkan ID?
+ * - Apakah ada method untuk menghapus? Atau harus cara lain?
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi bernama "deleteTodo" yang menerima parameter "id"
  */
 function deleteTodo(id) {
-    // LANGKAH 1: Konfirmasi ke user
-    // if (!confirm('Yakin hapus todo ini?')) return;
+    // PERTANYAAN 1: Bagaimana menghapus item dari array?
+    // PETUNJUK: Tidak ada method "hapus berdasarkan ID" langsung
+    //           Coba pikirkan: bagaimana membuat array BARU yang isinya
+    //           semua item KECUALI yang mau dihapus?
+    // KONSEP: .filter() membuat array baru berdasarkan kondisi
+    //         Jika kondisi true → item diambil
+    //         Jika kondisi false → item dibuang
     
-    // LANGKAH 2: Filter todos, buang yang id-nya sesuai
-    // todos = todos.filter(t => t.id !== id);
-    
-    // LANGKAH 3: Simpan ke LocalStorage
-    // saveTodos();
-    
-    // LANGKAH 4: Tampilkan ulang
-    // renderTodos();
+    // PERTANYAAN 2: Bagaimana konfirmasi ke user sebelum hapus?
+    // PETUNJUK: Ada fungsi bawaan browser untuk menampilkan dialog konfirmasi
+    // KONSEP: confirm() menampilkan dialog ya/tidak
 }
 
 
@@ -171,17 +253,25 @@ function deleteTodo(id) {
 // ============================================
 
 /**
- * Fungsi untuk update counter "X items remaining"
+ * MASALAH: Menampilkan jumlah todo yang belum selesai.
+ * 
+ * ALUR BERPIKIR:
+ * 1. Hitung todo yang completed = false
+ * 2. Tampilkan angka itu ke layar
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi bernama "updateCounter"
  */
 function updateCounter() {
-    // LANGKAH 1: Hitung jumlah todo yang belum selesai
-    // const remaining = todos.filter(t => !t.completed).length;
+    // PERTANYAAN 1: Bagaimana menghitung item dengan kondisi tertentu?
+    // PETUNJUK: Array punya method untuk menyaring item berdasarkan kondisi
+    //           lalu hitung panjang array hasil filter
+    // KONSEP: .filter() menghasilkan array baru
+    //         .length menghasilkan jumlah item
     
-    // LANGKAH 2: Ambil element counter
-    // const counter = document.getElementById('counter');
-    
-    // LANGKAH 3: Update text
-    // counter.textContent = `${remaining} items remaining`;
+    // PERTANYAAN 2: Bagaimana menampilkan angka ke layar?
+    // PETUNJUK: Cari element yang menampilkan counter, lalu ubah teksnya
+    // KONSEP: textContent atau innerHTML untuk mengubah isi teks
 }
 
 
@@ -190,32 +280,43 @@ function updateCounter() {
 // ============================================
 
 /**
- * Fungsi untuk menyimpan todos ke LocalStorage
+ * MASALAH: Data harus tetap ada meski browser ditutup/di-refresh.
+ * 
+ * KONSEP:
+ * LocalStorage = "gudang" di browser yang bisa menyimpan data
+ * - Data bertipe string
+ * - Bisa akses dari halaman yang sama
+ * - Tidak hilang saat refresh
+ * 
+ * ALUR BERPIKIR:
+ * 1. Menyimpan: array → string (karena localStorage hanya simpan string)
+ * 2. Memuat: string → array (karena kita butuh array untuk diproses)
+ * 
+ * TULIS KODEMU DI SINI:
+ * Buat fungsi "saveTodos" dan "loadTodos"
  */
 function saveTodos() {
-    // LANGKAH 1: Konversi array ke string JSON
-    // const data = JSON.stringify(todos);
+    // PERTANYAAN 1: Bagaimana mengubah array jadi string?
+    // PETUNJUK: Ada fungsi untuk mengubah JavaScript value jadi string JSON
+    // KONSEP: JSON.stringify() mengubah value jadi string JSON
     
-    // LANGKAH 2: Simpan ke LocalStorage
-    // localStorage.setItem('todos', data);
+    // PERTANYAAN 2: Bagaimana menyimpan ke localStorage?
+    // PETUNJUK: localStorage punya method untuk menyimpan
+    // KONSEP: localStorage.setItem(nama, nilai)
 }
 
-/**
- * Fungsi untuk memuat todos dari LocalStorage
- */
 function loadTodos() {
-    // LANGKAH 1: Ambil data dari LocalStorage
-    // const data = localStorage.getItem('todos');
+    // PERTANYAAN 1: Bagaimana mengambil data dari localStorage?
+    // PETUNJUK: localStorage punya method untuk mengambil
+    // KONSEP: localStorage.getItem(nama)
     
-    // LANGKAH 2: Parse JSON ke array
-    // if (data) {
-    //     todos = JSON.parse(data);
-    // } else {
-    //     todos = [];
-    // }
+    // PERTANYAAN 2: Bagaimana mengubah string jadi array?
+    // PETUNJUK: Kebalikan dari stringify
+    // KONSEP: JSON.parse() mengubah string JSON jadi value
     
-    // LANGKAH 3: Tampilkan todos
-    // renderTodos();
+    // PERTANYAAN 3: Apa yang terjadi jika tidak ada data?
+    // PETUNJUK: getItem mengembalikan null jika tidak ada
+    // KONSEP: Cek dengan if, jika null → gunakan array kosong
 }
 
 
@@ -224,17 +325,31 @@ function loadTodos() {
 // ============================================
 
 /**
- * Jalankan saat halaman selesai dimuat
+ * MASALAH: Menghubungkan aksi user (klik, tekan) dengan fungsi JavaScript.
+ * 
+ * KONSEP:
+ * - Event = aksi user (klik, tekan tombol, input, dll)
+ * - Event Listener = "pendengar" yang menunggu event terjadi
+ * - Callback = fungsi yang dipanggil saat event terjadi
+ * 
+ * TULIS KODEMU DI SINI:
+ * Setup event listeners setelah DOM selesai dimuat
  */
 document.addEventListener('DOMContentLoaded', () => {
-    // LANGKAH 1: Load todos dari LocalStorage
-    // loadTodos();
+    // PERTANYAAN 1: Mengapa harus menunggu DOM loaded?
+    // PETUNJUK: JavaScript berjalan sebelum HTML selesai dimuat
+    //           Jika langsung akses element, element mungkin belum ada
+    // KONSEP: DOMContentLoaded event fires when HTML is fully loaded
     
-    // LANGKAH 2: Setup event listener untuk Enter key
-    // const input = document.getElementById('todo-input');
-    // input.addEventListener('keypress', (e) => {
-    //     if (e.key === 'Enter') {
-    //         addTodo();
-    //     }
-    // });
+    // PERTANYAAN 2: Bagaimana menambahkan event listener ke tombol?
+    // PETUNJUK: Cari element tombol, lalu tambahkan "pendengar"
+    // KONSEP: element.addEventListener(namaEvent, fungsiCallback)
+    
+    // PERTANYAAN 3: Bagaimana menangkap tombol Enter di input?
+    // PETUNJUK: Ada event yang terjadi saat tombol keyboard ditekan
+    // KONSEP: "keypress" atau "keydown" event, cek e.key === 'Enter'
+    
+    // PERTANYAAN 4: Bagaimana mengosongkan input setelah submit?
+    // PETUNJUK: Input punya property untuk mengatur nilainya
+    // KONSEP: input.value = '' mengosongkan input
 });
