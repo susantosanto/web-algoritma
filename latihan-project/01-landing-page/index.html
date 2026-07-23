@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Belajar Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- ============================================ -->
+    <!-- NAVBAR -->
+    <!-- ============================================ -->
+    <!-- PETUNJUK: -->
+    <!-- - Buat navbar dengan flex justify-between items-center -->
+    <!-- - Logo di kiri, menu di tengah/kanan, CTA button di kanan -->
+    <!-- - Background putih dengan shadow -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- ISI: Logo/Brand Name -->
+                <!-- CONTOH: <div class="text-xl font-bold text-blue-500">MyBrand</div> -->
+                
+                <!-- ISI: Menu Links (hidden di mobile) -->
+                <!-- CONTOH: <div class="hidden md:flex gap-6">
+                    <a href="#" class="hover:text-blue-500">Home</a>
+                    <a href="#" class="hover:text-blue-500">About</a>
+                    <a href="#" class="hover:text-blue-500">Contact</a>
+                </div> -->
+                
+                <!-- ISI: CTA Button -->
+                <!-- CONTOH: <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Mulai</button> -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- HERO SECTION -->
+    <!-- ============================================ -->
+    <!-- PETUNJUK: -->
+    <!-- - Background gradient atau warna solid -->
+    <!-- - Headline besar, subheadline lebih kecil -->
+    <!-- - CTA Button yang menonjol -->
+    <!-- - Padding besar (py-20 atau lebih) -->
+    <section class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <!-- ISI: Headline -->
+            <!-- CONTOH: <h1 class="text-5xl font-bold mb-4">Selamat Datang</h1> -->
+            
+            <!-- ISI: Subheadline -->
+            <!-- CONTOH: <p class="text-xl mb-8 text-blue-100">Website ini dibuat untuk belajar</p> -->
+            
+            <!-- ISI: CTA Button -->
+            <!-- CONTOH: <button class="bg-white text-blue-500 px-8 py-3 rounded-full font-bold hover:bg-gray-100">Mulai Sekarang</button> -->
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FEATURES SECTION -->
+    <!-- ============================================ -->
+    <!-- PETUNJUK: -->
+    <!-- - Grid 3 kolom di desktop, 1 kolom di mobile -->
+    <!-- - Setiap feature punya icon, title, description -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <!-- ISI: Section Title -->
+            <!-- CONTOH: <h2 class="text-3xl font-bold text-center mb-12">Kenapa Pilih Kami?</h2> -->
+            
+            <!-- ISI: Features Grid -->
+            <!-- CONTOH: -->
+            <!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-xl font-semibold mb-2">Cepat</h3>
+                    <p class="text-gray-600">Proses cepat dan efisien</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h3 class="text-xl font-semibold mb-2">Aman</h3>
+                    <p class="text-gray-600">Data anda terjamin keamanannya</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-xl font-semibold mb-2">Murah</h3>
+                    <p class="text-gray-600">Harga terjangkau untuk semua</p>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- ABOUT SECTION -->
+    <!-- ============================================ -->
+    <!-- PETUNJUK: -->
+    <!-- - Flex layout: image di kiri, text di kanan (desktop) -->
+    <!-- - Di mobile: stacked (image di atas, text di bawah) -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- ISI: Image/Ilustrasi -->
+                <!-- CONTOH: <div class="w-full md:w-1/2">
+                    <img src="https://via.placeholder.com/400x300" alt="About" class="rounded-lg shadow-lg">
+                </div> -->
+                
+                <!-- ISI: Text Content -->
+                <!-- CONTOH: <div class="w-full md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4">Tentang Kami</h2>
+                    <p class="text-gray-600 mb-4">Kami adalah tim yang berdedikasi untuk memberikan layanan terbaik.</p>
+                    <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">Pelajari Lebih Lanjut</button>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TESTIMONIAL SECTION -->
+    <!-- ============================================ -->
+    <!-- PETUNJUK: -->
+    <!-- - Grid 3 kolom di desktop, 1 kolom di mobile -->
+    <!-- - Card dengan quote, name, role -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <!-- ISI: Section Title -->
+            <!-- CONTOH: <h2 class="text-3xl font-bold text-center mb-12">Apa Kata Mereka?</h2> -->
+            
+            <!-- ISI: Testimonial Cards -->
+            <!-- CONTOH: -->
+            <!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="italic text-gray-600 mb-4">"Layanan yang sangat memuaskan!"</p>
+                    <p class="font-bold">Budi</p>
+                    <p class="text-sm text-gray-500">CEO, TechCorp</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="italic text-gray-600 mb-4">"Sangat profesional dan cepat."</p>
+                    <p class="font-bold">Siti</p>
+                    <p class="text-sm text-gray-500">Manager, StartupX</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="italic text-gray-600 mb-4">"Rekomendasi untuk semua!"</p>
+                    <p class="font-bold">Andi</p>
+                    <p class="text-sm text-gray-500">Developer, CodeLab</p>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CTA SECTION -->
+    <!-- ============================================ -->
+    <!-- PETUNJUK: -->
+    <!-- - Background gelap atau gradient -->
+    <!-- - Text putih -->
+    <!-- - Button kontras -->
+    <section class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <!-- ISI: Headline -->
+            <!-- CONTOH: <h2 class="text-3xl font-bold mb-4">Siap Memulai?</h2> -->
+            
+            <!-- ISI: Subtext -->
+            <!-- CONTOH: <p class="text-gray-400 mb-8">Jangan tunggu lagi, bergabung sekarang!</p> -->
+            
+            <!-- ISI: CTA Button -->
+            <!-- CONTOH: <button class="bg-blue-500 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-600">Daftar Gratis</button> -->
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <!-- PETUNJUK: -->
+    <!-- - Background gelap -->
+    <!-- - Grid columns untuk links -->
+    <!-- - Copyright di bawah -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- ISI: Brand/Logo -->
+                <!-- CONTOH: <div><h3 class="text-xl font-bold mb-4">MyBrand</h3><p class="text-gray-400">Membantu bisnis Anda berkembang.</p></div> -->
+                
+                <!-- ISI: Links Column 1 -->
+                <!-- CONTOH: <div><h4 class="font-semibold mb-4">Produk</h4><ul class="text-gray-400"><li><a href="#" class="hover:text-white">Fitur</a></li><li><a href="#" class="hover:text-white">Harga</a></li></ul></div> -->
+                
+                <!-- ISI: Links Column 2 -->
+                <!-- CONTOH: <div><h4 class="font-semibold mb-4">Perusahaan</h4><ul class="text-gray-400"><li><a href="#" class="hover:text-white">Tentang</a></li><li><a href="#" class="hover:text-white">Blog</a></li></ul></div> -->
+                
+                <!-- ISI: Social Media -->
+                <!-- CONTOH: <div><h4 class="font-semibold mb-4">Ikuti Kami</h4><p class="text-gray-400">Twitter, Instagram, LinkedIn</p></div> -->
+            </div>
+            
+            <!-- ISI: Copyright -->
+            <!-- CONTOH: <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500"><p>&copy; 2026 MyBrand. All rights reserved.</p></div> -->
+        </div>
+    </footer>
+
+</body>
+</html>
